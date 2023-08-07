@@ -1,2 +1,6 @@
 # WinUICommunity-Templates
  WinUICommunity Project Template, help you quickly create a new WinUI 3 App with WinUICommunity and MVVM Packages. We prepare your project with the following features: NavigationView, Custom TitleBar, HomeLandingPage and Settings Page (with Theme settings). We also always use the latest version of WindowsAppSDK.  Jump right into coding your project, and let us prepare project for you.
+
+
+![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/MahdiHosseini.WinUICommunityTemplates?logo=visual%20studio&label=Marketplace%20Downloads&link=https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3DMahdiHosseini.WinUICommunityTemplates)
+![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/MahdiHosseini.WinUICommunityTemplates?logo=visual%20studio&label=Marketplace%20Installs&link=https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3DMahdiHosseini.WinUICommunityTemplates)
