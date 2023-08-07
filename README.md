@@ -9,3 +9,7 @@
 <a href="https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates">
  <img alt="WinUICommunityTemplates-Installs" src="https://img.shields.io/visual-studio-marketplace/i/MahdiHosseini.WinUICommunityTemplates?logo=visual%20studio&label=Marketplace%20Installs&link=https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3DMahdiHosseini.WinUICommunityTemplates"/>
 </a>
+
+
+![WinUICommunityTemplates](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
+
