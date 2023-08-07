@@ -1,0 +1,2 @@
+# WinUICommunity-Templates
+ WinUICommunity Project Template, help you quickly create a new WinUI 3 App with WinUICommunity and MVVM Packages. We prepare your project with the following features: NavigationView, Custom TitleBar, HomeLandingPage and Settings Page (with Theme settings). We also always use the latest version of WindowsAppSDK.  Jump right into coding your project, and let us prepare project for you.

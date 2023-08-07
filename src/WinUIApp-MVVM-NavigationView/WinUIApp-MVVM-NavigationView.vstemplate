@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+	<Name>WinUI 3 App - MVVM + NavigationView</Name>
+	<Description>Creates a new WinUI 3 App with WinUICommunity, MVVM Packages, NavigationView, Custom TitleBar, HomeLandingPage and Settings Page (with Theme settings).</Description>
+	<Icon>WinUIApp.ico</Icon>
+	<TemplateID>WinUIApp-MVVM-NavigationView-{1697E8F5-5114-47E3-AA17-9C6D55942408}</TemplateID>
+	<TemplateGroupID>WinRT-Managed</TemplateGroupID>
+	<ProjectType>CSharp</ProjectType>
+	<CreateNewFolder>true</CreateNewFolder>
+	<DefaultName>App</DefaultName>
+	<ProvideDefaultName>true</ProvideDefaultName>
+	<LocationField>Enabled</LocationField>
+	<EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+	<NumberOfParentCategoriesToRollUp>2</NumberOfParentCategoriesToRollUp>
+	<TargetPlatformName>Windows</TargetPlatformName>
+	<CreateInPlace>true</CreateInPlace>
+	<PreviewImage>WinUIApp.png</PreviewImage>
+	<PromptForSaveOnCreation>true</PromptForSaveOnCreation>
+	<LanguageTag>csharp</LanguageTag>
+	<LanguageTag>XAML</LanguageTag>
+	<PlatformTag>windows</PlatformTag>
+	<ProjectTypeTag>desktop</ProjectTypeTag>
+	<ProjectTypeTag>WinUI</ProjectTypeTag>
+	<ProjectTypeTag>WinUICommunity</ProjectTypeTag>
+  </TemplateData>
+  <TemplateContent PreferedSolutionConfiguration="Debug|x86">
+	<Project File="ProjectTemplate.csproj" ReplaceParameters="true">
+	  <ProjectItem ReplaceParameters="true" TargetFileName=".editorconfig">.editorconfig</ProjectItem>
+	  <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">Properties\launchSettings.json</ProjectItem>
+	  <ProjectItem ReplaceParameters="true" TargetFileName="win10-arm64.pubxml">Properties\PublishProfiles\win10-arm64.pubxml</ProjectItem>
+	  <ProjectItem ReplaceParameters="true" TargetFileName="win10-x64.pubxml">Properties\PublishProfiles\win10-x64.pubxml</ProjectItem>
+	  <ProjectItem ReplaceParameters="true" TargetFileName="win10-x86.pubxml">Properties\PublishProfiles\win10-x86.pubxml</ProjectItem>
+	  <ProjectItem ReplaceParameters="true" TargetFileName="app.manifest">app.manifest</ProjectItem>
+	  <ProjectItem ReplaceParameters="true" TargetFileName="App.xaml">App.xaml</ProjectItem>
+	  <ProjectItem ReplaceParameters="true" TargetFileName="App.xaml.cs">App.xaml.cs</ProjectItem>
+	  <ProjectItem ReplaceParameters="true" TargetFileName="Package.appxmanifest">Package-managed.appxmanifest</ProjectItem>
+	  <ProjectItem ReplaceParameters="true" TargetFileName="GlobalUsings.cs">GlobalUsings.cs</ProjectItem>
+
+	  <Folder Name="Assets" TargetFolderName="Assets">
+		<ProjectItem ReplaceParameters="true" TargetFileName="icon.ico">icon.ico</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="icon.png">icon.png</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="Cover.png">Cover.png</ProjectItem>
+	  </Folder>
+		
+	  <Folder Name="Assets\Fluent" TargetFolderName="Assets\Fluent">
+		<ProjectItem ReplaceParameters="true" TargetFileName="backdrop.png">backdrop.png</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="color.png">color.png</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="external.png">external.png</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="info.png">info.png</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="theme.png">theme.png</ProjectItem>
+	  </Folder>
+		
+	  <Folder Name="Assets\Store" TargetFolderName="Assets\Store">
+		<ProjectItem ReplaceParameters="true" TargetFileName="SplashScreen.scale-200.png">SplashScreen.scale-200.png</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="LockScreenLogo.scale-200.png">LockScreenLogo.scale-200.png</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="Square150x150Logo.scale-200.png">Square150x150Logo.scale-200.png</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="Square44x44Logo.scale-200.png">Square44x44Logo.scale-200.png</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="Square44x44Logo.targetsize-24_altform-unplated.png">Square44x44Logo.targetsize-24_altform-unplated.png</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="StoreLogo.png">StoreLogo.png</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="Wide310x150Logo.scale-200.png">Wide310x150Logo.scale-200.png</ProjectItem>
+	  </Folder>
+		
+	  <Folder Name="Assets\NavViewMenu" TargetFolderName="Assets\NavViewMenu">
+		<ProjectItem ReplaceParameters="true" TargetFileName="AppData.json">AppData.json</ProjectItem>
+	  </Folder>
+		
+	  <Folder Name="Views" TargetFolderName="Views">
+		<ProjectItem ReplaceParameters="true" TargetFileName="MainPage.xaml">MainPage.xaml</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="MainPage.xaml.cs">MainPage.xaml.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="HomeLandingPage.xaml">HomeLandingPage.xaml</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="HomeLandingPage.xaml.cs">HomeLandingPage.xaml.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="SettingsPage.xaml">SettingsPage.xaml</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="SettingsPage.xaml.cs">SettingsPage.xaml.cs</ProjectItem>
+	  </Folder>
+		
+	  <Folder Name="Views\Settings" TargetFolderName="Views\Settings">
+		<ProjectItem ReplaceParameters="true" TargetFileName="AboutUsSettingPage.xaml">AboutUsSettingPage.xaml</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="AboutUsSettingPage.xaml.cs">AboutUsSettingPage.xaml.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="ThemeSettingPage.xaml">ThemeSettingPage.xaml</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="ThemeSettingPage.xaml.cs">ThemeSettingPage.xaml.cs</ProjectItem>
+	  </Folder>
+		
+	  <Folder Name="Views\UserControls" TargetFolderName="Views\UserControls">
+		<ProjectItem ReplaceParameters="true" TargetFileName="BreadcrumbBarUserControl.xaml">BreadcrumbBarUserControl.xaml</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="BreadcrumbBarUserControl.xaml.cs">BreadcrumbBarUserControl.xaml.cs</ProjectItem>
+	  </Folder>
+		
+	  <Folder Name="ViewModels" TargetFolderName="ViewModels">
+		<ProjectItem ReplaceParameters="true" TargetFileName="MainViewModel.cs">MainViewModel.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="HomeLandingViewModel.cs">HomeLandingViewModel.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="SettingsViewModel.cs">SettingsViewModel.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="BreadCrumbBarViewModel.cs">BreadCrumbBarViewModel.cs</ProjectItem>
+	  </Folder>
+		
+	  <Folder Name="ViewModels\Settings" TargetFolderName="ViewModels\Settings">
+		<ProjectItem ReplaceParameters="true" TargetFileName="AboutUsSettingViewModel.cs">AboutUsSettingViewModel.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="ThemeSettingViewModel.cs">ThemeSettingViewModel.cs</ProjectItem>
+	  </Folder>
+		
+	  <Folder Name="Themes" TargetFolderName="Themes">
+		<ProjectItem ReplaceParameters="true" TargetFileName="Styles.xaml">Styles.xaml</ProjectItem>
+	  </Folder>
+		
+	  <Folder Name="Models" TargetFolderName="Models"/>
+		
+	</Project>
+  </TemplateContent>
+  <WizardExtension>
+	<!-- Generates Publisher name for appxmanifest -->
+	<Assembly>Microsoft.VisualStudio.WinRT.TemplateWizards, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+	<FullClassName>Microsoft.VisualStudio.WinRT.TemplateWizards.UpdatePublisherInManifestWizard</FullClassName>
+  </WizardExtension>
+  <WizardExtension>
+	<Assembly>WinUICommunity_VS_Templates, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=00733b7636c94b01</Assembly>
+	<FullClassName>WinUICommunity_VS_Templates.WizardImplementation</FullClassName>
+  </WizardExtension>
+</VSTemplate>
