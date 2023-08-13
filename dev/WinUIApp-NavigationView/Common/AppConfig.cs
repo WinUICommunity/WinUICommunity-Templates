@@ -1,7 +1,7 @@
 ﻿using Nucs.JsonSettings;
 using Nucs.JsonSettings.Modulation;
 
-namespace $safeprojectname$;
+namespace $safeprojectname$.Common;
 
 public class AppConfig : JsonSettings, IVersionable
 {

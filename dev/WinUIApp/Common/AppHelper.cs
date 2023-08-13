@@ -4,7 +4,7 @@ using Nucs.JsonSettings.Fluent;
 using Nucs.JsonSettings.Modulation;
 using Nucs.JsonSettings.Modulation.Recovery;
 
-namespace $safeprojectname$;
+namespace $safeprojectname$.Common;
 
 public static partial class AppHelper
 {
