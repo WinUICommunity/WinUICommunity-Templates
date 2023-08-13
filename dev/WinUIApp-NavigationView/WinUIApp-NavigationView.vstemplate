@@ -38,27 +38,27 @@
 	  <ProjectItem ReplaceParameters="true" TargetFileName="GlobalUsings.cs">GlobalUsings.cs</ProjectItem>
 
 	<Folder Name="Assets" TargetFolderName="Assets">
-	  <ProjectItem ReplaceParameters="true" TargetFileName="icon.ico">icon.ico</ProjectItem>
-	  <ProjectItem ReplaceParameters="true" TargetFileName="icon.png">icon.png</ProjectItem>
-	  <ProjectItem ReplaceParameters="true" TargetFileName="Cover.png">Cover.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="icon.ico">icon.ico</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="icon.png">icon.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="Cover.png">Cover.png</ProjectItem>
 	</Folder>
 
 	<Folder Name="Assets\Fluent" TargetFolderName="Assets\Fluent">
-	  <ProjectItem ReplaceParameters="true" TargetFileName="backdrop.png">backdrop.png</ProjectItem>
-	  <ProjectItem ReplaceParameters="true" TargetFileName="color.png">color.png</ProjectItem>
-	  <ProjectItem ReplaceParameters="true" TargetFileName="external.png">external.png</ProjectItem>
-	  <ProjectItem ReplaceParameters="true" TargetFileName="info.png">info.png</ProjectItem>
-	  <ProjectItem ReplaceParameters="true" TargetFileName="theme.png">theme.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="backdrop.png">backdrop.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="color.png">color.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="external.png">external.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="info.png">info.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="theme.png">theme.png</ProjectItem>
 	</Folder>
 
 	<Folder Name="Assets\Store" TargetFolderName="Assets\Store">
-	  <ProjectItem ReplaceParameters="true" TargetFileName="SplashScreen.scale-200.png">SplashScreen.scale-200.png</ProjectItem>
-	  <ProjectItem ReplaceParameters="true" TargetFileName="LockScreenLogo.scale-200.png">LockScreenLogo.scale-200.png</ProjectItem>
-	  <ProjectItem ReplaceParameters="true" TargetFileName="Square150x150Logo.scale-200.png">Square150x150Logo.scale-200.png</ProjectItem>
-	  <ProjectItem ReplaceParameters="true" TargetFileName="Square44x44Logo.scale-200.png">Square44x44Logo.scale-200.png</ProjectItem>
-	  <ProjectItem ReplaceParameters="true" TargetFileName="Square44x44Logo.targetsize-24_altform-unplated.png">Square44x44Logo.targetsize-24_altform-unplated.png</ProjectItem>
-	  <ProjectItem ReplaceParameters="true" TargetFileName="StoreLogo.png">StoreLogo.png</ProjectItem>
-	  <ProjectItem ReplaceParameters="true" TargetFileName="Wide310x150Logo.scale-200.png">Wide310x150Logo.scale-200.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="SplashScreen.scale-200.png">SplashScreen.scale-200.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="LockScreenLogo.scale-200.png">LockScreenLogo.scale-200.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="Square150x150Logo.scale-200.png">Square150x150Logo.scale-200.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="Square44x44Logo.scale-200.png">Square44x44Logo.scale-200.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="Square44x44Logo.targetsize-24_altform-unplated.png">Square44x44Logo.targetsize-24_altform-unplated.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="StoreLogo.png">StoreLogo.png</ProjectItem>
+	  <ProjectItem ReplaceParameters="false" TargetFileName="Wide310x150Logo.scale-200.png">Wide310x150Logo.scale-200.png</ProjectItem>
 	</Folder>
 
 	<Folder Name="Assets\NavViewMenu" TargetFolderName="Assets\NavViewMenu">
