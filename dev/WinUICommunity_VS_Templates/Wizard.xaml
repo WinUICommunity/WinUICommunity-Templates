@@ -1,0 +1,86 @@
+﻿<hc:Window x:Class="WinUICommunity_VS_Templates.Wizard"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:hc="https://handyorg.github.io/handycontrol"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:ui="clr-namespace:WinUICommunity.Shell"
+           Title="WinUICommunity Wizard"
+           Width="800"
+           Height="450"
+           ResizeMode="NoResize"
+           ShowCloseButton="False"
+           ShowInTaskbar="False"
+           ShowNonClientArea="False"
+           SystemBackdropType="Mica"
+           Topmost="True"
+           WindowStartupLocation="CenterScreen"
+           mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <hc:ThemeResources />
+                <hc:Theme />
+                <ResourceDictionary Source="Themes/Styles.xaml" />
+                <ResourceDictionary Source="Themes/Styles/ToggleSwitch.xaml" />
+                <ResourceDictionary Source="Themes/Styles/AnimatedVisualSource.xaml" />
+                <ResourceDictionary Source="Themes/Styles/Hyperlink.xaml" />
+                <ResourceDictionary Source="Themes/Styles/HyperlinkButton.xaml" />
+                <ResourceDictionary Source="Themes/Styles/TextStyles.xaml" />
+                <ResourceDictionary Source="Themes/Styles/Button.xaml" />
+                <ResourceDictionary Source="Themes/Styles/InfoBarButton.xaml" />
+                <ResourceDictionary Source="Themes/Styles/InfoBar.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel Grid.Row="1"
+                Margin="10,40">
+        <TextBlock HorizontalAlignment="Center"
+                   Style="{StaticResource TitleTextBlockStyle}"
+                   Text="WinUICommunity Wizard" />
+        <Separator Margin="0,10,0,0" />
+
+        <StackPanel Margin="0,20,0,0"
+                    Orientation="Horizontal">
+            <TextBlock Margin="10,0"
+                       Style="{StaticResource SubtitleTextBlockStyle}"
+                       Text="Add Json Settings" />
+
+            <ui:ToggleSwitch x:Name="tgSettings"
+                             IsOn="True" />
+
+        </StackPanel>
+
+        <ui:InfoBar Title="AppConfig.cs and AppHelper.cs classes will be added and you can save and restore app settings in json file."
+                    Margin="10,0,10,10"
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="Saving and restoring settings will be very fast and simple and will be done with only one line: Settings.SomeProperty = newValue;" />
+        <Separator Margin="0,5,0,0" />
+
+
+        <StackPanel Margin="0,10,0,0"
+                    Orientation="Horizontal">
+            <TextBlock Margin="10,0"
+                       Style="{StaticResource SubtitleTextBlockStyle}"
+                       Text="Add Dynamic Localization" />
+
+            <ui:ToggleSwitch x:Name="tgLocalization" />
+
+        </StackPanel>
+
+        <ui:InfoBar Title="The resource (resw) file will be added and the App.xaml.cs file will be configured to use localization"
+                    Margin="10,0,10,10"
+                    IsClosable="False"
+                    IsOpen="True" />
+
+        <Button x:Name="btnCreate"
+                Height="35"
+                Margin="0,15,0,0"
+                HorizontalAlignment="Stretch"
+                Click="btnCreate_Click"
+                Content="Create"
+                Style="{StaticResource DefaultButtonStyle}" />
+
+    </StackPanel>
+</hc:Window>

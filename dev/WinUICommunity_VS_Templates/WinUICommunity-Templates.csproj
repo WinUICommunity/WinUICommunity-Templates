@@ -32,6 +32,7 @@
     <StartAction>Program</StartAction>
     <StartProgram Condition="'$(DevEnvDir)' != ''">$(DevEnvDir)devenv.exe</StartProgram>
     <StartArguments>/rootsuffix Exp</StartArguments>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,7 +53,53 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shell\AnimatedVisuals\AnimatedBackVisualSource.cs" />
+    <Compile Include="Shell\AnimatedVisuals\AnimatedVisualSource.cs" />
+    <Compile Include="Shell\Common\ContentPresenterEx.cs" />
+    <Compile Include="Shell\Common\ControlHelper.cs" />
+    <Compile Include="Shell\Common\CppWinRTHelpers.cs" />
+    <Compile Include="Shell\Common\DelegateHelper.cs" />
+    <Compile Include="Shell\Common\FocusVisualHelper.cs" />
+    <Compile Include="Shell\Common\Helper.cs" />
+    <Compile Include="Shell\Common\HyperlinkHelper.cs" />
+    <Compile Include="Shell\Common\IControlProtected.cs" />
+    <Compile Include="Shell\Common\RowDefinitionHelper.cs" />
+    <Compile Include="Shell\Common\SharedHelpers.cs" />
+    <Compile Include="Shell\Common\SimpleVisualStateManager.cs" />
+    <Compile Include="Shell\Common\TextBlockHelper.cs" />
+    <Compile Include="Shell\Common\TypedEventHandler.cs" />
+    <Compile Include="Shell\Common\VisualStateGroupHelper.cs" />
+    <Compile Include="Shell\Common\VisualStateGroupListener.cs" />
+    <Compile Include="Shell\Common\VisualStates.cs" />
+    <Compile Include="Shell\HyperlinkButton\HyperlinkButton.cs" />
+    <Compile Include="Shell\IconElement\AnimatedIcon.cs" />
+    <Compile Include="Shell\IconElement\BitmapIcon.cs" />
+    <Compile Include="Shell\IconElement\FontIcon.cs" />
+    <Compile Include="Shell\IconElement\IconElement.cs" />
+    <Compile Include="Shell\IconElement\IconElementConverter.cs" />
+    <Compile Include="Shell\IconElement\ImageIcon.cs" />
+    <Compile Include="Shell\IconElement\PathIcon.cs" />
+    <Compile Include="Shell\IconElement\Symbol.cs" />
+    <Compile Include="Shell\IconElement\SymbolIcon.cs" />
+    <Compile Include="Shell\IconSource\AnimatedIconSource.cs" />
+    <Compile Include="Shell\IconSource\BitmapIconSource.cs" />
+    <Compile Include="Shell\IconSource\FontIconSource.cs" />
+    <Compile Include="Shell\IconSource\IconSource.cs" />
+    <Compile Include="Shell\IconSource\ImageIconSource.cs" />
+    <Compile Include="Shell\IconSource\PathIconSource.cs" />
+    <Compile Include="Shell\IconSource\SymbolIconSource.cs" />
+    <Compile Include="Shell\InfoBar\Enums.cs" />
+    <Compile Include="Shell\InfoBar\InfoBar.cs" />
+    <Compile Include="Shell\InfoBar\InfoBar.properties.cs" />
+    <Compile Include="Shell\InfoBar\InfoBarClosedEventArgs.cs" />
+    <Compile Include="Shell\InfoBar\InfoBarClosingEventArgs.cs" />
+    <Compile Include="Shell\InfoBar\InfoBarPanel.cs" />
+    <Compile Include="Shell\InfoBar\InfoBarTemplateSettings.cs" />
+    <Compile Include="Shell\ToggleSwitch\ToggleSwitch.cs" />
     <Compile Include="WinUICommunity_VS_TemplatesPackage.cs" />
+    <Compile Include="Wizard.xaml.cs">
+      <DependentUpon>Wizard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WizardImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,8 +121,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="HandyControls">
+      <Version>3.4.5</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.6.2166" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.6.2164">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WinUIApp-MVVM-NavigationView\WinUIApp-MVVM-NavigationView.csproj">
@@ -109,6 +162,53 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.TemplateWizardInterface, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\AnimatedVisualSource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\Hyperlink.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\HyperlinkButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\InfoBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\InfoBarButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\TextStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\ToggleSwitch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Wizard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />

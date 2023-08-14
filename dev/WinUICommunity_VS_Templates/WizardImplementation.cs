@@ -10,6 +10,9 @@ namespace WinUICommunity_VS_Templates
 {
     public class WizardImplementation : IWizard
     {
+        private bool useJsonSettings;
+        private bool useLocalization;
+
         _DTE _dte;
         Solution2 _solution;
         public void BeforeOpeningFile(ProjectItem projectItem)
@@ -51,6 +54,13 @@ namespace WinUICommunity_VS_Templates
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
             _dte = automationObject as _DTE;
+            var window = new Wizard();
+            window.ShowDialog();
+            useJsonSettings = Wizard.useJsonSettings;
+            useLocalization = Wizard.useLocalization;
+
+            replacementsDictionary.Add("usejsonsettings", useJsonSettings.ToString());
+            replacementsDictionary.Add("uselocalization", useLocalization.ToString());
         }
 
         public bool ShouldAddProjectItem(string filePath)

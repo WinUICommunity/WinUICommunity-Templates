@@ -1,0 +1,267 @@
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Automation;
+using System.Windows.Automation.Peers;
+using System.Windows.Controls;
+
+namespace WinUICommunity.Shell
+{
+    /// <summary>
+    /// An <see cref="InfoBar"/> is an inline notification for essential app-wide messages. The <see cref="InfoBar"/> will take up space in a layout and will not cover up other content or float on top of it. It supports rich content (including titles, messages, icons, and buttons) and can be configured to be user-dismissable or persistent.
+    /// </summary>
+    public partial class InfoBar : Control, IControlProtected
+    {
+        bool m_applyTemplateCalled = false;
+        bool m_notifyOpen = false;
+        bool m_isVisible = false;
+
+        InfoBarCloseReason m_lastCloseReason = InfoBarCloseReason.Programmatic;
+
+        FrameworkElement m_standardIconTextBlock;
+
+        private const string c_closeButtonName ="CloseButton";
+        private const string c_iconTextBlockName ="StandardIcon";
+        private const string c_contentRootName = "ContentRoot";
+
+        static InfoBar()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(InfoBar), new FrameworkPropertyMetadata(typeof(InfoBar)));
+        }
+
+        public InfoBar()
+        {
+            SetValue(TemplateSettingsPropertyKey, new InfoBarTemplateSettings());
+            DependencyPropertyDescriptor descriptor = DependencyPropertyDescriptor.FromProperty(ForegroundProperty, typeof(InfoBar));
+            descriptor.AddValueChanged(this, (sender, e) => UpdateForeground());
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            
+            m_applyTemplateCalled = true;
+
+            IControlProtected controlProtected = this;
+
+            var closeButton = CppWinRTHelpers.GetTemplateChildT<Button>(c_closeButtonName, controlProtected);
+            if (closeButton != null)
+            {
+                closeButton.Click += OnCloseButtonClick;
+
+                // Do localization for the close button
+                if (string.IsNullOrEmpty(AutomationProperties.GetName(closeButton)))
+                {
+                    var closeButtonName = "Close";
+                    AutomationProperties.SetName(closeButton, closeButtonName);
+                }
+                // Setup the tooltip for the close button
+                var tooltip = new ToolTip();
+                var closeButtonTooltipText = "Close";
+                tooltip.Content = closeButtonTooltipText;
+                ToolTipService.SetToolTip(closeButton, tooltip);
+            }
+
+            var iconTextblock = CppWinRTHelpers.GetTemplateChildT<FrameworkElement>(c_iconTextBlockName, controlProtected);
+            if (iconTextblock != null)
+            {
+                m_standardIconTextBlock = iconTextblock;
+            }
+
+            UpdateVisibility(m_notifyOpen, true);
+            m_notifyOpen = false;
+
+            UpdateSeverity();
+            UpdateIcon();
+            UpdateIconVisibility();
+            UpdateCloseButton();
+            UpdateForeground();
+        }
+
+        void OnCloseButtonClick(object sender, RoutedEventArgs args)
+        {
+            CloseButtonClick?.Invoke(this, null);
+            m_lastCloseReason = InfoBarCloseReason.CloseButton;
+            IsOpen = false;
+        }
+
+        void RaiseClosingEvent()
+        {
+            var args = new InfoBarClosingEventArgs();
+            args.Reason = m_lastCloseReason;
+
+            Closing?.Invoke(this, args);
+
+            if (!args.Cancel)
+            {
+                UpdateVisibility();
+                RaiseClosedEvent();
+            }
+            else
+            {
+                // The developer has changed the Cancel property to true,
+                // so we need to revert the IsOpen property to true.
+                IsOpen = true;
+            }
+        }
+
+        void RaiseClosedEvent()
+        {
+            var args = new InfoBarClosedEventArgs();
+            args.Reason = m_lastCloseReason;
+            Closed?.Invoke(this, args);
+        }
+
+        void OnIsOpenPropertyChanged(DependencyPropertyChangedEventArgs args)
+        {
+            if (IsOpen)
+            {
+                //Reset the close reason to the default value of programmatic.
+                m_lastCloseReason = InfoBarCloseReason.Programmatic;
+
+                UpdateVisibility();
+            }
+            else
+            {
+                RaiseClosingEvent();
+            }
+        }
+
+        void OnSeverityPropertyChanged(DependencyPropertyChangedEventArgs args)
+        {
+            UpdateSeverity();
+        }
+
+        void OnIconSourcePropertyChanged(DependencyPropertyChangedEventArgs args)
+        {
+            UpdateIcon();
+            UpdateIconVisibility();
+        }
+
+        void OnIsIconVisiblePropertyChanged(DependencyPropertyChangedEventArgs args)
+        {
+            UpdateIconVisibility();
+        }
+
+        void OnIsClosablePropertyChanged(DependencyPropertyChangedEventArgs args)
+        {
+            UpdateCloseButton();
+        }
+
+        public void UpdateVisibility(bool notify = false, bool force = false)
+        {
+            if (!m_applyTemplateCalled)
+            {
+                // ApplyTemplate() hasn't been called yet but IsOpen has already been set.
+                // Since this method will be called again shortly from ApplyTemplate, we'll just wait and send a notification then.
+                m_notifyOpen = true;
+            }
+            else
+            {
+                // Don't do any work if nothing has changed (unless we are forcing a update)
+                if (force || IsOpen != m_isVisible)
+                {
+                    if (IsOpen)
+                    {
+                        VisualStateManager.GoToState(this, "InfoBarVisible", false);
+                        //AutomationProperties.SetAccessibilityView(this, AccessibilityView.Control);
+                        m_isVisible = true;
+                    }
+                    else
+                    {
+                        VisualStateManager.GoToState(this, "InfoBarCollapsed", false);
+                        //AutomationProperties.SetAccessibilityView(this, AccessibilityView.Raw);
+                        m_isVisible = false;
+                    }
+                }
+            }
+        }
+
+        public void UpdateSeverity()
+        {
+            var severityState = "Informational";
+
+            switch (Severity)
+            {
+                case InfoBarSeverity.Success:
+                    severityState = "Success";
+                    break;
+                case InfoBarSeverity.Warning:
+                    severityState = "Warning";
+                    break;
+                case InfoBarSeverity.Error:
+                    severityState = "Error";
+                    break;
+            };
+
+            var iconTextblock = m_standardIconTextBlock;
+            VisualStateManager.GoToState(this, severityState, false);
+        }
+
+        public void UpdateIcon()
+        {
+            var templateSettings = TemplateSettings;
+            var source = IconSource;
+            if (source != null)
+            {
+                templateSettings.IconElement = SharedHelpers.MakeIconElementFrom(source);
+            }
+
+            else
+            {
+                templateSettings.IconElement = null;
+            }
+        }
+
+        public void UpdateIconVisibility()
+        {
+            VisualStateManager.GoToState(this, IsIconVisible ? (IconSource!=null ? "UserIconVisible" : "StandardIconVisible") : "NoIconVisible", false);
+        }
+
+        public void UpdateCloseButton()
+        {
+            VisualStateManager.GoToState(this, IsClosable ? "CloseButtonVisible" : "CloseButtonCollapsed", false);
+        }
+
+        public void UpdateForeground()
+        {
+            // If Foreground is set, then change Title and Message Foreground to match.
+            VisualStateManager.GoToState(this, ReadLocalValue(Control.ForegroundProperty) == DependencyProperty.UnsetValue ? "ForegroundNotSet" : "ForegroundSet", false);
+        }
+
+        public string GetSeverityLevelResourceName(InfoBarSeverity severity)
+        {
+            switch (severity)
+            {
+                case InfoBarSeverity.Success:
+                    return "Info message, severity success";
+                case InfoBarSeverity.Warning:
+                    return "Info message, severity warning";
+                case InfoBarSeverity.Error:
+                    return "Info message, severity error";
+            };
+            return "Info message, severity informational";
+        }
+
+        public string GetIconSeverityLevelResourceName(InfoBarSeverity severity)
+        {
+            switch (severity)
+            {
+                case InfoBarSeverity.Success:
+                    return "Success icon";
+                case InfoBarSeverity.Warning:
+                    return "Warning icon";
+                case InfoBarSeverity.Error:
+                    return "Error icon";
+            };
+            return "Informational icon";
+        }
+
+        DependencyObject IControlProtected.GetTemplateChild(string childName)
+        {
+            return GetTemplateChild(childName);
+        }
+    }
+}
