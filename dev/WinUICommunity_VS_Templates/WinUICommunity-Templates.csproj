@@ -52,6 +52,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="OptionUC.xaml.cs">
+      <DependentUpon>OptionUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shell\AnimatedVisuals\AnimatedBackVisualSource.cs" />
     <Compile Include="Shell\AnimatedVisuals\AnimatedVisualSource.cs" />
@@ -96,6 +99,14 @@
     <Compile Include="Shell\InfoBar\InfoBarPanel.cs" />
     <Compile Include="Shell\InfoBar\InfoBarTemplateSettings.cs" />
     <Compile Include="Shell\ToggleSwitch\ToggleSwitch.cs" />
+    <Content Include="Templates\Common\AppConfig.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="Templates\Common\AppHelper.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Compile Include="WinUICommunity_VS_TemplatesPackage.cs" />
     <Compile Include="Wizard.xaml.cs">
       <DependentUpon>Wizard.xaml</DependentUpon>
@@ -169,6 +180,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="OptionUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
