@@ -10,7 +10,7 @@ using Microsoft.VisualStudio.TemplateWizard;
 
 namespace WinUICommunity_VS_Templates
 {
-    public class WizardImplementation : IWizard
+    public class WizardImplementation
     {
         private bool AddJsonSettings;
         private bool AddDynamicLocalization;
@@ -24,24 +24,13 @@ namespace WinUICommunity_VS_Templates
 
         _DTE _dte;
         Solution2 _solution;
-        public void BeforeOpeningFile(ProjectItem projectItem)
-        {
-        }
-
-        public void ProjectFinishedGenerating(Project project)
-        {
-        }
-
-        public void ProjectItemFinishedGenerating(ProjectItem projectItem)
-        {
-        }
-
-        public void RunFinished()
+        
+        public void RunFinished(string vstemplateName)
         {
             _solution = (Solution2)_dte.Solution;
             Project project = _dte.Solution.Projects.Item(1);
 
-            string rootFolderPath = GetRootFolderPath();
+            string rootFolderPath = GetRootFolderPath(vstemplateName);
             
             string originalText = """<ItemGroup Label="DynamicLocalization"/>""";
             string csprojFileContent = File.ReadAllText(project.FullName);
@@ -210,11 +199,11 @@ private async Task InitializeLocalizer(params string[] languages)
             return true;
         }
 
-        private string GetRootFolderPath()
+        public string GetRootFolderPath(string vstemplateName)
         {
             _solution = (Solution2)_dte.Solution;
             Solution2 soln = (Solution2)_dte.Solution;
-            var vstemplateFileName = soln.GetProjectTemplate("WinUIApp.vstemplate", "CSharp");
+            var vstemplateFileName = soln.GetProjectTemplate($"{vstemplateName}.vstemplate", "CSharp");
 
             string folderPath = Path.GetDirectoryName(vstemplateFileName);
             while (folderPath.Contains("ProjectTemplates"))

@@ -76,6 +76,6 @@
   </WizardExtension>
   <WizardExtension>
 	<Assembly>WinUICommunity_VS_Templates, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=00733b7636c94b01</Assembly>
-	<FullClassName>WinUICommunity_VS_Templates.WizardImplementation</FullClassName>
+	<FullClassName>WinUICommunity_VS_Templates.WinUIAppMVVMWizard</FullClassName>
   </WizardExtension>
 </VSTemplate>

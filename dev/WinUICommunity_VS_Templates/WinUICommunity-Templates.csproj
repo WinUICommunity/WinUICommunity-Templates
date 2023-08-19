@@ -107,6 +107,10 @@
     <Compile Include="Shell\InfoBar\InfoBarPanel.cs" />
     <Compile Include="Shell\InfoBar\InfoBarTemplateSettings.cs" />
     <Compile Include="Shell\ToggleSwitch\ToggleSwitch.cs" />
+    <Compile Include="WinUIAppMVVMNavigationWizard.cs" />
+    <Compile Include="WinUIAppMVVMWizard.cs" />
+    <Compile Include="WinUIAppNavigationWizard.cs" />
+    <Compile Include="WinUIAppWizard.cs" />
     <Compile Include="WinUICommunity_VS_TemplatesPackage.cs" />
     <Compile Include="Wizard.xaml.cs">
       <DependentUpon>Wizard.xaml</DependentUpon>
