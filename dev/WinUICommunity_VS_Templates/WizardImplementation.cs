@@ -12,15 +12,15 @@ namespace WinUICommunity_VS_Templates
 {
     public class WizardImplementation
     {
-        private bool AddJsonSettings;
-        private bool AddDynamicLocalization;
-        private bool AddEditorConfig;
-        private bool AddSolutionFolder;
-        private bool AddHomeLandingPage;
-        private bool AddSettingsPage;
-        private bool AddThemeSettingPage;
-        private bool AddAppUpdatePage;
-        private bool AddAboutPage;
+        private bool AddJsonSettingsOption;
+        private bool AddDynamicLocalizationOption;
+        private bool AddEditorConfigOption;
+        private bool AddSolutionFolderOption;
+        private bool AddHomeLandingPageOption;
+        private bool AddSettingsPageOption;
+        private bool AddThemeSettingPageOption;
+        private bool AddAppUpdatePageOption;
+        private bool AddAboutPageOption;
 
         _DTE _dte;
         Solution2 _solution;
@@ -39,7 +39,7 @@ namespace WinUICommunity_VS_Templates
 
             string appFileContent = File.ReadAllText(appFilePath);
 
-            if (AddJsonSettings)
+            if (AddJsonSettingsOption)
             {
                 string jsonSettingFolder = Path.Combine(rootFolderPath, "Templates", "Common");
                 AddFilesAndReplaceParameters(project, jsonSettingFolder, "Common");
@@ -53,15 +53,39 @@ namespace WinUICommunity_VS_Templates
             //    project.ProjectItems.AddFromFileCopy(editorConfig);
             //}
 
-            if (AddSolutionFolder)
+            if (AddSolutionFolderOption)
             {
                 var solutionFolder = _solution.AddSolutionFolder("Solution Items");
             }
         }
 
+        public void AddHomeLandingPage()
+        {
+
+        }
+
+        public void AddSettingsPage()
+        {
+
+        }
+
+        public void AddThemeSettingsPage()
+        {
+
+        }
+
+        public void AddAppUpdatePage()
+        {
+
+        }
+
+        public void AddAboutPage()
+        {
+
+        }
         private void AddDynamicLocalizationAndReplaceParameters(Project project, string folderPath, string appFileContent, string appFilePath, string csprojFileContent, string originalText)
         {
-            if (AddDynamicLocalization)
+            if (AddDynamicLocalizationOption)
             {
                 string dynamicLocalizationFolder = Path.Combine(folderPath, "Templates", "Strings", "en-US");
                 AddFilesAndReplaceParameters(project, dynamicLocalizationFolder, Path.Combine("Strings", "en-US"));
@@ -173,25 +197,25 @@ private async Task InitializeLocalizer(params string[] languages)
             _dte = automationObject as _DTE;
             var window = new Wizard();
             window.ShowDialog();
-            AddJsonSettings = Wizard.AddJsonSettings;
-            AddDynamicLocalization = Wizard.AddDynamicLocalization;
-            AddEditorConfig = Wizard.AddEditorConfig;
-            AddSolutionFolder = Wizard.AddSolutionFolder;
-            AddHomeLandingPage = Wizard.AddHomeLandingPage;
-            AddSettingsPage = Wizard.AddSettingsPage;
-            AddThemeSettingPage = Wizard.AddThemeSettingPage;
-            AddAppUpdatePage = Wizard.AddAppUpdatePage;
-            AddAboutPage = Wizard.AddAboutPage;
+            AddJsonSettingsOption = Wizard.AddJsonSettings;
+            AddDynamicLocalizationOption = Wizard.AddDynamicLocalization;
+            AddEditorConfigOption = Wizard.AddEditorConfig;
+            AddSolutionFolderOption = Wizard.AddSolutionFolder;
+            AddHomeLandingPageOption = Wizard.AddHomeLandingPage;
+            AddSettingsPageOption = Wizard.AddSettingsPage;
+            AddThemeSettingPageOption = Wizard.AddThemeSettingPage;
+            AddAppUpdatePageOption = Wizard.AddAppUpdatePage;
+            AddAboutPageOption = Wizard.AddAboutPage;
 
-            replacementsDictionary.Add("$AddJsonSettings$", AddJsonSettings.ToString());
-            replacementsDictionary.Add("$AddDynamicLocalization$", AddDynamicLocalization.ToString());
-            replacementsDictionary.Add("$AddEditorConfig$", AddEditorConfig.ToString());
-            replacementsDictionary.Add("$AddSolutionFolder$", AddSolutionFolder.ToString());
-            replacementsDictionary.Add("$AddHomeLandingPage$", AddHomeLandingPage.ToString());
-            replacementsDictionary.Add("$AddSettingsPage$", AddSettingsPage.ToString());
-            replacementsDictionary.Add("$AddThemeSettingPage$", AddThemeSettingPage.ToString());
-            replacementsDictionary.Add("$AddAppUpdatePage$", AddAppUpdatePage.ToString());
-            replacementsDictionary.Add("$AddAboutPage$", AddAboutPage.ToString());
+            replacementsDictionary.Add("$AddJsonSettings$", AddJsonSettingsOption.ToString());
+            replacementsDictionary.Add("$AddDynamicLocalization$", AddDynamicLocalizationOption.ToString());
+            replacementsDictionary.Add("$AddEditorConfig$", AddEditorConfigOption.ToString());
+            replacementsDictionary.Add("$AddSolutionFolder$", AddSolutionFolderOption.ToString());
+            replacementsDictionary.Add("$AddHomeLandingPage$", AddHomeLandingPageOption.ToString());
+            replacementsDictionary.Add("$AddSettingsPage$", AddSettingsPageOption.ToString());
+            replacementsDictionary.Add("$AddThemeSettingPage$", AddThemeSettingPageOption.ToString());
+            replacementsDictionary.Add("$AddAppUpdatePage$", AddAppUpdatePageOption.ToString());
+            replacementsDictionary.Add("$AddAboutPage$", AddAboutPageOption.ToString());
         }
 
         public bool ShouldAddProjectItem(string filePath)
