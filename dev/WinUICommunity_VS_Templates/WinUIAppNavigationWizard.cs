@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using EnvDTE;
 
@@ -24,9 +25,8 @@ namespace WinUICommunity_VS_Templates
 
         public void RunFinished()
         {
-            WizardImplementation.RunFinished("WinUIApp-NavigationVIew");
-            WizardImplementation.AddPagesForNavigationTemplates("WinUIApp-NavigationVIew", false);
-            WizardImplementation.AddSettingsSubPages("WinUIApp-NavigationVIew");
+            WizardImplementation.RunFinished(false);
+            WizardImplementation.AddSolutionFolder();
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
@@ -37,7 +37,34 @@ namespace WinUICommunity_VS_Templates
 
         public bool ShouldAddProjectItem(string filePath)
         {
-            return true;
+            if (!WizardImplementation.AddHomeLandingPageOption && filePath.Contains("HomeLanding"))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.AddSettingsPageOption && (filePath.Contains("SettingsPage.xaml") || filePath.Contains("BreadcrumbBarUserControl") || filePath.Contains("AboutUsSettingPage") || filePath.Contains("ThemeSettingPage")))
+            {
+                return false;
+            }
+            else if (WizardImplementation.AddSettingsPageOption && !WizardImplementation.AddAboutPageOption && filePath.Contains("AboutUsSettingPage"))
+            {
+                return false;
+            }
+            else if (WizardImplementation.AddSettingsPageOption && !WizardImplementation.AddThemeSettingPageOption && filePath.Contains("ThemeSettingPage"))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.AddJsonSettingsOption && (filePath.Contains("AppConfig") || filePath.Contains("AppHelper")))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.AddDynamicLocalizationOption && filePath.Contains("Resources"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

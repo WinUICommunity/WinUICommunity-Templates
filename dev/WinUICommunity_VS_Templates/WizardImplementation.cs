@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 
 using EnvDTE;
 
@@ -12,181 +13,58 @@ namespace WinUICommunity_VS_Templates
 {
     public class WizardImplementation
     {
-        private bool AddJsonSettingsOption;
-        private bool AddDynamicLocalizationOption;
-        private bool AddEditorConfigOption;
-        private bool AddSolutionFolderOption;
-        private bool AddHomeLandingPageOption;
-        private bool AddSettingsPageOption;
-        private bool AddThemeSettingPageOption;
-        private bool AddAppUpdatePageOption;
-        private bool AddAboutPageOption;
+        string oldThemeSettingOptionContent =
+"""
+        <!--<wuc:SettingsCard x:Name="ThemeSetting"
+        Click="OnSettingCard_Click"
+        Description="Select your Theme and Material"
+        Header="Appearance &amp; behavior"
+        HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
+        IsClickEnabled="True"
+        Tag="ThemeSettingPage" />-->
+""";
+        string newThemeSettingOptionContent =
+"""
+        <wuc:SettingsCard x:Name="ThemeSetting"
+        Click="OnSettingCard_Click"
+        Description="Select your Theme and Material"
+        Header="Appearance &amp; behavior"
+        HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
+        IsClickEnabled="True"
+        Tag="ThemeSettingPage" />
+""";
+        string oldAboutSettingOptionContent =
+"""
+        <!--<wuc:SettingsCard x:Name="AboutSetting"
+        Click="OnSettingCard_Click"
+        Description="About $safeprojectname$ and Developer"
+        Header="About us"
+        HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/info.png}"
+        IsClickEnabled="True"
+        Tag="AboutUsSettingPage" />-->
+""";
+        string newAboutSettingOptionContent =
+"""
+        <wuc:SettingsCard x:Name="AboutSetting"
+        Click="OnSettingCard_Click"
+        Description="About $safeprojectname$ and Developer"
+        Header="About us"
+        HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/info.png}"
+        IsClickEnabled="True"
+        Tag="AboutUsSettingPage" />
+""";
 
-        private string appFilePath;
-        _DTE _dte;
-        Solution2 _solution;
-        Project project;
+        string oldResWItemGroupContent = """<ItemGroup Label="DynamicLocalization"/>""";
 
-        public void RunFinished(string vstemplateName)
-        {
-            _solution = (Solution2)_dte.Solution;
-            project = _dte.Solution.Projects.Item(1);
-
-            string rootFolderPath = GetRootFolderPath(vstemplateName);
-            
-            appFilePath = Path.Combine(Directory.GetParent(project.FullName).FullName, "App.xaml.cs");
-
-            if (AddJsonSettingsOption)
-            {
-                string jsonSettingFolder = Path.Combine(rootFolderPath, "Templates", "Common");
-                AddFiles(jsonSettingFolder, "Common");
-            }
-
-            AddDynamicLocalization(vstemplateName, appFilePath);
-
-            //if (AddEditorConfig)
-            //{
-            //    string editorConfig = Path.Combine(rootFolderPath, "Templates", ".editorconfig");
-            //    project.ProjectItems.AddFromFileCopy(editorConfig);
-            //}
-
-            if (AddSolutionFolderOption)
-            {
-                var solutionFolder = _solution.AddSolutionFolder("Solution Items");
-            }
-        }
-
-        public void AddPagesForNavigationTemplates(string vstemplateName, bool isMVVMTemplate)
-        {
-            string appFileContent = File.ReadAllText(appFilePath);
-
-            if (AddSettingsPageOption || AddHomeLandingPageOption)
-            {
-                string rootFolderPath = GetRootFolderPath(vstemplateName);
-
-                string templateFolder = Path.Combine(rootFolderPath, "Templates", "Views");
-
-                string templatePath = Path.Combine(Directory.GetParent(project.FullName).FullName, "Views");
-                if (!Directory.Exists(templatePath))
-                {
-                    Directory.CreateDirectory(templatePath);
-                }
-
-                foreach (string sourceFilePath in Directory.GetFiles(templateFolder))
-                {
-                    string fileContent = File.ReadAllText(sourceFilePath);
-
-                    string projectName = project.Name;
-                    fileContent = fileContent.Replace("$safeprojectname$", projectName);
-
-                    string fileName = Path.GetFileName(sourceFilePath);
-                    string destinationPath = Path.Combine(Directory.GetParent(project.FullName).FullName, "Views", fileName);
-
-                    if ((sourceFilePath.Contains("HomeLandingPage") && AddHomeLandingPageOption) ||
-                        (sourceFilePath.Contains("SettingsPage") && AddSettingsPageOption))
-                    {
-                        File.WriteAllText(destinationPath, fileContent);
-                        project.ProjectItems.AddFromFile(destinationPath);
-                    }
-                }
-
-                if (AddSettingsPageOption)
-                {
-                    string userControlFolder = Path.Combine(rootFolderPath, "Templates", "Views", "UserControls");
-                    string usercontrolPath = Path.Combine(Directory.GetParent(project.FullName).FullName, Path.Combine("Views", "UserControls"));
-                    if (!Directory.Exists(usercontrolPath))
-                    {
-                        Directory.CreateDirectory(usercontrolPath);
-                    }
-
-                    foreach (string sourceFilePath in Directory.GetFiles(userControlFolder))
-                    {
-                        string fileContent = File.ReadAllText(sourceFilePath);
-
-                        string projectName = project.Name;
-                        fileContent = fileContent.Replace("$safeprojectname$", projectName);
-
-                        string fileName = Path.GetFileName(sourceFilePath);
-                        string destinationPath = Path.Combine(Directory.GetParent(project.FullName).FullName, Path.Combine("Views", "UserControls"), fileName);
-
-                        File.WriteAllText(destinationPath, fileContent);
-                        project.ProjectItems.AddFromFile(destinationPath);
-                    }
-
-                    if (isMVVMTemplate == false)
-                    {
-                        appFileContent = appFileContent.Replace("//JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));", "JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));");
-                    }
-                }
-
-                if (AddHomeLandingPageOption)
-                {
-                    if (isMVVMTemplate == false)
-                    {
-                        appFileContent = appFileContent.Replace("//JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));", "JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));");
-                    }
-                }
-
-                File.WriteAllText(appFilePath, appFileContent);
-            }
-        }
-
-        public void AddSettingsSubPages(string vstemplateName)
-        {
-            if (AddSettingsPageOption && (AddThemeSettingPageOption || AddAboutPageOption))
-            {
-                string rootFolderPath = GetRootFolderPath(vstemplateName);
-
-                string templateFolder = Path.Combine(rootFolderPath, "Templates", "Views", "Settings");
-                string templatePath = Path.Combine(Directory.GetParent(project.FullName).FullName, Path.Combine("Views", "Settings"));
-                if (!Directory.Exists(templatePath))
-                {
-                    Directory.CreateDirectory(templatePath);
-                }
-
-                foreach (string sourceFilePath in Directory.GetFiles(templateFolder))
-                {
-                    string fileContent = File.ReadAllText(sourceFilePath);
-
-                    string projectName = project.Name;
-                    fileContent = fileContent.Replace("$safeprojectname$", projectName);
-
-                    string fileName = Path.GetFileName(sourceFilePath);
-                    string destinationPath = Path.Combine(Directory.GetParent(project.FullName).FullName, Path.Combine("Views", "Settings"), fileName);
-
-                    if ((sourceFilePath.Contains("AboutUsSettingPage") && AddAboutPageOption) || (sourceFilePath.Contains("ThemeSettingPage") && AddThemeSettingPageOption))
-                    {
-                        File.WriteAllText(destinationPath, fileContent);
-                        project.ProjectItems.AddFromFile(destinationPath);
-                    }
-                }
-            }
-        }
-
-        private void AddDynamicLocalization(string vstemplateName, string appFilePath)
-        {
-            string csprojFileContent = File.ReadAllText(project.FullName);
-            string originalText = """<ItemGroup Label="DynamicLocalization"/>""";
-            string appFileContent = File.ReadAllText(appFilePath);
-
-            if (AddDynamicLocalizationOption)
-            {
-
-                string rootFolderPath = GetRootFolderPath(vstemplateName);
-
-                string templateFolder = Path.Combine(rootFolderPath, "Templates", "Strings", "en-US");
-                AddFiles(templateFolder, Path.Combine("Strings", "en-US"));
-                string newText = """
+        string newResWItemGroupContent = """
                     <ItemGroup>
                         <Content Include="Strings\**\*.resw">
                           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
                         </Content>
                       </ItemGroup>
                     """;
-                csprojFileContent = csprojFileContent.Replace(originalText, newText);
-                File.WriteAllText(project.FullName, csprojFileContent);
 
-                string dynamicInitializeCode = 
+        string dynamicLocalizationInitializeCodeContent =
 """
 private async Task InitializeLocalizer(params string[] languages)
     {
@@ -224,61 +102,40 @@ private async Task InitializeLocalizer(params string[] languages)
             .Build();
     }
 """;
-                appFileContent = appFileContent.Replace("private void InitializeLocalizer { };",dynamicInitializeCode);
-                appFileContent = appFileContent.Replace("await InitializeLocalizer(\"en-US\");", Environment.NewLine + Environment.NewLine + "        await InitializeLocalizer(\"en-US\");");
-                File.WriteAllText(appFilePath, appFileContent);
-            }
-            else
-            {
-                csprojFileContent = csprojFileContent.Replace(originalText, "");
-                File.WriteAllText(project.FullName, csprojFileContent);
+        public bool AddJsonSettingsOption;
+        public bool AddDynamicLocalizationOption;
+        public bool AddEditorConfigOption;
+        public bool AddSolutionFolderOption;
+        public bool AddHomeLandingPageOption;
+        public bool AddSettingsPageOption;
+        public bool AddThemeSettingPageOption;
+        public bool AddAppUpdatePageOption;
+        public bool AddAboutPageOption;
 
-                appFileContent = appFileContent.Replace("using Windows.Storage;", "");
-                appFileContent = appFileContent.Replace("private static string StringsFolderPath { get; set; } = string.Empty;", "");
-                appFileContent = appFileContent.Replace("await InitializeLocalizer(\"en-US\");", "");
-                appFileContent = appFileContent.Replace("protected async override void OnLaunched", "protected override void OnLaunched");
-                appFileContent = appFileContent.Replace("private void InitializeLocalizer { };", "");
-                File.WriteAllText(appFilePath, appFileContent);
-            }
-        }
+        _DTE _dte;
+        Solution2 _solution;
+        Project project;
 
-        private void AddFiles(string sourceFolderPath, string rootFolderName)
+        public void RunFinished(bool isMVVMTemplate)
         {
-            string templatePath = Path.Combine(Directory.GetParent(project.FullName).FullName, rootFolderName);
-            if (!Directory.Exists(templatePath))
-            {
-                Directory.CreateDirectory(templatePath);
-            }
+            _solution = (Solution2)_dte.Solution;
+            project = _dte.Solution.Projects.Item(1);
 
-            foreach (string sourceFilePath in Directory.GetFiles(sourceFolderPath))
-            {
-                string fileContent = File.ReadAllText(sourceFilePath);
-
-                string projectName = project.Name;
-                fileContent = fileContent.Replace("$safeprojectname$", projectName);
-
-                string fileName = Path.GetFileName(sourceFilePath);
-                string destinationPath = Path.Combine(Directory.GetParent(project.FullName).FullName, rootFolderName, fileName);
-
-                File.WriteAllText(destinationPath, fileContent);
-                project.ProjectItems.AddFromFile(destinationPath);
-            }
+            var templatePath = Directory.GetParent(project.FullName).FullName;
+            AddHomeLandingPageConfig(isMVVMTemplate, templatePath);
+            AddSettingsPageConfig(isMVVMTemplate, templatePath);
+            AddDynamicLocalization(templatePath);
+            UpdateAppFileRemoveBlankLines(templatePath);
+            UpdateCSProjFileWithResWItemGroup(templatePath);
         }
 
-        private void OldMethods()
-        {
-            //project.ProjectItems.AddFromDirectory(jsonSettingFolder);
-
-            //string jsonSettingFile1 = Path.Combine(folderPath, "Templates", "Common", "AppConfig.cs");
-            //string jsonSettingFile2 = Path.Combine(folderPath, "Templates", "Common", "AppHelper.cs");
-
-            //if (File.Exists(jsonSettingFile1) && File.Exists(jsonSettingFile2))
-            //{
-            //    //project.ProjectItems.AddFromTemplate(jsonSettingFile1, Path.Combine("Common", "AppConfig.cs"));
-            //    //project.ProjectItems.AddFromTemplate(jsonSettingFile2, Path.Combine("Common", "AppHelper.cs"));
-            //}
-        }
-
+        /// <summary>
+        /// Get Parameters
+        /// </summary>
+        /// <param name="automationObject"></param>
+        /// <param name="replacementsDictionary"></param>
+        /// <param name="runKind"></param>
+        /// <param name="customParams"></param>
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
             _dte = automationObject as _DTE;
@@ -305,23 +162,155 @@ private async Task InitializeLocalizer(params string[] languages)
             replacementsDictionary.Add("$AddAboutPage$", AddAboutPageOption.ToString());
         }
 
-        public bool ShouldAddProjectItem(string filePath)
+        private void AddDynamicLocalization(string templatePath)
         {
-            return true;
+            var appFilePath = Path.Combine(templatePath, "App.xaml.cs");
+            string appFileContent = File.ReadAllText(appFilePath);
+
+            if (AddDynamicLocalizationOption)
+            {
+                appFileContent = appFileContent.Replace("private void InitializeLocalizer { };", dynamicLocalizationInitializeCodeContent);
+                appFileContent = appFileContent.Replace("await InitializeLocalizer(\"en-US\");", Environment.NewLine + Environment.NewLine + "        await InitializeLocalizer(\"en-US\");");
+                File.WriteAllText(appFilePath, appFileContent);
+            }
+            else
+            {
+                appFileContent = appFileContent.Replace("using Windows.Storage;", "");
+                appFileContent = appFileContent.Replace("private static string StringsFolderPath { get; set; } = string.Empty;", "");
+                appFileContent = appFileContent.Replace("await InitializeLocalizer(\"en-US\");", "");
+                appFileContent = appFileContent.Replace("protected async override void OnLaunched", "protected override void OnLaunched");
+                appFileContent = appFileContent.Replace("private void InitializeLocalizer { };", "");
+                File.WriteAllText(appFilePath, appFileContent);
+            }
         }
 
-        public string GetRootFolderPath(string vstemplateName)
+        private void AddSettingsPageConfig(bool isMVVMTemplate, string templatePath)
+        {
+            if (AddSettingsPageOption)
+            {
+                var appFilePath = Path.Combine(templatePath, "App.xaml.cs");
+
+                string appFileContent = File.ReadAllText(appFilePath);
+
+                // We Should Add Config in JsonNavigationViewService
+                if (isMVVMTemplate == false)
+                {
+                    appFileContent = appFileContent.Replace("//JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));", "JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));");
+                    File.WriteAllText(appFilePath, appFileContent);
+                }
+
+                if (AddAboutPageOption || AddThemeSettingPageOption)
+                {
+                    var settingsPageFilePath = Path.Combine(templatePath, "Views", "SettingsPage.xaml");
+                    string settingsPageFileContent = File.ReadAllText(settingsPageFilePath);
+
+                    if (AddAboutPageOption)
+                    {
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionContent);
+                    }
+                    if (AddThemeSettingPageOption)
+                    {
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionContent);
+                    }
+                    File.WriteAllText(settingsPageFilePath, settingsPageFileContent);
+                }
+            }
+        }
+
+        private void AddHomeLandingPageConfig(bool isMVVMTemplate, string templatePath)
+        {
+            if (AddHomeLandingPageOption)
+            {
+                var appFilePath = Path.Combine(templatePath, "App.xaml.cs");
+
+                string appFileContent = File.ReadAllText(appFilePath);
+
+                // We Should Add Config in JsonNavigationViewService
+                if (isMVVMTemplate == false)
+                {
+                    appFileContent = appFileContent.Replace("//JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));", "JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));");
+                    File.WriteAllText(appFilePath, appFileContent);
+                }
+            }
+        }
+
+        private void UpdateCSProjFileWithResWItemGroup(string templatePath)
+        {
+            var csprojFilePath = Path.Combine(templatePath, "ProjectTemplate.csproj");
+            var csprojFileContent = File.ReadAllText(csprojFilePath);
+            if (AddDynamicLocalizationOption)
+            {
+                csprojFileContent = csprojFileContent.Replace(oldResWItemGroupContent, newResWItemGroupContent);
+            }
+            else
+            {
+                csprojFileContent = csprojFileContent.Replace(oldResWItemGroupContent, "");
+            }
+            File.WriteAllText(csprojFilePath, csprojFileContent);
+        }
+
+        private void UpdateAppFileRemoveBlankLines(string templatePath)
+        {
+            var appFilePath = Path.Combine(templatePath, "App.xaml.cs");
+            string appFileContent = File.ReadAllText(appFilePath);
+
+            string pattern = @"(\r\n|\r|\n){2,}";
+
+            string result = Regex.Replace(appFileContent, pattern, "\n");
+
+            // Remove blank lines between two closing curly braces
+            result = Regex.Replace(result, @"(\}\s*)\n+(\s*\})", "$1$2");
+            File.WriteAllText(appFilePath, appFileContent);
+        }
+        public void AddSolutionFolder()
+        {
+            if (AddSolutionFolderOption)
+            {
+                var solutionFolder = _solution.AddSolutionFolder("Solution Items");
+            }
+        }
+
+        public void AddEditorConfig()
+        {
+            //if (AddEditorConfig)
+            //{
+            //    string editorConfig = Path.Combine(rootFolderPath, "Templates", ".editorconfig");
+            //    project.ProjectItems.AddFromFileCopy(editorConfig);
+            //}
+        }
+
+        /// <summary>
+        /// Get VSIX Root Folder Path: AppData\Local\Microsoft\VisualStudio\17.0_b6438676Exp\Extensions\{UserName}\WinUICommunity Templates for WinUI\{Version}
+        /// </summary>
+        /// <param name="vstemplateName"></param>
+        /// <returns></returns>
+        public (string VSIXRootFolder, string ProjectTemplatesFolder) GetRootFolderPath(string vstemplateName)
         {
             _solution = (Solution2)_dte.Solution;
             Solution2 soln = (Solution2)_dte.Solution;
             var vstemplateFileName = soln.GetProjectTemplate($"{vstemplateName}.vstemplate", "CSharp");
 
             string folderPath = Path.GetDirectoryName(vstemplateFileName);
+            string projectTemplatesFolder = folderPath;
             while (folderPath.Contains("ProjectTemplates"))
             {
                 folderPath = Directory.GetParent(folderPath).FullName;
             }
-            return folderPath;
+            return (folderPath, projectTemplatesFolder);
+        }
+
+        private void OldMethods()
+        {
+            //project.ProjectItems.AddFromDirectory(jsonSettingFolder);
+
+            //string jsonSettingFile1 = Path.Combine(folderPath, "Templates", "Common", "AppConfig.cs");
+            //string jsonSettingFile2 = Path.Combine(folderPath, "Templates", "Common", "AppHelper.cs");
+
+            //if (File.Exists(jsonSettingFile1) && File.Exists(jsonSettingFile2))
+            //{
+            //    //project.ProjectItems.AddFromTemplate(jsonSettingFile1, Path.Combine("Common", "AppConfig.cs"));
+            //    //project.ProjectItems.AddFromTemplate(jsonSettingFile2, Path.Combine("Common", "AppHelper.cs"));
+            //}
         }
     }
 }

@@ -24,7 +24,8 @@ namespace WinUICommunity_VS_Templates
 
         public void RunFinished()
         {
-            WizardImplementation.RunFinished("WinUIApp");
+            WizardImplementation.RunFinished(false);
+            WizardImplementation.AddSolutionFolder();
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
@@ -35,7 +36,18 @@ namespace WinUICommunity_VS_Templates
 
         public bool ShouldAddProjectItem(string filePath)
         {
-            return true;
+            if (!WizardImplementation.AddJsonSettingsOption && (filePath.Contains("AppConfig") || filePath.Contains("AppHelper")))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.AddDynamicLocalizationOption && filePath.Contains("Resources"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

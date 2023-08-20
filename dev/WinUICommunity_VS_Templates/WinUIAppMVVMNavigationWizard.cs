@@ -24,7 +24,8 @@ namespace WinUICommunity_VS_Templates
 
         public void RunFinished()
         {
-            WizardImplementation.RunFinished("WinUIApp-MVVM-NavigationVIew");
+            WizardImplementation.RunFinished(true);
+            WizardImplementation.AddSolutionFolder();
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
@@ -35,7 +36,34 @@ namespace WinUICommunity_VS_Templates
 
         public bool ShouldAddProjectItem(string filePath)
         {
-            return true;
+            if (!WizardImplementation.AddHomeLandingPageOption && filePath.Contains("HomeLanding"))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.AddSettingsPageOption && (filePath.Contains("SettingsPage.xaml") || filePath.Contains("SettingsViewModel") || filePath.Contains("BreadCrumbBarViewModel") || filePath.Contains("BreadcrumbBarUserControl") || filePath.Contains("AboutUsSettingPage") || filePath.Contains("ThemeSettingPage")))
+            {
+                return false;
+            }
+            else if (WizardImplementation.AddSettingsPageOption && !WizardImplementation.AddAboutPageOption && (filePath.Contains("AboutUsSettingPage") || filePath.Contains("AboutUsSettingViewModel")))
+            {
+                return false;
+            }
+            else if (WizardImplementation.AddSettingsPageOption && !WizardImplementation.AddThemeSettingPageOption && (filePath.Contains("ThemeSettingPage") || filePath.Contains("ThemeSettingViewModel")))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.AddJsonSettingsOption && (filePath.Contains("AppConfig") || filePath.Contains("AppHelper")))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.AddDynamicLocalizationOption && filePath.Contains("Resources"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
