@@ -1,6 +1,4 @@
-﻿using Windows.Storage;
-
-namespace $safeprojectname$;
+﻿using Windows.Storage;namespace $safeprojectname$;
 
 public partial class App : Application
 {

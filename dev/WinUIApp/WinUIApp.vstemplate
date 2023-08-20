@@ -56,7 +56,13 @@
 		<ProjectItem ReplaceParameters="true" TargetFileName="MainPage.xaml">MainPage.xaml</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="MainPage.xaml.cs">MainPage.xaml.cs</ProjectItem>
 	  </Folder>
-		
+	  <Folder Name="Common" TargetFolderName="Common">
+		<ProjectItem ReplaceParameters="true" TargetFileName="AppConfig.cs">AppConfig.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="AppHelper.cs">AppHelper.cs</ProjectItem>
+	  </Folder>
+	  <Folder Name="Strings\en-US" TargetFolderName="Strings\en-US">
+		<ProjectItem ReplaceParameters="true" TargetFileName="Resources.resw">Resources.resw</ProjectItem>
+	  </Folder>
     </Project>
   </TemplateContent>
   <WizardExtension>

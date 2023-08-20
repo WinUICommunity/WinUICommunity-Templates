@@ -130,6 +130,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Assets\NavViewMenu\AppData.json" />
+    <Content Include="Strings\en-US\Resources.resw">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ViewModels\Settings\AboutUsSettingViewModel.cs" />
@@ -167,6 +170,16 @@
   <ItemGroup>
     <Content Include="Themes\Styles.xaml">
       <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Common\AppConfig.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Common\AppHelper.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

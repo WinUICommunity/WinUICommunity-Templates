@@ -52,14 +52,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Templates\Common\AppConfig.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Templates\Common\AppHelper.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Compile Include="OptionUC.xaml.cs">
       <DependentUpon>OptionUC.xaml</DependentUpon>
     </Compile>
@@ -107,26 +99,6 @@
     <Compile Include="Shell\InfoBar\InfoBarPanel.cs" />
     <Compile Include="Shell\InfoBar\InfoBarTemplateSettings.cs" />
     <Compile Include="Shell\ToggleSwitch\ToggleSwitch.cs" />
-    <Content Include="Templates\Views\HomeLandingPage.xaml.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Templates\Views\SettingsPage.xaml.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Templates\Views\UserControls\BreadcrumbBarUserControl.xaml.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Templates\Views\Settings\AboutUsSettingPage.xaml.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Templates\Views\Settings\ThemeSettingPage.xaml.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Compile Include="WinUIAppMVVMNavigationWizard.cs" />
     <Compile Include="WinUIAppMVVMWizard.cs" />
     <Compile Include="WinUIAppNavigationWizard.cs" />
@@ -150,10 +122,6 @@
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Templates\Strings\en-US\Resources.resw">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="HandyControls">
@@ -208,31 +176,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Content Include="Templates\Views\HomeLandingPage.xaml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Templates\Views\SettingsPage.xaml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Templates\Views\UserControls\BreadcrumbBarUserControl.xaml">
-      <SubType>Designer</SubType>
-      <IncludeInVSIX>true</IncludeInVSIX>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Views\Settings\AboutUsSettingPage.xaml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Templates\Views\Settings\ThemeSettingPage.xaml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Page Include="Themes\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

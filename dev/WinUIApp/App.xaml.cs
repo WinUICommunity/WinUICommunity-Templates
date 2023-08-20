@@ -1,5 +1,4 @@
-﻿using Microsoft.UI.Xaml.Media;
-using Windows.Storage;
+﻿using Microsoft.UI.Xaml.Media;using Windows.Storage;
 
 namespace $safeprojectname$;
 
