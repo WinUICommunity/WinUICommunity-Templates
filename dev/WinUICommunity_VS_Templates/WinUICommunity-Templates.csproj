@@ -61,19 +61,13 @@
     <Compile Include="Shell\Common\ContentPresenterEx.cs" />
     <Compile Include="Shell\Common\ControlHelper.cs" />
     <Compile Include="Shell\Common\CppWinRTHelpers.cs" />
-    <Compile Include="Shell\Common\DelegateHelper.cs" />
     <Compile Include="Shell\Common\FocusVisualHelper.cs" />
-    <Compile Include="Shell\Common\Helper.cs" />
     <Compile Include="Shell\Common\HyperlinkHelper.cs" />
     <Compile Include="Shell\Common\IControlProtected.cs" />
-    <Compile Include="Shell\Common\RowDefinitionHelper.cs" />
     <Compile Include="Shell\Common\SharedHelpers.cs" />
-    <Compile Include="Shell\Common\SimpleVisualStateManager.cs" />
     <Compile Include="Shell\Common\TextBlockHelper.cs" />
     <Compile Include="Shell\Common\TypedEventHandler.cs" />
-    <Compile Include="Shell\Common\VisualStateGroupHelper.cs" />
     <Compile Include="Shell\Common\VisualStateGroupListener.cs" />
-    <Compile Include="Shell\Common\VisualStates.cs" />
     <Compile Include="Shell\HyperlinkButton\HyperlinkButton.cs" />
     <Compile Include="Shell\IconElement\AnimatedIcon.cs" />
     <Compile Include="Shell\IconElement\BitmapIcon.cs" />
@@ -98,7 +92,6 @@
     <Compile Include="Shell\InfoBar\InfoBarClosingEventArgs.cs" />
     <Compile Include="Shell\InfoBar\InfoBarPanel.cs" />
     <Compile Include="Shell\InfoBar\InfoBarTemplateSettings.cs" />
-    <Compile Include="Shell\ToggleSwitch\ToggleSwitch.cs" />
     <Compile Include="WinUIAppMVVMNavigationWizard.cs" />
     <Compile Include="WinUIAppMVVMWizard.cs" />
     <Compile Include="WinUIAppNavigationWizard.cs" />
@@ -205,10 +198,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Styles\TextStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Styles\ToggleSwitch.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

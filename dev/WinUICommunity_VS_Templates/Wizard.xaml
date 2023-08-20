@@ -23,10 +23,6 @@
                 <hc:ThemeResources />
                 <hc:Theme />
                 <ResourceDictionary Source="Themes/Styles.xaml" />
-                <ResourceDictionary Source="Themes/Styles/ToggleSwitch.xaml" />
-                <ResourceDictionary Source="Themes/Styles/AnimatedVisualSource.xaml" />
-                <ResourceDictionary Source="Themes/Styles/Hyperlink.xaml" />
-                <ResourceDictionary Source="Themes/Styles/HyperlinkButton.xaml" />
                 <ResourceDictionary Source="Themes/Styles/TextStyles.xaml" />
                 <ResourceDictionary Source="Themes/Styles/Button.xaml" />
                 <ResourceDictionary Source="Themes/Styles/InfoBarButton.xaml" />
@@ -99,15 +95,18 @@
                 <local:OptionUC x:Name="tgThemeSetting"
                                 Title="A: Add Theme Setting Page"
                                 Margin="20,0,0,0"
-                                InfoBarTitle="It will create a theme settings page, so the user can change the theme and material of the app" />
+                                InfoBarTitle="It will create a theme settings page, so the user can change the theme and material of the app"
+                                IsEnabled="{Binding ElementName=tgSettingsPage, Path=IsOn}" />
                 <local:OptionUC x:Name="tgAppUpdate"
                                 Title="B: Add App Update Page"
                                 Margin="20,0,0,0"
-                                InfoBarTitle="It will create a page that user check for updates" />
+                                InfoBarTitle="It will create a page that user check for updates"
+                                IsEnabled="{Binding ElementName=tgSettingsPage, Path=IsOn}" />
                 <local:OptionUC x:Name="tgAboutSetting"
                                 Title="C: Add About Page"
                                 Margin="20,0,0,0"
-                                InfoBarTitle="It will create a about page in settings page" />
+                                InfoBarTitle="It will create a about page in settings page"
+                                IsEnabled="{Binding ElementName=tgSettingsPage, Path=IsOn}" />
             </StackPanel>
         </hc:ScrollViewer>
         <Button x:Name="btnCreate"
