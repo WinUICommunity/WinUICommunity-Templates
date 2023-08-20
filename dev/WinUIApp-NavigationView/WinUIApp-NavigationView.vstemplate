@@ -90,10 +90,6 @@
 		<ProjectItem ReplaceParameters="true" TargetFileName="Styles.xaml">Styles.xaml</ProjectItem>
 	  </Folder>
 		
-	  <Folder Name="Common" TargetFolderName="Common">
-		<ProjectItem ReplaceParameters="true" TargetFileName="AppConfig.cs">AppConfig.cs</ProjectItem>
-		<ProjectItem ReplaceParameters="true" TargetFileName="AppHelper.cs">AppHelper.cs</ProjectItem>
-	  </Folder>
 	</Project>
   </TemplateContent>
   <WizardExtension>

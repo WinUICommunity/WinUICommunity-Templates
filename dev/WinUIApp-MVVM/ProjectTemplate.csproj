@@ -20,12 +20,12 @@
 
   <ItemGroup>
     <None Include="Assets\**\*">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+  <ItemGroup Label="DynamicLocalization"/>
   <ItemGroup>
-	<Folder Include="Models\" />
+	  <Folder Include="Models\" />
   </ItemGroup>
 	
   <ItemGroup>

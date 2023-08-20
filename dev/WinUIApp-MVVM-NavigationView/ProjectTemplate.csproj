@@ -23,7 +23,7 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
-
+  <ItemGroup Label="DynamicLocalization"/>
 	<ItemGroup>
 		<Folder Include="Models\" />
 	</ItemGroup>

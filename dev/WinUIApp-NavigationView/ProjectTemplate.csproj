@@ -23,7 +23,7 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
-
+  <ItemGroup Label="DynamicLocalization"/>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.230724000" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />

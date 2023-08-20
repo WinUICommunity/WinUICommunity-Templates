@@ -1,4 +1,6 @@
-﻿namespace $safeprojectname$;
+﻿using Windows.Storage;
+
+namespace $safeprojectname$;
 
 public partial class App : Application
 {
@@ -7,7 +9,7 @@ public partial class App : Application
     public new static App Current => (App)Application.Current;
     public string AppVersion { get; set; } = VersionHelper.GetVersion();
     public string AppName { get; set; } = "$safeprojectname$";
-
+    private static string StringsFolderPath { get; set; } = string.Empty;
     public static T GetService<T>()
         where T : class
     {
@@ -25,7 +27,7 @@ public partial class App : Application
         this.InitializeComponent();
     }
 
-    protected override void OnLaunched(LaunchActivatedEventArgs args)
+    protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         currentWindow = new Window();
         
@@ -42,8 +44,8 @@ public partial class App : Application
         currentWindow.Title = currentWindow.AppWindow.Title = $"{AppName} v{AppVersion}";
         currentWindow.AppWindow.SetIcon("Assets/icon.ico");
 
-        currentWindow.Activate();
-    }
+        currentWindow.Activate(); await InitializeLocalizer("en-US");
+    }private void InitializeLocalizer { };
 
     private static IServiceProvider ConfigureServices()
     {
