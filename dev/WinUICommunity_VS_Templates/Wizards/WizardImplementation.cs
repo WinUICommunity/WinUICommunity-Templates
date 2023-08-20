@@ -239,10 +239,15 @@ private async Task InitializeLocalizer(params string[] languages)
                 string appFileContent = File.ReadAllText(appFilePath);
 
                 // We Should Add Config in JsonNavigationViewService
-                if (isMVVMTemplate == false)
+                if (isMVVMTemplate)
+                {
+                    appFileContent = appFileContent.Replace("//services.AddTransient<SettingsViewModel>();", "services.AddTransient<SettingsViewModel>();");
+                    appFileContent = appFileContent.Replace("//services.AddTransient<BreadCrumbBarViewModel>();", "services.AddTransient<BreadCrumbBarViewModel>();");
+                    appFileContent = appFileContent.Replace("//json.ConfigSettingsPage(typeof(SettingsPage));", "json.ConfigSettingsPage(typeof(SettingsPage));");
+                }
+                else
                 {
                     appFileContent = appFileContent.Replace("//JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));", "JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));");
-                    File.WriteAllText(appFilePath, appFileContent);
                 }
 
                 if (AddAboutPageOption || AddThemeSettingPageOption)
@@ -255,6 +260,7 @@ private async Task InitializeLocalizer(params string[] languages)
                         if (isMVVMTemplate)
                         {
                             settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionMVVMContent);
+                            appFileContent = appFileContent.Replace("//services.AddTransient<AboutUsSettingViewModel>();", "services.AddTransient<AboutUsSettingViewModel>();");
                         }
                         else
                         {
@@ -277,6 +283,7 @@ private async Task InitializeLocalizer(params string[] languages)
                         if (isMVVMTemplate)
                         {
                             settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionMVVMContent);
+                            appFileContent = appFileContent.Replace("//services.AddTransient<ThemeSettingViewModel>();", "services.AddTransient<ThemeSettingViewModel>();");
                         }
                         else
                         {
@@ -296,6 +303,8 @@ private async Task InitializeLocalizer(params string[] languages)
                     }
                     File.WriteAllText(settingsPageFilePath, settingsPageFileContent);
                 }
+
+                File.WriteAllText(appFilePath, appFileContent);
             }
         }
 
@@ -308,11 +317,16 @@ private async Task InitializeLocalizer(params string[] languages)
                 string appFileContent = File.ReadAllText(appFilePath);
 
                 // We Should Add Config in JsonNavigationViewService
-                if (isMVVMTemplate == false)
+                if (isMVVMTemplate)
+                {
+                    appFileContent = appFileContent.Replace("//services.AddTransient<HomeLandingViewModel>();", "services.AddTransient<HomeLandingViewModel>();");
+                    appFileContent = appFileContent.Replace("//json.ConfigDefaultPage(typeof(HomeLandingPage));", "json.ConfigDefaultPage(typeof(HomeLandingPage));");
+                }
+                else
                 {
                     appFileContent = appFileContent.Replace("//JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));", "JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));");
-                    File.WriteAllText(appFilePath, appFileContent);
                 }
+                File.WriteAllText(appFilePath, appFileContent);
             }
         }
 
