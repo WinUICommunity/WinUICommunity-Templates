@@ -68,6 +68,7 @@
                 <local:OptionUC x:Name="tgEditorConfig"
                                 Title="3. Add .editorConfig File"
                                 InfoBarTitle="EditorConfig is a file format and a set of rules for configuring the coding style and formatting of source code files"
+                                IsEnabled="False"
                                 IsOn="True" />
                 <Separator Margin="0,5,0,0" />
                 <local:OptionUC x:Name="tgSolutionFolder"
