@@ -126,7 +126,7 @@ private async Task InitializeLocalizer(params string[] languages)
             AddSettingsPageConfig(isMVVMTemplate, templatePath);
             AddDynamicLocalization(templatePath);
             UpdateAppFileRemoveBlankLines(templatePath);
-            UpdateCSProjFileWithResWItemGroup(templatePath);
+            UpdateCSProjFileWithResWItemGroup();
         }
 
         /// <summary>
@@ -234,10 +234,9 @@ private async Task InitializeLocalizer(params string[] languages)
             }
         }
 
-        private void UpdateCSProjFileWithResWItemGroup(string templatePath)
+        private void UpdateCSProjFileWithResWItemGroup()
         {
-            var csprojFilePath = Path.Combine(templatePath, "ProjectTemplate.csproj");
-            var csprojFileContent = File.ReadAllText(csprojFilePath);
+            var csprojFileContent = File.ReadAllText(project.FullName);
             if (AddDynamicLocalizationOption)
             {
                 csprojFileContent = csprojFileContent.Replace(oldResWItemGroupContent, newResWItemGroupContent);
@@ -246,7 +245,7 @@ private async Task InitializeLocalizer(params string[] languages)
             {
                 csprojFileContent = csprojFileContent.Replace(oldResWItemGroupContent, "");
             }
-            File.WriteAllText(csprojFilePath, csprojFileContent);
+            File.WriteAllText(project.FullName, csprojFileContent);
         }
 
         private void UpdateAppFileRemoveBlankLines(string templatePath)
@@ -258,9 +257,7 @@ private async Task InitializeLocalizer(params string[] languages)
 
             string result = Regex.Replace(appFileContent, pattern, "\n");
 
-            // Remove blank lines between two closing curly braces
-            result = Regex.Replace(result, @"(\}\s*)\n+(\s*\})", "$1$2");
-            File.WriteAllText(appFilePath, appFileContent);
+            File.WriteAllText(appFilePath, result);
         }
         public void AddSolutionFolder()
         {
