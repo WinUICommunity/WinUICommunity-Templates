@@ -14,9 +14,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <hc:ThemeResources />
                 <hc:Theme />
-                <ResourceDictionary Source="Themes/Styles/TextStyles.xaml" />
-                <ResourceDictionary Source="Themes/Styles/InfoBarButton.xaml" />
-                <ResourceDictionary Source="Themes/Styles/InfoBar.xaml" />
+                <ResourceDictionary Source="../Themes/Styles/TextStyles.xaml" />
+                <ResourceDictionary Source="../Themes/Styles/InfoBarButton.xaml" />
+                <ResourceDictionary Source="../Themes/Styles/InfoBar.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>

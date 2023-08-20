@@ -52,7 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="OptionUC.xaml.cs">
+    <Compile Include="WizardUI\OptionUC.xaml.cs">
       <DependentUpon>OptionUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,15 +78,15 @@
     <Compile Include="Shell\InfoBar\InfoBarClosingEventArgs.cs" />
     <Compile Include="Shell\InfoBar\InfoBarPanel.cs" />
     <Compile Include="Shell\InfoBar\InfoBarTemplateSettings.cs" />
-    <Compile Include="WinUIAppMVVMNavigationWizard.cs" />
-    <Compile Include="WinUIAppMVVMWizard.cs" />
-    <Compile Include="WinUIAppNavigationWizard.cs" />
-    <Compile Include="WinUIAppWizard.cs" />
+    <Compile Include="Wizards\WinUIAppMVVMNavigationWizard.cs" />
+    <Compile Include="Wizards\WinUIAppMVVMWizard.cs" />
+    <Compile Include="Wizards\WinUIAppNavigationWizard.cs" />
+    <Compile Include="Wizards\WinUIAppWizard.cs" />
     <Compile Include="WinUICommunity_VS_TemplatesPackage.cs" />
-    <Compile Include="Wizard.xaml.cs">
+    <Compile Include="WizardUI\Wizard.xaml.cs">
       <DependentUpon>Wizard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WizardImplementation.cs" />
+    <Compile Include="Wizards\WizardImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Preview.png">
@@ -151,7 +151,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="OptionUC.xaml">
+    <Page Include="WizardUI\OptionUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,7 +183,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Wizard.xaml">
+    <Page Include="WizardUI\Wizard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
