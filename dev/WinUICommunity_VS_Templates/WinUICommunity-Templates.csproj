@@ -56,8 +56,6 @@
       <DependentUpon>OptionUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shell\AnimatedVisuals\AnimatedBackVisualSource.cs" />
-    <Compile Include="Shell\AnimatedVisuals\AnimatedVisualSource.cs" />
     <Compile Include="Shell\Common\ContentPresenterEx.cs" />
     <Compile Include="Shell\Common\ControlHelper.cs" />
     <Compile Include="Shell\Common\CppWinRTHelpers.cs" />
@@ -69,7 +67,6 @@
     <Compile Include="Shell\Common\TypedEventHandler.cs" />
     <Compile Include="Shell\Common\VisualStateGroupListener.cs" />
     <Compile Include="Shell\HyperlinkButton\HyperlinkButton.cs" />
-    <Compile Include="Shell\IconElement\AnimatedIcon.cs" />
     <Compile Include="Shell\IconElement\BitmapIcon.cs" />
     <Compile Include="Shell\IconElement\FontIcon.cs" />
     <Compile Include="Shell\IconElement\IconElement.cs" />
@@ -78,7 +75,6 @@
     <Compile Include="Shell\IconElement\PathIcon.cs" />
     <Compile Include="Shell\IconElement\Symbol.cs" />
     <Compile Include="Shell\IconElement\SymbolIcon.cs" />
-    <Compile Include="Shell\IconSource\AnimatedIconSource.cs" />
     <Compile Include="Shell\IconSource\BitmapIconSource.cs" />
     <Compile Include="Shell\IconSource\FontIconSource.cs" />
     <Compile Include="Shell\IconSource\IconSource.cs" />
@@ -170,10 +166,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Styles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Styles\AnimatedVisualSource.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
