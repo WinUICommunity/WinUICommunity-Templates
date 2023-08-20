@@ -13,45 +13,91 @@ namespace WinUICommunity_VS_Templates
 {
     public class WizardImplementation
     {
-        string oldThemeSettingOptionContent =
-"""
-        <!--<wuc:SettingsCard x:Name="ThemeSetting"
-        Click="OnSettingCard_Click"
-        Description="Select your Theme and Material"
-        Header="Appearance &amp; behavior"
-        HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
-        IsClickEnabled="True"
-        Tag="ThemeSettingPage" />-->
-""";
+        string oldThemeSettingOptionContent = """<!--  THEMESETTING  -->""";
         string newThemeSettingOptionContent =
 """
-        <wuc:SettingsCard x:Name="ThemeSetting"
-        Click="OnSettingCard_Click"
-        Description="Select your Theme and Material"
-        Header="Appearance &amp; behavior"
-        HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
-        IsClickEnabled="True"
-        Tag="ThemeSettingPage" />
+<wuc:SettingsCard x:Name="ThemeSetting"
+Click="OnSettingCard_Click"
+Description="Select your Theme and Material"
+Header="Appearance &amp; behavior"
+HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
+IsClickEnabled="True"
+Tag="ThemeSettingPage" />
 """;
-        string oldAboutSettingOptionContent =
+        string newThemeSettingOptionCommentContent =
 """
-        <!--<wuc:SettingsCard x:Name="AboutSetting"
-        Click="OnSettingCard_Click"
-        Description="About $safeprojectname$ and Developer"
-        Header="About us"
-        HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/info.png}"
-        IsClickEnabled="True"
-        Tag="AboutUsSettingPage" />-->
+<!-- <wuc:SettingsCard x:Name="ThemeSetting"
+Click="OnSettingCard_Click"
+Description="Select your Theme and Material"
+Header="Appearance &amp; behavior"
+HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
+IsClickEnabled="True"
+Tag="ThemeSettingPage" /> -->
 """;
+        string newThemeSettingOptionMVVMContent =
+"""
+<wuc:SettingsCard x:Name="ThemeSetting"
+Command="{x:Bind ViewModel.GoToSettingPageCommand}"
+CommandParameter="{Binding ElementName=ThemeSetting}"
+Description="Select your Theme and Material"
+Header="Appearance &amp; behavior"
+HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
+IsClickEnabled="True"
+Tag="ThemeSettingPage" />
+""";
+        string newThemeSettingOptionMVVMCommentContent =
+"""
+<!-- <wuc:SettingsCard x:Name="ThemeSetting"
+Command="{x:Bind ViewModel.GoToSettingPageCommand}"
+CommandParameter="{Binding ElementName=ThemeSetting}"
+Description="Select your Theme and Material"
+Header="Appearance &amp; behavior"
+HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
+IsClickEnabled="True"
+Tag="ThemeSettingPage" /> -->
+""";
+        string oldAboutSettingOptionContent = """<!--  ABOUTSETTING  -->""";
         string newAboutSettingOptionContent =
 """
-        <wuc:SettingsCard x:Name="AboutSetting"
-        Click="OnSettingCard_Click"
-        Description="About $safeprojectname$ and Developer"
-        Header="About us"
-        HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/info.png}"
-        IsClickEnabled="True"
-        Tag="AboutUsSettingPage" />
+<wuc:SettingsCard x:Name="AboutSetting"
+Click="OnSettingCard_Click"
+Description="About $safeprojectname$ and Developer"
+Header="About us"
+HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/info.png}"
+IsClickEnabled="True"
+Tag="AboutUsSettingPage" />
+""";
+        string newAboutSettingOptionCommentContent =
+"""
+<!-- <wuc:SettingsCard x:Name="AboutSetting"
+Click="OnSettingCard_Click"
+Description="About $safeprojectname$ and Developer"
+Header="About us"
+HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/info.png}"
+IsClickEnabled="True"
+Tag="AboutUsSettingPage" /> -->
+""";
+        string newAboutSettingOptionMVVMContent =
+"""
+<wuc:SettingsCard x:Name="AboutSetting"
+Command="{x:Bind ViewModel.GoToSettingPageCommand}"
+CommandParameter="{Binding ElementName=AboutSetting}"
+Description="About $safeprojectname$ and Developer"
+Header="About us"
+HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/info.png}"
+IsClickEnabled="True"
+Tag="AboutUsSettingPage" />
+""";
+        string newAboutSettingOptionMVVMCommentContent =
+"""
+<!-- <wuc:SettingsCard x:Name="AboutSetting"
+Command="{x:Bind ViewModel.GoToSettingPageCommand}"
+CommandParameter="{Binding ElementName=AboutSetting}"
+Description="About $safeprojectname$ and Developer"
+Header="About us"
+HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/info.png}"
+IsClickEnabled="True"
+Tag="AboutUsSettingPage" /> -->
 """;
 
         string oldResWItemGroupContent = """<ItemGroup Label="DynamicLocalization"/>""";
@@ -206,11 +252,25 @@ private async Task InitializeLocalizer(params string[] languages)
 
                     if (AddAboutPageOption)
                     {
-                        settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionContent);
+                        if (isMVVMTemplate)
+                        {
+                            settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionMVVMContent);
+                        }
+                        else
+                        {
+                            settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionContent);
+                        }
                     }
                     if (AddThemeSettingPageOption)
                     {
-                        settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionContent);
+                        if (isMVVMTemplate)
+                        {
+                            settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionMVVMContent);
+                        }
+                        else
+                        {
+                            settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionContent);
+                        }
                     }
                     File.WriteAllText(settingsPageFilePath, settingsPageFileContent);
                 }
@@ -253,9 +313,9 @@ private async Task InitializeLocalizer(params string[] languages)
             var appFilePath = Path.Combine(templatePath, "App.xaml.cs");
             string appFileContent = File.ReadAllText(appFilePath);
 
-            string pattern = @"(\r\n|\r|\n){2,}";
+            string pattern = @"(\r\n|\r|\n){3,}";
 
-            string result = Regex.Replace(appFileContent, pattern, "\n");
+            string result = Regex.Replace(appFileContent, pattern, "\n\n");
 
             File.WriteAllText(appFilePath, result);
         }

@@ -11,20 +11,8 @@
                   VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="10"
                     Spacing="5">
-            <!--<wuc:SettingsCard x:Name="ThemeSetting"
-                              Click="OnSettingCard_Click"
-                              Description="Select your Theme and Material"
-                              Header="Appearance &amp; behavior"
-                              HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
-                              IsClickEnabled="True"
-                              Tag="ThemeSettingPage" />-->
-            <!--<wuc:SettingsCard x:Name="AboutSetting"
-                              Click="OnSettingCard_Click"
-                              Description="About $safeprojectname$ and Developer"
-                              Header="About us"
-                              HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/info.png}"
-                              IsClickEnabled="True"
-                              Tag="AboutUsSettingPage" />-->
+            <!--  THEMESETTING  -->
+            <!--  ABOUTSETTING  -->
         </StackPanel>
     </ScrollViewer>
 </Page>
