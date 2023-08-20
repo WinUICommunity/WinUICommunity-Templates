@@ -12,8 +12,8 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <hc:ThemeResources />
-                <hc:Theme />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Basic/Colors/Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
                 <ResourceDictionary Source="../Themes/Styles/TextStyles.xaml" />
                 <ResourceDictionary Source="../Themes/Styles/InfoBarButton.xaml" />
                 <ResourceDictionary Source="../Themes/Styles/InfoBar.xaml" />

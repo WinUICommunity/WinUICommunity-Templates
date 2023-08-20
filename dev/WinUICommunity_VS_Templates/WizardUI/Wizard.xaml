@@ -20,8 +20,8 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <hc:ThemeResources />
-                <hc:Theme />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Basic/Colors/Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
                 <ResourceDictionary Source="../Themes/Styles.xaml" />
                 <ResourceDictionary Source="../Themes/Styles/Button.xaml" />
                 <ResourceDictionary Source="../Themes/Styles/InfoBarButton.xaml" />
