@@ -250,59 +250,56 @@ private async Task InitializeLocalizer(params string[] languages)
                     appFileContent = appFileContent.Replace("//JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));", "JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));");
                 }
 
-                if (AddAboutPageOption || AddThemeSettingPageOption)
-                {
-                    var settingsPageFilePath = Path.Combine(templatePath, "Views", "SettingsPage.xaml");
-                    string settingsPageFileContent = File.ReadAllText(settingsPageFilePath);
+                var settingsPageFilePath = Path.Combine(templatePath, "Views", "SettingsPage.xaml");
+                string settingsPageFileContent = File.ReadAllText(settingsPageFilePath);
 
-                    if (AddAboutPageOption)
+                if (AddAboutPageOption)
+                {
+                    if (isMVVMTemplate)
                     {
-                        if (isMVVMTemplate)
-                        {
-                            settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionMVVMContent);
-                            appFileContent = appFileContent.Replace("//services.AddTransient<AboutUsSettingViewModel>();", "services.AddTransient<AboutUsSettingViewModel>();");
-                        }
-                        else
-                        {
-                            settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionContent);
-                        }
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionMVVMContent);
+                        appFileContent = appFileContent.Replace("//services.AddTransient<AboutUsSettingViewModel>();", "services.AddTransient<AboutUsSettingViewModel>();");
                     }
                     else
                     {
-                        if (isMVVMTemplate)
-                        {
-                            settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionMVVMCommentContent);
-                        }
-                        else
-                        {
-                            settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionCommentContent);
-                        }
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionContent);
                     }
-                    if (AddThemeSettingPageOption)
-                    {
-                        if (isMVVMTemplate)
-                        {
-                            settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionMVVMContent);
-                            appFileContent = appFileContent.Replace("//services.AddTransient<ThemeSettingViewModel>();", "services.AddTransient<ThemeSettingViewModel>();");
-                        }
-                        else
-                        {
-                            settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionContent);
-                        }
-                    }
-                    else
-                    {
-                        if (isMVVMTemplate)
-                        {
-                            settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionMVVMCommentContent);
-                        }
-                        else
-                        {
-                            settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionCommentContent);
-                        }
-                    }
-                    File.WriteAllText(settingsPageFilePath, settingsPageFileContent);
                 }
+                else
+                {
+                    if (isMVVMTemplate)
+                    {
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionMVVMCommentContent);
+                    }
+                    else
+                    {
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldAboutSettingOptionContent, newAboutSettingOptionCommentContent);
+                    }
+                }
+                if (AddThemeSettingPageOption)
+                {
+                    if (isMVVMTemplate)
+                    {
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionMVVMContent);
+                        appFileContent = appFileContent.Replace("//services.AddTransient<ThemeSettingViewModel>();", "services.AddTransient<ThemeSettingViewModel>();");
+                    }
+                    else
+                    {
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionContent);
+                    }
+                }
+                else
+                {
+                    if (isMVVMTemplate)
+                    {
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionMVVMCommentContent);
+                    }
+                    else
+                    {
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionCommentContent);
+                    }
+                }
+                File.WriteAllText(settingsPageFilePath, settingsPageFileContent);
 
                 File.WriteAllText(appFilePath, appFileContent);
             }
@@ -355,21 +352,13 @@ private async Task InitializeLocalizer(params string[] languages)
 
             File.WriteAllText(appFilePath, result);
         }
+
         public void AddSolutionFolder()
         {
             if (AddSolutionFolderOption)
             {
                 var solutionFolder = _solution.AddSolutionFolder("Solution Items");
             }
-        }
-
-        public void AddEditorConfig()
-        {
-            //if (AddEditorConfig)
-            //{
-            //    string editorConfig = Path.Combine(rootFolderPath, "Templates", ".editorconfig");
-            //    project.ProjectItems.AddFromFileCopy(editorConfig);
-            //}
         }
 
         /// <summary>
@@ -390,20 +379,6 @@ private async Task InitializeLocalizer(params string[] languages)
                 folderPath = Directory.GetParent(folderPath).FullName;
             }
             return (folderPath, projectTemplatesFolder);
-        }
-
-        private void OldMethods()
-        {
-            //project.ProjectItems.AddFromDirectory(jsonSettingFolder);
-
-            //string jsonSettingFile1 = Path.Combine(folderPath, "Templates", "Common", "AppConfig.cs");
-            //string jsonSettingFile2 = Path.Combine(folderPath, "Templates", "Common", "AppHelper.cs");
-
-            //if (File.Exists(jsonSettingFile1) && File.Exists(jsonSettingFile2))
-            //{
-            //    //project.ProjectItems.AddFromTemplate(jsonSettingFile1, Path.Combine("Common", "AppConfig.cs"));
-            //    //project.ProjectItems.AddFromTemplate(jsonSettingFile2, Path.Combine("Common", "AppHelper.cs"));
-            //}
         }
     }
 }
