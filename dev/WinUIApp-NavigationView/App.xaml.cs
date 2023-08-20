@@ -16,8 +16,8 @@ public partial class App : Application
     {
         this.InitializeComponent();
         JsonNavigationViewService = new JsonNavigationViewService();
-        JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));
-        JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));
+        //JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));
+        //JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));
     }
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)

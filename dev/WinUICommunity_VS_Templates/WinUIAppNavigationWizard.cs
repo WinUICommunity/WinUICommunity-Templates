@@ -25,6 +25,8 @@ namespace WinUICommunity_VS_Templates
         public void RunFinished()
         {
             WizardImplementation.RunFinished("WinUIApp-NavigationVIew");
+            WizardImplementation.AddPagesForNavigationTemplates("WinUIApp-NavigationVIew", false);
+            WizardImplementation.AddSettingsSubPages("WinUIApp-NavigationVIew");
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)

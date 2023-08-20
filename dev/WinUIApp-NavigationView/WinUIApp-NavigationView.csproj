@@ -98,50 +98,10 @@
     <Content Include="GlobalUsings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\SettingsPage.xaml">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\SettingsPage.xaml.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\HomeLandingPage.xaml">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\HomeLandingPage.xaml.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include=".editorconfig">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Assets\NavViewMenu\AppData.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Settings\AboutUsSettingPage.xaml">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Settings\AboutUsSettingPage.xaml.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Settings\ThemeSettingPage.xaml">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Settings\ThemeSettingPage.xaml.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UserControls\BreadcrumbBarUserControl.xaml">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UserControls\BreadcrumbBarUserControl.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Themes\Styles.xaml">
