@@ -412,6 +412,10 @@
                      Color="{m:StaticColor ControlFillColorTertiary}" />
     <SolidColorBrush x:Key="ControlFillColorDisabledBrush"
                      Color="{m:StaticColor ControlFillColorDisabled}" />
+    <SolidColorBrush x:Key="ControlFillColorTransparentBrush"
+                     Color="{m:StaticColor ControlFillColorTransparent}" />
+    <SolidColorBrush x:Key="ControlFillColorInputActiveBrush"
+                     Color="{m:StaticColor ControlFillColorInputActive}" />
     <SolidColorBrush x:Key="SubtleFillColorTransparentBrush"
                      Color="{m:StaticColor SubtleFillColorTransparent}" />
     <SolidColorBrush x:Key="SubtleFillColorSecondaryBrush"
@@ -423,7 +427,13 @@
 
     <SolidColorBrush x:Key="TextOnAccentFillColorPrimaryBrush"
                      Color="{m:StaticColor TextOnAccentFillColorPrimary}" />
-
+    <SolidColorBrush x:Key="TextOnAccentFillColorSecondaryBrush"
+                     Color="{m:StaticColor TextOnAccentFillColorSecondary}" />
+    <SolidColorBrush x:Key="TextOnAccentFillColorDisabledBrush"
+                     Color="{m:StaticColor TextOnAccentFillColorDisabled}" />
+    <SolidColorBrush x:Key="AccentFillColorTertiaryBrush"
+                     Opacity="0.8"
+                     Color="{m:DynamicColor SystemAccentColorDark1}" />
     <SolidColorBrush x:Key="AccentFillColorSecondaryBrush"
                      Opacity="0.9"
                      Color="{m:DynamicColor SystemAccentColorDark1}" />
