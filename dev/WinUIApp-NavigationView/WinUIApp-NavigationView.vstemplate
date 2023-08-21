@@ -84,6 +84,8 @@
 		<ProjectItem ReplaceParameters="true" TargetFileName="AboutUsSettingPage.xaml.cs">AboutUsSettingPage.xaml.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="ThemeSettingPage.xaml">ThemeSettingPage.xaml</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="ThemeSettingPage.xaml.cs">ThemeSettingPage.xaml.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="GeneralSettingPage.xaml">GeneralSettingPage.xaml</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="GeneralSettingPage.xaml.cs">GeneralSettingPage.xaml.cs</ProjectItem>
 	  </Folder>
 		
 	  <Folder Name="Themes" TargetFolderName="Themes">

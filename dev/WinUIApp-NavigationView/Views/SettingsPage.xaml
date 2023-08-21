@@ -11,6 +11,7 @@
                   VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="10"
                     Spacing="5">
+            <!--  GENERALSETTING  -->
             <!--  THEMESETTING  -->
             <!--  ABOUTSETTING  -->
         </StackPanel>

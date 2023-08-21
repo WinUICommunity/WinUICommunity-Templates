@@ -79,6 +79,8 @@
 		<ProjectItem ReplaceParameters="true" TargetFileName="AboutUsSettingPage.xaml.cs">AboutUsSettingPage.xaml.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="ThemeSettingPage.xaml">ThemeSettingPage.xaml</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="ThemeSettingPage.xaml.cs">ThemeSettingPage.xaml.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="GeneralSettingPage.xaml">GeneralSettingPage.xaml</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="GeneralSettingPage.xaml.cs">GeneralSettingPage.xaml.cs</ProjectItem>
 	  </Folder>
 		
 	  <Folder Name="Views\UserControls" TargetFolderName="Views\UserControls">
@@ -96,6 +98,7 @@
 	  <Folder Name="ViewModels\Settings" TargetFolderName="ViewModels\Settings">
 		<ProjectItem ReplaceParameters="true" TargetFileName="AboutUsSettingViewModel.cs">AboutUsSettingViewModel.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="ThemeSettingViewModel.cs">ThemeSettingViewModel.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="GeneralSettingViewModel.cs">GeneralSettingViewModel.cs</ProjectItem>
 	  </Folder>
 		
 	  <Folder Name="Themes" TargetFolderName="Themes">

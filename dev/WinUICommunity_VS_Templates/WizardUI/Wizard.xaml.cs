@@ -10,6 +10,7 @@ namespace WinUICommunity_VS_Templates
         public static bool AddSolutionFolder;
         public static bool AddHomeLandingPage;
         public static bool AddSettingsPage;
+        public static bool AddGeneralSettingPage;
         public static bool AddThemeSettingPage;
         public static bool AddAppUpdatePage;
         public static bool AddAboutPage;
@@ -26,6 +27,7 @@ namespace WinUICommunity_VS_Templates
             AddSolutionFolder = tgSolutionFolder.IsOn;
             AddHomeLandingPage = tgHomePage.IsOn;
             AddSettingsPage = tgSettingsPage.IsOn;
+            AddGeneralSettingPage = tgGeneralSettingPage.IsOn;
             AddThemeSettingPage = tgThemeSetting.IsOn;
             AddAppUpdatePage = tgAppUpdate.IsOn;
             AddAboutPage = tgAboutSetting.IsOn;

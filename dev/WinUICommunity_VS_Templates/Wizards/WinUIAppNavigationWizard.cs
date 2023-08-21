@@ -41,7 +41,7 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
-            else if (!WizardImplementation.AddSettingsPageOption && (filePath.Contains("SettingsPage.xaml") || filePath.Contains("BreadcrumbBarUserControl") || filePath.Contains("AboutUsSettingPage") || filePath.Contains("ThemeSettingPage")))
+            else if (!WizardImplementation.AddSettingsPageOption && (filePath.Contains("SettingsPage.xaml") || filePath.Contains("BreadcrumbBarUserControl") || filePath.Contains("AboutUsSettingPage") || filePath.Contains("ThemeSettingPage") || filePath.Contains("GeneralSettingPage")))
             {
                 return false;
             }
@@ -50,6 +50,10 @@ namespace WinUICommunity_VS_Templates
                 return false;
             }
             else if (WizardImplementation.AddSettingsPageOption && !WizardImplementation.AddThemeSettingPageOption && filePath.Contains("ThemeSettingPage"))
+            {
+                return false;
+            }
+            else if (WizardImplementation.AddSettingsPageOption && !WizardImplementation.AddGeneralSettingPageOption && filePath.Contains("GeneralSettingPage"))
             {
                 return false;
             }

@@ -99,7 +99,49 @@ namespace WinUICommunity_VS_Templates
                               IsClickEnabled="True"
                               Tag="AboutUsSettingPage" /> -->
 """;
-
+        string oldGeneralSettingOptionContent = "<!--  GENERALSETTING  -->";
+        string newGeneralSettingOptionContent =
+"""
+<wuc:SettingsCard x:Name="GeneralSetting"
+                              Click="OnSettingCard_Click"
+                              Description="Change your app Settings"
+                              Header="General"
+                              HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/settings.png}"
+                              IsClickEnabled="True"
+                              Tag="GeneralSettingPage" />
+""";
+        string newGeneralSettingOptionCommentContent =
+"""
+<!-- <wuc:SettingsCard x:Name="GeneralSetting"
+                              Click="OnSettingCard_Click"
+                              Description="Change your app Settings"
+                              Header="General"
+                              HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/settings.png}"
+                              IsClickEnabled="True"
+                              Tag="GeneralSettingPage" /> -->
+""";
+        string newGeneralSettingOptionMVVMContent =
+"""
+<wuc:SettingsCard x:Name="GeneralSetting"
+                              Command="{x:Bind ViewModel.GoToSettingPageCommand}"
+                              CommandParameter="{Binding ElementName=GeneralSetting}"
+                              Description="Change your app Settings"
+                              Header="General"
+                              HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/settings.png}"
+                              IsClickEnabled="True"
+                              Tag="GeneralSettingPage" />
+""";
+        string newGeneralSettingOptionMVVMCommentContent =
+"""
+<!-- <wuc:SettingsCard x:Name="GeneralSetting"
+                              Command="{x:Bind ViewModel.GoToSettingPageCommand}"
+                              CommandParameter="{Binding ElementName=GeneralSetting}"
+                              Description="Change your app Settings"
+                              Header="General"
+                              HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/settings.png}"
+                              IsClickEnabled="True"
+                              Tag="GeneralSettingPage" /> -->
+""";
         string oldResWItemGroupContent = """<ItemGroup Label="DynamicLocalization"/>""";
 
         string newResWItemGroupContent = """
@@ -154,6 +196,7 @@ private async Task InitializeLocalizer(params string[] languages)
         public bool AddSolutionFolderOption;
         public bool AddHomeLandingPageOption;
         public bool AddSettingsPageOption;
+        public bool AddGeneralSettingPageOption;
         public bool AddThemeSettingPageOption;
         public bool AddAppUpdatePageOption;
         public bool AddAboutPageOption;
@@ -193,6 +236,7 @@ private async Task InitializeLocalizer(params string[] languages)
             AddSolutionFolderOption = Wizard.AddSolutionFolder;
             AddHomeLandingPageOption = Wizard.AddHomeLandingPage;
             AddSettingsPageOption = Wizard.AddSettingsPage;
+            AddGeneralSettingPageOption = Wizard.AddGeneralSettingPage;
             AddThemeSettingPageOption = Wizard.AddThemeSettingPage;
             AddAppUpdatePageOption = Wizard.AddAppUpdatePage;
             AddAboutPageOption = Wizard.AddAboutPage;
@@ -299,6 +343,31 @@ private async Task InitializeLocalizer(params string[] languages)
                         settingsPageFileContent = settingsPageFileContent.Replace(oldThemeSettingOptionContent, newThemeSettingOptionCommentContent);
                     }
                 }
+
+                if (AddGeneralSettingPageOption)
+                {
+                    if (isMVVMTemplate)
+                    {
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldGeneralSettingOptionContent, newGeneralSettingOptionMVVMContent);
+                        appFileContent = appFileContent.Replace("//services.AddTransient<GeneralSettingViewModel>();", "services.AddTransient<GeneralSettingViewModel>();");
+                    }
+                    else
+                    {
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldGeneralSettingOptionContent, newGeneralSettingOptionContent);
+                    }
+                }
+                else
+                {
+                    if (isMVVMTemplate)
+                    {
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldGeneralSettingOptionContent, newGeneralSettingOptionMVVMCommentContent);
+                    }
+                    else
+                    {
+                        settingsPageFileContent = settingsPageFileContent.Replace(oldGeneralSettingOptionContent, newGeneralSettingOptionCommentContent);
+                    }
+                }
+
                 File.WriteAllText(settingsPageFilePath, settingsPageFileContent);
 
                 File.WriteAllText(appFilePath, appFileContent);

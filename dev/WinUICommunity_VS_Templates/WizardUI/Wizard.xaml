@@ -93,18 +93,23 @@
                 <local:OptionUC x:Name="tgSettingsPage"
                                 Title="2. Add SettingsPage"
                                 InfoBarTitle="It will create a settings page with the BreadCrumbBar" />
+                <local:OptionUC x:Name="tgGeneralSettingPage"
+                                Title="A: Add Empty General Setting Page"
+                                Margin="20,0,0,0"
+                                InfoBarTitle="It will create a general settings page"
+                                IsEnabled="{Binding ElementName=tgSettingsPage, Path=IsOn}" />
                 <local:OptionUC x:Name="tgThemeSetting"
-                                Title="A: Add Theme Setting Page"
+                                Title="B: Add Theme Setting Page"
                                 Margin="20,0,0,0"
                                 InfoBarTitle="It will create a theme settings page, so the user can change the theme and material of the app"
                                 IsEnabled="{Binding ElementName=tgSettingsPage, Path=IsOn}" />
                 <local:OptionUC x:Name="tgAppUpdate"
-                                Title="B: Add App Update Page"
+                                Title="C: Add App Update Page"
                                 Margin="20,0,0,0"
                                 InfoBarTitle="It will create a page that user check for updates"
                                 IsEnabled="{Binding ElementName=tgSettingsPage, Path=IsOn}" />
                 <local:OptionUC x:Name="tgAboutSetting"
-                                Title="C: Add About Page"
+                                Title="D: Add About Page"
                                 Margin="20,0,0,0"
                                 InfoBarTitle="It will create a about page in settings page"
                                 IsEnabled="{Binding ElementName=tgSettingsPage, Path=IsOn}" />
