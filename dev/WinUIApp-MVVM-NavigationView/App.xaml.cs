@@ -36,16 +36,9 @@ public partial class App : Application
             //JSONCONFIGMVVM
             return json;
         });
-        //services.AddTransient<HomeLandingViewModel>();
+
         services.AddTransient<MainViewModel>();
         //SERVICE
-        //services.AddTransient<SettingsViewModel>();
-        //services.AddTransient<BreadCrumbBarViewModel>();
-
-        //Settings
-        //services.AddTransient<GeneralSettingViewModel>();
-        //services.AddTransient<ThemeSettingViewModel>();
-        //services.AddTransient<AboutUsSettingViewModel>();
 
         return services.BuildServiceProvider();
     }

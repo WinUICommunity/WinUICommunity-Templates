@@ -8,8 +8,8 @@ namespace WinUICommunity_VS_Templates.Options
         {
             string appFileContent = WizardHelper.ReadAppFileContent(templatePath);
 
-            appFileContent = appFileContent.Replace("//JSONCONFIG", "");
             appFileContent = appFileContent.Replace("//JSONCONFIGMVVM", "");
+            appFileContent = appFileContent.Replace("//JSONCONFIG", "");
             appFileContent = appFileContent.Replace("//SERVICE", "");
 
             if (appFileContent.Contains("private static string StringsFolderPath { get; set; } = string.Empty;"))
