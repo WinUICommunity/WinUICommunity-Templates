@@ -18,6 +18,7 @@ namespace WinUICommunity_VS_Templates
         private Solution2 _solution;
         private Project project;
 
+        public string DotNetVersion;
         public bool UseJsonSettings;
         public bool UseDynamicLocalization;
         public bool UseEditorConfig;
@@ -65,6 +66,7 @@ namespace WinUICommunity_VS_Templates
             {
                 _shouldAddProjectItem = true;
 
+                replacementsDictionary.Add("$DotNetVersion$", inputForm.DotNetVersion.ToString());
                 replacementsDictionary.Add("$AddJsonSettings$", inputForm.AddJsonSettings.ToString());
                 replacementsDictionary.Add("$AddDynamicLocalization$", inputForm.AddDynamicLocalization.ToString());
                 replacementsDictionary.Add("$AddEditorConfig$", inputForm.AddEditorConfig.ToString());
@@ -76,6 +78,7 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$AddAppUpdatePage$", inputForm.AddAppUpdatePage.ToString());
                 replacementsDictionary.Add("$AddAboutPage$", inputForm.AddAboutPage.ToString());
 
+                DotNetVersion = inputForm.DotNetVersion;
                 UseJsonSettings = inputForm.AddJsonSettings;
                 UseDynamicLocalization = inputForm.AddDynamicLocalization;
                 UseEditorConfig = inputForm.AddEditorConfig;

@@ -1,9 +1,11 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace WinUICommunity_VS_Templates
 {
     public partial class Wizard : HandyControl.Controls.Window
     {
+        public string DotNetVersion;
         public bool AddJsonSettings;
         public bool AddDynamicLocalization;
         public bool AddEditorConfig;
@@ -24,6 +26,7 @@ namespace WinUICommunity_VS_Templates
         {
             DialogResult = true;
 
+            DotNetVersion = (cmbNetVersion.SelectedItem as ComboBoxItem).Tag.ToString();
             AddJsonSettings = tgJsonSettings.IsOn;
             AddDynamicLocalization = tgDynamicLocalization.IsOn;
             AddEditorConfig = tgEditorConfig.IsOn;
