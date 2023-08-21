@@ -491,6 +491,31 @@
     <m:StaticResource x:Key="ButtonBorderBrushDisabled"
                       ResourceKey="ControlStrokeColorDefaultBrush" />
 
+    <m:StaticResource x:Key="AccentButtonBackground"
+                      ResourceKey="AccentFillColorDefaultBrush" />
+    <m:StaticResource x:Key="AccentButtonBackgroundPointerOver"
+                      ResourceKey="AccentFillColorSecondaryBrush" />
+    <m:StaticResource x:Key="AccentButtonBackgroundPressed"
+                      ResourceKey="AccentFillColorTertiaryBrush" />
+    <m:StaticResource x:Key="AccentButtonBackgroundDisabled"
+                      ResourceKey="AccentFillColorDisabledBrush" />
+    <m:StaticResource x:Key="AccentButtonForeground"
+                      ResourceKey="TextOnAccentFillColorPrimaryBrush" />
+    <m:StaticResource x:Key="AccentButtonForegroundPointerOver"
+                      ResourceKey="TextOnAccentFillColorPrimaryBrush" />
+    <m:StaticResource x:Key="AccentButtonForegroundPressed"
+                      ResourceKey="TextOnAccentFillColorSecondaryBrush" />
+    <m:StaticResource x:Key="AccentButtonForegroundDisabled"
+                      ResourceKey="TextOnAccentFillColorDisabledBrush" />
+    <m:StaticResource x:Key="AccentButtonBorderBrush"
+                      ResourceKey="AccentControlElevationBorderBrush" />
+    <m:StaticResource x:Key="AccentButtonBorderBrushPointerOver"
+                      ResourceKey="AccentControlElevationBorderBrush" />
+    <m:StaticResource x:Key="AccentButtonBorderBrushPressed"
+                      ResourceKey="ControlFillColorTransparentBrush" />
+    <m:StaticResource x:Key="AccentButtonBorderBrushDisabled"
+                      ResourceKey="ControlFillColorTransparentBrush" />
+
     <m:StaticResource x:Key="HyperlinkForeground"
                       ResourceKey="AccentTextFillColorPrimaryBrush" />
     <m:StaticResource x:Key="HyperlinkForegroundPointerOver"
