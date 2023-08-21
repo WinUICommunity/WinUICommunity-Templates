@@ -52,6 +52,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Options\AboutSettingOption.cs" />
+    <Compile Include="Options\DynamicLocalizationOption.cs" />
+    <Compile Include="Options\GeneralSettingOption.cs" />
+    <Compile Include="Options\HomeLandingOption.cs" />
+    <Compile Include="Options\NormalizeAppFile.cs" />
+    <Compile Include="Options\SettingsPageOption.cs" />
+    <Compile Include="Options\ThemeSettingOption.cs" />
+    <Compile Include="Options\WizardHelper.cs" />
     <Compile Include="WizardUI\OptionUC.xaml.cs">
       <DependentUpon>OptionUC.xaml</DependentUpon>
     </Compile>

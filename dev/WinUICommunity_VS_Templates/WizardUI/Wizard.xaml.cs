@@ -4,16 +4,16 @@ namespace WinUICommunity_VS_Templates
 {
     public partial class Wizard
     {
-        public static bool AddJsonSettings;
-        public static bool AddDynamicLocalization;
-        public static bool AddEditorConfig;
-        public static bool AddSolutionFolder;
-        public static bool AddHomeLandingPage;
-        public static bool AddSettingsPage;
-        public static bool AddGeneralSettingPage;
-        public static bool AddThemeSettingPage;
-        public static bool AddAppUpdatePage;
-        public static bool AddAboutPage;
+        public bool AddJsonSettings;
+        public bool AddDynamicLocalization;
+        public bool AddEditorConfig;
+        public bool AddSolutionFolder;
+        public bool AddHomeLandingPage;
+        public bool AddSettingsPage;
+        public bool AddGeneralSettingPage;
+        public bool AddThemeSettingPage;
+        public bool AddAppUpdatePage;
+        public bool AddAboutPage;
         public Wizard()
         {
             InitializeComponent();

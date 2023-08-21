@@ -52,12 +52,12 @@ public partial class App : Application
         services.AddSingleton<IJsonNavigationViewService>(factory =>
         {
             var json = new JsonNavigationViewService();
-            //json.ConfigDefaultPage(typeof(HomeLandingPage));
-            //json.ConfigSettingsPage(typeof(SettingsPage));
+            //JSONCONFIGMVVM
             return json;
         });
         //services.AddTransient<HomeLandingViewModel>();
         services.AddTransient<MainViewModel>();
+        //SERVICE
         //services.AddTransient<SettingsViewModel>();
         //services.AddTransient<BreadCrumbBarViewModel>();
 

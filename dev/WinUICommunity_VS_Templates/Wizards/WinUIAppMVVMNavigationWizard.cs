@@ -36,31 +36,31 @@ namespace WinUICommunity_VS_Templates
 
         public bool ShouldAddProjectItem(string filePath)
         {
-            if (!WizardImplementation.AddHomeLandingPageOption && (filePath.Contains("HomeLanding") || filePath.Contains("HomeLandingViewModel")))
+            if (!WizardImplementation.Wizard.AddHomeLandingPage && (filePath.Contains("HomeLanding") || filePath.Contains("HomeLandingViewModel")))
             {
                 return false;
             }
-            else if (!WizardImplementation.AddSettingsPageOption && (filePath.Contains("SettingsPage.xaml") || filePath.Contains("SettingsViewModel") || filePath.Contains("BreadCrumbBarViewModel") || filePath.Contains("BreadcrumbBarUserControl") || filePath.Contains("AboutUsSettingPage") || filePath.Contains("ThemeSettingPage") || filePath.Contains("AboutUsSettingViewModel") || filePath.Contains("ThemeSettingViewModel") || filePath.Contains("GeneralSettingPage") || filePath.Contains("GeneralSettingViewModel")))
+            else if (!WizardImplementation.Wizard.AddSettingsPage && (filePath.Contains("SettingsPage.xaml") || filePath.Contains("SettingsViewModel") || filePath.Contains("BreadCrumbBarViewModel") || filePath.Contains("BreadcrumbBarUserControl") || filePath.Contains("AboutUsSettingPage") || filePath.Contains("ThemeSettingPage") || filePath.Contains("AboutUsSettingViewModel") || filePath.Contains("ThemeSettingViewModel") || filePath.Contains("GeneralSettingPage") || filePath.Contains("GeneralSettingViewModel")))
             {
                 return false;
             }
-            else if (WizardImplementation.AddSettingsPageOption && !WizardImplementation.AddAboutPageOption && (filePath.Contains("AboutUsSettingPage") || filePath.Contains("AboutUsSettingViewModel")))
+            else if (WizardImplementation.Wizard.AddSettingsPage && !WizardImplementation.Wizard.AddAboutPage && (filePath.Contains("AboutUsSettingPage") || filePath.Contains("AboutUsSettingViewModel")))
             {
                 return false;
             }
-            else if (WizardImplementation.AddSettingsPageOption && !WizardImplementation.AddThemeSettingPageOption && (filePath.Contains("ThemeSettingPage") || filePath.Contains("ThemeSettingViewModel")))
+            else if (WizardImplementation.Wizard.AddSettingsPage && !WizardImplementation.Wizard.AddThemeSettingPage && (filePath.Contains("ThemeSettingPage") || filePath.Contains("ThemeSettingViewModel")))
             {
                 return false;
             }
-            else if (WizardImplementation.AddSettingsPageOption && !WizardImplementation.AddGeneralSettingPageOption && (filePath.Contains("GeneralSettingPage") || filePath.Contains("GeneralSettingViewModel")))
+            else if (WizardImplementation.Wizard.AddSettingsPage && !WizardImplementation.Wizard.AddGeneralSettingPage && (filePath.Contains("GeneralSettingPage") || filePath.Contains("GeneralSettingViewModel")))
             {
                 return false;
             }
-            else if (!WizardImplementation.AddJsonSettingsOption && (filePath.Contains("AppConfig") || filePath.Contains("AppHelper")))
+            else if (!WizardImplementation.Wizard.AddJsonSettings && (filePath.Contains("AppConfig") || filePath.Contains("AppHelper")))
             {
                 return false;
             }
-            else if (!WizardImplementation.AddDynamicLocalizationOption && filePath.Contains("Resources"))
+            else if (!WizardImplementation.Wizard.AddDynamicLocalization && filePath.Contains("Resources"))
             {
                 return false;
             }
