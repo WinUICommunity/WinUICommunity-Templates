@@ -115,15 +115,25 @@
                                 IsEnabled="{Binding ElementName=tgSettingsPage, Path=IsOn}" />
             </StackPanel>
         </hc:ScrollViewer>
-        <Button x:Name="btnCreate"
-                Grid.Row="2"
-                Width="200"
-                Height="35"
-                Margin="0,15,0,0"
-                HorizontalAlignment="Right"
-                Click="btnCreate_Click"
-                Content="Create"
-                Style="{StaticResource DefaultButtonStyle}" />
+        <StackPanel Grid.Row="2"
+                    Margin="0,15,0,0"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button x:Name="btnCancel"
+                    Width="200"
+                    Height="35"
+                    Margin="10,0"
+                    Click="btnCancel_Click"
+                    Content="Cancel"
+                    IsCancel="True" />
+            <Button x:Name="btnCreate"
+                    Width="200"
+                    Height="35"
+                    Click="btnCreate_Click"
+                    Content="Create"
+                    IsDefault="True"
+                    Style="{StaticResource AccentButtonStyle}" />
+        </StackPanel>
 
     </Grid>
 </hc:Window>

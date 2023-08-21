@@ -1,5 +1,11 @@
 ﻿using System.Windows;
 
+using EnvDTE;
+
+using EnvDTE80;
+
+using Microsoft.VisualStudio.Shell.Interop;
+
 namespace WinUICommunity_VS_Templates
 {
     public partial class Wizard
@@ -14,6 +20,7 @@ namespace WinUICommunity_VS_Templates
         public bool AddThemeSettingPage;
         public bool AddAppUpdatePage;
         public bool AddAboutPage;
+
         public Wizard()
         {
             InitializeComponent();
@@ -31,7 +38,18 @@ namespace WinUICommunity_VS_Templates
             AddThemeSettingPage = tgThemeSetting.IsOn;
             AddAppUpdatePage = tgAppUpdate.IsOn;
             AddAboutPage = tgAboutSetting.IsOn;
-            this.Close();
+            
+            DTE2 dte = (DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE");
+            dte.Windows.Item(EnvDTE.Constants.vsWindowKindToolbox).Close();
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            DTE2 dte = (DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE");
+            dte.Windows.Item(EnvDTE.Constants.vsWindowKindToolbox).Close();
+            dte.ExecuteCommand("Build.Cancel");
+            Close();
         }
     }
 }
