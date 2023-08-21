@@ -1,4 +1,6 @@
-﻿namespace $safeprojectname$.Views;
+﻿using Windows.System;
+
+namespace $safeprojectname$.Views;
 
 public sealed partial class ThemeSettingPage : Page
 {

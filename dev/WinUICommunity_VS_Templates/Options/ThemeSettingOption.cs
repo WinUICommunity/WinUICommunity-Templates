@@ -18,12 +18,12 @@ namespace WinUICommunity_VS_Templates.Options
         string themeSettingCommentCode =
 """
 <!-- <wuc:SettingsCard x:Name="ThemeSetting"
-                          Click="OnSettingCard_Click"
-                          Description="Select your Theme and Material"
-                          Header="Appearance &amp; behavior"
-                          HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
-                          IsClickEnabled="True"
-                          Tag="ThemeSettingPage" /> -->
+                              Click="OnSettingCard_Click"
+                              Description="Select your Theme and Material"
+                              Header="Appearance &amp; behavior"
+                              HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
+                              IsClickEnabled="True"
+                              Tag="ThemeSettingPage" /> -->
 """;
         string themeSettingMVVMCode =
 """

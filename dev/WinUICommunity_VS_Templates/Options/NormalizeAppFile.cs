@@ -32,7 +32,7 @@ namespace WinUICommunity_VS_Templates.Options
 
             dte.ExecuteCommand("Edit.FormatDocument");
             activeDoc.Save();
-
+            activeDoc.Close(vsSaveChanges.vsSaveChangesYes);
         }
     }
 }

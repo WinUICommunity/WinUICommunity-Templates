@@ -49,6 +49,7 @@
 		<ProjectItem ReplaceParameters="false" TargetFileName="external.png">external.png</ProjectItem>
 		<ProjectItem ReplaceParameters="false" TargetFileName="info.png">info.png</ProjectItem>
 		<ProjectItem ReplaceParameters="false" TargetFileName="theme.png">theme.png</ProjectItem>
+		<ProjectItem ReplaceParameters="false" TargetFileName="settings.png">settings.png</ProjectItem>
 	  </Folder>
 		
 	  <Folder Name="Assets\Store" TargetFolderName="Assets\Store">

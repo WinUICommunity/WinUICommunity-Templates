@@ -3,8 +3,6 @@ global using Microsoft.UI.Xaml;
 global using Microsoft.UI.Xaml.Controls;
 global using Microsoft.UI.Xaml.Navigation;
 global using WinUICommunity;
-global using Windows.System;
-global using System.Collections.ObjectModel;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
 global using Microsoft.Extensions.DependencyInjection;

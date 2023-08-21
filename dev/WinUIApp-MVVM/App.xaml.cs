@@ -25,6 +25,16 @@ public partial class App : Application
         this.InitializeComponent();
     }
 
+    private static IServiceProvider ConfigureServices()
+    {
+        var services = new ServiceCollection();
+        services.AddSingleton<IThemeService, ThemeService>();
+
+        services.AddTransient<MainViewModel>();
+
+        return services.BuildServiceProvider();
+    }
+
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         currentWindow = new Window();
@@ -44,15 +54,5 @@ public partial class App : Application
 
         currentWindow.Activate(); await InitializeLocalizer("en-US");
     }private void InitializeLocalizer { };
-
-    private static IServiceProvider ConfigureServices()
-    {
-        var services = new ServiceCollection();
-        services.AddSingleton<IThemeService, ThemeService>();
-
-        services.AddTransient<MainViewModel>();
-
-        return services.BuildServiceProvider();
-    }
 }
 
