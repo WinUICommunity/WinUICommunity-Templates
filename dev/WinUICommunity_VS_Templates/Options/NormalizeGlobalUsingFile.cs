@@ -4,9 +4,9 @@ namespace WinUICommunity_VS_Templates.Options
 {
     public class NormalizeGlobalUsingFile
     {
-        public NormalizeGlobalUsingFile(Wizard wizard, string templatePath)
+        public NormalizeGlobalUsingFile(bool useJsonSettings, string templatePath)
         {
-            if (!wizard.AddJsonSettings)
+            if (!useJsonSettings)
             {
                 string globalUsingFileContent = WizardHelper.ReadGlobalUsingFileContent(templatePath);
                 string pattern = @"global using static .*?Common\.AppHelper;";

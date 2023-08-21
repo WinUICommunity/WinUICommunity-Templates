@@ -1,14 +1,8 @@
 ﻿using System.Windows;
 
-using EnvDTE;
-
-using EnvDTE80;
-
-using Microsoft.VisualStudio.Shell.Interop;
-
 namespace WinUICommunity_VS_Templates
 {
-    public partial class Wizard
+    public partial class Wizard : HandyControl.Controls.Window
     {
         public bool AddJsonSettings;
         public bool AddDynamicLocalization;
@@ -28,6 +22,8 @@ namespace WinUICommunity_VS_Templates
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
+            DialogResult = true;
+
             AddJsonSettings = tgJsonSettings.IsOn;
             AddDynamicLocalization = tgDynamicLocalization.IsOn;
             AddEditorConfig = tgEditorConfig.IsOn;
@@ -38,18 +34,29 @@ namespace WinUICommunity_VS_Templates
             AddThemeSettingPage = tgThemeSetting.IsOn;
             AddAppUpdatePage = tgAppUpdate.IsOn;
             AddAboutPage = tgAboutSetting.IsOn;
-            
-            DTE2 dte = (DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE");
-            dte.Windows.Item(EnvDTE.Constants.vsWindowKindToolbox).Close();
+
             Close();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            DTE2 dte = (DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE");
-            dte.Windows.Item(EnvDTE.Constants.vsWindowKindToolbox).Close();
-            dte.ExecuteCommand("Build.Cancel");
-            Close();
+            Cancel();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (DialogResult.HasValue && DialogResult.Value)
+            {
+            }
+            else
+            {
+                Cancel();
+            }
+        }
+
+        private void Cancel()
+        {
+            DialogResult = false;
         }
     }
 }

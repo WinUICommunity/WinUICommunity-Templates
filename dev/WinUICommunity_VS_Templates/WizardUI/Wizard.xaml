@@ -9,10 +9,11 @@
            Title="WinUICommunity Wizard"
            Width="800"
            Height="700"
+           Closing="Window_Closing"
            ResizeMode="NoResize"
-           ShowCloseButton="False"
+           ShowCloseButton="True"
            ShowInTaskbar="False"
-           ShowNonClientArea="False"
+           ShowTitle="True"
            SystemBackdropType="Mica"
            Topmost="False"
            WindowStartupLocation="CenterScreen"
@@ -29,21 +30,14 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid Margin="10,40">
+    <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
             <RowDefinition />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <hc:Divider Padding="10,0"
-                    Content="WinUICommunity Wizard"
-                    LineStroke="{DynamicResource DarkPrimaryBrush}"
-                    LineStrokeThickness="2" />
-
-        <hc:ScrollViewer Grid.Row="1">
+        <hc:ScrollViewer>
             <StackPanel>
-                <hc:Divider Margin="0,0,0,10"
-                            Padding="10,0"
+                <hc:Divider Padding="10,0"
                             HorizontalContentAlignment="Left"
                             Content="Features"
                             LineStroke="{DynamicResource DarkPrimaryBrush}"
@@ -115,7 +109,7 @@
                                 IsEnabled="{Binding ElementName=tgSettingsPage, Path=IsOn}" />
             </StackPanel>
         </hc:ScrollViewer>
-        <StackPanel Grid.Row="2"
+        <StackPanel Grid.Row="1"
                     Margin="0,15,0,0"
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">

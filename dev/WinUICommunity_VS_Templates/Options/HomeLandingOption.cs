@@ -4,9 +4,9 @@ namespace WinUICommunity_VS_Templates.Options
 {
     public class HomeLandingOption
     {
-        public HomeLandingOption(Wizard wizard, bool isMVVMTemplate, string templatePath)
+        public HomeLandingOption(bool useHomeLandingPage, bool isMVVMTemplate, string templatePath)
         {
-            if (wizard.AddHomeLandingPage)
+            if (useHomeLandingPage)
             {
                 string appFileContent = WizardHelper.ReadAppFileContent(templatePath);
 

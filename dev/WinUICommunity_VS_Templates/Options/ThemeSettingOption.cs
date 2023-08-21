@@ -47,15 +47,15 @@ namespace WinUICommunity_VS_Templates.Options
                               IsClickEnabled="True"
                               Tag="ThemeSettingPage" /> -->
 """;
-        public ThemeSettingOption(Wizard wizard, bool isMVVMTemplate, string templatePath)
+        public ThemeSettingOption(bool useSettingsPage, bool useThemeSettingPage, bool isMVVMTemplate, string templatePath)
         {
-            if (wizard.AddSettingsPage)
+            if (useSettingsPage)
             {
                 string appFileContent = WizardHelper.ReadAppFileContent(templatePath);
 
                 string settingsPageFileContent = WizardHelper.ReadSettingPageFileContent(templatePath);
 
-                if (wizard.AddThemeSettingPage)
+                if (useThemeSettingPage)
                 {
                     if (isMVVMTemplate)
                     {

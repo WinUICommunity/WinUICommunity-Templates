@@ -4,9 +4,9 @@ namespace WinUICommunity_VS_Templates.Options
 {
     public class SettingsPageOption
     {
-        public SettingsPageOption(Wizard wizard, bool isMVVMTemplate, string templatePath)
+        public SettingsPageOption(bool useSettingsPage, bool isMVVMTemplate, string templatePath)
         {
-            if (wizard.AddSettingsPage)
+            if (useSettingsPage)
             {
                 string appFileContent = WizardHelper.ReadAppFileContent(templatePath);
 

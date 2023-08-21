@@ -36,11 +36,16 @@ namespace WinUICommunity_VS_Templates
 
         public bool ShouldAddProjectItem(string filePath)
         {
-            if (!WizardImplementation.Wizard.AddJsonSettings && (filePath.Contains("AppConfig") || filePath.Contains("AppHelper")))
+            if (!WizardImplementation.ShouldAddProjectItem())
             {
                 return false;
             }
-            else if (!WizardImplementation.Wizard.AddDynamicLocalization && filePath.Contains("Resources"))
+
+            if (!WizardImplementation.UseJsonSettings && (filePath.Contains("AppConfig") || filePath.Contains("AppHelper")))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.UseDynamicLocalization && filePath.Contains("Resources"))
             {
                 return false;
             }

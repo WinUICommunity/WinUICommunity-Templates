@@ -42,11 +42,11 @@ private async Task InitializeLocalizer(params string[] languages)
             .Build();
     }
 """;
-        public DynamicLocalizationOption(Wizard wizard, string templatePath)
+        public DynamicLocalizationOption(bool useDynamicLocalization, string templatePath)
         {
             string appFileContent = WizardHelper.ReadAppFileContent(templatePath);
 
-            if (wizard.AddDynamicLocalization)
+            if (useDynamicLocalization)
             {
                 appFileContent = appFileContent.Replace("private void InitializeLocalizer { };", $"\n{InitializeCode}");
                 appFileContent = appFileContent.Replace("await InitializeLocalizer(\"en-US\");", Environment.NewLine + Environment.NewLine + "        await InitializeLocalizer(\"en-US\");");

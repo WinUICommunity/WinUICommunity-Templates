@@ -47,15 +47,15 @@ namespace WinUICommunity_VS_Templates.Options
                               IsClickEnabled="True"
                               Tag="GeneralSettingPage" /> -->
 """;
-        public GeneralSettingOption(Wizard wizard, bool isMVVMTemplate, string templatePath)
+        public GeneralSettingOption(bool useSettingsPage, bool useGeneralSettingPage, bool isMVVMTemplate, string templatePath)
         {
-            if (wizard.AddSettingsPage)
+            if (useSettingsPage)
             {
                 string appFileContent = WizardHelper.ReadAppFileContent(templatePath);
 
                 string settingsPageFileContent = WizardHelper.ReadSettingPageFileContent(templatePath);
 
-                if (wizard.AddGeneralSettingPage)
+                if (useGeneralSettingPage)
                 {
                     if (isMVVMTemplate)
                     {

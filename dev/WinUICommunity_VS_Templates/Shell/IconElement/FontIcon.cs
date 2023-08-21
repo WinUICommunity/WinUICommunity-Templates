@@ -185,11 +185,15 @@ namespace WinUICommunity.Shell
                 VerticalAlignment = VerticalAlignment.Center,
                 TextAlignment = TextAlignment.Center,
                 FontSize = FontSize,
-                FontFamily = FontFamily,
                 FontStyle = FontStyle,
                 FontWeight = FontWeight,
                 Text = Glyph
             };
+
+            if (FontFamily != null)
+            {
+                _textBlock.FontFamily = FontFamily;
+            }
 
             if (ShouldInheritForegroundFromVisualParent)
             {
