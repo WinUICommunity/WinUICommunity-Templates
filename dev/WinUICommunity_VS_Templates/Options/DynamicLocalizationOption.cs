@@ -48,7 +48,7 @@ private async Task InitializeLocalizer(params string[] languages)
 
             if (wizard.AddDynamicLocalization)
             {
-                appFileContent = appFileContent.Replace("private void InitializeLocalizer { };", InitializeCode);
+                appFileContent = appFileContent.Replace("private void InitializeLocalizer { };", $"\n{InitializeCode}");
                 appFileContent = appFileContent.Replace("await InitializeLocalizer(\"en-US\");", Environment.NewLine + Environment.NewLine + "        await InitializeLocalizer(\"en-US\");");
             }
             else

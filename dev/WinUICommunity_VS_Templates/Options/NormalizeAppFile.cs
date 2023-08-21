@@ -1,9 +1,5 @@
 ﻿using System.Text.RegularExpressions;
 
-using EnvDTE;
-
-using EnvDTE80;
-
 namespace WinUICommunity_VS_Templates.Options
 {
     public class NormalizeAppFile
@@ -12,13 +8,47 @@ namespace WinUICommunity_VS_Templates.Options
         {
             string appFileContent = WizardHelper.ReadAppFileContent(templatePath);
 
-            string pattern = @"(\r\n|\r|\n){3,}";
-
             appFileContent = appFileContent.Replace("//JSONCONFIG", "");
             appFileContent = appFileContent.Replace("//JSONCONFIGMVVM", "");
             appFileContent = appFileContent.Replace("//SERVICE", "");
 
+            if (appFileContent.Contains("private static string StringsFolderPath { get; set; } = string.Empty;"))
+            {
+                if (appFileContent.Contains("public static T GetService<T>()"))
+                {
+                    appFileContent = appFileContent.Replace("public static T GetService<T>()", "\n    public static T GetService<T>()");
+                }
+                else
+                {
+                    appFileContent = appFileContent.Replace("public App()", "\n    public App()");
+                }
+            }
+
+            if (!appFileContent.Contains("JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));") && !appFileContent.Contains("JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));"))
+            {
+                string jsonNavigationViewServicePattern = @"JsonNavigationViewService = new JsonNavigationViewService\(\);(\s*\n\s*)}";
+                appFileContent = Regex.Replace(appFileContent, jsonNavigationViewServicePattern, "JsonNavigationViewService = new JsonNavigationViewService(); \n    }");
+            }
+
+            string nameSpacePattern = @"namespace\s+(\w+);";
+            Match match = Regex.Match(appFileContent, nameSpacePattern);
+            if (match.Success)
+            {
+                string namespaceName = match.Value;
+                appFileContent = appFileContent.Replace($"using Windows.Storage;\r\n{namespaceName}", $"using Windows.Storage;\n\n{namespaceName}");
+            }
+
+            string blanklinePattern = @"}\s*\n\s*}";
+            appFileContent = Regex.Replace(appFileContent, blanklinePattern, "}\n}");
+
+            string pattern = @"(\r\n|\r|\n){3,}";
             appFileContent = Regex.Replace(appFileContent, pattern, "\n\n");
+
+            string blanklinePattern2 = @"^\s*\n\s*(?=namespace)";
+            appFileContent = Regex.Replace(appFileContent, blanklinePattern2, "");
+
+            string blanklinePattern3 = @"(\n\s*){3,}";
+            appFileContent = Regex.Replace(appFileContent, blanklinePattern3, "\n\n");
 
             WizardHelper.SaveAppFileContent(templatePath, appFileContent);
 
