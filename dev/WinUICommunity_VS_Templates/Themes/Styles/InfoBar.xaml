@@ -177,8 +177,7 @@
                                                     Height="{DynamicResource InfoBarCloseButtonGlyphSize}"
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center">
-                                        <ui:FontIcon FontFamily="{DynamicResource FluentSystemIcons}"
-                                                     FontSize="{DynamicResource InfoBarCloseButtonGlyphSize}"
+                                        <ui:FontIcon FontSize="{DynamicResource InfoBarCloseButtonGlyphSize}"
                                                      Foreground="{DynamicResource InfoBarCloseButtonForeground}"
                                                      Glyph="{DynamicResource InfoBarCloseButtonGlyph}" />
                                     </ContentControl>

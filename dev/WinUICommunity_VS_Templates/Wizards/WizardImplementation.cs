@@ -53,19 +53,25 @@ namespace WinUICommunity_VS_Templates
         /// <param name="customParams"></param>
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
-            _dte = automationObject as _DTE;
-            Wizard = new Wizard();
-            Wizard.ShowDialog();
-            
-            replacementsDictionary.Add("$AddJsonSettings$", Wizard.AddJsonSettings.ToString());
-            replacementsDictionary.Add("$AddDynamicLocalization$", Wizard.AddDynamicLocalization.ToString());
-            replacementsDictionary.Add("$AddEditorConfig$", Wizard.AddEditorConfig.ToString());
-            replacementsDictionary.Add("$AddSolutionFolder$", Wizard.AddSolutionFolder.ToString());
-            replacementsDictionary.Add("$AddHomeLandingPage$", Wizard.AddHomeLandingPage.ToString());
-            replacementsDictionary.Add("$AddSettingsPage$", Wizard.AddSettingsPage.ToString());
-            replacementsDictionary.Add("$AddThemeSettingPage$", Wizard.AddThemeSettingPage.ToString());
-            replacementsDictionary.Add("$AddAppUpdatePage$", Wizard.AddAppUpdatePage.ToString());
-            replacementsDictionary.Add("$AddAboutPage$", Wizard.AddAboutPage.ToString());
+            try
+            {
+                _dte = automationObject as _DTE;
+                Wizard = new Wizard();
+                Wizard.ShowDialog();
+
+                replacementsDictionary.Add("$AddJsonSettings$", Wizard.AddJsonSettings.ToString());
+                replacementsDictionary.Add("$AddDynamicLocalization$", Wizard.AddDynamicLocalization.ToString());
+                replacementsDictionary.Add("$AddEditorConfig$", Wizard.AddEditorConfig.ToString());
+                replacementsDictionary.Add("$AddSolutionFolder$", Wizard.AddSolutionFolder.ToString());
+                replacementsDictionary.Add("$AddHomeLandingPage$", Wizard.AddHomeLandingPage.ToString());
+                replacementsDictionary.Add("$AddSettingsPage$", Wizard.AddSettingsPage.ToString());
+                replacementsDictionary.Add("$AddThemeSettingPage$", Wizard.AddThemeSettingPage.ToString());
+                replacementsDictionary.Add("$AddAppUpdatePage$", Wizard.AddAppUpdatePage.ToString());
+                replacementsDictionary.Add("$AddAboutPage$", Wizard.AddAboutPage.ToString());
+            }
+            catch (System.Exception)
+            {
+            }
         }
 
         private void UpdateCSProjFileWithResWItemGroup()
