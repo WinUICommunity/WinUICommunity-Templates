@@ -40,6 +40,7 @@ namespace WinUICommunity_VS_Templates
             new AboutSettingOption(Wizard, isMVVMTemplate, templatePath);
             new DynamicLocalizationOption(Wizard, templatePath);
             new NormalizeAppFile(templatePath);
+            new NormalizeGlobalUsingFile(Wizard, templatePath);
             UpdateCSProjFileWithResWItemGroup();
         }
 

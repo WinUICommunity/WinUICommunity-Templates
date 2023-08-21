@@ -53,6 +53,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Options\AboutSettingOption.cs" />
+    <Compile Include="Options\NormalizeGlobalUsingFile.cs" />
     <Compile Include="Options\DynamicLocalizationOption.cs" />
     <Compile Include="Options\GeneralSettingOption.cs" />
     <Compile Include="Options\HomeLandingOption.cs" />

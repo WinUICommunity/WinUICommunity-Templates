@@ -22,17 +22,7 @@ namespace WinUICommunity_VS_Templates.Options
 
             WizardHelper.SaveAppFileContent(templatePath, appFileContent);
 
-            DTE2 dte = (DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE");
-
-            dte.ItemOperations.OpenFile(WizardHelper.GetAppFilePath(templatePath));
-            Document activeDoc = dte.ActiveDocument;
-
-            TextSelection textSelection = activeDoc.Selection as TextSelection;
-            textSelection.SelectAll();
-
-            dte.ExecuteCommand("Edit.FormatDocument");
-            activeDoc.Save();
-            activeDoc.Close(vsSaveChanges.vsSaveChangesYes);
+            WizardHelper.FormatDocument(WizardHelper.GetAppFilePath(templatePath));
         }
     }
 }
