@@ -53,6 +53,7 @@
                             Padding="10,0"
                             HorizontalContentAlignment="Left"
                             Content="Features"
+                            FontSize="24"
                             LineStroke="{DynamicResource DarkPrimaryBrush}"
                             LineStrokeThickness="2" />
                 <StackPanel Margin="10,0,10,10"
@@ -105,6 +106,7 @@
                             Padding="10,0"
                             HorizontalContentAlignment="Left"
                             Content="Pages"
+                            FontSize="24"
                             LineStroke="{DynamicResource DarkPrimaryBrush}"
                             LineStrokeThickness="2" />
 
