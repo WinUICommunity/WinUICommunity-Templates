@@ -29,16 +29,6 @@ namespace WinUICommunity_VS_Templates
         public bool UseAppUpdatePage;
         public bool UseAboutPage;
         
-        string baseReswItemGroupCode = """<ItemGroup Label="DynamicLocalization"/>""";
-
-        string reswItemGroupCode = """
-                    <ItemGroup>
-                        <Content Include="Strings\**\*.resw">
-                          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-                        </Content>
-                      </ItemGroup>
-                    """;
-        
         public void RunFinished(bool isMVVMTemplate)
         {
             _solution = (Solution2)_dte.Solution;
@@ -53,7 +43,7 @@ namespace WinUICommunity_VS_Templates
             new DynamicLocalizationOption(UseDynamicLocalization, templatePath);
             new NormalizeAppFile(templatePath);
             new NormalizeGlobalUsingFile(UseJsonSettings, templatePath);
-            UpdateCSProjFileWithResWItemGroup();
+            new NormalizeCSProjFile(project, UseDynamicLocalization);
         }
 
         /// <summary>
@@ -107,20 +97,6 @@ namespace WinUICommunity_VS_Templates
         public bool ShouldAddProjectItem()
         {
             return _shouldAddProjectItem;
-        }
-
-        private void UpdateCSProjFileWithResWItemGroup()
-        {
-            var csprojFileContent = File.ReadAllText(project.FullName);
-            if (UseDynamicLocalization)
-            {
-                csprojFileContent = csprojFileContent.Replace(baseReswItemGroupCode, reswItemGroupCode);
-            }
-            else
-            {
-                csprojFileContent = csprojFileContent.Replace(baseReswItemGroupCode, "");
-            }
-            File.WriteAllText(project.FullName, csprojFileContent);
         }
 
         public void AddSolutionFolder()
