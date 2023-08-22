@@ -1,4 +1,6 @@
-﻿namespace $safeprojectname$.ViewModels;
+﻿using Windows.System;
+
+namespace $safeprojectname$.ViewModels;
 public partial class ThemeSettingViewModel : ObservableObject
 {
     public IThemeService ThemeService;

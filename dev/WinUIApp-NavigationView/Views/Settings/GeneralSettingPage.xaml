@@ -15,7 +15,6 @@
 
             <views:BreadcrumbBarUserControl SingleItem="{x:Bind BreadCrumbBarItemText, Mode=OneWay}" />
 
-
         </StackPanel>
     </ScrollViewer>
 </Page>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace WinUICommunity_VS_Templates.Options
 {
@@ -82,6 +83,14 @@ namespace WinUICommunity_VS_Templates.Options
                     {
                         settingsPageFileContent = settingsPageFileContent.Replace(baseAboutSettingCode, aboutSettingCommentCode);
                     }
+                }
+
+                string pattern = @"x:Class=""([^""]+)\.Views";
+                Match match = Regex.Match(settingsPageFileContent, pattern);
+                if (match.Success)
+                {
+                    string appNamespace = match.Groups[1].Value;
+                    settingsPageFileContent = settingsPageFileContent.Replace("$safeprojectname$", appNamespace);
                 }
 
                 WizardHelper.SaveSettingPageFileContent(templatePath, settingsPageFileContent);
