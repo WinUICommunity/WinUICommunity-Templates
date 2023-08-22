@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace $safeprojectname$.Views;
+﻿namespace $safeprojectname$.Views;
 
 public sealed partial class BreadcrumbBarUserControl : UserControl
 {

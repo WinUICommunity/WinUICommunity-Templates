@@ -13,6 +13,7 @@
                     Spacing="5">
             <!--  GENERALSETTING  -->
             <!--  THEMESETTING  -->
+            <!--  APPUPDATESETTING  -->
             <!--  ABOUTSETTING  -->
         </StackPanel>
     </ScrollViewer>

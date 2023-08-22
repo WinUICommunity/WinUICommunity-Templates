@@ -3,6 +3,7 @@
 public sealed partial class GeneralSettingPage : Page
 {
     public string BreadCrumbBarItemText { get; set; }
+
     public GeneralSettingPage()
     {
         this.InitializeComponent();

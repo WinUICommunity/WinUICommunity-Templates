@@ -42,6 +42,7 @@ namespace WinUICommunity_VS_Templates
             new ThemeSettingOption(UseSettingsPage, UseThemeSettingPage, isMVVMTemplate, templatePath);
             new AboutSettingOption(UseSettingsPage, UseAboutPage, isMVVMTemplate, templatePath);
             new DynamicLocalizationOption(UseDynamicLocalization, templatePath);
+            new AppUpdateOption(UseSettingsPage, UseAppUpdatePage, UseJsonSettings, isMVVMTemplate, templatePath);
             new NormalizeAppFile(templatePath);
             new NormalizeGlobalUsingFile(UseJsonSettings, templatePath);
             new NormalizeCSProjFile(project, UseDynamicLocalization);

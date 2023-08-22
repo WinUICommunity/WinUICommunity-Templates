@@ -20,6 +20,22 @@ namespace WinUICommunity_VS_Templates.Options
             activeDoc.Save();
             activeDoc.Close(vsSaveChanges.vsSaveChangesYes);
         }
+
+        public static string GetAppConfigPath(string templatePath)
+        {
+            return Path.Combine(templatePath, "Common", "AppConfig.cs");
+        }
+
+        public static string GetAppUpdatePagePath(string templatePath)
+        {
+            return Path.Combine(templatePath, "Views", "Settings", "AppUpdateSettingPage.xaml.cs");
+        }
+
+        public static string GetAppUpdateViewModelPath(string templatePath)
+        {
+            return Path.Combine(templatePath, "ViewModels", "Settings", "AppUpdateSettingViewModel.cs");
+        }
+
         public static string GetAppFilePath(string templatePath)
         {
             return Path.Combine(templatePath, "App.xaml.cs");
@@ -35,40 +51,76 @@ namespace WinUICommunity_VS_Templates.Options
             return Path.Combine(templatePath, "GlobalUsings.cs");
         }
 
+        public static string ReadAppConfigContent(string templatePath)
+        {
+            var filePath = GetAppConfigPath(templatePath);
+            return File.ReadAllText(filePath);
+        }
+
+        public static void SaveAppConfigContent(string templatePath, string appConfigContent)
+        {
+            var filePath = GetAppConfigPath(templatePath);
+            File.WriteAllText(filePath, appConfigContent);
+        }
+
+        public static string ReadAppUpdatePageContent(string templatePath)
+        {
+            var filePath = GetAppUpdatePagePath(templatePath);
+            return File.ReadAllText(filePath);
+        }
+
+        public static void SaveAppUpdatePageContent(string templatePath, string appUpdatePageContent)
+        {
+            var filePath = GetAppUpdatePagePath(templatePath);
+            File.WriteAllText(filePath, appUpdatePageContent);
+        }
+
+        public static string ReadAppUpdateViewModelContent(string templatePath)
+        {
+            var filePath = GetAppUpdateViewModelPath(templatePath);
+            return File.ReadAllText(filePath);
+        }
+
+        public static void SaveAppUpdateViewModelContent(string templatePath, string appUpdateViewModelContent)
+        {
+            var filePath = GetAppUpdateViewModelPath(templatePath);
+            File.WriteAllText(filePath, appUpdateViewModelContent);
+        }
+
         public static string ReadAppFileContent(string templatePath)
         {
-            var appFilePath = GetAppFilePath(templatePath);
-            return File.ReadAllText(appFilePath);
+            var filePath = GetAppFilePath(templatePath);
+            return File.ReadAllText(filePath);
         }
 
         public static void SaveAppFileContent(string templatePath, string appFileContent)
         {
-            var appFilePath = GetAppFilePath(templatePath);
-            File.WriteAllText(appFilePath, appFileContent);
+            var filePath = GetAppFilePath(templatePath);
+            File.WriteAllText(filePath, appFileContent);
         }
 
         public static string ReadSettingPageFileContent(string templatePath)
         {
-            var settingsPageFilePath = GetSettingPageFilePath(templatePath);
-            return File.ReadAllText(settingsPageFilePath);
+            var filePath = GetSettingPageFilePath(templatePath);
+            return File.ReadAllText(filePath);
         }
 
         public static void SaveSettingPageFileContent(string templatePath, string settingsPageFileContent)
         {
-            var settingsPageFilePath = GetSettingPageFilePath(templatePath);
-            File.WriteAllText(settingsPageFilePath, settingsPageFileContent);
+            var filePath = GetSettingPageFilePath(templatePath);
+            File.WriteAllText(filePath, settingsPageFileContent);
         }
 
         public static string ReadGlobalUsingFileContent(string templatePath)
         {
-            var globalUsingFilePath = GetGlobalUsingFilePath(templatePath);
-            return File.ReadAllText(globalUsingFilePath);
+            var filePath = GetGlobalUsingFilePath(templatePath);
+            return File.ReadAllText(filePath);
         }
 
         public static void SaveGlobalUsingFileContent(string templatePath, string globalUsingFileContent)
         {
-            var globalUsingFilePath = GetGlobalUsingFilePath(templatePath);
-            File.WriteAllText(globalUsingFilePath, globalUsingFileContent);
+            var filePath = GetGlobalUsingFilePath(templatePath);
+            File.WriteAllText(filePath, globalUsingFileContent);
         }
     }
 }

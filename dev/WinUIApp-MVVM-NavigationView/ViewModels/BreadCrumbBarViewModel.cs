@@ -1,4 +1,6 @@
-﻿namespace $safeprojectname$.ViewModels;
+﻿using System.Collections.ObjectModel;
+
+namespace $safeprojectname$.ViewModels;
 public partial class BreadCrumbBarViewModel : ObservableRecipient
 {
     [ObservableProperty]

@@ -50,6 +50,7 @@
 		<ProjectItem ReplaceParameters="false" TargetFileName="info.png">info.png</ProjectItem>
 		<ProjectItem ReplaceParameters="false" TargetFileName="theme.png">theme.png</ProjectItem>
 		<ProjectItem ReplaceParameters="false" TargetFileName="settings.png">settings.png</ProjectItem>
+		<ProjectItem ReplaceParameters="false" TargetFileName="update.png">update.png</ProjectItem>
 	  </Folder>
 		
 	  <Folder Name="Assets\Store" TargetFolderName="Assets\Store">
@@ -82,6 +83,8 @@
 		<ProjectItem ReplaceParameters="true" TargetFileName="ThemeSettingPage.xaml.cs">ThemeSettingPage.xaml.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="GeneralSettingPage.xaml">GeneralSettingPage.xaml</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="GeneralSettingPage.xaml.cs">GeneralSettingPage.xaml.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="AppUpdateSettingPage.xaml">AppUpdateSettingPage.xaml</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="AppUpdateSettingPage.xaml.cs">AppUpdateSettingPage.xaml.cs</ProjectItem>
 	  </Folder>
 		
 	  <Folder Name="Views\UserControls" TargetFolderName="Views\UserControls">
@@ -100,6 +103,7 @@
 		<ProjectItem ReplaceParameters="true" TargetFileName="AboutUsSettingViewModel.cs">AboutUsSettingViewModel.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="ThemeSettingViewModel.cs">ThemeSettingViewModel.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="GeneralSettingViewModel.cs">GeneralSettingViewModel.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="AppUpdateSettingViewModel.cs">AppUpdateSettingViewModel.cs</ProjectItem>
 	  </Folder>
 		
 	  <Folder Name="Themes" TargetFolderName="Themes">

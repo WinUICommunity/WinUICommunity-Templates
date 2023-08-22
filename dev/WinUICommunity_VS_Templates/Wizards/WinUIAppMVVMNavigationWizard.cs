@@ -45,7 +45,7 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
-            else if (!WizardImplementation.UseSettingsPage && (filePath.Contains("SettingsPage.xaml") || filePath.Contains("SettingsViewModel") || filePath.Contains("BreadCrumbBarViewModel") || filePath.Contains("BreadcrumbBarUserControl") || filePath.Contains("AboutUsSettingPage") || filePath.Contains("ThemeSettingPage") || filePath.Contains("AboutUsSettingViewModel") || filePath.Contains("ThemeSettingViewModel") || filePath.Contains("GeneralSettingPage") || filePath.Contains("GeneralSettingViewModel")))
+            else if (!WizardImplementation.UseSettingsPage && (filePath.Contains("SettingsPage.xaml") || filePath.Contains("SettingsViewModel") || filePath.Contains("BreadCrumbBarViewModel") || filePath.Contains("BreadcrumbBarUserControl") || filePath.Contains("AboutUsSettingPage") || filePath.Contains("ThemeSettingPage") || filePath.Contains("AboutUsSettingViewModel") || filePath.Contains("ThemeSettingViewModel") || filePath.Contains("GeneralSettingPage") || filePath.Contains("GeneralSettingViewModel") || filePath.Contains("AppUpdateSettingPage") || filePath.Contains("AppUpdateSettingViewModel")))
             {
                 return false;
             }
@@ -58,6 +58,10 @@ namespace WinUICommunity_VS_Templates
                 return false;
             }
             else if (WizardImplementation.UseSettingsPage && !WizardImplementation.UseGeneralSettingPage && (filePath.Contains("GeneralSettingPage") || filePath.Contains("GeneralSettingViewModel")))
+            {
+                return false;
+            }
+            else if (WizardImplementation.UseSettingsPage && !WizardImplementation.UseAppUpdatePage && (filePath.Contains("AppUpdateSettingPage") || filePath.Contains("AppUpdateSettingViewModel")))
             {
                 return false;
             }

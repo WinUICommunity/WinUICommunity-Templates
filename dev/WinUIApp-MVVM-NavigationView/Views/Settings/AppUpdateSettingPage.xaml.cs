@@ -1,13 +1,13 @@
 ﻿namespace $safeprojectname$.Views;
 
-public sealed partial class AboutUsSettingPage : Page
+public sealed partial class AppUpdateSettingPage : Page
 {
-    public AboutUsSettingViewModel ViewModel { get; }
+    public AppUpdateSettingViewModel ViewModel { get; }
     public string BreadCrumbBarItemText { get; set; }
 
-    public AboutUsSettingPage()
+    public AppUpdateSettingPage()
     {
-        ViewModel = App.GetService<AboutUsSettingViewModel>();
+        ViewModel = App.GetService<AppUpdateSettingViewModel>();
         this.InitializeComponent();
     }
 
