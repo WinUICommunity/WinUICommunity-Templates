@@ -41,35 +41,67 @@ namespace WinUICommunity_VS_Templates
                 return false;
             }
 
-            if (!WizardImplementation.UseHomeLandingPage && filePath.Contains("HomeLanding"))
+            if (!WizardImplementation.UseHomeLandingPage && 
+                filePath.Contains("HomeLanding"))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseSettingsPage && (filePath.Contains("SettingsPage.xaml") || filePath.Contains("BreadcrumbBarUserControl") || filePath.Contains("AboutUsSettingPage") || filePath.Contains("ThemeSettingPage") || filePath.Contains("GeneralSettingPage") || filePath.Contains("AppUpdateSettingPage")))
+            else if (!WizardImplementation.UseSettingsPage && 
+                (filePath.Contains("SettingsPage.xaml") || 
+                filePath.Contains("BreadcrumbBarUserControl") || 
+                filePath.Contains("AboutUsSettingPage") || 
+                filePath.Contains("ThemeSettingPage") || 
+                filePath.Contains("GeneralSettingPage") || 
+                filePath.Contains("AppUpdateSettingPage") ||
+                filePath.Contains("backdrop.png") ||
+                filePath.Contains("color.png") ||
+                filePath.Contains("external.png") ||
+                filePath.Contains("info.png") ||
+                filePath.Contains("settings.png") ||
+                filePath.Contains("theme.png") ||
+                filePath.Contains("update.png")))
             {
                 return false;
             }
-            else if (WizardImplementation.UseSettingsPage && !WizardImplementation.UseAboutPage && filePath.Contains("AboutUsSettingPage"))
+            else if (WizardImplementation.UseSettingsPage && 
+                !WizardImplementation.UseAboutPage &&
+                (filePath.Contains("AboutUsSettingPage") ||
+                filePath.Contains("info.png")))
             {
                 return false;
             }
-            else if (WizardImplementation.UseSettingsPage && !WizardImplementation.UseThemeSettingPage && filePath.Contains("ThemeSettingPage"))
+            else if (WizardImplementation.UseSettingsPage &&
+                !WizardImplementation.UseThemeSettingPage &&
+                (filePath.Contains("ThemeSettingPage") ||
+                filePath.Contains("backdrop.png") ||
+                filePath.Contains("color.png") ||
+                filePath.Contains("external.png") ||
+                filePath.Contains("theme.png")))
             {
                 return false;
             }
-            else if (WizardImplementation.UseSettingsPage && !WizardImplementation.UseGeneralSettingPage && filePath.Contains("GeneralSettingPage"))
+            else if (WizardImplementation.UseSettingsPage &&
+                !WizardImplementation.UseGeneralSettingPage &&
+                (filePath.Contains("GeneralSettingPage") ||
+                filePath.Contains("settings.png")))
             {
                 return false;
             }
-            else if (WizardImplementation.UseSettingsPage && !WizardImplementation.UseAppUpdatePage && filePath.Contains("AppUpdateSettingPage"))
+            else if (WizardImplementation.UseSettingsPage &&
+                !WizardImplementation.UseAppUpdatePage &&
+                (filePath.Contains("AppUpdateSettingPage") ||
+                filePath.Contains("update.png")))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseJsonSettings && (filePath.Contains("AppConfig") || filePath.Contains("AppHelper")))
+            else if (!WizardImplementation.UseJsonSettings &&
+                (filePath.Contains("AppConfig") || 
+                filePath.Contains("AppHelper")))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseDynamicLocalization && filePath.Contains("Resources"))
+            else if (!WizardImplementation.UseDynamicLocalization &&
+                filePath.Contains("Resources"))
             {
                 return false;
             }
