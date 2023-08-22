@@ -40,7 +40,11 @@
 	  <Folder Name="Assets" TargetFolderName="Assets">
 		<ProjectItem ReplaceParameters="false" TargetFileName="icon.ico">icon.ico</ProjectItem>
 		<ProjectItem ReplaceParameters="false" TargetFileName="icon.png">icon.png</ProjectItem>
-		<ProjectItem ReplaceParameters="false" TargetFileName="Cover.png">Cover.png</ProjectItem>
+	  </Folder>
+
+	  <Folder Name="Assets\Cover" TargetFolderName="Assets\Cover">
+		<ProjectItem ReplaceParameters="false" TargetFileName="CoverLight.png">CoverLight.png</ProjectItem>
+		<ProjectItem ReplaceParameters="false" TargetFileName="CoverDark.png">CoverDark.png</ProjectItem>
 	  </Folder>
 		
 	  <Folder Name="Assets\Fluent" TargetFolderName="Assets\Fluent">

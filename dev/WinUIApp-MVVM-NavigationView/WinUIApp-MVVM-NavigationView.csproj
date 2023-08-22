@@ -56,10 +56,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.manifest" />
+    <Content Include="Assets\Cover\CoverDark.png" />
+    <Content Include="Assets\Cover\CoverLight.png" />
     <Content Include="Assets\Fluent\backdrop.png" />
     <Content Include="Assets\Fluent\color.png" />
     <Content Include="Assets\Fluent\external.png" />
-    <Content Include="Assets\Cover.png" />
     <Content Include="Assets\Fluent\info.png" />
     <Content Include="Assets\Fluent\settings.png" />
     <Content Include="Assets\Fluent\theme.png" />
