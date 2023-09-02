@@ -77,8 +77,32 @@
 
                 <Separator Margin="0,5" />
 
+                <StackPanel Margin="10,0,10,10"
+                            Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center"
+                               Style="{StaticResource BaseTextBlockStyle}"
+                               Text="2. Choose Platforms" />
+                    <hc:CheckComboBox x:Name="cmbPlatforms"
+                                      MinWidth="200"
+                                      Margin="10,0"
+                                      ShowSelectAllButton="True"
+                                      Style="{StaticResource CheckComboBoxPlus}">
+                        <hc:CheckComboBoxItem Content="x86"
+                                              IsSelected="True"
+                                              Tag="x86" />
+                        <hc:CheckComboBoxItem Content="x64"
+                                              IsSelected="True"
+                                              Tag="x64" />
+                        <hc:CheckComboBoxItem Content="ARM64"
+                                              IsSelected="True"
+                                              Tag="ARM64" />
+                    </hc:CheckComboBox>
+                </StackPanel>
+
+                <Separator Margin="0,5" />
+
                 <local:OptionUC x:Name="tgJsonSettings"
-                                Title="2. Add Json Settings"
+                                Title="3. Add Json Settings"
                                 InfoBarMessage="Saving and restoring settings will be very fast and simple and will be done with only one line: Settings.SomeProperty = newValue;"
                                 InfoBarTitle="AppConfig.cs and AppHelper.cs classes will be added and you can save and restore app settings in json file."
                                 IsOn="True" />
@@ -86,17 +110,17 @@
                 <Separator Margin="0,5" />
 
                 <local:OptionUC x:Name="tgDynamicLocalization"
-                                Title="3. Add Dynamic Localization"
+                                Title="4. Add Dynamic Localization"
                                 InfoBarTitle="The resource (resw) file will be added and the App.xaml.cs file will be configured to use localization" />
                 <Separator Margin="0,5" />
                 <local:OptionUC x:Name="tgEditorConfig"
-                                Title="4. Add .editorConfig File"
+                                Title="5. Add .editorConfig File"
                                 InfoBarTitle="EditorConfig is a file format and a set of rules for configuring the coding style and formatting of source code files"
                                 IsEnabled="False"
                                 IsOn="True" />
                 <Separator Margin="0,5" />
                 <local:OptionUC x:Name="tgSolutionFolder"
-                                Title="5. Add Empty Solution Folder"
+                                Title="6. Add Empty Solution Folder"
                                 InfoBarMessage="Solution folders provide a way to organize and group related projects, files, or items within your solution without affecting the actual project structure. Adding an empty solution folder can be useful for maintaining a tidy and well-structured solution, especially when you have numerous files and projects to manage."
                                 InfoBarTitle="This option allows you to include an empty solution folder in your project. "
                                 IsOn="True" />
@@ -104,7 +128,7 @@
                 <Separator Margin="0,5" />
 
                 <local:OptionUC x:Name="tgAccelerateBuilds"
-                                Title="6. Accelerate Builds In Visual Studio"
+                                Title="7. Accelerate Builds In Visual Studio"
                                 InfoBarTitle="Build acceleration is an opt-in feature that directs Visual Studio to only build projects that had modifications while skipping projects that were unchanged. Enabling Build Acceleration can reduce incremental build times by up to 80% for SDK-style .NET projects." />
                 <Separator Margin="0,5" />
 

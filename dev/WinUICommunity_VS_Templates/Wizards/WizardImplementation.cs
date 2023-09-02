@@ -19,6 +19,8 @@ namespace WinUICommunity_VS_Templates
         private Project project;
 
         public string DotNetVersion;
+        public string Platforms;
+        public string RuntimeIdentifiers;
         public bool UseJsonSettings;
         public bool UseDynamicLocalization;
         public bool UseEditorConfig;
@@ -69,6 +71,8 @@ namespace WinUICommunity_VS_Templates
                 _shouldAddProjectItem = true;
 
                 replacementsDictionary.Add("$DotNetVersion$", inputForm.DotNetVersion.ToString());
+                replacementsDictionary.Add("$Platforms$", inputForm.Platforms.ToString());
+                replacementsDictionary.Add("$RuntimeIdentifiers$", inputForm.RuntimeIdentifiers.ToString());
                 replacementsDictionary.Add("$AddJsonSettings$", inputForm.AddJsonSettings.ToString());
                 replacementsDictionary.Add("$AddDynamicLocalization$", inputForm.AddDynamicLocalization.ToString());
                 replacementsDictionary.Add("$AddEditorConfig$", inputForm.AddEditorConfig.ToString());
@@ -82,6 +86,8 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$UseAccelerateBuilds$", inputForm.AddAccelerateBuilds.ToString());
 
                 DotNetVersion = inputForm.DotNetVersion;
+                Platforms = inputForm.Platforms;
+                RuntimeIdentifiers = inputForm.RuntimeIdentifiers;
                 UseJsonSettings = inputForm.AddJsonSettings;
                 UseDynamicLocalization = inputForm.AddDynamicLocalization;
                 UseEditorConfig = inputForm.AddEditorConfig;

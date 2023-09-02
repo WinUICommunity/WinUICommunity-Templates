@@ -1,11 +1,15 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
+using HandyControl.Controls;
+
 namespace WinUICommunity_VS_Templates
 {
     public partial class Wizard : HandyControl.Controls.Window
     {
         public string DotNetVersion;
+        public string Platforms;
+        public string RuntimeIdentifiers;
         public bool AddJsonSettings;
         public bool AddDynamicLocalization;
         public bool AddEditorConfig;
@@ -40,6 +44,9 @@ namespace WinUICommunity_VS_Templates
             AddAboutPage = tgAboutSetting.IsOn;
             AddAccelerateBuilds = tgAccelerateBuilds.IsOn;
 
+            Platforms = GetPlatforms();
+            RuntimeIdentifiers = GetRuntimeIdentifiers(Platforms);
+
             Close();
         }
 
@@ -62,6 +69,54 @@ namespace WinUICommunity_VS_Templates
         private void Cancel()
         {
             DialogResult = false;
+        }
+
+        private string GetPlatforms()
+        {
+            string platforms = "x86;x64;ARM64";
+            if (cmbPlatforms.SelectedItems.Count > 0)
+            {
+                platforms = string.Empty;
+                foreach (CheckComboBoxItem item in cmbPlatforms.SelectedItems)
+                {
+                    platforms = platforms + item.Tag + ";";
+                }
+
+                if (platforms.EndsWith(";"))
+                {
+                    var lastIndex = platforms.LastIndexOf(";");
+                    platforms = platforms.Remove(lastIndex);
+                }
+            }
+
+            return platforms;
+        }
+
+        private string GetRuntimeIdentifiers(string platforms)
+        {
+            string rid = "win10-x86;win10-x64;win10-arm64";
+            if (!platforms.Contains("x86"))
+            {
+                rid = rid.Replace("win10-x86;", "");
+            }
+
+            if (!platforms.Contains("x64"))
+            {
+                rid = rid.Replace("win10-x64;", "");
+            }
+
+            if (!platforms.Contains("ARM64"))
+            {
+                rid = rid.Replace("win10-arm64", "");
+            }
+
+            if (rid.EndsWith(";"))
+            {
+                var lastIndex = rid.LastIndexOf(";");
+                rid = rid.Remove(lastIndex);
+            }
+
+            return rid.Trim();
         }
     }
 }
