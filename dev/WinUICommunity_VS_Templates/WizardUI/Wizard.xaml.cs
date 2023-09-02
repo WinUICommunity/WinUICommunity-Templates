@@ -16,6 +16,7 @@ namespace WinUICommunity_VS_Templates
         public bool AddThemeSettingPage;
         public bool AddAppUpdatePage;
         public bool AddAboutPage;
+        public bool AddAccelerateBuilds;
 
         public Wizard()
         {
@@ -37,6 +38,7 @@ namespace WinUICommunity_VS_Templates
             AddThemeSettingPage = tgThemeSetting.IsOn;
             AddAppUpdatePage = tgAppUpdate.IsOn;
             AddAboutPage = tgAboutSetting.IsOn;
+            AddAccelerateBuilds = tgAccelerateBuilds.IsOn;
 
             Close();
         }

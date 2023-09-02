@@ -29,6 +29,7 @@ namespace WinUICommunity_VS_Templates
         public bool UseThemeSettingPage;
         public bool UseAppUpdatePage;
         public bool UseAboutPage;
+        public bool UseAccelerateBuilds;
         
         public void RunFinished(bool isMVVMTemplate)
         {
@@ -78,6 +79,7 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$AddThemeSettingPage$", inputForm.AddThemeSettingPage.ToString());
                 replacementsDictionary.Add("$AddAppUpdatePage$", inputForm.AddAppUpdatePage.ToString());
                 replacementsDictionary.Add("$AddAboutPage$", inputForm.AddAboutPage.ToString());
+                replacementsDictionary.Add("$UseAccelerateBuilds$", inputForm.AddAccelerateBuilds.ToString());
 
                 DotNetVersion = inputForm.DotNetVersion;
                 UseJsonSettings = inputForm.AddJsonSettings;
@@ -90,6 +92,7 @@ namespace WinUICommunity_VS_Templates
                 UseThemeSettingPage = inputForm.AddThemeSettingPage;
                 UseAppUpdatePage = inputForm.AddAppUpdatePage;
                 UseAboutPage = inputForm.AddAboutPage;
+                UseAccelerateBuilds = inputForm.AddAccelerateBuilds;
             }
             else
             {
