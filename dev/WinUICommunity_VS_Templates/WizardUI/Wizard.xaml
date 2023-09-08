@@ -45,6 +45,18 @@
                        Status="v10.0.22621.756"
                        Subject="BuildTools Version"
                        Color="Purple" />
+            <hc:ComboBox x:Name="cmbVersionMechanism"
+                         MinWidth="250"
+                         Margin="10,0,10,0"
+                         SelectedIndex="0"
+                         SelectionChanged="cmbVersionMechanism_SelectionChanged">
+                <ComboBoxItem Content="Use Predefined Versions for Libraries"
+                              Tag="Predefined"
+                              ToolTip="It is usually the latest version. We update it with every new version" />
+                <ComboBoxItem Content="Use Library Latest Version by * Symbol"
+                              Tag="Star"
+                              ToolTip="The latest stable version will always be installed" />
+            </hc:ComboBox>
         </StackPanel>
 
         <hc:ScrollViewer Grid.Row="1">

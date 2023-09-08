@@ -68,15 +68,36 @@ namespace WinUICommunity_VS_Templates
             {
                 _shouldAddProjectItem = true;
 
+                string wasdkVersion = "1.4.230822000";
+                string wasdkBuildToolsVersion = "10.0.22621.756";
+                string winUICommunityComponentsVersion = "5.1.1";
+                string winUICommunityCoreVersion = "5.1.1";
+                string winUICommunityLandingPagesVersion = "5.1.1";
+                string communityToolkitMvvmVersion = "8.2.1";
+                string dependencyInjectionVersion = "7.0.0";
+                string winUIManagedVersion = "2.0.9";
+
+                if (inputForm.UseAlwaysLatestVersion)
+                {
+                    wasdkVersion = "*";
+                    wasdkBuildToolsVersion = "*";
+                    winUICommunityComponentsVersion = "*";
+                    winUICommunityCoreVersion = "*";
+                    winUICommunityLandingPagesVersion = "*";
+                    communityToolkitMvvmVersion = "*";
+                    dependencyInjectionVersion = "*";
+                    winUIManagedVersion = "*";
+                }
+
                 // Add Base Library Versions
-                replacementsDictionary.Add("$WASDKVersion$", "1.4.230822000");
-                replacementsDictionary.Add("$WASDKBuildToolsVersion$", "10.0.22621.756");
-                replacementsDictionary.Add("$WinUICommunityComponentsVersion$", "5.1.1");
-                replacementsDictionary.Add("$WinUICommunityCoreVersion$", "5.1.1");
-                replacementsDictionary.Add("$WinUICommunityLandingPagesVersion$", "5.1.1");
-                replacementsDictionary.Add("$CommunityToolkitMvvmVersion$", "8.2.1");
-                replacementsDictionary.Add("$DependencyInjectionVersion$", "7.0.0");
-                replacementsDictionary.Add("$WinUIManagedVersion$", "2.0.9");
+                replacementsDictionary.Add("$WASDKVersion$", wasdkVersion);
+                replacementsDictionary.Add("$WASDKBuildToolsVersion$", wasdkBuildToolsVersion);
+                replacementsDictionary.Add("$WinUICommunityComponentsVersion$", winUICommunityComponentsVersion);
+                replacementsDictionary.Add("$WinUICommunityCoreVersion$", winUICommunityCoreVersion);
+                replacementsDictionary.Add("$WinUICommunityLandingPagesVersion$", winUICommunityLandingPagesVersion);
+                replacementsDictionary.Add("$CommunityToolkitMvvmVersion$", communityToolkitMvvmVersion);
+                replacementsDictionary.Add("$DependencyInjectionVersion$", dependencyInjectionVersion);
+                replacementsDictionary.Add("$WinUIManagedVersion$", winUIManagedVersion);
 
                 // Add Extra Libs
                 var libs = inputForm.LibraryDic;

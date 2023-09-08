@@ -39,7 +39,7 @@
 <wuc:SettingsCard x:Name="AboutSetting"
                               Command="{x:Bind ViewModel.GoToSettingPageCommand}"
                               CommandParameter="{Binding ElementName=AboutSetting}"
-                              Description="About $safeprojectname$ and Developer"
+                              Description="About App and Developer"
                               Header="About us"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/info.png}"
                               IsClickEnabled="True"

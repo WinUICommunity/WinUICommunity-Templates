@@ -27,6 +27,7 @@ namespace WinUICommunity_VS_Templates
         public bool AddAppUpdatePage;
         public bool AddAboutPage;
         public bool AddAccelerateBuilds;
+        public bool UseAlwaysLatestVersion;
 
         public Wizard()
         {
@@ -45,14 +46,23 @@ namespace WinUICommunity_VS_Templates
         {
             foreach (var lib in libraries)
             {
+                string libVersion = lib.Version;
+                string libVersion2 = lib.Version;
+                if (cmbVersionMechanism.SelectedIndex == 1)
+                {
+                    libVersion = "*";
+                    libVersion2 = "Latest Stable";
+                }
+
                 var option = new LibraryOptionUC
                 {
-                    Title = $"{lib.Name} - {lib.Version}"
+                    Title = $"{lib.Name} - {libVersion2}"
                 };
 
                 option.Checked += (s, e) =>
                 {
-                    LibraryDic.Add(lib.Name, new PackageRefrence($"""    <PackageReference Include="{lib.Name}" Version="{lib.Version}" />""", lib.CheckBeforeInsert));
+                    
+                    LibraryDic.Add(lib.Name, new PackageRefrence($"""    <PackageReference Include="{lib.Name}" Version="{libVersion}" />""", lib.CheckBeforeInsert));
                 };
 
                 option.Unchecked += (s, e) =>
@@ -154,6 +164,28 @@ namespace WinUICommunity_VS_Templates
             }
 
             return rid.Trim();
+        }
+
+        private void cmbVersionMechanism_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (WinUICommunityPanel != null)
+            {
+                UseAlwaysLatestVersion = cmbVersionMechanism.SelectedIndex == 1;
+
+                LibraryDic = new();
+                WinUICommunityPanel.Children.Clear();
+                GeneralPanel.Children.Clear();
+                EFCorePanel.Children.Clear();
+                CommunityToolkitPanel.Children.Clear();
+                MVVMPanel.Children.Clear();
+
+                CreateBoxes(PreDefinedLibrary.InitWinUICommunity(), WinUICommunityPanel);
+                CreateBoxes(PreDefinedLibrary.InitUseful(), GeneralPanel);
+                CreateBoxes(PreDefinedLibrary.InitEFCore(), EFCorePanel);
+                CreateBoxes(PreDefinedLibrary.InitCommunityToolkit(), CommunityToolkitPanel);
+                CreateBoxes(PreDefinedLibrary.InitMVVM(), MVVMPanel);
+                CreateBoxes(PreDefinedLibrary.InitLog(), LogPanel);
+            }
         }
     }
 }
