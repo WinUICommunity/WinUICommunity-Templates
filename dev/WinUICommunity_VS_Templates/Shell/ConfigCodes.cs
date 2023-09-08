@@ -51,9 +51,18 @@ namespace WinUICommunity_VS_Templates.Shell
         public string GetSettingsPageOptions()
         {
             StringBuilder outputBuilder = new StringBuilder();
+            int index = 0;
             foreach (var item in SettingsPageOptionsDic.Values)
             {
-                outputBuilder.AppendLine(item);
+                if (index == 0)
+                {
+                    outputBuilder.AppendLine(item);
+                }
+                else
+                {
+                    outputBuilder.AppendLine($"            {item}");
+                }
+                index++;
             }
 
             return outputBuilder.ToString();
@@ -61,10 +70,17 @@ namespace WinUICommunity_VS_Templates.Shell
 
         public void ConfigMVVM()
         {
-            if (UseAboutPage)
+            if (UseGeneralSettingPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseAboutPage), SettingsCardOptions.AboutSettingMVVMCode);
-                ServiceDic.Add(nameof(UseAboutPage), "services.AddTransient<AboutUsSettingViewModel>();");
+                SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), SettingsCardOptions.GeneralSettingMVVMCode);
+
+                ServiceDic.Add(nameof(UseGeneralSettingPage), "services.AddTransient<GeneralSettingViewModel>();");
+            }
+
+            if (UseThemeSettingPage)
+            {
+                SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), SettingsCardOptions.ThemeSettingMVVMCode);
+                ServiceDic.Add(nameof(UseThemeSettingPage), "services.AddTransient<ThemeSettingViewModel>();");
             }
 
             if (UseAppUpdatePage)
@@ -74,11 +90,10 @@ namespace WinUICommunity_VS_Templates.Shell
                 ServiceDic.Add(nameof(UseAppUpdatePage), "services.AddTransient<AppUpdateSettingViewModel>();");
             }
 
-            if (UseGeneralSettingPage)
+            if (UseAboutPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), SettingsCardOptions.GeneralSettingMVVMCode);
-
-                ServiceDic.Add(nameof(UseGeneralSettingPage), "services.AddTransient<GeneralSettingViewModel>();");
+                SettingsPageOptionsDic.Add(nameof(UseAboutPage), SettingsCardOptions.AboutSettingMVVMCode);
+                ServiceDic.Add(nameof(UseAboutPage), "services.AddTransient<AboutUsSettingViewModel>();");
             }
 
             if (UseHomeLandingPage)
@@ -94,12 +109,6 @@ namespace WinUICommunity_VS_Templates.Shell
                 ServiceDic.Add(nameof(UseSettingsPage) + "Bread", "services.AddTransient<BreadCrumbBarViewModel>();");
             }
 
-            if (UseThemeSettingPage)
-            {
-                SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), SettingsCardOptions.ThemeSettingMVVMCode);
-                ServiceDic.Add(nameof(UseThemeSettingPage), "services.AddTransient<ThemeSettingViewModel>();");
-            }
-
             if (SettingsPageOptionsDic.Count == 0)
             {
                 SettingsPageOptionsDic.Add("comment", SettingsCardOptions.SettingsCardMVVMCommentCode);
@@ -108,9 +117,14 @@ namespace WinUICommunity_VS_Templates.Shell
 
         public void Config()
         {
-            if (UseAboutPage)
+            if (UseGeneralSettingPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseAboutPage), SettingsCardOptions.AboutSettingCode);
+                SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), SettingsCardOptions.GeneralSettingCode);
+            }
+
+            if (UseThemeSettingPage)
+            {
+                SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), SettingsCardOptions.ThemeSettingCode);
             }
 
             if (UseAppUpdatePage)
@@ -118,9 +132,9 @@ namespace WinUICommunity_VS_Templates.Shell
                 SettingsPageOptionsDic.Add(nameof(UseAppUpdatePage), SettingsCardOptions.AppUpdateSettingCode);
             }
 
-            if (UseGeneralSettingPage)
+            if (UseAboutPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), SettingsCardOptions.GeneralSettingCode);
+                SettingsPageOptionsDic.Add(nameof(UseAboutPage), SettingsCardOptions.AboutSettingCode);
             }
 
             if (UseHomeLandingPage)
@@ -131,11 +145,6 @@ namespace WinUICommunity_VS_Templates.Shell
             if (UseSettingsPage)
             {
                 ConfigJsonDic.Add(nameof(UseSettingsPage), "JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));");
-            }
-
-            if (UseThemeSettingPage)
-            {
-                SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), SettingsCardOptions.ThemeSettingCode);
             }
 
             if (SettingsPageOptionsDic.Count == 0)

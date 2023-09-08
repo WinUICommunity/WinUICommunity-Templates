@@ -147,8 +147,24 @@ namespace WinUICommunity_VS_Templates
                 var services = configCodes.GetServices();
                 var settingsCards = configCodes.GetSettingsPageOptions();
 
-                replacementsDictionary.Add("$Configs$", configs);
-                replacementsDictionary.Add("$Services$", services);
+                if (configCodes.ConfigJsonDic.Count > 0)
+                {
+                    replacementsDictionary.Add("$Configs$", Environment.NewLine + configs);
+                }
+                else
+                {
+                    replacementsDictionary.Add("$Configs$", configs);
+                }
+
+                if (configCodes.ServiceDic.Count > 0)
+                {
+                    replacementsDictionary.Add("$Services$", Environment.NewLine + services);
+                }
+                else
+                {
+                    replacementsDictionary.Add("$Services$", services);
+                }
+
                 replacementsDictionary.Add("$SettingsCards$", settingsCards);
             }
             else

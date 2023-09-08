@@ -8,8 +8,7 @@ public partial class App : Application
     public string AppVersion { get; set; } = VersionHelper.GetVersion();
     public string AppName { get; set; } = "$safeprojectname$";
     private static string StringsFolderPath { get; set; } = string.Empty;
-    public static T GetService<T>()
-        where T : class
+    public static T GetService<T>() where T : class
     {
         if ((App.Current as App)!.Services.GetService(typeof(T)) is not T service)
         {

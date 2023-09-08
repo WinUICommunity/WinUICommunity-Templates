@@ -9,8 +9,7 @@ public partial class App : Application
     public string AppName { get; set; } = "$safeprojectname$";
     private static string StringsFolderPath { get; set; } = string.Empty;
 
-    public static T GetService<T>()
-        where T : class
+    public static T GetService<T>() where T : class
     {
         if ((App.Current as App)!.Services.GetService(typeof(T)) is not T service)
         {
@@ -32,13 +31,11 @@ public partial class App : Application
         services.AddSingleton<IThemeService, ThemeService>();
         services.AddSingleton<IJsonNavigationViewService>(factory =>
         {
-            var json = new JsonNavigationViewService();
-            $Configs$
+            var json = new JsonNavigationViewService();$Configs$
             return json;
         });
 
-        services.AddTransient<MainViewModel>();
-        $Services$
+        services.AddTransient<MainViewModel>();$Services$
 
         return services.BuildServiceProvider();
     }

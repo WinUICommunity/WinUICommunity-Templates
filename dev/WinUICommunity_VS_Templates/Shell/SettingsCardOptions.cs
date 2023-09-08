@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WinUICommunity_VS_Templates.Shell
+﻿namespace WinUICommunity_VS_Templates.Shell
 {
     public static class SettingsCardOptions
     {

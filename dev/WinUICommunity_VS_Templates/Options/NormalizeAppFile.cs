@@ -10,9 +10,9 @@ namespace WinUICommunity_VS_Templates.Options
 
             if (appFileContent.Contains("private static string StringsFolderPath { get; set; } = string.Empty;"))
             {
-                if (appFileContent.Contains("public static T GetService<T>()"))
+                if (appFileContent.Contains("public static T GetService<T>() where T : class"))
                 {
-                    appFileContent = appFileContent.Replace("public static T GetService<T>()", "\n    public static T GetService<T>()");
+                    appFileContent = appFileContent.Replace("public static T GetService<T>() where T : class", "\n    public static T GetService<T>() where T : class");
                 }
                 else
                 {
