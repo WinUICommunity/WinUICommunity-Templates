@@ -15,7 +15,7 @@ public partial class App : Application
     {
         this.InitializeComponent();
         JsonNavigationViewService = new JsonNavigationViewService();
-        //JSONCONFIG
+        $Configs$
     }
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)

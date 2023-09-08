@@ -10,6 +10,7 @@ using EnvDTE80;
 using Microsoft.VisualStudio.TemplateWizard;
 
 using WinUICommunity_VS_Templates.Options;
+using WinUICommunity_VS_Templates.Shell;
 
 namespace WinUICommunity_VS_Templates
 {
@@ -41,11 +42,6 @@ namespace WinUICommunity_VS_Templates
             project = _dte.Solution.Projects.Item(1);
 
             var templatePath = Directory.GetParent(project.FullName).FullName;
-            new HomeLandingOption(UseHomeLandingPage, isMVVMTemplate, templatePath);
-            new SettingsPageOption(UseSettingsPage, isMVVMTemplate, templatePath);
-            new GeneralSettingOption(UseSettingsPage, UseGeneralSettingPage, isMVVMTemplate, templatePath);
-            new ThemeSettingOption(UseSettingsPage, UseThemeSettingPage, isMVVMTemplate, templatePath);
-            new AboutSettingOption(UseSettingsPage, UseAboutPage, isMVVMTemplate, templatePath);
             new DynamicLocalizationOption(UseDynamicLocalization, templatePath);
             new AppUpdateOption(UseSettingsPage, UseAppUpdatePage, UseJsonSettings, isMVVMTemplate, templatePath);
             new NormalizeAppFile(templatePath);
@@ -135,6 +131,25 @@ namespace WinUICommunity_VS_Templates
                 UseAppUpdatePage = inputForm.AddAppUpdatePage;
                 UseAboutPage = inputForm.AddAboutPage;
                 UseAccelerateBuilds = inputForm.AddAccelerateBuilds;
+
+                var configCodes = new ConfigCodes(UseAboutPage, UseAppUpdatePage, UseGeneralSettingPage, UseHomeLandingPage, UseSettingsPage, UseThemeSettingPage);
+
+                if (isMVVMTemplate)
+                {
+                    configCodes.ConfigMVVM();
+                }
+                else
+                {
+                    configCodes.Config();
+                }
+
+                var configs = configCodes.GetConfigJson();
+                var services = configCodes.GetServices();
+                var settingsCards = configCodes.GetSettingsPageOptions();
+
+                replacementsDictionary.Add("$Configs$", configs);
+                replacementsDictionary.Add("$Services$", services);
+                replacementsDictionary.Add("$SettingsCards$", settingsCards);
             }
             else
             {

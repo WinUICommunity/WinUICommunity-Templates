@@ -6,16 +6,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
-    <ScrollViewer Margin="{ThemeResource ContentPageMargin}"
-                  HorizontalAlignment="Stretch"
-                  VerticalScrollBarVisibility="Auto">
+    <ScrollView Margin="{ThemeResource ContentPageMargin}"
+                HorizontalAlignment="Stretch"
+                VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="10"
                     Spacing="5">
-            <!--  GENERALSETTING  -->
-            <!--  THEMESETTING  -->
-            <!--  APPUPDATESETTING  -->
-            <!--  ABOUTSETTING  -->
+            $SettingsCards$
         </StackPanel>
-    </ScrollViewer>
+    </ScrollView>
 </Page>
 

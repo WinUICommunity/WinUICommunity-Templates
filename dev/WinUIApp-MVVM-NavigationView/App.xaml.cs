@@ -33,12 +33,12 @@ public partial class App : Application
         services.AddSingleton<IJsonNavigationViewService>(factory =>
         {
             var json = new JsonNavigationViewService();
-            //JSONCONFIGMVVM
+            $Configs$
             return json;
         });
 
         services.AddTransient<MainViewModel>();
-        //SERVICE
+        $Services$
 
         return services.BuildServiceProvider();
     }
