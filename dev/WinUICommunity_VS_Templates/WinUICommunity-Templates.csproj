@@ -63,6 +63,10 @@
     <Compile Include="Options\SettingsPageOption.cs" />
     <Compile Include="Options\ThemeSettingOption.cs" />
     <Compile Include="Options\WizardHelper.cs" />
+    <Compile Include="Shell\PreDefinedLibrary.cs" />
+    <Compile Include="WizardUI\LibraryOptionUC.xaml.cs">
+      <DependentUpon>LibraryOptionUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WizardUI\OptionUC.xaml.cs">
       <DependentUpon>OptionUC.xaml</DependentUpon>
     </Compile>
@@ -162,6 +166,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="WizardUI\LibraryOptionUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WizardUI\OptionUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -31,7 +31,7 @@ namespace WinUICommunity_VS_Templates
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
             WizardImplementation = new WizardImplementation();
-            WizardImplementation.RunStarted(automationObject, replacementsDictionary, runKind, customParams);
+            WizardImplementation.RunStarted(automationObject, replacementsDictionary);
         }
 
         public bool ShouldAddProjectItem(string filePath)

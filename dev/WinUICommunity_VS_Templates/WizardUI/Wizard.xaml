@@ -136,6 +136,55 @@
                 <hc:Divider Margin="0,10,0,20"
                             Padding="10,0"
                             HorizontalContentAlignment="Left"
+                            Content="Libraries"
+                            FontSize="24"
+                            LineStroke="{DynamicResource DarkPrimaryBrush}"
+                            LineStrokeThickness="2" />
+
+                <Expander Header="WinUICommunity"
+                          IsExpanded="False">
+                    <StackPanel x:Name="WinUICommunityPanel"
+                                Margin="10,5,10,0" />
+                </Expander>
+
+                <Expander Margin="0,5,0,0"
+                          Header="General"
+                          IsExpanded="False">
+                    <StackPanel x:Name="GeneralPanel"
+                                Margin="10,5,10,0" />
+                </Expander>
+
+                <Expander Margin="0,5,0,0"
+                          Header="EntityFramework Core"
+                          IsExpanded="False">
+                    <StackPanel x:Name="EFCorePanel"
+                                Margin="10,5,10,0" />
+                </Expander>
+
+                <Expander Margin="0,5,0,0"
+                          Header="CommunityToolkit"
+                          IsExpanded="False">
+                    <StackPanel x:Name="CommunityToolkitPanel"
+                                Margin="10,5,10,0" />
+                </Expander>
+
+                <Expander Margin="0,5,0,0"
+                          Header="MVVM"
+                          IsExpanded="False">
+                    <StackPanel x:Name="MVVMPanel"
+                                Margin="10,5,10,0" />
+                </Expander>
+
+                <Expander Margin="0,5,0,0"
+                          Header="Log"
+                          IsExpanded="False">
+                    <StackPanel x:Name="LogPanel"
+                                Margin="10,5,10,0" />
+                </Expander>
+
+                <hc:Divider Margin="0,10,0,20"
+                            Padding="10,0"
+                            HorizontalContentAlignment="Left"
                             Content="Pages"
                             FontSize="24"
                             LineStroke="{DynamicResource DarkPrimaryBrush}"

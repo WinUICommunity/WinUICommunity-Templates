@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 using EnvDTE;
 
@@ -58,7 +60,7 @@ namespace WinUICommunity_VS_Templates
         /// <param name="replacementsDictionary"></param>
         /// <param name="runKind"></param>
         /// <param name="customParams"></param>
-        public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
+        public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, bool isMVVMTemplate = false)
         {
             _dte = automationObject as _DTE;
 
@@ -79,7 +81,31 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$CommunityToolkitMvvmVersion$", "8.2.1");
                 replacementsDictionary.Add("$DependencyInjectionVersion$", "7.0.0");
                 replacementsDictionary.Add("$WinUIManagedVersion$", "2.0.9");
-                
+
+                // Add Extra Libs
+                var libs = inputForm.LibraryDic;
+                StringBuilder outputBuilder = new StringBuilder();
+                foreach (var lib in libs.Values)
+                {
+                    if (isMVVMTemplate && lib.CheckBeforeInsert)
+                    {
+                        continue;
+                    }
+
+                    outputBuilder.AppendLine(lib.Package);
+                }
+
+                string outputText = outputBuilder.ToString();
+
+                if (libs.Count > 0)
+                {
+                    replacementsDictionary.Add("$ExtraLibs$", Environment.NewLine + outputText);
+                }
+                else
+                {
+                    replacementsDictionary.Add("$ExtraLibs$", "");
+                }
+
                 replacementsDictionary.Add("$DotNetVersion$", inputForm.DotNetVersion.ToString());
                 replacementsDictionary.Add("$Platforms$", inputForm.Platforms.ToString());
                 replacementsDictionary.Add("$RuntimeIdentifiers$", inputForm.RuntimeIdentifiers.ToString());
@@ -94,7 +120,7 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$AddAppUpdatePage$", inputForm.AddAppUpdatePage.ToString());
                 replacementsDictionary.Add("$AddAboutPage$", inputForm.AddAboutPage.ToString());
                 replacementsDictionary.Add("$UseAccelerateBuilds$", inputForm.AddAccelerateBuilds.ToString());
-
+                
                 DotNetVersion = inputForm.DotNetVersion;
                 Platforms = inputForm.Platforms;
                 RuntimeIdentifiers = inputForm.RuntimeIdentifiers;

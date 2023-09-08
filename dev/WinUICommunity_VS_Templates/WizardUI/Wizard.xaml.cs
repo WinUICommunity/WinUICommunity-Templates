@@ -1,12 +1,18 @@
-﻿using System.Windows;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
-
 using HandyControl.Controls;
+
+using WinUICommunity_VS_Templates.Shell;
+using WinUICommunity_VS_Templates.WizardUI;
 
 namespace WinUICommunity_VS_Templates
 {
     public partial class Wizard : HandyControl.Controls.Window
     {
+        public Dictionary<string, PackageRefrence> LibraryDic;
+
         public string DotNetVersion;
         public string Platforms;
         public string RuntimeIdentifiers;
@@ -25,6 +31,37 @@ namespace WinUICommunity_VS_Templates
         public Wizard()
         {
             InitializeComponent();
+            LibraryDic = new();
+
+            CreateBoxes(PreDefinedLibrary.InitWinUICommunity(), WinUICommunityPanel);
+            CreateBoxes(PreDefinedLibrary.InitUseful(), GeneralPanel);
+            CreateBoxes(PreDefinedLibrary.InitEFCore(), EFCorePanel);
+            CreateBoxes(PreDefinedLibrary.InitCommunityToolkit(), CommunityToolkitPanel);
+            CreateBoxes(PreDefinedLibrary.InitMVVM(), MVVMPanel);
+            CreateBoxes(PreDefinedLibrary.InitLog(), LogPanel);
+        }
+
+        public void CreateBoxes(List<Library> libraries, Panel panel)
+        {
+            foreach (var lib in libraries)
+            {
+                var option = new LibraryOptionUC
+                {
+                    Title = $"{lib.Name} - {lib.Version}"
+                };
+
+                option.Checked += (s, e) =>
+                {
+                    LibraryDic.Add(lib.Name, new PackageRefrence($"""<PackageReference Include="{lib.Name}" Version="{lib.Version}" />""", lib.CheckBeforeInsert));
+                };
+
+                option.Unchecked += (s, e) =>
+                {
+                    LibraryDic.Remove(lib.Name);
+                };
+
+                panel.Children.Add(option);
+            }
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
