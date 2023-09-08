@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+
 using HandyControl.Controls;
 
 using WinUICommunity_VS_Templates.Shell;
