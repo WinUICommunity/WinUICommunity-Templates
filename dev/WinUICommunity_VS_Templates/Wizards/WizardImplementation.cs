@@ -70,6 +70,16 @@ namespace WinUICommunity_VS_Templates
             {
                 _shouldAddProjectItem = true;
 
+                // Add Base Library Versions
+                replacementsDictionary.Add("$WASDKVersion$", "1.4.230822000");
+                replacementsDictionary.Add("$WASDKBuildToolsVersion$", "10.0.22621.756");
+                replacementsDictionary.Add("$WinUICommunityComponentsVersion$", "5.1.1");
+                replacementsDictionary.Add("$WinUICommunityCoreVersion$", "5.1.1");
+                replacementsDictionary.Add("$WinUICommunityLandingPagesVersion$", "5.1.1");
+                replacementsDictionary.Add("$CommunityToolkitMvvmVersion$", "8.2.1");
+                replacementsDictionary.Add("$DependencyInjectionVersion$", "7.0.0");
+                replacementsDictionary.Add("$WinUIManagedVersion$", "2.0.9");
+                
                 replacementsDictionary.Add("$DotNetVersion$", inputForm.DotNetVersion.ToString());
                 replacementsDictionary.Add("$Platforms$", inputForm.Platforms.ToString());
                 replacementsDictionary.Add("$RuntimeIdentifiers$", inputForm.RuntimeIdentifiers.ToString());

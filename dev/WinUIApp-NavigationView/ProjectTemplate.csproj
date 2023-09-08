@@ -25,12 +25,12 @@
 	</ItemGroup>
   <ItemGroup Label="DynamicLocalization"/>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.230822000" />
-		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
-		<PackageReference Include="WinUICommunity.Components" Version="5.1.1" />
-		<PackageReference Include="WinUICommunity.Core" Version="5.1.1" />
-		<PackageReference Include="WinUICommunity.LandingPages" Version="5.1.1" />
-		<Manifest Include="$(ApplicationManifest)" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="$WASDKVersion$" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />
+    <PackageReference Include="WinUICommunity.Components" Version="$WinUICommunityComponentsVersion$" />
+    <PackageReference Include="WinUICommunity.Core" Version="$WinUICommunityCoreVersion$" />
+    <PackageReference Include="WinUICommunity.LandingPages" Version="$WinUICommunityLandingPagesVersion$" />$ExtraLibs$
+    <Manifest Include="$(ApplicationManifest)" />
 	</ItemGroup>
 
 	<!-- 
