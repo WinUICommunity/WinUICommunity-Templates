@@ -107,7 +107,6 @@ namespace WinUICommunity_VS_Templates.Shell
         {
             List<Library> list = new()
             {
-                new Library("Microsoft.Extensions.Logging","7.0.0"),
                 new Library("Serilog","3.0.1"),
                 new Library("log4net","2.0.15"),
                 new Library("NLog","5.2.4")
@@ -121,10 +120,11 @@ namespace WinUICommunity_VS_Templates.Shell
             {
                 new Library("CommunityToolkit.Mvvm","8.2.1", true),
                 new Library("Microsoft.Xaml.Behaviors.WinUI.Managed","2.0.9", true),
+                new Library("Microsoft.Extensions.Hosting","7.0.1"),
                 new Library("Microsoft.Extensions.DependencyInjection","7.0.0", true),
                 new Library("Microsoft.Extensions.Logging","7.0.0"),
                 new Library("Microsoft.Extensions.Configuration","7.0.0"),
-                new Library("Microsoft.Extensions.Hosting","7.0.1")
+                new Library("Microsoft.Extensions.Logging","7.0.0")
             };
             return list;
         }

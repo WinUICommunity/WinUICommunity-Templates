@@ -52,7 +52,7 @@ namespace WinUICommunity_VS_Templates
 
                 option.Checked += (s, e) =>
                 {
-                    LibraryDic.Add(lib.Name, new PackageRefrence($"""<PackageReference Include="{lib.Name}" Version="{lib.Version}" />""", lib.CheckBeforeInsert));
+                    LibraryDic.Add(lib.Name, new PackageRefrence($"""    <PackageReference Include="{lib.Name}" Version="{lib.Version}" />""", lib.CheckBeforeInsert));
                 };
 
                 option.Unchecked += (s, e) =>
