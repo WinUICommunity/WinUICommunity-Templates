@@ -43,5 +43,23 @@ public sealed partial class MainPage : Page
             element.RequestedTheme = ElementTheme.Light;
         }
     }
+
+    private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+    {
+        var viewModel = NavFrame.GetPageViewModel();
+        if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
+        {
+            titleBarAutoSuggestBoxAware.OnAutoSuggestBoxTextChanged(sender, args);
+        }
+    }
+
+    private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+    {
+        var viewModel = NavFrame.GetPageViewModel();
+        if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
+        {
+            titleBarAutoSuggestBoxAware.OnAutoSuggestBoxQuerySubmitted(sender, args);
+        }
+    }
 }
 

@@ -48,7 +48,7 @@ namespace WinUICommunity_VS_Templates
             {
                 string libVersion = lib.Version;
                 string libVersion2 = lib.Version;
-                if (cmbVersionMechanism.SelectedIndex == 1)
+                if (cmbVersionMechanism.SelectedIndex == 1 && !lib.SkipStarVersion)
                 {
                     libVersion = "*";
                     libVersion2 = "Latest Stable";
@@ -62,7 +62,7 @@ namespace WinUICommunity_VS_Templates
                 option.Checked += (s, e) =>
                 {
                     
-                    LibraryDic.Add(lib.Name, new PackageRefrence($"""    <PackageReference Include="{lib.Name}" Version="{libVersion}" />""", lib.CheckBeforeInsert));
+                    LibraryDic.Add(lib.Name, new PackageRefrence($"""    <PackageReference Include="{lib.Name}" Version="{libVersion}" />""", lib.CheckBeforeInsert, lib.SkipStarVersion));
                 };
 
                 option.Unchecked += (s, e) =>
@@ -178,6 +178,7 @@ namespace WinUICommunity_VS_Templates
                 EFCorePanel.Children.Clear();
                 CommunityToolkitPanel.Children.Clear();
                 MVVMPanel.Children.Clear();
+                LogPanel.Children.Clear();
 
                 CreateBoxes(PreDefinedLibrary.InitWinUICommunity(), WinUICommunityPanel);
                 CreateBoxes(PreDefinedLibrary.InitUseful(), GeneralPanel);

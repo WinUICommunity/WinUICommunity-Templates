@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Media;
 
 namespace $safeprojectname$.ViewModels;
-public partial class MainViewModel : ObservableObject
+public partial class MainViewModel : ObservableObject, ITitleBarAutoSuggestBoxAware
 {
     public IJsonNavigationViewService JsonNavigationViewService;
     public MainViewModel(IJsonNavigationViewService jsonNavigationViewService, IThemeService themeService)
@@ -11,5 +11,15 @@ public partial class MainViewModel : ObservableObject
         themeService.ConfigBackdrop();
         themeService.ConfigElementTheme();
         themeService.ConfigBackdropFallBackColorForWindow10(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);
+    }
+
+    public void OnAutoSuggestBoxTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+    {
+
+    }
+
+    public void OnAutoSuggestBoxQuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+    {
+
     }
 }

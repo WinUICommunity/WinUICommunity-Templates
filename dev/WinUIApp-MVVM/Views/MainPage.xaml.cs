@@ -9,5 +9,23 @@ public sealed partial class MainPage : Page
         this.InitializeComponent();
         appTitleBar.Window = App.currentWindow;
     }
+
+    private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+    {
+        var viewModel = Frame.GetPageViewModel();
+        if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
+        {
+            titleBarAutoSuggestBoxAware.OnAutoSuggestBoxTextChanged(sender, args);
+        }
+    }
+
+    private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+    {
+        var viewModel = Frame.GetPageViewModel();
+        if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
+        {
+            titleBarAutoSuggestBoxAware.OnAutoSuggestBoxQuerySubmitted(sender, args);
+        }
+    }
 }
 
