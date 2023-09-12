@@ -31,13 +31,11 @@ private async Task InitializeLocalizer(params string[] languages)
             var stringsFolder = await StorageFolder.GetFolderFromPathAsync(StringsFolderPath);
         }
 
-
         ILocalizer localizer = await new LocalizerBuilder()
             .AddStringResourcesFolderForLanguageDictionaries(StringsFolderPath)
             .SetOptions(options =>
             {
                 options.DefaultLanguage = "en-US";
-                options.UseUidWhenLocalizedStringNotFound = true;
             })
             .Build();
     }
