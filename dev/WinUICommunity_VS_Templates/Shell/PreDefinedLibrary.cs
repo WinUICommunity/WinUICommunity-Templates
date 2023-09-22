@@ -47,6 +47,7 @@ namespace WinUICommunity_VS_Templates.Shell
                 new Library("CommunityToolkit.WinUI.Animations", "8.0.230907"),
                 new Library("CommunityToolkit.WinUI.Media", "8.0.230907"),
                 new Library("CommunityToolkit.WinUI.Collections", "8.0.230907"),
+                new Library("CommunityToolkit.WinUI.Lottie", "8.0.0-rc"),
                 new Library("CommunityToolkit.WinUI.Controls.Segmented", "8.0.230907"),
                 new Library("CommunityToolkit.WinUI.Controls.Primitives", "8.0.230907"),
                 new Library("CommunityToolkit.WinUI.Controls.Sizers", "8.0.230907"),
@@ -65,16 +66,17 @@ namespace WinUICommunity_VS_Templates.Shell
         {
             List<Library> list = new()
             {
-                new Library("Microsoft.EntityFrameworkCore", "7.0.10"),
-                new Library("Microsoft.EntityFrameworkCore.Sqlite", "7.0.10"),
-                new Library("Microsoft.EntityFrameworkCore.SqlServer", "7.0.10"),
-                new Library("Microsoft.EntityFrameworkCore.Cosmos", "7.0.10"),
-                new Library("Microsoft.EntityFrameworkCore.InMemory", "7.0.10"),
-                new Library("Microsoft.EntityFrameworkCore.Relational", "7.0.10"),
-                new Library("Microsoft.EntityFrameworkCore.Abstractions", "7.0.10"),
-                new Library("Microsoft.EntityFrameworkCore.Analyzers", "7.0.10"),
-                new Library("Microsoft.EntityFrameworkCore.Design", "7.0.10"),
-                new Library("Microsoft.EntityFrameworkCore.Tools", "7.0.10")
+                new Library("Microsoft.EntityFrameworkCore", "7.0.11"),
+                new Library("Microsoft.EntityFrameworkCore.Sqlite", "7.0.11"),
+                new Library("Microsoft.EntityFrameworkCore.SqlServer", "7.0.11"),
+                new Library("Microsoft.EntityFrameworkCore.Cosmos", "7.0.11"),
+                new Library("Microsoft.EntityFrameworkCore.InMemory", "7.0.11"),
+                new Library("Microsoft.EntityFrameworkCore.Relational", "7.0.11"),
+                new Library("Microsoft.EntityFrameworkCore.Abstractions", "7.0.11"),
+                new Library("Microsoft.EntityFrameworkCore.Analyzers", "7.0.11"),
+                new Library("Microsoft.EntityFrameworkCore.Design", "7.0.11"),
+                new Library("Microsoft.EntityFrameworkCore.Proxies", "7.0.11"),
+                new Library("Microsoft.EntityFrameworkCore.Tools", "7.0.11")
             };
             return list;
         }
@@ -84,19 +86,20 @@ namespace WinUICommunity_VS_Templates.Shell
             List<Library> list = new()
             {
                 new Library("Newtonsoft.Json", "13.0.3"),
-                new Library("HtmlAgilityPack", "1.11.52"),
+                new Library("HtmlAgilityPack", "1.11.53"),
                 new Library("Downloader", "3.0.6"),
                 new Library("Microsoft.Win32.Registry", "5.0.0"),
-                new Library("YamlDotNet", "13.3.1"),
+                new Library("YamlDotNet", "13.4.0"),
                 new Library("System.Management", "7.0.2"),
-                new Library("SharpCompress", "0.33.0"),
+                new Library("SharpCompress", "0.34.0"),
                 new Library("RestSharp", "110.2.0"),
                 new Library("Vanara.Windows.Shell", "3.4.16"),
+                new Library("protobuf-net", "3.2.26"),
                 new Library("protobuf-net.Core", "3.2.26"),
                 new Library("Humanizer.Core", "2.14.1"),
                 new Library("Microsoft.AppCenter.Analytics", "5.0.2"),
                 new Library("Microsoft.AppCenter.Crashes", "5.0.2"),
-                new Library("LiveChartsCore.SkiaSharpView.WinUI", "2.0.0-beta.950", false, true),
+                new Library("LiveChartsCore.SkiaSharpView.WinUI", "2.0.0-rc1", false, true),
             };
             return list;
         }
@@ -105,7 +108,7 @@ namespace WinUICommunity_VS_Templates.Shell
         {
             List<Library> list = new()
             {
-                new Library("WinUICommunity.ContextMenuExtensions", "5.1.0")
+                new Library("WinUICommunity.ContextMenuExtensions", "5.2.0")
             };
             return list;
         }

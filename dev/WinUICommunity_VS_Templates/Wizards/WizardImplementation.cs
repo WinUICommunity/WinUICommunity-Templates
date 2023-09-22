@@ -68,11 +68,11 @@ namespace WinUICommunity_VS_Templates
             {
                 _shouldAddProjectItem = true;
 
-                string wasdkVersion = "1.4.230822000";
+                string wasdkVersion = "1.4.230913002";
                 string wasdkBuildToolsVersion = "10.0.22621.756";
-                string winUICommunityComponentsVersion = "5.1.1";
-                string winUICommunityCoreVersion = "5.1.2";
-                string winUICommunityLandingPagesVersion = "5.1.2";
+                string winUICommunityComponentsVersion = "5.2.0";
+                string winUICommunityCoreVersion = "5.2.0";
+                string winUICommunityLandingPagesVersion = "5.2.0";
                 string communityToolkitMvvmVersion = "8.2.1";
                 string dependencyInjectionVersion = "7.0.0";
                 string winUIManagedVersion = "2.0.9";

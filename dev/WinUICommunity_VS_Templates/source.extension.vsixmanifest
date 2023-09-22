@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="WinUICommunity_VS_Templates.8944ffa3-95dc-4d19-8ec7-2b21dad0eaf5" Version="3.6.0" Language="en-US" Publisher="Mahdi Hosseini" />
+        <Identity Id="WinUICommunity_VS_Templates.8944ffa3-95dc-4d19-8ec7-2b21dad0eaf5" Version="4.0.0" Language="en-US" Publisher="Mahdi Hosseini" />
         <DisplayName>WinUICommunity Templates for WinUI</DisplayName>
         <Description xml:space="preserve">WinUICommunity Project Template, help you quickly create a new WinUI 3 App with WinUICommunity and MVVM Packages. We prepare your project with the following features: NavigationView, Custom TitleBar, HomeLandingPage and Settings Page (with Theme settings).
 We also always use the latest version of WindowsAppSDK. 

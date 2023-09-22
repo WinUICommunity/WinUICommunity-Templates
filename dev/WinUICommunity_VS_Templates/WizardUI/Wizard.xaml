@@ -39,7 +39,7 @@
         </Grid.RowDefinitions>
         <StackPanel Margin="10,0,10,10"
                     Orientation="Horizontal">
-            <hc:Shield Status="v1.4.230822000"
+            <hc:Shield Status="v1.4.230913002"
                        Subject="Windows App SDK Version" />
             <hc:Shield Margin="10,0"
                        Status="v10.0.22621.756"
@@ -77,8 +77,7 @@
                                  MinWidth="250"
                                  Margin="10,0"
                                  SelectedIndex="1">
-                        <ComboBoxItem Content="net8.0 (Soon)"
-                                      IsEnabled="False"
+                        <ComboBoxItem Content="net8.0 - RC1"
                                       Tag="net8.0" />
                         <ComboBoxItem Content="net7.0 (Recommended)"
                                       Tag="net7.0" />
