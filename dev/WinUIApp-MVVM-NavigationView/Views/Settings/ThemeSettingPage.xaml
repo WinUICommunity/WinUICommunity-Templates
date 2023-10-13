@@ -10,7 +10,7 @@
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
     <ScrollView Margin="{ThemeResource ContentPageMargin}"
-                  VerticalScrollBarVisibility="Auto">
+                VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="10"
                     ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
                     Spacing="5">

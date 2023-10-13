@@ -49,6 +49,10 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
+            else if (!WizardImplementation.UseDebugLogger && !WizardImplementation.UseFileLogger && filePath.Contains("LoggerSetup"))
+            {
+                return false;
+            }
             else
             {
                 return true;

@@ -7,9 +7,10 @@
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
     <ScrollView Margin="{ThemeResource ContentPageMargin}"
-                  HorizontalAlignment="Stretch"
-                  VerticalScrollBarVisibility="Auto">
+                HorizontalAlignment="Stretch"
+                VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="10"
+                    ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
                     Spacing="5">
             $SettingsCards$
         </StackPanel>

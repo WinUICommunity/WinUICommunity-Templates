@@ -66,6 +66,7 @@ namespace WinUICommunity_VS_Templates
                 filePath.Contains("info.png") ||
                 filePath.Contains("settings.png") ||
                 filePath.Contains("theme.png") ||
+                filePath.Contains("devMode.png") ||
                 filePath.Contains("update.png")))
             {
                 return false;
@@ -113,6 +114,14 @@ namespace WinUICommunity_VS_Templates
             }
             else if (!WizardImplementation.UseDynamicLocalization &&
                 filePath.Contains("Resources"))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.UseDeveloperModeSetting && filePath.Contains("devMode.png"))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.UseDebugLogger && !WizardImplementation.UseFileLogger && filePath.Contains("LoggerSetup"))
             {
                 return false;
             }
