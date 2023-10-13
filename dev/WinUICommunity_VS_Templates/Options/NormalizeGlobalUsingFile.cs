@@ -4,16 +4,24 @@ namespace WinUICommunity_VS_Templates.Options
 {
     public class NormalizeGlobalUsingFile
     {
-        public NormalizeGlobalUsingFile(bool useJsonSettings, string templatePath)
+        public NormalizeGlobalUsingFile(bool useJsonSettings, bool fileLogger, bool debugLogger, string templatePath)
         {
+            string globalUsingFileContent = WizardHelper.ReadGlobalUsingFileContent(templatePath);
+            string patternAppHelper = @"global using static .*?Common\.AppHelper;";
+            string patternLoggerSetup = @"global using static .*?Common\.LoggerSetup;";
+
             if (!useJsonSettings)
             {
-                string globalUsingFileContent = WizardHelper.ReadGlobalUsingFileContent(templatePath);
-                string pattern = @"global using static .*?Common\.AppHelper;";
-                string modifiedText = Regex.Replace(globalUsingFileContent, pattern, "");
-                WizardHelper.SaveGlobalUsingFileContent(templatePath, modifiedText);
-                WizardHelper.FormatDocument(WizardHelper.GetGlobalUsingFilePath(templatePath));
+                globalUsingFileContent = Regex.Replace(globalUsingFileContent, patternAppHelper, "");
             }
+
+            if (!fileLogger && !debugLogger)
+            {
+                globalUsingFileContent = Regex.Replace(globalUsingFileContent, patternLoggerSetup, "");
+            }
+
+            WizardHelper.FormatDocument(WizardHelper.GetGlobalUsingFilePath(templatePath));
+            WizardHelper.SaveGlobalUsingFileContent(templatePath, globalUsingFileContent);
         }
     }
 }

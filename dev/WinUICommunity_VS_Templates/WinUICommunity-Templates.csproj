@@ -52,11 +52,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Options\AppCenterOption.cs" />
     <Compile Include="Options\AppUpdateOption.cs" />
     <Compile Include="Options\NormalizeCSProjFile.cs" />
     <Compile Include="Options\NormalizeGlobalUsingFile.cs" />
     <Compile Include="Options\DynamicLocalizationOption.cs" />
     <Compile Include="Options\NormalizeAppFile.cs" />
+    <Compile Include="Options\SerilogOption.cs" />
     <Compile Include="Options\WizardHelper.cs" />
     <Compile Include="Shell\ConfigCodes.cs" />
     <Compile Include="Shell\PreDefinedLibrary.cs" />

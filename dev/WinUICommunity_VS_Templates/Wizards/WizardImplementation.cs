@@ -35,7 +35,9 @@ namespace WinUICommunity_VS_Templates
         public bool UseAppUpdatePage;
         public bool UseAboutPage;
         public bool UseAccelerateBuilds;
-        
+        public bool UseFileLogger;
+        public bool UseDebugLogger;
+        public bool UseAppCenter;
         public void RunFinished(bool isMVVMTemplate)
         {
             _solution = (Solution2)_dte.Solution;
@@ -45,7 +47,7 @@ namespace WinUICommunity_VS_Templates
             new DynamicLocalizationOption(UseDynamicLocalization, templatePath);
             new AppUpdateOption(UseSettingsPage, UseAppUpdatePage, UseJsonSettings, isMVVMTemplate, templatePath);
             new NormalizeAppFile(templatePath);
-            new NormalizeGlobalUsingFile(UseJsonSettings, templatePath);
+            new NormalizeGlobalUsingFile(UseJsonSettings, UseFileLogger, UseDebugLogger, templatePath);
             new NormalizeCSProjFile(project, UseDynamicLocalization);
         }
 
@@ -68,11 +70,11 @@ namespace WinUICommunity_VS_Templates
             {
                 _shouldAddProjectItem = true;
 
-                string wasdkVersion = "1.4.230913002";
+                string wasdkVersion = "1.4.231008000";
                 string wasdkBuildToolsVersion = "10.0.22621.756";
-                string winUICommunityComponentsVersion = "5.2.0";
-                string winUICommunityCoreVersion = "5.2.0";
-                string winUICommunityLandingPagesVersion = "5.2.0";
+                string winUICommunityComponentsVersion = "5.3.0";
+                string winUICommunityCoreVersion = "5.3.1";
+                string winUICommunityLandingPagesVersion = "5.3.0";
                 string communityToolkitMvvmVersion = "8.2.1";
                 string dependencyInjectionVersion = "7.0.0";
                 string winUIManagedVersion = "2.0.9";
@@ -109,9 +111,28 @@ namespace WinUICommunity_VS_Templates
                         continue;
                     }
 
-                    outputBuilder.AppendLine(lib.Package);
+                    if (lib.Package.Contains("Microsoft.AppCenter"))
+                    {
+                        lib.Package = lib.Package.Replace("Microsoft.AppCenter", "Microsoft.AppCenter.Crashes");
+                        outputBuilder.AppendLine(lib.Package);
+
+                        lib.Package = lib.Package.Replace("Microsoft.AppCenter.Crashes", "Microsoft.AppCenter.Analytics");
+                        outputBuilder.AppendLine(lib.Package);
+                        UseAppCenter = true;
+                    }
+                    else
+                    {
+                        outputBuilder.AppendLine(lib.Package);
+                    }
                 }
 
+                new AppCenterOption().ConfigAppCenter(UseAppCenter, replacementsDictionary);
+
+                var serilog = new SerilogOption();
+                serilog.ConfigSerilog(replacementsDictionary, libs);
+                UseFileLogger = serilog.UseFileLogger;
+                UseDebugLogger = serilog.UseDebugLogger;
+                
                 string outputText = outputBuilder.ToString();
 
                 if (libs.Count > 0)
@@ -187,6 +208,15 @@ namespace WinUICommunity_VS_Templates
                 }
 
                 replacementsDictionary.Add("$SettingsCards$", settingsCards);
+
+                if (UseJsonSettings)
+                {
+                    replacementsDictionary.Add("$AppConfigFilePath$", Environment.NewLine + """public static readonly string AppConfigPath = Path.Combine(RootDirectoryPath, "AppConfig.json");""");
+                }
+                else
+                {
+                    replacementsDictionary.Add("$AppConfigFilePath$", "");
+                }
             }
             else
             {
