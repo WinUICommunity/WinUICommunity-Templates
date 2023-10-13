@@ -5,7 +5,7 @@ public partial class App : Application
     public static Window currentWindow = Window.Current;
     public IServiceProvider Services { get; }
     public new static App Current => (App)Application.Current;
-    public string AppVersion { get; set; } = VersionHelper.GetVersion();
+    public string AppVersion { get; set; } = ApplicationHelper.GetAppVersion();
     public string AppName { get; set; } = "$safeprojectname$";
     private static string StringsFolderPath { get; set; } = string.Empty;
     public static T GetService<T>() where T : class
@@ -49,9 +49,9 @@ public partial class App : Application
         rootFrame.Navigate(typeof(MainPage));
 
         currentWindow.Title = currentWindow.AppWindow.Title = $"{AppName} v{AppVersion}";
-        currentWindow.AppWindow.SetIcon("Assets/icon.ico");
+        currentWindow.AppWindow.SetIcon("Assets/icon.ico");$AppCenter$$ConfigLogger$
 
-        currentWindow.Activate(); await InitializeLocalizer("en-US");
+        currentWindow.Activate(); await InitializeLocalizer("en-US");$UnhandeledException$
     }private void InitializeLocalizer { };
 }
 

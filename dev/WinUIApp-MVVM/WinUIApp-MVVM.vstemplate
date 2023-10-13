@@ -66,6 +66,8 @@
 	  <Folder Name="Common" TargetFolderName="Common">
 		<ProjectItem ReplaceParameters="true" TargetFileName="AppConfig.cs">AppConfig.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="AppHelper.cs">AppHelper.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="Constants.cs">Constants.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="LoggerSetup.cs">LoggerSetup.cs</ProjectItem>
 	  </Folder>
 	  <Folder Name="Strings\en-US" TargetFolderName="Strings\en-US">
 		<ProjectItem ReplaceParameters="true" TargetFileName="Resources.resw">Resources.resw</ProjectItem>

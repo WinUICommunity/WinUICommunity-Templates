@@ -132,7 +132,7 @@ namespace WinUICommunity_VS_Templates
                 new AppCenterOption().ConfigAppCenter(UseAppCenter, replacementsDictionary);
 
                 var serilog = new SerilogOption();
-                serilog.ConfigSerilog(replacementsDictionary, libs);
+                serilog.ConfigSerilog(replacementsDictionary, libs, UseJsonSettings, UseDeveloperModeSetting);
                 UseFileLogger = serilog.UseFileLogger;
                 UseDebugLogger = serilog.UseDebugLogger;
                 

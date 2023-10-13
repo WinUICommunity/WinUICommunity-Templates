@@ -12,4 +12,3 @@ public class AppConfig : JsonSettings, IVersionable
 
     // Docs: https://github.com/Nucs/JsonSettings
 }
-

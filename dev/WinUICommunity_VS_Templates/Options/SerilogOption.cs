@@ -8,7 +8,7 @@ namespace WinUICommunity_VS_Templates.Options
     {
         public bool UseFileLogger { get; set; } = false;
         public bool UseDebugLogger { get; set; } = false;
-        public void ConfigSerilog(Dictionary<string, string> replacementsDictionary, Dictionary<string, PackageRefrence> libs)
+        public void ConfigSerilog(Dictionary<string, string> replacementsDictionary, Dictionary<string, PackageRefrence> libs, bool useJsonSetting, bool useDeveloperMode)
         {
             if (libs.ContainsKey("Serilog.Sinks.File"))
             {
@@ -35,8 +35,20 @@ namespace WinUICommunity_VS_Templates.Options
             if (libs.ContainsKey("Serilog.Sinks.Debug") || libs.ContainsKey("Serilog.Sinks.File"))
             {
                 replacementsDictionary.Add("$SerilogDirectoryPath$", Environment.NewLine + """public static readonly string LogDirectoryPath = Path.Combine(RootDirectoryPath, "Log");""");
-                replacementsDictionary.Add("$ConfigLogger$", Environment.NewLine + Environment.NewLine + "ConfigureLogger();");
                 replacementsDictionary.Add("$UnhandeledException$", Environment.NewLine + Environment.NewLine + """UnhandledException += (s, e) => Logger?.Error(e.Exception, "UnhandledException");""");
+                if (useJsonSetting && useDeveloperMode)
+                {
+                    replacementsDictionary.Add("$ConfigLogger$", Environment.NewLine + Environment.NewLine + """
+                        if (Settings.UseDeveloperMode)
+                        {
+                            ConfigureLogger();
+                        }
+                        """);
+                }
+                else
+                {
+                    replacementsDictionary.Add("$ConfigLogger$", Environment.NewLine + Environment.NewLine + "ConfigureLogger();");
+                }
             }
             else
             {
