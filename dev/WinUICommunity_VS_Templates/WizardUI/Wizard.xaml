@@ -39,7 +39,7 @@
         </Grid.RowDefinitions>
         <StackPanel Margin="10,0,10,10"
                     Orientation="Horizontal">
-            <hc:Shield Status="v1.4.230913002"
+            <hc:Shield Status="v1.4.231008000"
                        Subject="Windows App SDK Version" />
             <hc:Shield Margin="10,0"
                        Status="v10.0.22621.756"
