@@ -223,7 +223,7 @@
                                 IsEnabled="{Binding ElementName=tgSettingsPage, Path=IsOn}" />
                 <local:OptionUC x:Name="tgDeveloperMode"
                                 Title="A.1: Add Developer Mode Setting Option"
-                                Margin="20,0,0,0"
+                                Margin="40,0,0,0"
                                 InfoBarMessage="If you have selected the Serilog from the libraries section, this setting will be created"
                                 InfoBarTitle="Will create a developer mode setting in General page"
                                 IsEnabled="{Binding ElementName=tgGeneralSettingPage, Path=IsOn}" />

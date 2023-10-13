@@ -131,11 +131,6 @@ namespace WinUICommunity_VS_Templates
 
                 new AppCenterOption().ConfigAppCenter(UseAppCenter, replacementsDictionary);
 
-                var serilog = new SerilogOption();
-                serilog.ConfigSerilog(replacementsDictionary, libs, UseJsonSettings, UseDeveloperModeSetting);
-                UseFileLogger = serilog.UseFileLogger;
-                UseDebugLogger = serilog.UseDebugLogger;
-                
                 string outputText = outputBuilder.ToString();
 
                 if (libs.Count > 0)
@@ -178,6 +173,11 @@ namespace WinUICommunity_VS_Templates
                 UseAccelerateBuilds = inputForm.AddAccelerateBuilds;
                 UseDeveloperModeSetting = inputForm.AddDeveloperModeSetting;
 
+                var serilog = new SerilogOption();
+                serilog.ConfigSerilog(replacementsDictionary, libs, UseJsonSettings, UseDeveloperModeSetting);
+                UseFileLogger = serilog.UseFileLogger;
+                UseDebugLogger = serilog.UseDebugLogger;
+
                 var configCodes = new ConfigCodes(UseAboutPage, UseAppUpdatePage, UseGeneralSettingPage, UseHomeLandingPage, UseSettingsPage, UseThemeSettingPage, UseDeveloperModeSetting, UseJsonSettings);
 
                 if (isMVVMTemplate)
@@ -215,15 +215,23 @@ namespace WinUICommunity_VS_Templates
                 }
 
                 replacementsDictionary.Add("$SettingsCards$", settingsCards);
-                replacementsDictionary.Add("$GeneralSettingsCards$", generalSettingsCards);
-
-                if (UseJsonSettings && UseDeveloperModeSetting && UseSettingsPage)
+                
+                if (libs.ContainsKey("Serilog.Sinks.Debug") || libs.ContainsKey("Serilog.Sinks.File"))
                 {
-                    replacementsDictionary.Add("$DeveloperModeConfig$", Environment.NewLine + "public virtual bool UseDeveloperMode { get; set; }");
+                    replacementsDictionary.Add("$GeneralSettingsCards$", generalSettingsCards);
+                    
+                    if (UseJsonSettings && UseDeveloperModeSetting && UseSettingsPage && UseGeneralSettingPage)
+                    {
+                        replacementsDictionary.Add("$DeveloperModeConfig$", Environment.NewLine + "public virtual bool UseDeveloperMode { get; set; }");
+                    }
+                    else
+                    {
+                        replacementsDictionary.Add("$DeveloperModeConfig$", "");
+                    }
                 }
                 else
                 {
-                    replacementsDictionary.Add("$DeveloperModeConfig$", "");
+                    replacementsDictionary.Add("$GeneralSettingsCards$", "");
                 }
 
                 if (UseJsonSettings)

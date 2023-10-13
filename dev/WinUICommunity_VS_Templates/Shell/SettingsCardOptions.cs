@@ -117,19 +117,19 @@
 
         public static readonly string DeveloperModeSettingCode =
 """
-<wuc:SettingsCard Description="By activating this option, if an error or crash occurs, its information will be saved in a file called Log{YYYYMMDD}.txt"
+            <wuc:SettingsCard Description="By activating this option, if an error or crash occurs, its information will be saved in a file called Log{YYYYMMDD}.txt"
                               Header="Developer Mode (Restart Required)"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/devMode.png}">
-    <ToggleSwitch />
-</wuc:SettingsCard>
+                <ToggleSwitch />
+            </wuc:SettingsCard>
 """;
         public static readonly string DeveloperModeSettingCode2 =
 """
-<wuc:SettingsCard Description="By activating this option, if an error or crash occurs, its information will be saved in a file called Log{YYYYMMDD}.txt"
+            <wuc:SettingsCard Description="By activating this option, if an error or crash occurs, its information will be saved in a file called Log{YYYYMMDD}.txt"
                               Header="Developer Mode (Restart Required)"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/devMode.png}">
-    <ToggleSwitch IsOn="{x:Bind local:AppHelper.Settings.UseDeveloperMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-</wuc:SettingsCard>
+                <ToggleSwitch IsOn="{x:Bind local:AppHelper.Settings.UseDeveloperMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </wuc:SettingsCard>
 """;
     }
 }
