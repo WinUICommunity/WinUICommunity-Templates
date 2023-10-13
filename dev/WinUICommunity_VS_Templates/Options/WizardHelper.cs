@@ -51,6 +51,11 @@ namespace WinUICommunity_VS_Templates.Options
             return Path.Combine(templatePath, "GlobalUsings.cs");
         }
 
+        public static string GetGeneralSettingFilePath(string templatePath)
+        {
+            return Path.Combine(templatePath, "Views", "Settings", "GeneralSettingPage.xaml");
+        }
+
         public static string ReadAppConfigContent(string templatePath)
         {
             var filePath = GetAppConfigPath(templatePath);
@@ -121,6 +126,18 @@ namespace WinUICommunity_VS_Templates.Options
         {
             var filePath = GetGlobalUsingFilePath(templatePath);
             File.WriteAllText(filePath, globalUsingFileContent);
+        }
+
+        public static string ReadGeneralSettingFileContent(string templatePath)
+        {
+            var filePath = GetGeneralSettingFilePath(templatePath);
+            return File.ReadAllText(filePath);
+        }
+
+        public static void SaveGeneralSettingFileContent(string templatePath, string generalSettingFileContent)
+        {
+            var filePath = GetGeneralSettingFilePath(templatePath);
+            File.WriteAllText(filePath, generalSettingFileContent);
         }
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="Options\AppCenterOption.cs" />
     <Compile Include="Options\AppUpdateOption.cs" />
     <Compile Include="Options\NormalizeCSProjFile.cs" />
+    <Compile Include="Options\NormalizeGeneralSettingFile.cs" />
     <Compile Include="Options\NormalizeGlobalUsingFile.cs" />
     <Compile Include="Options\DynamicLocalizationOption.cs" />
     <Compile Include="Options\NormalizeAppFile.cs" />

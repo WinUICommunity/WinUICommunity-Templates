@@ -10,6 +10,7 @@
                 HorizontalAlignment="Stretch"
                 VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="10"
+                    ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
                     Spacing="5">
             $SettingsCards$
         </StackPanel>

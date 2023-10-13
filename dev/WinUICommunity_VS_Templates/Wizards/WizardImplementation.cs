@@ -38,6 +38,8 @@ namespace WinUICommunity_VS_Templates
         public bool UseFileLogger;
         public bool UseDebugLogger;
         public bool UseAppCenter;
+        public bool UseDeveloperModeSetting;
+
         public void RunFinished(bool isMVVMTemplate)
         {
             _solution = (Solution2)_dte.Solution;
@@ -48,6 +50,7 @@ namespace WinUICommunity_VS_Templates
             new AppUpdateOption(UseSettingsPage, UseAppUpdatePage, UseJsonSettings, isMVVMTemplate, templatePath);
             new NormalizeAppFile(templatePath);
             new NormalizeGlobalUsingFile(UseJsonSettings, UseFileLogger, UseDebugLogger, templatePath);
+            new NormalizeGeneralSettingFile(UseJsonSettings, UseSettingsPage, UseDeveloperModeSetting, UseGeneralSettingPage, templatePath);
             new NormalizeCSProjFile(project, UseDynamicLocalization);
         }
 
@@ -173,21 +176,25 @@ namespace WinUICommunity_VS_Templates
                 UseAppUpdatePage = inputForm.AddAppUpdatePage;
                 UseAboutPage = inputForm.AddAboutPage;
                 UseAccelerateBuilds = inputForm.AddAccelerateBuilds;
+                UseDeveloperModeSetting = inputForm.AddDeveloperModeSetting;
 
-                var configCodes = new ConfigCodes(UseAboutPage, UseAppUpdatePage, UseGeneralSettingPage, UseHomeLandingPage, UseSettingsPage, UseThemeSettingPage);
+                var configCodes = new ConfigCodes(UseAboutPage, UseAppUpdatePage, UseGeneralSettingPage, UseHomeLandingPage, UseSettingsPage, UseThemeSettingPage, UseDeveloperModeSetting, UseJsonSettings);
 
                 if (isMVVMTemplate)
                 {
-                    configCodes.ConfigMVVM();
+                    configCodes.ConfigAllMVVM();
                 }
                 else
                 {
-                    configCodes.Config();
+                    configCodes.ConfigAll();
                 }
+                
+                configCodes.ConfigGeneral();
 
                 var configs = configCodes.GetConfigJson();
                 var services = configCodes.GetServices();
                 var settingsCards = configCodes.GetSettingsPageOptions();
+                var generalSettingsCards = configCodes.GetGeneralSettingsPageOptions();
 
                 if (configCodes.ConfigJsonDic.Count > 0)
                 {
@@ -208,6 +215,16 @@ namespace WinUICommunity_VS_Templates
                 }
 
                 replacementsDictionary.Add("$SettingsCards$", settingsCards);
+                replacementsDictionary.Add("$GeneralSettingsCards$", generalSettingsCards);
+
+                if (UseJsonSettings && UseDeveloperModeSetting && UseSettingsPage)
+                {
+                    replacementsDictionary.Add("$DeveloperModeConfig$", Environment.NewLine + "public virtual bool UseDeveloperMode { get; set; }");
+                }
+                else
+                {
+                    replacementsDictionary.Add("$DeveloperModeConfig$", "");
+                }
 
                 if (UseJsonSettings)
                 {

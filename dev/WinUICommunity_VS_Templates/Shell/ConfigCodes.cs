@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace WinUICommunity_VS_Templates.Shell
@@ -8,6 +9,7 @@ namespace WinUICommunity_VS_Templates.Shell
         public Dictionary<string, string> ConfigJsonDic = new();
         public Dictionary<string, string> ServiceDic = new();
         public Dictionary<string, string> SettingsPageOptionsDic = new();
+        public Dictionary<string, string> GeneralSettingsPageOptionsDic = new();
 
         bool UseAboutPage;
         bool UseAppUpdatePage;
@@ -15,8 +17,9 @@ namespace WinUICommunity_VS_Templates.Shell
         bool UseHomeLandingPage;
         bool UseSettingsPage;
         bool UseThemeSettingPage;
-
-        public ConfigCodes(bool UseAboutPage, bool UseAppUpdatePage, bool UseGeneralSettingPage, bool UseHomeLandingPage, bool UseSettingsPage, bool UseThemeSettingPage)
+        bool UseDeveloperModeSetting;
+        bool UseJsonSetting;
+        public ConfigCodes(bool UseAboutPage, bool UseAppUpdatePage, bool UseGeneralSettingPage, bool UseHomeLandingPage, bool UseSettingsPage, bool UseThemeSettingPage, bool UseDeveloperModeSetting, bool UseJsonSetting)
         {
             this.UseAboutPage = UseAboutPage;
             this.UseAppUpdatePage = UseAppUpdatePage;
@@ -24,6 +27,8 @@ namespace WinUICommunity_VS_Templates.Shell
             this.UseHomeLandingPage = UseHomeLandingPage;
             this.UseSettingsPage = UseSettingsPage;
             this.UseThemeSettingPage = UseThemeSettingPage;
+            this.UseDeveloperModeSetting = UseDeveloperModeSetting;
+            this.UseJsonSetting = UseJsonSetting;
         }
 
         public string GetConfigJson()
@@ -68,7 +73,32 @@ namespace WinUICommunity_VS_Templates.Shell
             return outputBuilder.ToString();
         }
 
-        public void ConfigMVVM()
+        public string GetGeneralSettingsPageOptions()
+        {
+            if (GeneralSettingsPageOptionsDic.Count == 0)
+            {
+                return "";
+            }
+
+            StringBuilder outputBuilder = new StringBuilder();
+            int index = 0;
+            foreach (var item in GeneralSettingsPageOptionsDic.Values)
+            {
+                if (index == 0)
+                {
+                    outputBuilder.AppendLine(item);
+                }
+                else
+                {
+                    outputBuilder.AppendLine($"            {item}");
+                }
+                index++;
+            }
+
+            return outputBuilder.ToString();
+        }
+
+        public void ConfigAllMVVM()
         {
             if (UseGeneralSettingPage)
             {
@@ -115,7 +145,7 @@ namespace WinUICommunity_VS_Templates.Shell
             }
         }
 
-        public void Config()
+        public void ConfigAll()
         {
             if (UseGeneralSettingPage)
             {
@@ -150,6 +180,18 @@ namespace WinUICommunity_VS_Templates.Shell
             if (SettingsPageOptionsDic.Count == 0)
             {
                 SettingsPageOptionsDic.Add("comment", SettingsCardOptions.SettingsCardCommentCode);
+            }
+        }
+
+        public void ConfigGeneral()
+        {
+            if (UseSettingsPage && UseGeneralSettingPage && UseDeveloperModeSetting && !UseJsonSetting)
+            {
+                GeneralSettingsPageOptionsDic.Add(nameof(UseDeveloperModeSetting), Environment.NewLine + SettingsCardOptions.DeveloperModeSettingCode);
+            }
+            else if (UseSettingsPage && UseGeneralSettingPage && UseDeveloperModeSetting && UseJsonSetting)
+            {
+                GeneralSettingsPageOptionsDic.Add(nameof(UseDeveloperModeSetting), Environment.NewLine + SettingsCardOptions.DeveloperModeSettingCode2);
             }
         }
     }

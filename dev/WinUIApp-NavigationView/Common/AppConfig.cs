@@ -12,7 +12,7 @@ public class AppConfig : JsonSettings, IVersionable
     private static readonly string RootPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AppName);
     private static readonly string AppConfigPath = Path.Combine(RootPath, "AppConfig.json");
 
-    public override string FileName { get; set; } = AppConfigPath;
+    public override string FileName { get; set; } = AppConfigPath;$DeveloperModeConfig$
 
     // Docs: https://github.com/Nucs/JsonSettings
 }

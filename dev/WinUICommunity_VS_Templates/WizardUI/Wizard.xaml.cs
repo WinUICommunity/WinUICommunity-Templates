@@ -28,6 +28,7 @@ namespace WinUICommunity_VS_Templates
         public bool AddAboutPage;
         public bool AddAccelerateBuilds;
         public bool UseAlwaysLatestVersion;
+        public bool AddDeveloperModeSetting;
 
         public Wizard()
         {
@@ -90,7 +91,7 @@ namespace WinUICommunity_VS_Templates
             AddAppUpdatePage = tgAppUpdate.IsOn;
             AddAboutPage = tgAboutSetting.IsOn;
             AddAccelerateBuilds = tgAccelerateBuilds.IsOn;
-
+            AddDeveloperModeSetting = tgDeveloperMode.IsOn;
             Platforms = GetPlatforms();
             RuntimeIdentifiers = GetRuntimeIdentifiers(Platforms);
 

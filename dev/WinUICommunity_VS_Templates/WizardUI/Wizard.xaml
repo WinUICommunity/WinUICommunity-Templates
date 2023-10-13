@@ -221,6 +221,12 @@
                                 InfoBarMessage="A general settings page is a central hub where users can configure various aspects of the application that aren't specific to particular features or functions. It often includes options related to user preferences, notifications, privacy settings, and more. you can later populate it with options and controls that allow users to personalize their interaction with your application."
                                 InfoBarTitle="Will create an empty general settings page within your application."
                                 IsEnabled="{Binding ElementName=tgSettingsPage, Path=IsOn}" />
+                <local:OptionUC x:Name="tgDeveloperMode"
+                                Title="A.1: Add Developer Mode Setting Option"
+                                Margin="20,0,0,0"
+                                InfoBarMessage="If you have selected the Serilog from the libraries section, this setting will be created"
+                                InfoBarTitle="Will create a developer mode setting in General page"
+                                IsEnabled="{Binding ElementName=tgGeneralSettingPage, Path=IsOn}" />
                 <local:OptionUC x:Name="tgThemeSetting"
                                 Title="B: Add Theme Setting Page"
                                 Margin="20,0,0,0"
