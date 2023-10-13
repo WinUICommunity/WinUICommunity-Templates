@@ -29,7 +29,10 @@ namespace WinUICommunity_VS_Templates
         public bool AddAccelerateBuilds;
         public bool UseAlwaysLatestVersion;
         public bool AddDeveloperModeSetting;
-
+        public bool AddColorsDic;
+        public bool AddStylesDic;
+        public bool AddConvertersDic;
+        public bool AddFontsDic;
         public Wizard()
         {
             InitializeComponent();
@@ -92,6 +95,10 @@ namespace WinUICommunity_VS_Templates
             AddAboutPage = tgAboutSetting.IsOn;
             AddAccelerateBuilds = tgAccelerateBuilds.IsOn;
             AddDeveloperModeSetting = tgDeveloperMode.IsOn;
+            AddColorsDic = tgDicColor.IsOn;
+            AddStylesDic = tgDicStyle.IsOn;
+            AddConvertersDic = tgDicConverter.IsOn;
+            AddFontsDic = tgDicFont.IsOn;
             Platforms = GetPlatforms();
             RuntimeIdentifiers = GetRuntimeIdentifiers(Platforms);
 

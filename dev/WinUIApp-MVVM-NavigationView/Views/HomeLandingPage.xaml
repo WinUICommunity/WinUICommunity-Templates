@@ -8,18 +8,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Light">
-                    <x:String x:Key="HeaderCover">/Assets/Cover/CoverLight.png</x:String>
-                </ResourceDictionary>
-                <ResourceDictionary x:Key="Dark">
-                    <x:String x:Key="HeaderCover">/Assets/Cover/CoverDark.png</x:String>
-                </ResourceDictionary>
-            </ResourceDictionary.ThemeDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>
     <wuc:AllLandingPage x:Name="allLandingPage"
                         HeaderImage="{ThemeResource HeaderCover}"
                         HeaderOverlayImage="{ThemeResource HeaderCover}"

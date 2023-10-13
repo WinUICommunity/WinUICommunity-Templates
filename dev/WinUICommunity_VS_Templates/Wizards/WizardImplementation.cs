@@ -39,7 +39,10 @@ namespace WinUICommunity_VS_Templates
         public bool UseDebugLogger;
         public bool UseAppCenter;
         public bool UseDeveloperModeSetting;
-
+        public bool UseColorsDic;
+        public bool UseStylesDic;
+        public bool UseConvertersDic;
+        public bool UseFontsDic;
         public void RunFinished(bool isMVVMTemplate)
         {
             _solution = (Solution2)_dte.Solution;
@@ -61,7 +64,7 @@ namespace WinUICommunity_VS_Templates
         /// <param name="replacementsDictionary"></param>
         /// <param name="runKind"></param>
         /// <param name="customParams"></param>
-        public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, bool isMVVMTemplate = false)
+        public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, bool isMVVMTemplate = false, bool hasNavigationView = false)
         {
             _dte = automationObject as _DTE;
 
@@ -172,7 +175,12 @@ namespace WinUICommunity_VS_Templates
                 UseAboutPage = inputForm.AddAboutPage;
                 UseAccelerateBuilds = inputForm.AddAccelerateBuilds;
                 UseDeveloperModeSetting = inputForm.AddDeveloperModeSetting;
+                UseColorsDic = inputForm.AddColorsDic;
+                UseStylesDic = inputForm.AddStylesDic;
+                UseConvertersDic = inputForm.AddConvertersDic;
+                UseFontsDic = inputForm.AddFontsDic;
 
+                new DictionaryOption().ConfigDictionary(replacementsDictionary, hasNavigationView, UseHomeLandingPage, UseColorsDic, UseStylesDic, UseConvertersDic, UseFontsDic);
                 var serilog = new SerilogOption();
                 serilog.ConfigSerilog(replacementsDictionary, libs, UseJsonSettings, UseDeveloperModeSetting);
                 UseFileLogger = serilog.UseFileLogger;

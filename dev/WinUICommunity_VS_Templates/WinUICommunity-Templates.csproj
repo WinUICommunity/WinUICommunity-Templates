@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Options\AppCenterOption.cs" />
     <Compile Include="Options\AppUpdateOption.cs" />
+    <Compile Include="Options\DictionaryOption.cs" />
     <Compile Include="Options\NormalizeCSProjFile.cs" />
     <Compile Include="Options\NormalizeGeneralSettingFile.cs" />
     <Compile Include="Options\NormalizeGlobalUsingFile.cs" />

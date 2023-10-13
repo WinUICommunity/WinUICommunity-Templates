@@ -53,6 +53,22 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
+            else if (!WizardImplementation.UseColorsDic && filePath.Contains("Colors.xaml"))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.UseStylesDic && filePath.Contains("Styles.xaml"))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.UseConvertersDic && filePath.Contains("Converters.xaml"))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.UseFontsDic && filePath.Contains("Fonts.xaml"))
+            {
+                return false;
+            }
             else
             {
                 return true;

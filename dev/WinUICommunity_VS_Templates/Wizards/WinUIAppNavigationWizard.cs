@@ -31,7 +31,7 @@ namespace WinUICommunity_VS_Templates
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
             WizardImplementation = new WizardImplementation();
-            WizardImplementation.RunStarted(automationObject, replacementsDictionary);
+            WizardImplementation.RunStarted(automationObject, replacementsDictionary, false, true);
         }
 
         public bool ShouldAddProjectItem(string filePath)
@@ -111,6 +111,18 @@ namespace WinUICommunity_VS_Templates
                 return false;
             }
             else if (!WizardImplementation.UseDebugLogger && !WizardImplementation.UseFileLogger && filePath.Contains("LoggerSetup"))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.UseHomeLandingPage && filePath.Contains("Colors.xaml"))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.UseConvertersDic && filePath.Contains("Converters.xaml"))
+            {
+                return false;
+            }
+            else if (!WizardImplementation.UseFontsDic && filePath.Contains("Fonts.xaml"))
             {
                 return false;
             }

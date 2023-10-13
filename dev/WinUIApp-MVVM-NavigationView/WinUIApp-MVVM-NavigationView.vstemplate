@@ -113,6 +113,9 @@
 		
 	  <Folder Name="Themes" TargetFolderName="Themes">
 		<ProjectItem ReplaceParameters="true" TargetFileName="Styles.xaml">Styles.xaml</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="Colors.xaml">Colors.xaml</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="Fonts.xaml">Fonts.xaml</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="Converters.xaml">Converters.xaml</ProjectItem>
 	  </Folder>
 		
 	  <Folder Name="Models" TargetFolderName="Models"/>
