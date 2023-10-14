@@ -6,7 +6,7 @@ using System.Text;
 using EnvDTE;
 
 using EnvDTE80;
-
+using HandyControl.Tools.Extension;
 using Microsoft.VisualStudio.TemplateWizard;
 
 using WinUICommunity_VS_Templates.Options;
@@ -231,20 +231,21 @@ namespace WinUICommunity_VS_Templates
                 
                 if (libs.ContainsKey("Serilog.Sinks.Debug") || libs.ContainsKey("Serilog.Sinks.File"))
                 {
-                    replacementsDictionary.Add("$GeneralSettingsCards$", generalSettingsCards);
+                    replacementsDictionary.AddIfNotExists("$GeneralSettingsCards$", generalSettingsCards);
                     
                     if (UseJsonSettings && UseDeveloperModeSetting && UseSettingsPage && UseGeneralSettingPage)
                     {
-                        replacementsDictionary.Add("$DeveloperModeConfig$", Environment.NewLine + "public virtual bool UseDeveloperMode { get; set; }");
+                        replacementsDictionary.AddIfNotExists("$DeveloperModeConfig$", Environment.NewLine + "public virtual bool UseDeveloperMode { get; set; }");
                     }
                     else
                     {
-                        replacementsDictionary.Add("$DeveloperModeConfig$", "");
+                        replacementsDictionary.AddIfNotExists("$DeveloperModeConfig$", "");
                     }
                 }
                 else
                 {
-                    replacementsDictionary.Add("$GeneralSettingsCards$", "");
+                    replacementsDictionary.AddIfNotExists("$GeneralSettingsCards$", "");
+                    replacementsDictionary.AddIfNotExists("$DeveloperModeConfig$", "");
                 }
 
                 if (UseJsonSettings)

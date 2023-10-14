@@ -10,7 +10,7 @@ namespace WinUICommunity_VS_Templates.Options
         {
             if (useColorsDic || (hasNavigationView && useHomeLandingPage))
             {
-                replacementsDictionary.AddIfNotExists("$AppDicColors$", Environment.NewLine + "<ResourceDictionary Source=\"Themes/Colors.xaml\" />");
+                replacementsDictionary.AddIfNotExists("$AppDicColors$", Environment.NewLine + "                <ResourceDictionary Source=\"Themes/Colors.xaml\" />");
             }
             else
             {
@@ -19,7 +19,7 @@ namespace WinUICommunity_VS_Templates.Options
 
             if (useFontsDic)
             {
-                replacementsDictionary.AddIfNotExists("$AppDicFonts$", Environment.NewLine + "<ResourceDictionary Source=\"Themes/Fonts.xaml\" />");
+                replacementsDictionary.AddIfNotExists("$AppDicFonts$", Environment.NewLine + "                <ResourceDictionary Source=\"Themes/Fonts.xaml\" />");
             }
             else
             {
@@ -28,7 +28,7 @@ namespace WinUICommunity_VS_Templates.Options
 
             if (useConvertersDic)
             {
-                replacementsDictionary.AddIfNotExists("$AppDicConverters$", Environment.NewLine + "<ResourceDictionary Source=\"Themes/Converters.xaml\" />");
+                replacementsDictionary.AddIfNotExists("$AppDicConverters$", Environment.NewLine + "                <ResourceDictionary Source=\"Themes/Converters.xaml\" />");
             }
             else
             {
@@ -37,7 +37,7 @@ namespace WinUICommunity_VS_Templates.Options
 
             if (useStylesDic)
             {
-                replacementsDictionary.AddIfNotExists("$AppDicStyles$", Environment.NewLine + "<ResourceDictionary Source=\"Themes/Styles.xaml\" />");
+                replacementsDictionary.AddIfNotExists("$AppDicStyles$", Environment.NewLine + "                <ResourceDictionary Source=\"Themes/Styles.xaml\" />");
             }
             else
             {
