@@ -2,15 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
-            <x:String x:Key="HeaderCover">/Assets/Cover/CoverLight.png</x:String>
+            $HeaderCoverLight$
         </ResourceDictionary>
 
         <ResourceDictionary x:Key="Dark">
-            <x:String x:Key="HeaderCover">/Assets/Cover/CoverDark.png</x:String>
+            $HeaderCoverDark$
         </ResourceDictionary>
 
         <ResourceDictionary x:Key="HighContrast">
-            <x:String x:Key="HeaderCover">/Assets/Cover/CoverDark.png</x:String>
+            $HeaderCoverDark$
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

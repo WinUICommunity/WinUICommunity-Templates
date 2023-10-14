@@ -180,6 +180,11 @@ namespace WinUICommunity_VS_Templates
                 UseConvertersDic = inputForm.AddConvertersDic;
                 UseFontsDic = inputForm.AddFontsDic;
 
+                if (hasNavigationView)
+                {
+                    new ColorsDicOption().ConfigColorsDic(replacementsDictionary, UseHomeLandingPage);
+                }
+
                 new DictionaryOption().ConfigDictionary(replacementsDictionary, hasNavigationView, UseHomeLandingPage, UseColorsDic, UseStylesDic, UseConvertersDic, UseFontsDic);
                 var serilog = new SerilogOption();
                 serilog.ConfigSerilog(replacementsDictionary, libs, UseJsonSettings, UseDeveloperModeSetting);
