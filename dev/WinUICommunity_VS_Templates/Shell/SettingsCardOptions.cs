@@ -125,11 +125,26 @@
 """;
         public static readonly string DeveloperModeSettingCode2 =
 """
-            <wuc:SettingsCard Description="By activating this option, if an error or crash occurs, its information will be saved in a file called Log{YYYYMMDD}.txt"
-                              Header="Developer Mode (Restart Required)"
-                              HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/devMode.png}">
+            <wuc:SettingsExpander Description="By activating this option, if an error or crash occurs, its information will be saved in a file called Log{YYYYMMDD}.txt"
+                                  Header="Developer Mode (Restart Required)"
+                                  HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/devMode.png}">
                 <ToggleSwitch IsOn="{x:Bind local:AppHelper.Settings.UseDeveloperMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            </wuc:SettingsCard>
+                <wuc:SettingsExpander.ItemsHeader>
+                    <HyperlinkButton HorizontalAlignment="Stretch"
+                                     HorizontalContentAlignment="Left"
+                                     Click="NavigateToLogPath_Click"
+                                     Content="{x:Bind local:Constants.LogDirectoryPath}" />
+                </wuc:SettingsExpander.ItemsHeader>
+            </wuc:SettingsExpander>
 """;
+        public static readonly string GoToLogPathEvent =
+""""
+        private async void NavigateToLogPath_Click(object sender, RoutedEventArgs e)
+        {
+            string folderPath = (sender as HyperlinkButton).Content.ToString();
+            Windows.Storage.StorageFolder folder = await Windows.Storage.StorageFolder.GetFolderFromPathAsync(folderPath);
+            await Windows.System.Launcher.LaunchFolderAsync(folder);
+        }
+"""";
     }
 }

@@ -235,15 +235,18 @@ namespace WinUICommunity_VS_Templates
                     
                     if (UseJsonSettings && UseDeveloperModeSetting && UseSettingsPage && UseGeneralSettingPage)
                     {
+                        replacementsDictionary.AddIfNotExists("$GoToLogPathEvent$", Environment.NewLine + Environment.NewLine + SettingsCardOptions.GoToLogPathEvent);
                         replacementsDictionary.AddIfNotExists("$DeveloperModeConfig$", Environment.NewLine + "public virtual bool UseDeveloperMode { get; set; }");
                     }
                     else
                     {
+                        replacementsDictionary.AddIfNotExists("$GoToLogPathEvent$", "");
                         replacementsDictionary.AddIfNotExists("$DeveloperModeConfig$", "");
                     }
                 }
                 else
                 {
+                    replacementsDictionary.AddIfNotExists("$GoToLogPathEvent$", "");
                     replacementsDictionary.AddIfNotExists("$GeneralSettingsCards$", "");
                     replacementsDictionary.AddIfNotExists("$DeveloperModeConfig$", "");
                 }

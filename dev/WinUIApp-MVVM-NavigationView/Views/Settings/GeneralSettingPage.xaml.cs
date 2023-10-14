@@ -13,7 +13,7 @@ public sealed partial class GeneralSettingPage : Page
     {
         base.OnNavigatedTo(e);
         BreadCrumbBarItemText = e.Parameter as string;
-    }
+    }$GoToLogPathEvent$
 }
 
 
