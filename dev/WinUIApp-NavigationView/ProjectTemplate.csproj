@@ -15,8 +15,8 @@
 		<LangVersion>Latest</LangVersion>
 		<AccelerateBuildsInVisualStudio>$UseAccelerateBuilds$</AccelerateBuildsInVisualStudio>
 		<ApplicationIcon>Assets\icon.ico</ApplicationIcon>
-		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
-	</PropertyGroup>
+		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>$Net8RidGraph$
+  </PropertyGroup>
 
 	<ItemGroup>
 		<None Include="Assets\**\*">

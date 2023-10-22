@@ -89,7 +89,7 @@ namespace WinUICommunity_VS_Templates.Shell
                 new Library("HtmlAgilityPack", "1.11.54"),
                 new Library("Downloader", "3.0.6"),
                 new Library("Microsoft.Win32.Registry", "5.0.0"),
-                new Library("YamlDotNet", "13.7.0"),
+                new Library("YamlDotNet", "13.7.1"),
                 new Library("System.Management", "7.0.2"),
                 new Library("SharpCompress", "0.34.1"),
                 new Library("RestSharp", "110.2.0"),

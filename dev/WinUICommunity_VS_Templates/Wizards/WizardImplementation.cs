@@ -8,7 +8,6 @@ using EnvDTE;
 using EnvDTE80;
 using HandyControl.Tools.Extension;
 using Microsoft.VisualStudio.TemplateWizard;
-
 using WinUICommunity_VS_Templates.Options;
 using WinUICommunity_VS_Templates.Shell;
 
@@ -78,7 +77,7 @@ namespace WinUICommunity_VS_Templates
 
                 string wasdkVersion = "1.4.231008000";
                 string wasdkBuildToolsVersion = "10.0.22621.756";
-                string winUICommunityComponentsVersion = "5.3.0";
+                string winUICommunityComponentsVersion = "5.3.1";
                 string winUICommunityCoreVersion = "5.3.1";
                 string winUICommunityLandingPagesVersion = "5.3.1";
                 string communityToolkitMvvmVersion = "8.2.1";
@@ -161,6 +160,16 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$UseAccelerateBuilds$", inputForm.AddAccelerateBuilds.ToString());
                 
                 DotNetVersion = inputForm.DotNetVersion;
+
+                if (DotNetVersion.Equals("net8.0"))
+                {
+                    replacementsDictionary.Add("$Net8RidGraph$", Environment.NewLine + "<UseRidGraph>true</UseRidGraph>");
+                }
+                else
+                {
+                    replacementsDictionary.Add("$Net8RidGraph$", "");
+                }
+
                 Platforms = inputForm.Platforms;
                 RuntimeIdentifiers = inputForm.RuntimeIdentifiers;
                 UseJsonSettings = inputForm.AddJsonSettings;
