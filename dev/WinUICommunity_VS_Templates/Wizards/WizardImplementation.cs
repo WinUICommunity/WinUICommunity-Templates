@@ -163,7 +163,7 @@ namespace WinUICommunity_VS_Templates
 
                 if (DotNetVersion.Equals("net8.0"))
                 {
-                    replacementsDictionary.Add("$Net8RidGraph$", Environment.NewLine + "<UseRidGraph>true</UseRidGraph>");
+                    replacementsDictionary.Add("$Net8RidGraph$", Environment.NewLine + "    <UseRidGraph>true</UseRidGraph>");
                 }
                 else
                 {
