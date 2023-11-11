@@ -21,12 +21,6 @@ public partial class App : Application
     {
         currentWindow = new Window();
 
-        ThemeService = new ThemeService();
-        ThemeService.Initialize(currentWindow);
-        ThemeService.ConfigBackdrop();
-        ThemeService.ConfigElementTheme();
-        ThemeService.ConfigBackdropFallBackColorForWindow10(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);
-
         currentWindow.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
         currentWindow.AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
        
@@ -34,6 +28,12 @@ public partial class App : Application
         {
             currentWindow.Content = rootFrame = new Frame();
         }
+
+        ThemeService = new ThemeService();
+        ThemeService.Initialize(currentWindow);
+        ThemeService.ConfigBackdrop();
+        ThemeService.ConfigElementTheme();
+        ThemeService.ConfigBackdropFallBackColorForWindow10(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);
 
         rootFrame.Navigate(typeof(MainPage));
 
