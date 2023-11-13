@@ -26,7 +26,7 @@
                                 TextChanged="AutoSuggestBox_TextChanged" />
             </wuc:TitleBar.Content>
         </wuc:TitleBar>
-
+        <Grid Grid.Row="1" />
     </Grid>
 </Page>
 

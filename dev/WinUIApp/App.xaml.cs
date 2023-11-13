@@ -7,7 +7,7 @@ public partial class App : Application
     public static Window currentWindow = Window.Current;
     public IThemeService ThemeService { get; set; }
     public new static App Current => (App)Application.Current;
-    public string AppVersion { get; set; } = ApplicationHelper.GetAppVersion();
+    public string AppVersion { get; set; } = AssemblyInfoHelper.GetAssemblyVersion();
     public string AppName { get; set; } = "$safeprojectname$";
     private static string StringsFolderPath { get; set; } = string.Empty;
     public App()

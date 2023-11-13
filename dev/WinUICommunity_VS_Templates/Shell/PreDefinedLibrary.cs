@@ -37,8 +37,8 @@ namespace WinUICommunity_VS_Templates.Shell
         {
             List<Library> list = new()
             {
-                new Library("CommunityToolkit.HighPerformance", "8.2.1"),
-                new Library("CommunityToolkit.Common", "8.2.1"),
+                new Library("CommunityToolkit.HighPerformance", "8.2.2"),
+                new Library("CommunityToolkit.Common", "8.2.2"),
                 new Library("CommunityToolkit.WinUI.Behaviors", "8.0.230907"),
                 new Library("CommunityToolkit.WinUI.Extensions", "8.0.230907"),
                 new Library("CommunityToolkit.WinUI.Helpers", "8.0.230907"),
@@ -66,17 +66,17 @@ namespace WinUICommunity_VS_Templates.Shell
         {
             List<Library> list = new()
             {
-                new Library("Microsoft.EntityFrameworkCore", "7.0.12"),
-                new Library("Microsoft.EntityFrameworkCore.Sqlite", "7.0.12"),
-                new Library("Microsoft.EntityFrameworkCore.SqlServer", "7.0.12"),
-                new Library("Microsoft.EntityFrameworkCore.Cosmos", "7.0.12"),
-                new Library("Microsoft.EntityFrameworkCore.InMemory", "7.0.12"),
-                new Library("Microsoft.EntityFrameworkCore.Relational", "7.0.12"),
-                new Library("Microsoft.EntityFrameworkCore.Abstractions", "7.0.12"),
-                new Library("Microsoft.EntityFrameworkCore.Analyzers", "7.0.12"),
-                new Library("Microsoft.EntityFrameworkCore.Design", "7.0.12"),
-                new Library("Microsoft.EntityFrameworkCore.Proxies", "7.0.12"),
-                new Library("Microsoft.EntityFrameworkCore.Tools", "7.0.12")
+                new Library("Microsoft.EntityFrameworkCore", "7.0.13"),
+                new Library("Microsoft.EntityFrameworkCore.Sqlite", "7.0.13"),
+                new Library("Microsoft.EntityFrameworkCore.SqlServer", "7.0.13"),
+                new Library("Microsoft.EntityFrameworkCore.Cosmos", "7.0.13"),
+                new Library("Microsoft.EntityFrameworkCore.InMemory", "7.0.13"),
+                new Library("Microsoft.EntityFrameworkCore.Relational", "7.0.13"),
+                new Library("Microsoft.EntityFrameworkCore.Abstractions", "7.0.13"),
+                new Library("Microsoft.EntityFrameworkCore.Analyzers", "7.0.13"),
+                new Library("Microsoft.EntityFrameworkCore.Design", "7.0.13"),
+                new Library("Microsoft.EntityFrameworkCore.Proxies", "7.0.13"),
+                new Library("Microsoft.EntityFrameworkCore.Tools", "7.0.13")
             };
             return list;
         }
@@ -93,12 +93,12 @@ namespace WinUICommunity_VS_Templates.Shell
                 new Library("System.Management", "7.0.2"),
                 new Library("SharpCompress", "0.34.1"),
                 new Library("RestSharp", "110.2.0"),
-                new Library("Vanara.Windows.Shell", "3.4.16"),
+                new Library("Vanara.Windows.Shell", "3.4.17"),
                 new Library("protobuf-net", "3.2.26"),
                 new Library("protobuf-net.Core", "3.2.26"),
                 new Library("Humanizer.Core", "2.14.1"),
                 new Library("Microsoft.AppCenter", "5.0.3"),
-                new Library("LiveChartsCore.SkiaSharpView.WinUI", "2.0.0-rc1.2", false, true),
+                new Library("LiveChartsCore.SkiaSharpView.WinUI", "2.0.0-rc2", false, true),
             };
             return list;
         }
@@ -116,12 +116,12 @@ namespace WinUICommunity_VS_Templates.Shell
         {
             List<Library> list = new()
             {
-                new Library("Serilog", "3.0.1"),
+                new Library("Serilog", "3.1.1"),
                 new Library("Serilog.Sinks.File", "5.0.0"),
                 new Library("Serilog.Sinks.Debug", "2.0.0"),
-                new Library("Serilog.Sinks.Console", "4.1.0"),
+                new Library("Serilog.Sinks.Console", "5.0.0"),
                 new Library("log4net", "2.0.15"),
-                new Library("NLog", "5.2.4")
+                new Library("NLog", "5.2.5")
             };
             return list;
         }
@@ -130,7 +130,7 @@ namespace WinUICommunity_VS_Templates.Shell
         {
             List<Library> list = new()
             {
-                new Library("CommunityToolkit.Mvvm", "8.2.1", true),
+                new Library("CommunityToolkit.Mvvm", "8.2.2", true),
                 new Library("Microsoft.Xaml.Behaviors.WinUI.Managed", "2.0.9", true),
                 new Library("Microsoft.Extensions.Hosting", "7.0.1"),
                 new Library("Microsoft.Extensions.DependencyInjection", "7.0.0", true),
