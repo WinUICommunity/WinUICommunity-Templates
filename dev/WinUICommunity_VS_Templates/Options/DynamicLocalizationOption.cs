@@ -9,7 +9,7 @@ namespace WinUICommunity_VS_Templates.Options
 private async Task InitializeLocalizer(params string[] languages)
     {
         // Initialize a "Strings" folder in the "LocalFolder" for the packaged app.
-        if (ApplicationHelper.IsPackaged)
+        if (PackageHelper.IsPackaged)
         {
             // Create string resources file from app resources if doesn't exists.
             StorageFolder localFolder = ApplicationData.Current.LocalFolder;

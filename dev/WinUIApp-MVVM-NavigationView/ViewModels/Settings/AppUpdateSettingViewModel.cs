@@ -36,7 +36,7 @@ public partial class AppUpdateSettingViewModel : ObservableObject
         IsUpdateAvailable = false;
         IsCheckButtonEnabled = false;
         LoadingStatus = "Checking for new version";
-        if (ApplicationHelper.IsNetworkAvailable())
+        if (NetworkHelper.IsNetworkAvailable())
         {
             LastUpdateCheck = DateTime.Now.ToShortDateString();
             Settings.LastUpdateCheck = DateTime.Now.ToShortDateString();

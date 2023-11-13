@@ -32,7 +32,7 @@ public sealed partial class AppUpdateSettingPage : Page
         BtnReleaseNote.Visibility = Visibility.Collapsed;
         BtnDownloadUpdate.Visibility = Visibility.Collapsed;
         StatusCard.Header = "Checking for new version";
-        if (ApplicationHelper.IsNetworkAvailable())
+        if (NetworkHelper.IsNetworkAvailable())
         {
             TxtLastUpdateCheck.Text = DateTime.Now.ToShortDateString();
             Settings.LastUpdateCheck = DateTime.Now.ToShortDateString();
