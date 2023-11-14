@@ -8,6 +8,11 @@ namespace WinUICommunity_VS_Templates.Options
         {
             string appFileContent = WizardHelper.ReadAppFileContent(templatePath);
 
+            if (string.IsNullOrEmpty(appFileContent))
+            {
+                return;
+            }
+
             if (appFileContent.Contains("private static string StringsFolderPath { get; set; } = string.Empty;"))
             {
                 if (appFileContent.Contains("public static T GetService<T>() where T : class"))

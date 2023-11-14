@@ -7,6 +7,12 @@ namespace WinUICommunity_VS_Templates.Options
         public NormalizeGlobalUsingFile(bool useJsonSettings, bool fileLogger, bool debugLogger, string templatePath)
         {
             string globalUsingFileContent = WizardHelper.ReadGlobalUsingFileContent(templatePath);
+
+            if (string.IsNullOrEmpty(globalUsingFileContent))
+            {
+                return;
+            }
+
             string patternAppHelper = @"global using static .*?Common\.AppHelper;";
             string patternLoggerSetup = @"global using static .*?Common\.LoggerSetup;";
 

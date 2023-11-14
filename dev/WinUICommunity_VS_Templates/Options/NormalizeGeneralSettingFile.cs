@@ -11,6 +11,10 @@ namespace WinUICommunity_VS_Templates.Options
                 if (!useDeveloperMode || !useJsonSettings)
                 {
                     string generalSettingFileContent = WizardHelper.ReadGeneralSettingFileContent(templatePath);
+                    if (string.IsNullOrEmpty(generalSettingFileContent))
+                    {
+                        return;
+                    }
                     string pattern = @"xmlns:local=""using:.*?\.Common""";
 
                     generalSettingFileContent = Regex.Replace(generalSettingFileContent, pattern, "");

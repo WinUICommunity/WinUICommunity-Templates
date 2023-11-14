@@ -263,10 +263,20 @@ namespace WinUICommunity_VS_Templates
                 if (UseJsonSettings)
                 {
                     replacementsDictionary.Add("$AppConfigFilePath$", Environment.NewLine + """public static readonly string AppConfigPath = Path.Combine(RootDirectoryPath, "AppConfig.json");""");
+
+                    if (UseAppUpdatePage && UseSettingsPage)
+                    {
+                        replacementsDictionary.Add("$AppUpdateConfig$", Environment.NewLine + """public virtual string LastUpdateCheck { get; set; }""");
+                    }
+                    else
+                    {
+                        replacementsDictionary.Add("$AppUpdateConfig$", "");
+                    }
                 }
                 else
                 {
                     replacementsDictionary.Add("$AppConfigFilePath$", "");
+                    replacementsDictionary.Add("$AppUpdateConfig$", "");
                 }
             }
             else

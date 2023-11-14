@@ -43,7 +43,10 @@ private async Task InitializeLocalizer(params string[] languages)
         public DynamicLocalizationOption(bool useDynamicLocalization, string templatePath)
         {
             string appFileContent = WizardHelper.ReadAppFileContent(templatePath);
-
+            if (string.IsNullOrEmpty(appFileContent))
+            {
+                return;
+            }
             if (useDynamicLocalization)
             {
                 appFileContent = appFileContent.Replace("private void InitializeLocalizer { };", $"\n{InitializeCode}");
