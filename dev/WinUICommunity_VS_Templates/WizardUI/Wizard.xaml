@@ -42,7 +42,7 @@
             <hc:Shield Status="v1.4.231008000"
                        Subject="Windows App SDK Version" />
             <hc:Shield Margin="10,0"
-                       Status="v10.0.22621.756"
+                       Status="v10.0.22621.2428"
                        Subject="BuildTools Version"
                        Color="Purple" />
             <hc:ComboBox x:Name="cmbVersionMechanism"
@@ -76,10 +76,10 @@
                     <hc:ComboBox x:Name="cmbNetVersion"
                                  MinWidth="250"
                                  Margin="10,0"
-                                 SelectedIndex="1">
-                        <ComboBoxItem Content="net8.0 - RC2"
+                                 SelectedIndex="0">
+                        <ComboBoxItem Content="net8.0 (Recommended)"
                                       Tag="net8.0" />
-                        <ComboBoxItem Content="net7.0 (Recommended)"
+                        <ComboBoxItem Content="net7.0"
                                       Tag="net7.0" />
                         <ComboBoxItem Content="net6.0"
                                       Tag="net6.0" />
@@ -133,7 +133,8 @@
                 <local:OptionUC x:Name="tgEditorConfig"
                                 Title="6. Add .editorConfig File"
                                 InfoBarTitle="EditorConfig is a file format and a set of rules for configuring the coding style and formatting of source code files"
-                                IsEnabled="False"
+                                IsEnabled="False" 
+                                ExpanderVisibility="Collapsed"
                                 IsOn="True" />
                 <Separator Margin="0,5" />
                 <local:OptionUC x:Name="tgSolutionFolder"

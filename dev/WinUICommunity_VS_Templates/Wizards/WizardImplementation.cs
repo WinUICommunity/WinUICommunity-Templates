@@ -77,11 +77,11 @@ namespace WinUICommunity_VS_Templates
 
                 string wasdkVersion = "1.4.231008000";
                 string wasdkBuildToolsVersion = "10.0.22621.2428";
-                string winUICommunityComponentsVersion = "5.3.7";
-                string winUICommunityCoreVersion = "5.3.3";
-                string winUICommunityLandingPagesVersion = "5.3.1";
+                string winUICommunityComponentsVersion = "5.4.0";
+                string winUICommunityCoreVersion = "5.4.0";
+                string winUICommunityLandingPagesVersion = "5.4.0";
                 string communityToolkitMvvmVersion = "8.2.2";
-                string dependencyInjectionVersion = "7.0.0";
+                string dependencyInjectionVersion = "8.0.0";
                 string winUIManagedVersion = "2.0.9";
 
                 if (inputForm.UseAlwaysLatestVersion)
