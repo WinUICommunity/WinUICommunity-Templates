@@ -1,10 +1,13 @@
-﻿using System.Windows.Controls;
+﻿using System.Collections.Generic;
+using System.Windows.Controls;
 using WinUICommunity_VS_Templates.WizardUI;
 
 namespace WinUICommunity_VS_Templates
 {
     public partial class PlatformPage : Page
     {
+        private List<string> platformList = new List<string> { "x86", "x64", "ARM64" };
+
         public PlatformPage()
         {
             InitializeComponent();
@@ -34,26 +37,59 @@ namespace WinUICommunity_VS_Templates
                 rid = rid.Remove(lastIndex);
             }
 
+            if (WizardConfig.DotNetVersion.Contains("net7") || WizardConfig.DotNetVersion.Contains("net6"))
+            {
+
+            }
+            else
+            {
+                rid = rid.Replace("win10", "win");
+            }
+
             return rid.Trim();
         }
 
         private void CheckBox_Checked(object sender, System.Windows.RoutedEventArgs e)
         {
             var chk = sender as CheckBox;
-            string platforms = "x86;x64;ARM64";
-            if (chk.IsChecked.Value)
-            {
-                platforms = string.Empty;
-                platforms = platforms + chk.Tag + ";";
 
-                if (platforms.EndsWith(";"))
-                {
-                    var lastIndex = platforms.LastIndexOf(";");
-                    platforms = platforms.Remove(lastIndex);
-                }
+            if (chk.Tag == null)
+            {
+                return;
             }
+            string tag = chk.Tag.ToString();
+
+            if (chk.IsChecked == true && !platformList.Contains(tag))
+            {
+                platformList.Add(tag);
+            }
+            else if (chk.IsChecked == false && platformList.Contains(tag))
+            {
+                platformList.Remove(tag);
+            }
+
+            var platforms = GetPlatforms();
+
             WizardConfig.Platforms = platforms;
             WizardConfig.RuntimeIdentifiers = GetRuntimeIdentifiers(platforms);
+        }
+
+        private string GetPlatforms()
+        {
+            if (platformList.Contains("ARM64"))
+            {
+                platformList.Remove("ARM64");
+                platformList.Add("ARM64");
+            }
+
+            string resultString = string.Join(";", platformList);
+
+            if (string.IsNullOrEmpty(resultString))
+            {
+                resultString = "x86;x64;ARM64";
+            }
+
+            return resultString;
         }
 
         private void cmbNetVersion_SelectionChanged(object sender, SelectionChangedEventArgs e)
