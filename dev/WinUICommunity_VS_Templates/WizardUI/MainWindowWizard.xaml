@@ -34,7 +34,6 @@
                 <ui:ThemeResources />
                 <ui:XamlControlsResources />
                 <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Themes/Generic.xaml" />
-                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Styles/Window.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>

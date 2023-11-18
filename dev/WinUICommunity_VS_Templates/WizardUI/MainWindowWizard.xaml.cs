@@ -2,6 +2,7 @@
 using System.Windows;
 using WinUICommunity_VS_Templates.WizardUI;
 using iNKORE.UI.WPF.Modern;
+using System;
 
 namespace WinUICommunity_VS_Templates
 {
@@ -13,7 +14,19 @@ namespace WinUICommunity_VS_Templates
         ResourcePage resourceType;
         public MainWindowWizard()
         {
+            var lightResource = new ResourceDictionary { Source = new Uri("/WinUICommunity_VS_Templates;component/WizardShell/ThemeResources/Light.xaml", UriKind.Relative) };
+            var darkResource = new ResourceDictionary { Source = new Uri("/WinUICommunity_VS_Templates;component/WizardShell/ThemeResources/Dark.xaml", UriKind.Relative) };
+
             InitializeComponent();
+            var actualTheme = ThemeManager.GetActualTheme(this);
+            if (actualTheme == ElementTheme.Dark)
+            {
+                Application.Current.Resources.MergedDictionaries.Add(darkResource);
+            }
+            else
+            {
+                Application.Current.Resources.MergedDictionaries.Add(lightResource);
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
