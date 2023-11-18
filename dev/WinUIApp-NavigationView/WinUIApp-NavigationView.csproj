@@ -71,9 +71,6 @@
     <Content Include="Package-managed.appxmanifest">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Properties\PublishProfiles\WinArm64.pubxml" />
-    <Content Include="Properties\PublishProfiles\WinX64.pubxml" />
-    <Content Include="Properties\PublishProfiles\WinX86.pubxml" />
     <Content Include="ProjectTemplate.csproj" />
     <Content Include="App.xaml">
       <SubType>Designer</SubType>
@@ -105,6 +102,13 @@
     <Content Include=".editorconfig" />
     <None Include="Assets\NavViewMenu\AppData.json" />
     <Content Include="Strings\en-US\Resources.resw" />
+    <Content Include="Properties\launchSettings.json" />
+    <Content Include="Properties\PublishProfiles\win-arm64.pubxml" />
+    <Content Include="Properties\PublishProfiles\win10-arm64.pubxml" />
+    <Content Include="Properties\PublishProfiles\win-x64.pubxml" />
+    <Content Include="Properties\PublishProfiles\win10-x64.pubxml" />
+    <Content Include="Properties\PublishProfiles\win-x86.pubxml" />
+    <Content Include="Properties\PublishProfiles\win10-x86.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Themes\Styles.xaml">

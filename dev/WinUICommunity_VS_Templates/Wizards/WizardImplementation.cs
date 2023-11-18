@@ -155,6 +155,16 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$DotNetVersion$", WizardConfig.DotNetVersion.ToString());
                 replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());
                 replacementsDictionary.Add("$RuntimeIdentifiers$", WizardConfig.RuntimeIdentifiers.ToString());
+
+                if (WizardConfig.DotNetVersion.Contains("net7"))
+                {
+                    replacementsDictionary.Add("$PublishProfileRuntime$", "win10");
+                }
+                else
+                {
+                    replacementsDictionary.Add("$PublishProfileRuntime$", "win");
+                }
+                
                 replacementsDictionary.Add("$AddJsonSettings$", WizardConfig.AddJsonSettings.ToString());
                 replacementsDictionary.Add("$AddDynamicLocalization$", WizardConfig.AddDynamicLocalization.ToString());
                 replacementsDictionary.Add("$AddEditorConfig$", WizardConfig.AddEditorConfig.ToString());

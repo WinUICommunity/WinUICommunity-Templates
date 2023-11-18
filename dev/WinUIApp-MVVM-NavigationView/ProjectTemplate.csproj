@@ -7,7 +7,7 @@
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<Platforms>$Platforms$</Platforms>
 		<RuntimeIdentifiers>$RuntimeIdentifiers$</RuntimeIdentifiers>
-		<PublishProfile>win10-$(Platform).pubxml</PublishProfile>
+		<PublishProfile>$PublishProfileRuntime$-$(Platform).pubxml</PublishProfile>
 		<UseWinUI>true</UseWinUI>
 		<EnableMsixTooling>true</EnableMsixTooling>
 		<Version>1.0.0</Version>

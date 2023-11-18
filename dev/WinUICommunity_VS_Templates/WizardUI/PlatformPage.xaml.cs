@@ -37,7 +37,7 @@ namespace WinUICommunity_VS_Templates
                 rid = rid.Remove(lastIndex);
             }
 
-            if (WizardConfig.DotNetVersion.Contains("net7") || WizardConfig.DotNetVersion.Contains("net6"))
+            if (WizardConfig.DotNetVersion.Contains("net7"))
             {
 
             }
