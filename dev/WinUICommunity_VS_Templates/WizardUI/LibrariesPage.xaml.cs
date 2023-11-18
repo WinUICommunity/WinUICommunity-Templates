@@ -11,8 +11,6 @@ namespace WinUICommunity_VS_Templates
         {
             InitializeComponent();
             Instance = this;
-            WizardConfig.LibraryDic = new();
-
             CreateBoxes();
         }
 

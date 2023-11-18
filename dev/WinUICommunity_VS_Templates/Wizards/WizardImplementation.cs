@@ -136,9 +136,16 @@ namespace WinUICommunity_VS_Templates
 
                 string outputText = outputBuilder.ToString();
 
-                if (libs.Count > 0)
+                if (libs != null)
                 {
-                    replacementsDictionary.Add("$ExtraLibs$", Environment.NewLine + outputText);
+                    if (libs.Count > 0)
+                    {
+                        replacementsDictionary.Add("$ExtraLibs$", Environment.NewLine + outputText);
+                    }
+                    else
+                    {
+                        replacementsDictionary.Add("$ExtraLibs$", "");
+                    }
                 }
                 else
                 {

@@ -4,11 +4,11 @@ namespace WinUICommunity_VS_Templates.WizardUI
 {
     public static class WizardConfig
     {
-        public static Dictionary<string, PackageRefrence> LibraryDic;
+        public static Dictionary<string, PackageRefrence> LibraryDic = new Dictionary<string, PackageRefrence>();
 
-        public static string DotNetVersion;
-        public static string Platforms;
-        public static string RuntimeIdentifiers;
+        public static string DotNetVersion = "net8.0";
+        public static string Platforms = "x86;x64;ARM64";
+        public static string RuntimeIdentifiers = "win-x86;win-x64;win-arm64";
         public static bool AddJsonSettings;
         public static bool AddDynamicLocalization;
         public static bool AddEditorConfig;
