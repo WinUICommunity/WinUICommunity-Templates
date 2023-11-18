@@ -70,7 +70,7 @@
                                 Margin="-50,-40,5,0"
                                 IsClosable="False"
                                 IsOpen="True"
-                                Message="v1.4.231008000"
+                                Message="1.4.231115000"
                                 Severity="Warning" />
                     <ui:InfoBar Title="Build Tools"
                                 Margin="-50,0,5,0"
@@ -96,6 +96,7 @@
 
             <ui:NavigationView.MenuItems>
                 <ui:NavigationViewItem Content="Platform"
+                                       IsSelected="True"
                                        Tag="PlatformPage">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="Bookmarks" />
@@ -126,12 +127,17 @@
         <StatusBar Grid.Row="2"
                    Padding="5"
                    HorizontalAlignment="Stretch"
-                   HorizontalContentAlignment="Right">
-            <Button Margin="10,0"
+                   HorizontalContentAlignment="Right"
+                   Background="Transparent">
+            <Button MinWidth="200"
+                    Margin="10,0"
                     Click="btnCancel_Click"
-                    Content="Cancel" />
-            <Button Click="btnCreate_Click"
+                    Content="Cancel"
+                    IsCancel="True" />
+            <Button MinWidth="200"
+                    Click="btnCreate_Click"
                     Content="Create Project"
+                    IsDefault="True"
                     Style="{StaticResource AccentButtonStyle}" />
         </StatusBar>
     </Grid>

@@ -7,12 +7,11 @@ namespace WinUICommunity_VS_Templates
     public partial class LibrariesPage : Page
     {
         public static LibrariesPage Instance { get; private set; }
-        public Dictionary<string, PackageRefrence> LibraryDic;
         public LibrariesPage()
         {
             InitializeComponent();
             Instance = this;
-            LibraryDic = new();
+            WizardConfig.LibraryDic = new();
 
             CreateBoxes();
         }
@@ -37,12 +36,12 @@ namespace WinUICommunity_VS_Templates
                 option.Checked += (s, e) =>
                 {
 
-                    LibraryDic.Add(lib.Name, new PackageRefrence($"""    <PackageReference Include="{lib.Name}" Version="{libVersion}" />""", lib.CheckBeforeInsert, lib.SkipStarVersion));
+                    WizardConfig.LibraryDic.Add(lib.Name, new PackageRefrence($"""    <PackageReference Include="{lib.Name}" Version="{libVersion}" />""", lib.CheckBeforeInsert, lib.SkipStarVersion));
                 };
 
                 option.Unchecked += (s, e) =>
                 {
-                    LibraryDic.Remove(lib.Name);
+                    WizardConfig.LibraryDic.Remove(lib.Name);
                 };
 
                 panel.Children.Add(option);
@@ -53,7 +52,7 @@ namespace WinUICommunity_VS_Templates
         {
             if (WinUICommunityPanel != null)
             {
-                LibraryDic = new();
+                WizardConfig.LibraryDic = new();
                 WinUICommunityPanel.Children.Clear();
                 GeneralPanel.Children.Clear();
                 EFCorePanel.Children.Clear();

@@ -1,13 +1,16 @@
 ﻿using System.Windows.Controls;
 using System.Windows;
 using WinUICommunity_VS_Templates.WizardUI;
-using System;
 using iNKORE.UI.WPF.Modern;
 
 namespace WinUICommunity_VS_Templates
 {
     public partial class MainWindowWizard : Window
     {
+        PlatformPage platformType;
+        LibrariesPage librariesType;
+        PagesPages pagesType;
+        ResourcePage resourceType;
         public MainWindowWizard()
         {
             InitializeComponent();
@@ -47,6 +50,8 @@ namespace WinUICommunity_VS_Templates
 
         private void Cancel()
         {
+            Resources?.Clear();
+            Application.Current?.Resources?.Clear();
             DialogResult = false;
         }
 
@@ -58,16 +63,32 @@ namespace WinUICommunity_VS_Templates
                 switch (navigationViewItem.Tag.ToString())
                 {
                     case "PlatformPage":
-                        frame.Navigate(typeof(PlatformPage));
+                        if (platformType == null)
+                        {
+                            platformType = new PlatformPage();
+                        }
+                        frame.Navigate(platformType);
                         break;
                     case "ResourcePage":
-                        frame.Navigate(typeof(ResourcePage));
+                        if (resourceType == null)
+                        {
+                            resourceType = new ResourcePage();
+                        }
+                        frame.Navigate(resourceType);
                         break;
                     case "LibrariesPage":
-                        frame.Navigate(typeof(LibrariesPage));
+                        if (librariesType == null)
+                        {
+                            librariesType = new LibrariesPage();
+                        }
+                        frame.Navigate(librariesType);
                         break;
                     case "PagesPages":
-                        frame.Navigate(typeof(PagesPages));
+                        if (pagesType == null)
+                        {
+                            pagesType = new PagesPages();
+                        }
+                        frame.Navigate(pagesType);
                         break;
                 }
             }

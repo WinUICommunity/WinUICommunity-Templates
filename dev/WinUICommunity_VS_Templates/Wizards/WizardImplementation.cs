@@ -107,25 +107,28 @@ namespace WinUICommunity_VS_Templates
                 // Add Extra Libs
                 var libs = WizardConfig.LibraryDic;
                 StringBuilder outputBuilder = new StringBuilder();
-                foreach (var lib in libs.Values)
+                if (libs != null)
                 {
-                    if (isMVVMTemplate && lib.CheckBeforeInsert)
+                    foreach (var lib in libs.Values)
                     {
-                        continue;
-                    }
+                        if (isMVVMTemplate && lib.CheckBeforeInsert)
+                        {
+                            continue;
+                        }
 
-                    if (lib.Package.Contains("Microsoft.AppCenter"))
-                    {
-                        lib.Package = lib.Package.Replace("Microsoft.AppCenter", "Microsoft.AppCenter.Crashes");
-                        outputBuilder.AppendLine(lib.Package);
+                        if (lib.Package.Contains("Microsoft.AppCenter"))
+                        {
+                            lib.Package = lib.Package.Replace("Microsoft.AppCenter", "Microsoft.AppCenter.Crashes");
+                            outputBuilder.AppendLine(lib.Package);
 
-                        lib.Package = lib.Package.Replace("Microsoft.AppCenter.Crashes", "Microsoft.AppCenter.Analytics");
-                        outputBuilder.AppendLine(lib.Package);
-                        UseAppCenter = true;
-                    }
-                    else
-                    {
-                        outputBuilder.AppendLine(lib.Package);
+                            lib.Package = lib.Package.Replace("Microsoft.AppCenter.Crashes", "Microsoft.AppCenter.Analytics");
+                            outputBuilder.AppendLine(lib.Package);
+                            UseAppCenter = true;
+                        }
+                        else
+                        {
+                            outputBuilder.AppendLine(lib.Package);
+                        }
                     }
                 }
 
