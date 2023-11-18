@@ -4,40 +4,39 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:WinUICommunity_VS_Templates"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:ui="clr-namespace:WinUICommunity.Shell"
+             xmlns:ui="clr-namespace:iNKORE.UI.WPF.Modern"
              d:DesignHeight="450"
              d:DesignWidth="800"
              mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Basic/Colors/Light.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
-                <ResourceDictionary Source="../Themes/Styles/TextStyles.xaml" />
-                <ResourceDictionary Source="../Themes/Styles/InfoBarButton.xaml" />
-                <ResourceDictionary Source="../Themes/Styles/InfoBar.xaml" />
+                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Styles/TextStyles.xaml" />
+                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Styles/CheckBox.xaml" />
+                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Styles/Expander.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Margin="10"
-                       Style="{StaticResource BaseTextBlockStyle}"
-                       Text="{Binding Title, RelativeSource={RelativeSource AncestorType=local:OptionUC}}" />
-            <ToggleButton x:Name="tgSettings"
-                          IsChecked="{Binding IsOn, RelativeSource={RelativeSource AncestorType=local:OptionUC}}"
-                          Style="{StaticResource ToggleButtonSwitch}" />
-        </StackPanel>
-        <Expander Margin="10,0,10,10"
-                  Header="{Binding ExpanderHeader, RelativeSource={RelativeSource AncestorType=local:OptionUC}}"
-                  Visibility="{Binding ExpanderVisibility, RelativeSource={RelativeSource AncestorType=local:OptionUC}}">
-            <ui:InfoBar Title="{Binding InfoBarTitle, RelativeSource={RelativeSource AncestorType=local:OptionUC}}"
-                        BorderThickness="1,0,1,1"
-                        CornerRadius="0,0,6,6"
-                        IsClosable="False"
-                        IsOpen="True"
-                        Message="{Binding InfoBarMessage, RelativeSource={RelativeSource AncestorType=local:OptionUC}}" />
-
-        </Expander>
-    </StackPanel>
+    <Expander Margin="10,0,10,2"
+              HorizontalAlignment="Stretch"
+              Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}">
+        <Expander.Header>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center"
+                           Style="{StaticResource BaseTextBlockStyle}"
+                           Text="{Binding Title, RelativeSource={RelativeSource AncestorType=local:OptionUC}}" />
+                <ui:ToggleSwitch x:Name="tgSettings"
+                                 Margin="10,0"
+                                 VerticalAlignment="Center"
+                                 IsOn="{Binding IsOn, RelativeSource={RelativeSource AncestorType=local:OptionUC}}"
+                                 OffContent=""
+                                 OnContent=""
+                                 Toggled="tgSettings_Toggled" />
+            </StackPanel>
+        </Expander.Header>
+        <ui:InfoBar Title="{Binding InfoBarTitle, RelativeSource={RelativeSource AncestorType=local:OptionUC}}"
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="{Binding InfoBarMessage, RelativeSource={RelativeSource AncestorType=local:OptionUC}}" />
+    </Expander>
 </UserControl>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-namespace WinUICommunity_VS_Templates.WizardUI
+namespace WinUICommunity_VS_Templates
 {
     public partial class LibraryOptionUC : UserControl
     {

@@ -1,5 +1,4 @@
-﻿using HandyControl.Tools.Extension;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace WinUICommunity_VS_Templates.Options

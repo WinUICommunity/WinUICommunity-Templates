@@ -6,24 +6,7 @@ namespace WinUICommunity_VS_Templates;
 
 public partial class OptionUC : UserControl
 {
-    public Visibility ExpanderVisibility
-    {
-        get { return (Visibility)GetValue(ExpanderVisibilityProperty); }
-        set { SetValue(ExpanderVisibilityProperty, value); }
-    }
-
-    public static readonly DependencyProperty ExpanderVisibilityProperty =
-        DependencyProperty.Register("ExpanderVisibility", typeof(Visibility), typeof(OptionUC), new PropertyMetadata(Visibility.Visible));
-
-    public string ExpanderHeader
-    {
-        get { return (string)GetValue(ExpanderHeaderProperty); }
-        set { SetValue(ExpanderHeaderProperty, value); }
-    }
-
-    public static readonly DependencyProperty ExpanderHeaderProperty =
-        DependencyProperty.Register("ExpanderHeader", typeof(string), typeof(OptionUC), new PropertyMetadata("See More"));
-
+    public event EventHandler<RoutedEventArgs> Toggled;
     public string InfoBarMessage
     {
         get { return (string)GetValue(InfoBarMessageProperty); }
@@ -63,5 +46,10 @@ public partial class OptionUC : UserControl
     public OptionUC()
     {
         InitializeComponent();
+    }
+
+    private void tgSettings_Toggled(object sender, RoutedEventArgs e)
+    {
+        Toggled?.Invoke(sender, e);
     }
 }

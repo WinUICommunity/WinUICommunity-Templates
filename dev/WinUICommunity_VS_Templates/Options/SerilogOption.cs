@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using WinUICommunity_VS_Templates.Shell;
 
 namespace WinUICommunity_VS_Templates.Options
 {

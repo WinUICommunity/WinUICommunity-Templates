@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-
 using EnvDTE;
 
 using EnvDTE80;
-using HandyControl.Tools.Extension;
 using Microsoft.VisualStudio.TemplateWizard;
 using WinUICommunity_VS_Templates.Options;
-using WinUICommunity_VS_Templates.Shell;
+using WinUICommunity_VS_Templates.WizardUI;
 
 namespace WinUICommunity_VS_Templates
 {
@@ -69,13 +67,13 @@ namespace WinUICommunity_VS_Templates
 
             _shouldAddProjectItem = false;
 
-            var inputForm = new Wizard();
+            var inputForm = new MainWindowWizard();
             var result = inputForm.ShowDialog();
             if (result.HasValue && result.Value)
             {
                 _shouldAddProjectItem = true;
 
-                string wasdkVersion = "1.4.231008000";
+                string wasdkVersion = "1.4.231115000";
                 string wasdkBuildToolsVersion = "10.0.22621.2428";
                 string winUICommunityComponentsVersion = "5.4.0";
                 string winUICommunityCoreVersion = "5.4.0";
@@ -84,7 +82,7 @@ namespace WinUICommunity_VS_Templates
                 string dependencyInjectionVersion = "8.0.0";
                 string winUIManagedVersion = "2.0.9";
 
-                if (inputForm.UseAlwaysLatestVersion)
+                if (WizardConfig.UseAlwaysLatestVersion)
                 {
                     wasdkVersion = "*";
                     wasdkBuildToolsVersion = "*";
@@ -107,7 +105,7 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$WinUIManagedVersion$", winUIManagedVersion);
 
                 // Add Extra Libs
-                var libs = inputForm.LibraryDic;
+                var libs = WizardConfig.LibraryDic;
                 StringBuilder outputBuilder = new StringBuilder();
                 foreach (var lib in libs.Values)
                 {
@@ -144,22 +142,22 @@ namespace WinUICommunity_VS_Templates
                     replacementsDictionary.Add("$ExtraLibs$", "");
                 }
 
-                replacementsDictionary.Add("$DotNetVersion$", inputForm.DotNetVersion.ToString());
-                replacementsDictionary.Add("$Platforms$", inputForm.Platforms.ToString());
-                replacementsDictionary.Add("$RuntimeIdentifiers$", inputForm.RuntimeIdentifiers.ToString());
-                replacementsDictionary.Add("$AddJsonSettings$", inputForm.AddJsonSettings.ToString());
-                replacementsDictionary.Add("$AddDynamicLocalization$", inputForm.AddDynamicLocalization.ToString());
-                replacementsDictionary.Add("$AddEditorConfig$", inputForm.AddEditorConfig.ToString());
-                replacementsDictionary.Add("$AddSolutionFolder$", inputForm.AddSolutionFolder.ToString());
-                replacementsDictionary.Add("$AddHomeLandingPage$", inputForm.AddHomeLandingPage.ToString());
-                replacementsDictionary.Add("$AddSettingsPage$", inputForm.AddSettingsPage.ToString());
-                replacementsDictionary.Add("$AddGeneralSettingPage$", inputForm.AddGeneralSettingPage.ToString());
-                replacementsDictionary.Add("$AddThemeSettingPage$", inputForm.AddThemeSettingPage.ToString());
-                replacementsDictionary.Add("$AddAppUpdatePage$", inputForm.AddAppUpdatePage.ToString());
-                replacementsDictionary.Add("$AddAboutPage$", inputForm.AddAboutPage.ToString());
-                replacementsDictionary.Add("$UseAccelerateBuilds$", inputForm.AddAccelerateBuilds.ToString());
-                
-                DotNetVersion = inputForm.DotNetVersion;
+                replacementsDictionary.Add("$DotNetVersion$", WizardConfig.DotNetVersion.ToString());
+                replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());
+                replacementsDictionary.Add("$RuntimeIdentifiers$", WizardConfig.RuntimeIdentifiers.ToString());
+                replacementsDictionary.Add("$AddJsonSettings$", WizardConfig.AddJsonSettings.ToString());
+                replacementsDictionary.Add("$AddDynamicLocalization$", WizardConfig.AddDynamicLocalization.ToString());
+                replacementsDictionary.Add("$AddEditorConfig$", WizardConfig.AddEditorConfig.ToString());
+                replacementsDictionary.Add("$AddSolutionFolder$", WizardConfig.AddSolutionFolder.ToString());
+                replacementsDictionary.Add("$AddHomeLandingPage$", WizardConfig.AddHomeLandingPage.ToString());
+                replacementsDictionary.Add("$AddSettingsPage$", WizardConfig.AddSettingsPage.ToString());
+                replacementsDictionary.Add("$AddGeneralSettingPage$", WizardConfig.AddGeneralSettingPage.ToString());
+                replacementsDictionary.Add("$AddThemeSettingPage$", WizardConfig.AddThemeSettingPage.ToString());
+                replacementsDictionary.Add("$AddAppUpdatePage$", WizardConfig.AddAppUpdatePage.ToString());
+                replacementsDictionary.Add("$AddAboutPage$", WizardConfig.AddAboutPage.ToString());
+                replacementsDictionary.Add("$UseAccelerateBuilds$", WizardConfig.AddAccelerateBuilds.ToString());
+
+                DotNetVersion = WizardConfig.DotNetVersion;
 
                 if (DotNetVersion.Equals("net8.0"))
                 {
@@ -170,24 +168,24 @@ namespace WinUICommunity_VS_Templates
                     replacementsDictionary.Add("$Net8RidGraph$", "");
                 }
 
-                Platforms = inputForm.Platforms;
-                RuntimeIdentifiers = inputForm.RuntimeIdentifiers;
-                UseJsonSettings = inputForm.AddJsonSettings;
-                UseDynamicLocalization = inputForm.AddDynamicLocalization;
-                UseEditorConfig = inputForm.AddEditorConfig;
-                UseSolutionFolder = inputForm.AddSolutionFolder;
-                UseHomeLandingPage = inputForm.AddHomeLandingPage;
-                UseSettingsPage = inputForm.AddSettingsPage;
-                UseGeneralSettingPage = inputForm.AddGeneralSettingPage;
-                UseThemeSettingPage = inputForm.AddThemeSettingPage;
-                UseAppUpdatePage = inputForm.AddAppUpdatePage;
-                UseAboutPage = inputForm.AddAboutPage;
-                UseAccelerateBuilds = inputForm.AddAccelerateBuilds;
-                UseDeveloperModeSetting = inputForm.AddDeveloperModeSetting;
-                UseColorsDic = inputForm.AddColorsDic;
-                UseStylesDic = inputForm.AddStylesDic;
-                UseConvertersDic = inputForm.AddConvertersDic;
-                UseFontsDic = inputForm.AddFontsDic;
+                Platforms = WizardConfig.Platforms;
+                RuntimeIdentifiers = WizardConfig.RuntimeIdentifiers;
+                UseJsonSettings = WizardConfig.AddJsonSettings;
+                UseDynamicLocalization = WizardConfig.AddDynamicLocalization;
+                UseEditorConfig = WizardConfig.AddEditorConfig;
+                UseSolutionFolder = WizardConfig.AddSolutionFolder;
+                UseHomeLandingPage = WizardConfig.AddHomeLandingPage;
+                UseSettingsPage = WizardConfig.AddSettingsPage;
+                UseGeneralSettingPage = WizardConfig.AddGeneralSettingPage;
+                UseThemeSettingPage = WizardConfig.AddThemeSettingPage;
+                UseAppUpdatePage = WizardConfig.AddAppUpdatePage;
+                UseAboutPage = WizardConfig.AddAboutPage;
+                UseAccelerateBuilds = WizardConfig.AddAccelerateBuilds;
+                UseDeveloperModeSetting = WizardConfig.AddDeveloperModeSetting;
+                UseColorsDic = WizardConfig.AddColorsDic;
+                UseStylesDic = WizardConfig.AddStylesDic;
+                UseConvertersDic = WizardConfig.AddConvertersDic;
+                UseFontsDic = WizardConfig.AddFontsDic;
 
                 if (hasNavigationView)
                 {
@@ -210,7 +208,7 @@ namespace WinUICommunity_VS_Templates
                 {
                     configCodes.ConfigAll();
                 }
-                
+
                 configCodes.ConfigGeneral();
 
                 var configs = configCodes.GetConfigJson();
@@ -237,11 +235,11 @@ namespace WinUICommunity_VS_Templates
                 }
 
                 replacementsDictionary.Add("$SettingsCards$", settingsCards);
-                
+
                 if (libs.ContainsKey("Serilog.Sinks.Debug") || libs.ContainsKey("Serilog.Sinks.File"))
                 {
                     replacementsDictionary.AddIfNotExists("$GeneralSettingsCards$", generalSettingsCards);
-                    
+
                     if (UseJsonSettings && UseDeveloperModeSetting && UseSettingsPage && UseGeneralSettingPage)
                     {
                         replacementsDictionary.AddIfNotExists("$GoToLogPathEvent$", Environment.NewLine + Environment.NewLine + SettingsCardOptions.GoToLogPathEvent);
