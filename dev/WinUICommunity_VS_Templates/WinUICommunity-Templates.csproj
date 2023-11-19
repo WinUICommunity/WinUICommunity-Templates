@@ -510,9 +510,6 @@
     <Compile Include="WizardUI\LibraryOptionUC.xaml.cs">
       <DependentUpon>LibraryOptionUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WizardUI\testw.xaml.cs">
-      <DependentUpon>testw.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WizardUI\OptionUCNoExpander.xaml.cs">
       <DependentUpon>OptionUCNoExpander.xaml</DependentUpon>
     </Compile>
@@ -948,10 +945,6 @@
     <Page Include="WizardUI\LibraryOptionUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WizardUI\testw.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="WizardUI\OptionUCNoExpander.xaml">
       <Generator>MSBuild:Compile</Generator>
