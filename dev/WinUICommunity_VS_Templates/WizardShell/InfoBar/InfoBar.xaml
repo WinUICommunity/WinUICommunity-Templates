@@ -1,10 +1,11 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern"
-                    xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern"
-                    xmlns:ui="clr-namespace:iNKORE.UI.WPF.Modern">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern"
+    xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern"
+    xmlns:ui="clr-namespace:iNKORE.UI.WPF.Modern">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/HyperlinkButton/HyperlinkButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/HyperlinkButton/HyperlinkButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="local:InfoBar">
@@ -17,13 +18,141 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:InfoBar">
-                    <Border x:Name="ContentRoot"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource InfoBarInformationalSeverityBackgroundBrush}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="{TemplateBinding CornerRadius}"
-                            SnapsToDevicePixels="True">
+                    <Border
+                        x:Name="ContentRoot"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource InfoBarInformationalSeverityBackgroundBrush}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        SnapsToDevicePixels="True">
+                        <!--  Background is used here so that it overrides the severity status color if set.  -->
+                        <Border
+                            MinHeight="{DynamicResource InfoBarMinHeight}"
+                            Padding="{DynamicResource InfoBarContentRootPadding}"
+                            HorizontalAlignment="Stretch"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <!--  Icon  -->
+                                    <ColumnDefinition Width="*" />
+                                    <!--  Title, message, and action  -->
+                                    <ColumnDefinition Width="Auto" />
+                                    <!--  Close button  -->
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Grid x:Name="StandardIconArea" Visibility="Collapsed">
+
+                                    <TextBlock
+                                        x:Name="IconBackground"
+                                        Grid.Column="0"
+                                        Margin="{DynamicResource InfoBarIconMargin}"
+                                        VerticalAlignment="Top"
+                                        FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                        FontSize="{DynamicResource InfoBarIconFontSize}"
+                                        Foreground="{DynamicResource InfoBarInformationalSeverityIconBackground}"
+                                        Text="{DynamicResource InfoBarIconBackgroundGlyph}" />
+
+                                    <TextBlock
+                                        x:Name="StandardIcon"
+                                        Grid.Column="0"
+                                        Margin="{DynamicResource InfoBarIconMargin}"
+                                        VerticalAlignment="Top"
+                                        FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                        FontSize="{DynamicResource InfoBarIconFontSize}"
+                                        Foreground="{DynamicResource InfoBarInformationalSeverityIconForeground}"
+                                        Text="{DynamicResource InfoBarInformationalIconGlyph}" />
+                                </Grid>
+
+                                <ContentControl
+                                    x:Name="UserIconBox"
+                                    Grid.Column="0"
+                                    MaxWidth="{DynamicResource InfoBarIconFontSize}"
+                                    MaxHeight="{DynamicResource InfoBarIconFontSize}"
+                                    Margin="{DynamicResource InfoBarIconMargin}"
+                                    VerticalAlignment="Top"
+                                    Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.IconElement}"
+                                    Visibility="Collapsed" />
+
+                                <primitives:InfoBarPanel
+                                    x:Name="InfoPanel"
+                                    Grid.Column="1"
+                                    Margin="{DynamicResource InfoBarPanelMargin}"
+                                    HorizontalOrientationPadding="{DynamicResource InfoBarPanelHorizontalOrientationPadding}"
+                                    VerticalOrientationPadding="{DynamicResource InfoBarPanelVerticalOrientationPadding}">
+
+                                    <TextBlock
+                                        x:Name="Title"
+                                        primitives:InfoBarPanel.HorizontalOrientationMargin="{DynamicResource InfoBarTitleHorizontalOrientationMargin}"
+                                        primitives:InfoBarPanel.VerticalOrientationMargin="{DynamicResource InfoBarTitleVerticalOrientationMargin}"
+                                        FontSize="{DynamicResource InfoBarTitleFontSize}"
+                                        FontWeight="{DynamicResource InfoBarTitleFontWeight}"
+                                        Foreground="{DynamicResource InfoBarTitleForeground}"
+                                        Text="{TemplateBinding Title}"
+                                        TextWrapping="Wrap" />
+
+                                    <TextBlock
+                                        x:Name="Message"
+                                        primitives:InfoBarPanel.HorizontalOrientationMargin="{DynamicResource InfoBarMessageHorizontalOrientationMargin}"
+                                        primitives:InfoBarPanel.VerticalOrientationMargin="{DynamicResource InfoBarMessageVerticalOrientationMargin}"
+                                        ui:TextBlockHelper.IsEnabled="True"
+                                        FontSize="{DynamicResource InfoBarMessageFontSize}"
+                                        FontWeight="{DynamicResource InfoBarMessageFontWeight}"
+                                        Foreground="{DynamicResource InfoBarMessageForeground}"
+                                        Text="{TemplateBinding Message}"
+                                        TextWrapping="Wrap" />
+
+                                    <ContentPresenter
+                                        VerticalAlignment="Top"
+                                        primitives:InfoBarPanel.HorizontalOrientationMargin="{DynamicResource InfoBarActionHorizontalOrientationMargin}"
+                                        primitives:InfoBarPanel.VerticalOrientationMargin="{DynamicResource InfoBarActionVerticalOrientationMargin}"
+                                        Content="{TemplateBinding ActionButton}">
+
+                                        <ContentPresenter.Resources>
+                                            <Style BasedOn="{StaticResource DefaultHyperlinkButtonStyle}" TargetType="local:HyperlinkButton">
+                                                <Style.Setters>
+                                                    <Setter Property="Margin" Value="{DynamicResource InfoBarHyperlinkButtonMargin}" />
+                                                    <Setter Property="Foreground" Value="{DynamicResource InfoBarHyperlinkButtonForeground}" />
+                                                </Style.Setters>
+                                            </Style>
+                                        </ContentPresenter.Resources>
+                                    </ContentPresenter>
+
+                                </primitives:InfoBarPanel>
+
+                                <ContentPresenter
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+
+                                <Button
+                                    Name="CloseButton"
+                                    Grid.Column="2"
+                                    Command="{TemplateBinding CloseButtonCommand}"
+                                    CommandParameter="{TemplateBinding CloseButtonCommandParameter}"
+                                    Style="{TemplateBinding CloseButtonStyle}">
+                                    <ContentControl
+                                        Width="{DynamicResource InfoBarCloseButtonGlyphSize}"
+                                        Height="{DynamicResource InfoBarCloseButtonGlyphSize}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+                                        <ui:FontIcon
+                                            FontFamily="{DynamicResource FluentSystemIcons}"
+                                            FontSize="{DynamicResource InfoBarCloseButtonGlyphSize}"
+                                            Foreground="{DynamicResource InfoBarCloseButtonForeground}"
+                                            Glyph="{DynamicResource InfoBarCloseButtonGlyph}" />
+                                    </ContentControl>
+                                </Button>
+                            </Grid>
+                        </Border>
 
                         <VisualStateManager.VisualStateGroups>
 
@@ -71,123 +200,6 @@
                             </VisualStateGroup>
 
                         </VisualStateManager.VisualStateGroups>
-                        <!--  Background is used here so that it overrides the severity status color if set.  -->
-                        <Border MinHeight="{DynamicResource InfoBarMinHeight}"
-                                Padding="{DynamicResource InfoBarContentRootPadding}"
-                                HorizontalAlignment="Stretch"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="{TemplateBinding CornerRadius}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <!--  Icon  -->
-                                    <ColumnDefinition Width="*" />
-                                    <!--  Title, message, and action  -->
-                                    <ColumnDefinition Width="Auto" />
-                                    <!--  Close button  -->
-                                </Grid.ColumnDefinitions>
-
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-
-                                <Grid x:Name="StandardIconArea"
-                                      Visibility="Collapsed">
-
-                                    <TextBlock x:Name="IconBackground"
-                                               Grid.Column="0"
-                                               Margin="{DynamicResource InfoBarIconMargin}"
-                                               VerticalAlignment="Top"
-                                               FontFamily="{DynamicResource SymbolThemeFontFamily}"
-                                               FontSize="{DynamicResource InfoBarIconFontSize}"
-                                               Foreground="{DynamicResource InfoBarInformationalSeverityIconBackground}"
-                                               Text="{DynamicResource InfoBarIconBackgroundGlyph}" />
-
-                                    <TextBlock x:Name="StandardIcon"
-                                               Grid.Column="0"
-                                               Margin="{DynamicResource InfoBarIconMargin}"
-                                               VerticalAlignment="Top"
-                                               FontFamily="{DynamicResource SymbolThemeFontFamily}"
-                                               FontSize="{DynamicResource InfoBarIconFontSize}"
-                                               Foreground="{DynamicResource InfoBarInformationalSeverityIconForeground}"
-                                               Text="{DynamicResource InfoBarInformationalIconGlyph}" />
-                                </Grid>
-
-                                <ContentControl x:Name="UserIconBox"
-                                                Grid.Column="0"
-                                                MaxWidth="{DynamicResource InfoBarIconFontSize}"
-                                                MaxHeight="{DynamicResource InfoBarIconFontSize}"
-                                                Margin="{DynamicResource InfoBarIconMargin}"
-                                                VerticalAlignment="Top"
-                                                Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.IconElement}"
-                                                Visibility="Collapsed" />
-
-                                <primitives:InfoBarPanel x:Name="InfoPanel"
-                                                         Grid.Column="1"
-                                                         Margin="{DynamicResource InfoBarPanelMargin}"
-                                                         HorizontalOrientationPadding="{DynamicResource InfoBarPanelHorizontalOrientationPadding}"
-                                                         VerticalOrientationPadding="{DynamicResource InfoBarPanelVerticalOrientationPadding}">
-
-                                    <TextBlock x:Name="Title"
-                                               primitives:InfoBarPanel.HorizontalOrientationMargin="{DynamicResource InfoBarTitleHorizontalOrientationMargin}"
-                                               primitives:InfoBarPanel.VerticalOrientationMargin="{DynamicResource InfoBarTitleVerticalOrientationMargin}"
-                                               FontSize="{DynamicResource InfoBarTitleFontSize}"
-                                               FontWeight="{DynamicResource InfoBarTitleFontWeight}"
-                                               Foreground="{DynamicResource InfoBarTitleForeground}"
-                                               Text="{TemplateBinding Title}"
-                                               TextWrapping="Wrap" />
-
-                                    <TextBlock x:Name="Message"
-                                               primitives:InfoBarPanel.HorizontalOrientationMargin="{DynamicResource InfoBarMessageHorizontalOrientationMargin}"
-                                               primitives:InfoBarPanel.VerticalOrientationMargin="{DynamicResource InfoBarMessageVerticalOrientationMargin}"
-                                               ui:TextBlockHelper.IsEnabled="True"
-                                               FontSize="{DynamicResource InfoBarMessageFontSize}"
-                                               FontWeight="{DynamicResource InfoBarMessageFontWeight}"
-                                               Foreground="{DynamicResource InfoBarMessageForeground}"
-                                               Text="{TemplateBinding Message}"
-                                               TextWrapping="Wrap" />
-
-                                    <ContentPresenter VerticalAlignment="Top"
-                                                      primitives:InfoBarPanel.HorizontalOrientationMargin="{DynamicResource InfoBarActionHorizontalOrientationMargin}"
-                                                      primitives:InfoBarPanel.VerticalOrientationMargin="{DynamicResource InfoBarActionVerticalOrientationMargin}"
-                                                      Content="{TemplateBinding ActionButton}">
-
-                                        <ContentPresenter.Resources>
-                                            <Style BasedOn="{StaticResource DefaultHyperlinkButtonStyle}"
-                                                   TargetType="local:HyperlinkButton">
-                                                <Style.Setters>
-                                                    <Setter Property="Margin" Value="{DynamicResource InfoBarHyperlinkButtonMargin}" />
-                                                    <Setter Property="Foreground" Value="{DynamicResource InfoBarHyperlinkButtonForeground}" />
-                                                </Style.Setters>
-                                            </Style>
-                                        </ContentPresenter.Resources>
-                                    </ContentPresenter>
-
-                                </primitives:InfoBarPanel>
-
-                                <ContentPresenter Grid.Row="1"
-                                                  Grid.Column="1"
-                                                  Content="{TemplateBinding Content}"
-                                                  ContentTemplate="{TemplateBinding ContentTemplate}" />
-
-                                <Button Name="CloseButton"
-                                        Grid.Column="2"
-                                        Command="{TemplateBinding CloseButtonCommand}"
-                                        CommandParameter="{TemplateBinding CloseButtonCommandParameter}"
-                                        Style="{TemplateBinding CloseButtonStyle}">
-                                    <ContentControl Width="{DynamicResource InfoBarCloseButtonGlyphSize}"
-                                                    Height="{DynamicResource InfoBarCloseButtonGlyphSize}"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center">
-                                        <ui:FontIcon FontFamily="{DynamicResource FluentSystemIcons}"
-                                                     FontSize="{DynamicResource InfoBarCloseButtonGlyphSize}"
-                                                     Foreground="{DynamicResource InfoBarCloseButtonForeground}"
-                                                     Glyph="{DynamicResource InfoBarCloseButtonGlyph}" />
-                                    </ContentControl>
-                                </Button>
-                            </Grid>
-                        </Border>
                     </Border>
                     <ControlTemplate.Triggers>
                         <!--  Error  -->

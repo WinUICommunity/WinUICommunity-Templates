@@ -12,9 +12,9 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Styles/TextStyles.xaml" />
-                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Styles/ComboBox.xaml" />
-                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Styles/CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/Styles/TextStyles.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/Styles/ComboBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/Styles/CheckBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>

@@ -76,9 +76,24 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.18362.2007" />
-    <PackageReference Include="Microsoft.Windows.WinMD" Version="1.0.210629.2" />
     <PackageReference Include="System.Runtime.WindowsRuntime" Version="4.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Windows">
+      <HintPath>libraries\Windows.WinMD</HintPath>
+      <IsWinMDFile>true</IsWinMDFile>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Windows.Foundation.FoundationContract">
+      <HintPath>libraries\Windows.Foundation.FoundationContract.winmd</HintPath>
+      <IsWinMDFile>true</IsWinMDFile>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Windows.Foundation.UniversalApiContract">
+      <HintPath>libraries\Windows.Foundation.UniversalApiContract.winmd</HintPath>
+      <IsWinMDFile>true</IsWinMDFile>
+      <Private>false</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Options\AppCenterOption.cs" />
@@ -495,6 +510,9 @@
     <Compile Include="WizardUI\LibraryOptionUC.xaml.cs">
       <DependentUpon>LibraryOptionUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WizardUI\testw.xaml.cs">
+      <DependentUpon>testw.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WizardUI\OptionUCNoExpander.xaml.cs">
       <DependentUpon>OptionUCNoExpander.xaml</DependentUpon>
     </Compile>
@@ -541,7 +559,6 @@
     <None Include="WizardShell\libraries\Windows.WinMD" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.6.2164">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -931,6 +948,10 @@
     <Page Include="WizardUI\LibraryOptionUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WizardUI\testw.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="WizardUI\OptionUCNoExpander.xaml">
       <Generator>MSBuild:Compile</Generator>

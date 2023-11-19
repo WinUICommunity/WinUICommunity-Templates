@@ -5,7 +5,7 @@
                     xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern"
                     xmlns:ui="clr-namespace:iNKORE.UI.WPF.Modern">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Styles/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/Styles/Button.xaml" />
         <ResourceDictionary>
             <ui:BindingProxy x:Key="OverlayCornerRadiusProxy"
                              Value="{DynamicResource OverlayCornerRadius}" />

@@ -5,8 +5,8 @@
                     xmlns:ui="clr-namespace:iNKORE.UI.WPF.Modern">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Styles/RepeatButton.xaml" />
-        <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Styles/TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/Styles/RepeatButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/Styles/TextBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <ui:CornerRadiusFilterConverter x:Key="LeftCornerRadiusFilterConverter"

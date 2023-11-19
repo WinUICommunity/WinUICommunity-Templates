@@ -14,8 +14,8 @@ namespace WinUICommunity_VS_Templates
         ResourcePage resourceType;
         public MainWindowWizard()
         {
-            var lightResource = new ResourceDictionary { Source = new Uri("/WinUICommunity_VS_Templates;component/WizardShell/ThemeResources/Light.xaml", UriKind.Relative) };
-            var darkResource = new ResourceDictionary { Source = new Uri("/WinUICommunity_VS_Templates;component/WizardShell/ThemeResources/Dark.xaml", UriKind.Relative) };
+            var lightResource = new ResourceDictionary { Source = new Uri("pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/ThemeResources/Light.xaml") };
+            var darkResource = new ResourceDictionary { Source = new Uri("pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/ThemeResources/Dark.xaml") };
 
             InitializeComponent();
             var actualTheme = ThemeManager.GetActualTheme(this);

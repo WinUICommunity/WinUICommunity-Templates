@@ -1,33 +1,35 @@
-﻿<UserControl x:Class="WinUICommunity_VS_Templates.OptionUCNoExpander"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:WinUICommunity_VS_Templates"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:ui="clr-namespace:iNKORE.UI.WPF.Modern"
-             d:DesignHeight="450"
-             d:DesignWidth="800"
-             mc:Ignorable="d">
+﻿<UserControl
+    x:Class="WinUICommunity_VS_Templates.OptionUCNoExpander"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WinUICommunity_VS_Templates"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:iNKORE.UI.WPF.Modern"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Styles/TextStyles.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/Styles/TextStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <ui:CardControl Margin="10,0,10,0"
-                    HorizontalContentAlignment="Left">
+    <ui:CardControl Margin="10,0,10,0" HorizontalContentAlignment="Left">
         <StackPanel Orientation="Horizontal">
-            <TextBlock VerticalAlignment="Center"
-                       Style="{StaticResource BaseTextBlockStyle}"
-                       Text="{Binding Title, RelativeSource={RelativeSource AncestorType=local:OptionUCNoExpander}}" />
-            <ui:ToggleSwitch x:Name="tgSettings"
-                             Margin="10,0"
-                             VerticalAlignment="Center"
-                             IsOn="{Binding IsOn, RelativeSource={RelativeSource AncestorType=local:OptionUCNoExpander}}"
-                             OffContent=""
-                             OnContent=""
-                             Toggled="tgSettings_Toggled" />
+            <TextBlock
+                VerticalAlignment="Center"
+                Style="{StaticResource BaseTextBlockStyle}"
+                Text="{Binding Title, RelativeSource={RelativeSource AncestorType=local:OptionUCNoExpander}}" />
+            <ui:ToggleSwitch
+                x:Name="tgSettings"
+                Margin="10,0"
+                VerticalAlignment="Center"
+                IsOn="{Binding IsOn, RelativeSource={RelativeSource AncestorType=local:OptionUCNoExpander}}"
+                OffContent=""
+                OnContent=""
+                Toggled="tgSettings_Toggled" />
         </StackPanel>
     </ui:CardControl>
 </UserControl>

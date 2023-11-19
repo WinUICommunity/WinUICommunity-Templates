@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardShell/Styles/ContextMenu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/Styles/ContextMenu.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style BasedOn="{StaticResource ContextMenuStyleBase}"
