@@ -14,11 +14,6 @@
         <StackPanel>
             <Separator Margin="0,10,0,5"
                        HorizontalAlignment="Stretch" />
-            <ui:InfoBar Title="Pages will be added when your template includes navigation view."
-                        Margin="0,0,0,10"
-                        IsClosable="False"
-                        IsOpen="True"
-                        Severity="Error" />
             <local:OptionUC x:Name="tgHomePage"
                             Title="1. Add Home Landing Page"
                             InfoBarMessage="A landing page is often the first point of interaction for users when they access your application. By activating this option, you ensure that your application has a well-designed and informative landing page, enhancing the user experience and providing a strong initial impression."

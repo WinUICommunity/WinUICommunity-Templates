@@ -18,6 +18,7 @@ namespace WinUICommunity_VS_Templates
             var darkResource = new ResourceDictionary { Source = new Uri("pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/ThemeResources/Dark.xaml") };
 
             InitializeComponent();
+            Loaded += MainWindowWizard_Loaded;
             var actualTheme = ThemeManager.GetActualTheme(this);
             if (actualTheme == ElementTheme.Dark)
             {
@@ -27,6 +28,11 @@ namespace WinUICommunity_VS_Templates
             {
                 Application.Current.Resources.MergedDictionaries.Add(lightResource);
             }
+        }
+
+        private void MainWindowWizard_Loaded(object sender, RoutedEventArgs e)
+        {
+            nviPage.IsEnabled = WizardConfig.HasPages;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

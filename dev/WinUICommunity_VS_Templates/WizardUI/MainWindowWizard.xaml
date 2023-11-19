@@ -121,7 +121,7 @@
                         <ui:SymbolIcon Symbol="Library" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
-                <ui:NavigationViewItem Content="Pages" Tag="PagesPages">
+                <ui:NavigationViewItem x:Name="nviPage" Content="Pages" Tag="PagesPages">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="Document" />
                     </ui:NavigationViewItem.Icon>

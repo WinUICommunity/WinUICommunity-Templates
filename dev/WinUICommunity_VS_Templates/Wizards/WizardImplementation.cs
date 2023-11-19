@@ -61,12 +61,12 @@ namespace WinUICommunity_VS_Templates
         /// <param name="replacementsDictionary"></param>
         /// <param name="runKind"></param>
         /// <param name="customParams"></param>
-        public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, bool isMVVMTemplate = false, bool hasNavigationView = false)
+        public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, bool hasPages, bool isMVVMTemplate = false, bool hasNavigationView = false)
         {
             _dte = automationObject as _DTE;
 
             _shouldAddProjectItem = false;
-
+            WizardConfig.HasPages = hasPages;
             var inputForm = new MainWindowWizard();
             var result = inputForm.ShowDialog();
             if (result.HasValue && result.Value)

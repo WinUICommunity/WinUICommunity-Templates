@@ -9,6 +9,7 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static string DotNetVersion = "net8.0";
         public static string Platforms = "x86;x64;ARM64";
         public static string RuntimeIdentifiers = "win-x86;win-x64;win-arm64";
+        public static bool HasPages;
         public static bool AddJsonSettings;
         public static bool AddDynamicLocalization;
         public static bool AddEditorConfig;
