@@ -107,7 +107,7 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
-                new Library("WinUICommunity.ContextMenuExtensions", "5.4.0")
+                new Library("WinUICommunity.ContextMenuExtensions", "5.5.0")
             };
             return list;
         }

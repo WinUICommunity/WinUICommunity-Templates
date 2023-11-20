@@ -34,6 +34,7 @@
                     SelectionChanged="cmbNetVersion_SelectionChanged">
                     <ComboBoxItem Content="net8.0 (Recommended)" Tag="net8.0" />
                     <ComboBoxItem Content="net7.0" Tag="net7.0" />
+                    <ComboBoxItem Content="net6.0" Tag="net6.0" />
                 </ComboBox>
             </StackPanel>
             <Separator Margin="0,5" />

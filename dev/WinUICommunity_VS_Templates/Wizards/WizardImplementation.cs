@@ -75,9 +75,9 @@ namespace WinUICommunity_VS_Templates
 
                 string wasdkVersion = "1.4.231115000";
                 string wasdkBuildToolsVersion = "10.0.22621.2428";
-                string winUICommunityComponentsVersion = "5.4.0";
-                string winUICommunityCoreVersion = "5.4.0";
-                string winUICommunityLandingPagesVersion = "5.4.0";
+                string winUICommunityComponentsVersion = "5.5.0";
+                string winUICommunityCoreVersion = "5.5.0";
+                string winUICommunityLandingPagesVersion = "5.5.0";
                 string communityToolkitMvvmVersion = "8.2.2";
                 string dependencyInjectionVersion = "8.0.0";
                 string winUIManagedVersion = "2.0.9";
@@ -156,7 +156,7 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());
                 replacementsDictionary.Add("$RuntimeIdentifiers$", WizardConfig.RuntimeIdentifiers.ToString());
 
-                if (WizardConfig.DotNetVersion.Contains("net7"))
+                if (WizardConfig.DotNetVersion.Contains("net7") || WizardConfig.DotNetVersion.Contains("net6"))
                 {
                     replacementsDictionary.Add("$PublishProfileRuntime$", "win10");
                 }
