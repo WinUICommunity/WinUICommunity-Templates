@@ -99,6 +99,16 @@
                             Tag="Star"
                             ToolTip="The latest stable version will always be installed" />
                     </ComboBox>
+                    <ComboBox
+                        x:Name="cmbNetVersion"
+                        MinWidth="250"
+                        Margin="-50,5,5,0" ToolTip="Choose .Net Version"
+                        SelectedIndex="0"
+                        SelectionChanged="cmbNetVersion_SelectionChanged">
+                        <ComboBoxItem Content=".Net 8.0 (Recommended)" Tag="net8.0" ToolTip=".Net 8.0 will be used."/>
+                        <ComboBoxItem Content=".Net 7.0" Tag="net7.0" ToolTip=".Net 7.0 will be used."/>
+                        <ComboBoxItem Content=".Net 6.0" Tag="net6.0" ToolTip=".Net 6.0 will be used."/>
+                    </ComboBox>
                 </StackPanel>
             </ui:NavigationView.Header>
 

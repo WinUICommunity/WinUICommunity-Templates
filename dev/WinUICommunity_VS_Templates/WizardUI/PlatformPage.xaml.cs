@@ -92,11 +92,6 @@ namespace WinUICommunity_VS_Templates
             return resultString;
         }
 
-        private void cmbNetVersion_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            WizardConfig.DotNetVersion = (cmbNetVersion.SelectedItem as ComboBoxItem).Tag.ToString();
-        }
-
         private void tgAccelerateBuilds_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
             WizardConfig.AddAccelerateBuilds = tgAccelerateBuilds.IsOn;
