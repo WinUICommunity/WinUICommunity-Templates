@@ -500,10 +500,10 @@
     <Compile Include="WizardShell\UISettingsResources.cs" />
     <Compile Include="WizardShell\VisualStateManager\SimpleVisualStateManager.cs" />
     <Compile Include="WizardShell\VisualStateManager\VisualStateGroupHelper.cs" />
-    <Compile Include="WizardUI\Configs\ConfigCodes.cs" />
-    <Compile Include="WizardUI\Configs\DictionaryExtension.cs" />
-    <Compile Include="WizardUI\Configs\PreDefinedLibrary.cs" />
-    <Compile Include="WizardUI\Configs\SettingsCardOptions.cs" />
+    <Compile Include="Configs\ConfigCodes.cs" />
+    <Compile Include="Configs\DictionaryExtension.cs" />
+    <Compile Include="Configs\PreDefinedLibrary.cs" />
+    <Compile Include="Configs\SettingsCardOptions.cs" />
     <Compile Include="WizardUI\LibrariesPage.xaml.cs">
       <DependentUpon>LibrariesPage.xaml</DependentUpon>
     </Compile>
@@ -526,7 +526,7 @@
       <DependentUpon>MainWindowWizard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Wizards\WizardImplementation.cs" />
-    <Compile Include="WizardUI\Configs\WizardConfig.cs" />
+    <Compile Include="Configs\WizardConfig.cs" />
     <Compile Include="WizardUI\PagesPages.xaml.cs">
       <DependentUpon>PagesPages.xaml</DependentUpon>
     </Compile>
