@@ -7,12 +7,57 @@ namespace WinUICommunity_VS_Templates
     public partial class PlatformPage : Page
     {
         private List<string> platformList = new List<string> { "x86", "x64", "ARM64" };
-
+        internal static PlatformPage Instance { get; private set; }
         public PlatformPage()
         {
             InitializeComponent();
+            Instance = this;
         }
 
+        public void UpdateCheckBoxs()
+        {
+            if (chk64 != null)
+            {
+                if (chk64.IsChecked == true)
+                {
+                    chk64.IsChecked = false;
+                    chk64.IsChecked = true;
+                }
+                else
+                {
+                    chk64.IsChecked = true;
+                    chk64.IsChecked = false;
+                }
+            }
+
+            if (chk86 != null)
+            {
+                if (chk86.IsChecked == true)
+                {
+                    chk86.IsChecked = false;
+                    chk86.IsChecked = true;
+                }
+                else
+                {
+                    chk86.IsChecked = true;
+                    chk86.IsChecked = false;
+                }
+            }
+
+            if (chkArm != null)
+            {
+                if (chkArm.IsChecked == true)
+                {
+                    chkArm.IsChecked = false;
+                    chkArm.IsChecked = true;
+                }
+                else
+                {
+                    chkArm.IsChecked = true;
+                    chkArm.IsChecked = false;
+                }
+            }
+        }
         private string GetRuntimeIdentifiers(string platforms)
         {
             string rid = "win10-x86;win10-x64;win10-arm64";
@@ -35,15 +80,6 @@ namespace WinUICommunity_VS_Templates
             {
                 var lastIndex = rid.LastIndexOf(";");
                 rid = rid.Remove(lastIndex);
-            }
-
-            if (WizardConfig.DotNetVersion.Contains("net7") || WizardConfig.DotNetVersion.Contains("net6"))
-            {
-
-            }
-            else
-            {
-                rid = rid.Replace("win10", "win");
             }
 
             return rid.Trim();

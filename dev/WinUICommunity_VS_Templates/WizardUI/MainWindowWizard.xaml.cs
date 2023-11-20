@@ -58,9 +58,15 @@ namespace WinUICommunity_VS_Templates
         private void cmbNetVersion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             WizardConfig.DotNetVersion = (cmbNetVersion.SelectedItem as ComboBoxItem).Tag.ToString();
+            
             if (LibrariesPage.Instance != null)
             {
                 LibrariesPage.Instance.CreateBoxes();
+            }
+
+            if (PlatformPage.Instance != null)
+            {
+                PlatformPage.Instance.UpdateCheckBoxs();
             }
         }
 

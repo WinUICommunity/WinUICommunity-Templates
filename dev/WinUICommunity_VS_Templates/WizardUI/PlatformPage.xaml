@@ -28,18 +28,21 @@
                     Style="{StaticResource BaseTextBlockStyle}"
                     Text="1. Choose Platforms" />
                 <CheckBox
+                    x:Name="chk86"
                     Checked="CheckBox_Checked"
                     Content="x86"
                     IsChecked="True"
                     Tag="x86"
                     Unchecked="CheckBox_Checked" />
                 <CheckBox
+                    x:Name="chk64"
                     Checked="CheckBox_Checked"
                     Content="x64"
                     IsChecked="True"
                     Tag="x64"
                     Unchecked="CheckBox_Checked" />
                 <CheckBox
+                    x:Name="chkArm"
                     Checked="CheckBox_Checked"
                     Content="ARM64"
                     IsChecked="True"

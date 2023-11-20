@@ -104,6 +104,26 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$DependencyInjectionVersion$", dependencyInjectionVersion);
                 replacementsDictionary.Add("$WinUIManagedVersion$", winUIManagedVersion);
 
+                Platforms = WizardConfig.Platforms;
+                RuntimeIdentifiers = WizardConfig.RuntimeIdentifiers;
+                UseJsonSettings = WizardConfig.AddJsonSettings;
+                UseDynamicLocalization = WizardConfig.AddDynamicLocalization;
+                UseEditorConfig = WizardConfig.AddEditorConfig;
+                UseSolutionFolder = WizardConfig.AddSolutionFolder;
+                UseHomeLandingPage = WizardConfig.AddHomeLandingPage;
+                UseSettingsPage = WizardConfig.AddSettingsPage;
+                UseGeneralSettingPage = WizardConfig.AddGeneralSettingPage;
+                UseThemeSettingPage = WizardConfig.AddThemeSettingPage;
+                UseAppUpdatePage = WizardConfig.AddAppUpdatePage;
+                UseAboutPage = WizardConfig.AddAboutPage;
+                UseAccelerateBuilds = WizardConfig.AddAccelerateBuilds;
+                UseDeveloperModeSetting = WizardConfig.AddDeveloperModeSetting;
+                UseColorsDic = WizardConfig.AddColorsDic;
+                UseStylesDic = WizardConfig.AddStylesDic;
+                UseConvertersDic = WizardConfig.AddConvertersDic;
+                UseFontsDic = WizardConfig.AddFontsDic;
+                DotNetVersion = WizardConfig.DotNetVersion;
+
                 // Add Extra Libs
                 var libs = WizardConfig.LibraryDic;
                 StringBuilder outputBuilder = new StringBuilder();
@@ -152,19 +172,23 @@ namespace WinUICommunity_VS_Templates
                     replacementsDictionary.Add("$ExtraLibs$", "");
                 }
 
-                replacementsDictionary.Add("$DotNetVersion$", WizardConfig.DotNetVersion.ToString());
-                replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());
-                replacementsDictionary.Add("$RuntimeIdentifiers$", WizardConfig.RuntimeIdentifiers.ToString());
-
                 if (WizardConfig.DotNetVersion.Contains("net7") || WizardConfig.DotNetVersion.Contains("net6"))
                 {
                     replacementsDictionary.Add("$PublishProfileRuntime$", "win10");
+                    replacementsDictionary.Add("$Net8RidGraph$", "");
                 }
                 else
                 {
                     replacementsDictionary.Add("$PublishProfileRuntime$", "win");
+                    replacementsDictionary.Add("$Net8RidGraph$", Environment.NewLine + "    <UseRidGraph>true</UseRidGraph>");
+                    RuntimeIdentifiers = RuntimeIdentifiers.Replace("win10", "win");
+                    WizardConfig.RuntimeIdentifiers = RuntimeIdentifiers;
                 }
-                
+
+                replacementsDictionary.Add("$DotNetVersion$", WizardConfig.DotNetVersion.ToString());
+                replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());
+                replacementsDictionary.Add("$RuntimeIdentifiers$", WizardConfig.RuntimeIdentifiers.ToString());
+
                 replacementsDictionary.Add("$AddJsonSettings$", WizardConfig.AddJsonSettings.ToString());
                 replacementsDictionary.Add("$AddDynamicLocalization$", WizardConfig.AddDynamicLocalization.ToString());
                 replacementsDictionary.Add("$AddEditorConfig$", WizardConfig.AddEditorConfig.ToString());
@@ -176,36 +200,6 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$AddAppUpdatePage$", WizardConfig.AddAppUpdatePage.ToString());
                 replacementsDictionary.Add("$AddAboutPage$", WizardConfig.AddAboutPage.ToString());
                 replacementsDictionary.Add("$UseAccelerateBuilds$", WizardConfig.AddAccelerateBuilds.ToString());
-
-                DotNetVersion = WizardConfig.DotNetVersion;
-
-                if (DotNetVersion.Equals("net8.0"))
-                {
-                    replacementsDictionary.Add("$Net8RidGraph$", Environment.NewLine + "    <UseRidGraph>true</UseRidGraph>");
-                }
-                else
-                {
-                    replacementsDictionary.Add("$Net8RidGraph$", "");
-                }
-
-                Platforms = WizardConfig.Platforms;
-                RuntimeIdentifiers = WizardConfig.RuntimeIdentifiers;
-                UseJsonSettings = WizardConfig.AddJsonSettings;
-                UseDynamicLocalization = WizardConfig.AddDynamicLocalization;
-                UseEditorConfig = WizardConfig.AddEditorConfig;
-                UseSolutionFolder = WizardConfig.AddSolutionFolder;
-                UseHomeLandingPage = WizardConfig.AddHomeLandingPage;
-                UseSettingsPage = WizardConfig.AddSettingsPage;
-                UseGeneralSettingPage = WizardConfig.AddGeneralSettingPage;
-                UseThemeSettingPage = WizardConfig.AddThemeSettingPage;
-                UseAppUpdatePage = WizardConfig.AddAppUpdatePage;
-                UseAboutPage = WizardConfig.AddAboutPage;
-                UseAccelerateBuilds = WizardConfig.AddAccelerateBuilds;
-                UseDeveloperModeSetting = WizardConfig.AddDeveloperModeSetting;
-                UseColorsDic = WizardConfig.AddColorsDic;
-                UseStylesDic = WizardConfig.AddStylesDic;
-                UseConvertersDic = WizardConfig.AddConvertersDic;
-                UseFontsDic = WizardConfig.AddFontsDic;
 
                 if (hasNavigationView)
                 {
