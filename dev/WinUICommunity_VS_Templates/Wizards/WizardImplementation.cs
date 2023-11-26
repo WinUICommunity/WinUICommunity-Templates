@@ -77,7 +77,7 @@ namespace WinUICommunity_VS_Templates
                 string wasdkBuildToolsVersion = "10.0.22621.2428";
                 string winUICommunityComponentsVersion = "5.5.0";
                 string winUICommunityCoreVersion = "5.5.1";
-                string winUICommunityLandingPagesVersion = "5.5.1";
+                string winUICommunityLandingPagesVersion = "5.5.2";
                 string communityToolkitMvvmVersion = "8.2.2";
                 string dependencyInjectionVersion = "8.0.0";
                 string winUIManagedVersion = "2.0.9";
