@@ -3,11 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:primitives="clr-namespace:iNKORE.UI.WPF.Modern"
-    xmlns:root="clr-namespace:iNKORE.UI.WPF.Modern"
-    xmlns:ui="clr-namespace:iNKORE.UI.WPF.Modern"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     Title="WinUICommunity Wizard"
     Width="900"
     Height="700"
@@ -21,21 +18,12 @@
     Topmost="False"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <WindowChrome.WindowChrome>
-        <WindowChrome
-            x:Shared="False"
-            CaptionHeight="{DynamicResource {x:Static local:TitleBar.HeightKey}}"
-            GlassFrameThickness="-1"
-            NonClientFrameEdges="None"
-            ResizeBorderThickness="4"
-            UseAeroCaptionButtons="False" />
-    </WindowChrome.WindowChrome>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ui:ThemeResources />
+                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardUI/ThemeResources.xaml" />
                 <ui:XamlControlsResources />
-                <ResourceDictionary Source="pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/Themes/Generic.xaml" />
+                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardUI/CardControl/CardControl.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -102,12 +90,22 @@
                     <ComboBox
                         x:Name="cmbNetVersion"
                         MinWidth="250"
-                        Margin="-50,5,5,0" ToolTip="Choose .Net Version"
+                        Margin="-50,5,5,0"
                         SelectedIndex="0"
-                        SelectionChanged="cmbNetVersion_SelectionChanged">
-                        <ComboBoxItem Content=".Net 8.0 (Recommended)" Tag="net8.0" ToolTip=".Net 8.0 will be used."/>
-                        <ComboBoxItem Content=".Net 7.0" Tag="net7.0" ToolTip=".Net 7.0 will be used."/>
-                        <ComboBoxItem Content=".Net 6.0" Tag="net6.0" ToolTip=".Net 6.0 will be used."/>
+                        SelectionChanged="cmbNetVersion_SelectionChanged"
+                        ToolTip="Choose .Net Version">
+                        <ComboBoxItem
+                            Content=".Net 8.0 (Recommended)"
+                            Tag="net8.0"
+                            ToolTip=".Net 8.0 will be used." />
+                        <ComboBoxItem
+                            Content=".Net 7.0"
+                            Tag="net7.0"
+                            ToolTip=".Net 7.0 will be used." />
+                        <ComboBoxItem
+                            Content=".Net 6.0"
+                            Tag="net6.0"
+                            ToolTip=".Net 6.0 will be used." />
                     </ComboBox>
                 </StackPanel>
             </ui:NavigationView.Header>
@@ -131,7 +129,10 @@
                         <ui:SymbolIcon Symbol="Library" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
-                <ui:NavigationViewItem x:Name="nviPage" Content="Pages" Tag="PagesPages">
+                <ui:NavigationViewItem
+                    x:Name="nviPage"
+                    Content="Pages"
+                    Tag="PagesPages">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="Document" />
                     </ui:NavigationViewItem.Icon>

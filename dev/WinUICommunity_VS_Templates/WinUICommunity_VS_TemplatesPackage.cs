@@ -27,6 +27,7 @@ namespace WinUICommunity_VS_Templates
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(WinUICommunity_VS_TemplatesPackage.PackageGuidString)]
+    [ProvideBindingPath]
     public sealed class WinUICommunity_VS_TemplatesPackage : AsyncPackage
     {
         /// <summary>

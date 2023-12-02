@@ -2,6 +2,7 @@
 using System.Windows;
 using WinUICommunity_VS_Templates.WizardUI;
 using iNKORE.UI.WPF.Modern;
+using iNKORE.UI.WPF.Modern.Controls;
 using System;
 
 namespace WinUICommunity_VS_Templates
@@ -14,20 +15,14 @@ namespace WinUICommunity_VS_Templates
         ResourcePage resourceType;
         public MainWindowWizard()
         {
-            var lightResource = new ResourceDictionary { Source = new Uri("pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/ThemeResources/Light.xaml") };
-            var darkResource = new ResourceDictionary { Source = new Uri("pack://application:,,,/WinUICommunity_VS_Templates;component/WizardShell/ThemeResources/Dark.xaml") };
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
+            {
+                Source = new System.Uri("/WinUICommunity_VS_Templates;component/WizardUI/ThemeResources.xaml", UriKind.RelativeOrAbsolute)
+            });
+            Application.Current.Resources.MergedDictionaries.Add(new XamlControlsResources());
 
             InitializeComponent();
             Loaded += MainWindowWizard_Loaded;
-            var actualTheme = ThemeManager.GetActualTheme(this);
-            if (actualTheme == ElementTheme.Dark)
-            {
-                Application.Current.Resources.MergedDictionaries.Add(darkResource);
-            }
-            else
-            {
-                Application.Current.Resources.MergedDictionaries.Add(lightResource);
-            }
         }
 
         private void MainWindowWizard_Loaded(object sender, RoutedEventArgs e)
@@ -89,7 +84,7 @@ namespace WinUICommunity_VS_Templates
             DialogResult = false;
         }
 
-        private void NavigationView_SelectionChanged(iNKORE.UI.WPF.Modern.NavigationView sender, iNKORE.UI.WPF.Modern.NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var item = args.SelectedItem;
             if (item != null && item is NavigationViewItem navigationViewItem && navigationViewItem.Tag != null)
