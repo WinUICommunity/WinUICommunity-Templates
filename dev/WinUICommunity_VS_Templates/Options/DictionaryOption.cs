@@ -9,7 +9,7 @@ namespace WinUICommunity_VS_Templates.Options
         {
             if (useColorsDic || (hasNavigationView && useHomeLandingPage))
             {
-                replacementsDictionary.AddIfNotExists("$AppDicColors$", Environment.NewLine + "                <ResourceDictionary Source=\"Themes/Colors.xaml\" />");
+                replacementsDictionary.AddIfNotExists("$AppDicColors$", Environment.NewLine + "                <ResourceDictionary Source=\"Themes/ThemeResources.xaml\" />");
             }
             else
             {

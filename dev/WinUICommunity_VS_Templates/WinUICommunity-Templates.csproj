@@ -120,7 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="iNKORE.UI.WPF.Modern">
-      <Version>0.9.23.1</Version>
+      <Version>0.9.25</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
   </ItemGroup>

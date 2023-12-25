@@ -53,7 +53,7 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
-            else if (!WizardImplementation.UseColorsDic && filePath.Contains("Colors.xaml"))
+            else if (!WizardImplementation.UseColorsDic && filePath.Contains("ThemeResources.xaml"))
             {
                 return false;
             }
