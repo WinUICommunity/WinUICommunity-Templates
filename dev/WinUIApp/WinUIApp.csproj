@@ -107,7 +107,7 @@
     <Content Include="Common\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Themes\Colors.xaml">
+    <Content Include="Themes\ThemeResources.xaml">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
