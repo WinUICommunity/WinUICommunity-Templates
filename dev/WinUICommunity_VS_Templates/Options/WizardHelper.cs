@@ -2,15 +2,18 @@
 
 using EnvDTE;
 using EnvDTE80;
+using Microsoft.VisualStudio.Shell;
 
 namespace WinUICommunity_VS_Templates.Options
 {
     public static class WizardHelper
     {
-        public static void FormatDocument(string filePath)
+        public static async void FormatDocument(string filePath)
         {
             if (File.Exists(filePath))
             {
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
                 DTE2 dte = (DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE");
                 dte.ItemOperations.OpenFile(filePath);
                 Document activeDoc = dte.ActiveDocument;
