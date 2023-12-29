@@ -30,7 +30,7 @@ public partial class AppUpdateSettingViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async void CheckForUpdateAsync()
+    private async Task CheckForUpdateAsync()
     {
         IsLoading = true;
         IsUpdateAvailable = false;
@@ -74,14 +74,14 @@ public partial class AppUpdateSettingViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async void GoToUpdateAsync()
+    private async Task GoToUpdateAsync()
     {
         //Todo: Change Uri
         await Launcher.LaunchUriAsync(new Uri("https://github.com/WinUICommunity/WinUICommunity/releases"));
     }
 
     [RelayCommand]
-    private async void GetReleaseNotesAsync()
+    private async Task GetReleaseNotesAsync()
     {
         ContentDialog dialog = new ContentDialog()
         {
