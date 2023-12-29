@@ -12,7 +12,7 @@
     <ScrollView Margin="{ThemeResource ContentPageMargin}" VerticalScrollBarVisibility="Auto">
         <StackPanel
             Margin="10"
-            ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+            wuc:PanelAttach.ChildrenTransitions="Default"
             Spacing="5">
 
             <views:BreadcrumbBarUserControl SingleItem="{x:Bind BreadCrumbBarItemText, Mode=OneWay}" />
