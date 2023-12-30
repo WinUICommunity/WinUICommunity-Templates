@@ -99,6 +99,7 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
+                new Library("Microsoft.Windows.CsWinRT", "2.0.4"),
                 new Library("Microsoft.Windows.CsWin32", "0.3.49-beta", false, true),
                 new Library("WinUIEx", "2.3.3"),
                 new Library("Microsoft.Graphics.Win2D", "1.0.5.1"),
@@ -107,6 +108,7 @@ namespace WinUICommunity_VS_Templates
                 new Library("Downloader", "3.0.6"),
                 new Library("Microsoft.Win32.Registry", "5.0.0"),
                 new Library("YamlDotNet", "13.7.1"),
+                new Library("System.Drawing.Common", "8.0.0", "7.0.0", "6.0.0"),
                 new Library("System.Management", "8.0.0", "7.0.2", "6.0.2"),
                 new Library("SharpCompress", "0.35.0"),
                 new Library("RestSharp", "110.2.0"),
