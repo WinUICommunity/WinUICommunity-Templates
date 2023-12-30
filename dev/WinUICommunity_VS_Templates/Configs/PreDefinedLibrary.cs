@@ -61,7 +61,7 @@ namespace WinUICommunity_VS_Templates
                 new Library("CommunityToolkit.WinUI.Animations", "8.0.230907"),
                 new Library("CommunityToolkit.WinUI.Media", "8.0.230907"),
                 new Library("CommunityToolkit.WinUI.Collections", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Lottie", "8.0.0-rc"),
+                new Library("CommunityToolkit.WinUI.Lottie", "8.0.0-rc", false, true),
                 new Library("CommunityToolkit.WinUI.Controls.Segmented", "8.0.230907"),
                 new Library("CommunityToolkit.WinUI.Controls.Primitives", "8.0.230907"),
                 new Library("CommunityToolkit.WinUI.Controls.Sizers", "8.0.230907"),
@@ -99,13 +99,16 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
+                new Library("Microsoft.Windows.CsWin32", "0.3.49-beta", false, true),
+                new Library("WinUIEx", "2.3.3"),
+                new Library("Microsoft.Graphics.Win2D", "1.0.5.1"),
                 new Library("Newtonsoft.Json", "13.0.3"),
-                new Library("HtmlAgilityPack", "1.11.54"),
+                new Library("HtmlAgilityPack", "1.11.57"),
                 new Library("Downloader", "3.0.6"),
                 new Library("Microsoft.Win32.Registry", "5.0.0"),
                 new Library("YamlDotNet", "13.7.1"),
                 new Library("System.Management", "8.0.0", "7.0.2", "6.0.2"),
-                new Library("SharpCompress", "0.34.2"),
+                new Library("SharpCompress", "0.35.0"),
                 new Library("RestSharp", "110.2.0"),
                 new Library("Vanara.Windows.Shell", "3.4.17"),
                 new Library("protobuf-net", "3.2.30"),
@@ -121,7 +124,7 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
-                new Library("WinUICommunity.ContextMenuExtensions", "5.5.0")
+                new Library("WinUICommunity.ContextMenuExtensions", "6.0.0")
             };
             return list;
         }
@@ -133,9 +136,9 @@ namespace WinUICommunity_VS_Templates
                 new Library("Serilog", "3.1.1"),
                 new Library("Serilog.Sinks.File", "5.0.0"),
                 new Library("Serilog.Sinks.Debug", "2.0.0"),
-                new Library("Serilog.Sinks.Console", "5.0.0"),
+                new Library("Serilog.Sinks.Console", "5.0.1"),
                 new Library("log4net", "2.0.15"),
-                new Library("NLog", "5.2.6")
+                new Library("NLog", "5.2.8")
             };
             return list;
         }
