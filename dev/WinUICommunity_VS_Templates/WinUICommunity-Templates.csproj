@@ -70,6 +70,7 @@
     <Compile Include="Configs\DictionaryExtension.cs" />
     <Compile Include="Configs\PreDefinedLibrary.cs" />
     <Compile Include="Configs\SettingsCardOptions.cs" />
+    <Compile Include="Wizards\WinUIAppBlankWizard.cs" />
     <Compile Include="WizardUI\CardControl\CardControl.cs" />
     <Compile Include="WizardUI\LibrariesPage.xaml.cs">
       <DependentUpon>LibrariesPage.xaml</DependentUpon>
@@ -125,6 +126,13 @@
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WinUIApp-Blank\WinUIApp-Blank.csproj">
+      <Project>{AAF6A3C7-A34B-440C-A31B-04A6E07CB344}</Project>
+      <Name>WinUIApp-Blank</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
     <ProjectReference Include="..\WinUIApp-MVVM-NavigationView\WinUIApp-MVVM-NavigationView.csproj">
       <Project>{0E3DECEA-492D-4FF6-B77E-4E68E6AFFA90}</Project>
       <Name>WinUIApp-MVVM-NavigationView</Name>

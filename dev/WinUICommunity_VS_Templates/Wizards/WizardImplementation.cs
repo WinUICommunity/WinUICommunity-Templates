@@ -61,12 +61,13 @@ namespace WinUICommunity_VS_Templates
         /// <param name="replacementsDictionary"></param>
         /// <param name="runKind"></param>
         /// <param name="customParams"></param>
-        public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, bool hasPages, bool isMVVMTemplate = false, bool hasNavigationView = false)
+        public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, bool hasPages, bool isMVVMTemplate = false, bool hasNavigationView = false, bool isBlank = false)
         {
             _dte = automationObject as _DTE;
 
             _shouldAddProjectItem = false;
             WizardConfig.HasPages = hasPages;
+            WizardConfig.IsBlank = isBlank;
             var inputForm = new MainWindowWizard();
             var result = inputForm.ShowDialog();
             if (result.HasValue && result.Value)
@@ -170,6 +171,31 @@ namespace WinUICommunity_VS_Templates
                 else
                 {
                     replacementsDictionary.Add("$ExtraLibs$", "");
+                }
+
+                if (isBlank)
+                {
+                    if (libs.ContainsKey("WinUICommunity.Components"))
+                    {
+                        replacementsDictionary.Add("$WinUICommunity.Components$", "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.Components/Themes/Generic.xaml\" />");
+                    }
+                    else
+                    {
+                        replacementsDictionary.Add("$WinUICommunity.Components$", "");
+                    }
+
+                    if (libs.ContainsKey("WinUICommunity.LandingPages"))
+                    {
+                        replacementsDictionary.Add("$WinUICommunity.LandingPages$", "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml\" />");
+                        replacementsDictionary.Add("$WinUICommunity.LandingPagesItemTemplate$", "<wuc:ItemTemplates />");
+                        replacementsDictionary.Add("$WinUICommunityRefrence$", "xmlns:wuc=\"using:WinUICommunity\"");
+                    }
+                    else
+                    {
+                        replacementsDictionary.Add("$WinUICommunity.LandingPages$", "");
+                        replacementsDictionary.Add("$WinUICommunity.LandingPagesItemTemplate$", "");
+                        replacementsDictionary.Add("$WinUICommunityRefrence$", "");
+                    }
                 }
 
                 if (WizardConfig.DotNetVersion.Contains("net7") || WizardConfig.DotNetVersion.Contains("net6"))

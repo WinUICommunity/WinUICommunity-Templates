@@ -28,6 +28,10 @@ namespace WinUICommunity_VS_Templates
         private void MainWindowWizard_Loaded(object sender, RoutedEventArgs e)
         {
             nviPage.IsEnabled = WizardConfig.HasPages;
+            if (WizardConfig.IsBlank)
+            {
+                nviPage.IsEnabled = false;
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
