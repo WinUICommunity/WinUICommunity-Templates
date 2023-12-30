@@ -43,12 +43,6 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
-            else if (!WizardImplementation.UseDynamicLocalization &&
-                filePath.Contains("Resources") &&
-                !filePath.Contains("ThemeResources"))
-            {
-                return false;
-            }
             else if (!WizardImplementation.UseStylesDic && filePath.Contains("Styles.xaml"))
             {
                 return false;
