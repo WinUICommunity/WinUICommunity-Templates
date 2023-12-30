@@ -12,16 +12,10 @@ namespace WinUICommunity_VS_Templates
         {
             InitializeComponent();
             Instance = this;
-            HandleBlankTemplate();
             Loaded += PlatformPage_Loaded;
         }
 
         private void PlatformPage_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            HandleBlankTemplate();
-        }
-
-        public void HandleBlankTemplate()
         {
             if (WizardConfig.IsBlank)
             {
@@ -32,7 +26,6 @@ namespace WinUICommunity_VS_Templates
                 }
             }
         }
-
         public void UpdateCheckBoxs()
         {
             if (chk64 != null)
