@@ -177,7 +177,7 @@ namespace WinUICommunity_VS_Templates
                 {
                     if (outputText.Contains("WinUICommunity.Components"))
                     {
-                        replacementsDictionary.Add("$WinUICommunity.Components$", Environment.NewLine + "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.Components/Themes/Generic.xaml\" />");
+                        replacementsDictionary.Add("$WinUICommunity.Components$", Environment.NewLine + "                <ResourceDictionary Source=\"ms-appx:///WinUICommunity.Components/Themes/Generic.xaml\" />");
                     }
                     else
                     {
@@ -186,9 +186,9 @@ namespace WinUICommunity_VS_Templates
 
                     if (outputText.Contains("WinUICommunity.LandingPages"))
                     {
-                        replacementsDictionary.Add("$WinUICommunity.LandingPages$", Environment.NewLine + "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml\" />");
-                        replacementsDictionary.Add("$WinUICommunity.LandingPagesItemTemplate$", Environment.NewLine + "<wuc:ItemTemplates />");
-                        replacementsDictionary.Add("$WinUICommunityRefrence$", Environment.NewLine + "xmlns:wuc=\"using:WinUICommunity\"");
+                        replacementsDictionary.Add("$WinUICommunity.LandingPages$", Environment.NewLine + "                <ResourceDictionary Source=\"ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml\" />");
+                        replacementsDictionary.Add("$WinUICommunity.LandingPagesItemTemplate$", Environment.NewLine + "                <wuc:ItemTemplates />");
+                        replacementsDictionary.Add("$WinUICommunityRefrence$", Environment.NewLine + "             xmlns:wuc=\"using:WinUICommunity\"");
                     }
                     else
                     {
