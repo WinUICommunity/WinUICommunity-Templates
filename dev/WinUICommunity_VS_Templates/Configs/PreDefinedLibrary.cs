@@ -126,6 +126,9 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
+                new Library("WinUICommunity.Core", "6.0.0"),
+                new Library("WinUICommunity.Components", "6.0.0"),
+                new Library("WinUICommunity.LandingPages", "6.0.0"),
                 new Library("WinUICommunity.ContextMenuExtensions", "6.0.0")
             };
             return list;
