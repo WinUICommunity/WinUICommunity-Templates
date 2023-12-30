@@ -12,13 +12,25 @@ namespace WinUICommunity_VS_Templates
         {
             InitializeComponent();
             Instance = this;
+            HandleBlankTemplate();
             Loaded += PlatformPage_Loaded;
         }
 
         private void PlatformPage_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            tgDynamicLocalization.IsEnabled = !WizardConfig.IsBlank;
-            tgJsonSettings.IsEnabled = !WizardConfig.IsBlank;
+            HandleBlankTemplate();
+        }
+
+        public void HandleBlankTemplate()
+        {
+            if (WizardConfig.IsBlank)
+            {
+                if (tgDynamicLocalization != null && tgJsonSettings != null)
+                {
+                    tgDynamicLocalization.IsEnabled = false;
+                    tgJsonSettings.IsEnabled = false;
+                }
+            }
         }
 
         public void UpdateCheckBoxs()

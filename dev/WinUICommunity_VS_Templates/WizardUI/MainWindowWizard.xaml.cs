@@ -31,6 +31,10 @@ namespace WinUICommunity_VS_Templates
             if (WizardConfig.IsBlank)
             {
                 nviPage.IsEnabled = false;
+                if (PlatformPage.Instance != null)
+                {
+                    PlatformPage.Instance.HandleBlankTemplate();
+                }
             }
         }
 
