@@ -17,13 +17,11 @@
             x:Name="appTitleBar"
             Title="{x:Bind local:App.Current.AppName}"
             BackButtonClick="appTitleBar_BackButtonClick"
+            Icon="{wuc:BitmapIcon Source=ms-appx:///Assets/icon.png}"
             IsBackButtonVisible="True"
             IsPaneButtonVisible="True"
             PaneButtonClick="appTitleBar_PaneButtonClick"
             Subtitle="{x:Bind local:App.Current.AppVersion}">
-            <wuc:TitleBar.Icon>
-                <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Assets/icon.png" />
-            </wuc:TitleBar.Icon>
             <wuc:TitleBar.Content>
                 <AutoSuggestBox
                     PlaceholderText="Search"
@@ -37,12 +35,10 @@
                     Height="32"
                     Margin="0,0,4,0"
                     Click="ThemeButton_Click"
+                    Content="{wuc:FontIcon GlyphCode=E793,
+                                           FontSize=16}"
                     Style="{ThemeResource SubtleButtonStyle}"
-                    ToolTipService.ToolTip="Toggle Theme">
-                    <Button.Content>
-                        <FontIcon FontSize="16" Glyph="&#xE793;" />
-                    </Button.Content>
-                </Button>
+                    ToolTipService.ToolTip="Toggle Theme" />
             </wuc:TitleBar.Footer>
         </wuc:TitleBar>
         <NavigationView

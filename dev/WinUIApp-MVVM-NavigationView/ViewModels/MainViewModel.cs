@@ -7,7 +7,7 @@ public partial class MainViewModel : ObservableObject, ITitleBarAutoSuggestBoxAw
     public MainViewModel(IJsonNavigationViewService jsonNavigationViewService, IThemeService themeService)
     {
         JsonNavigationViewService = jsonNavigationViewService;
-        themeService.Initialize(App.currentWindow);
+        themeService.Initialize(App.CurrentWindow);
         themeService.ConfigBackdrop();
         themeService.ConfigElementTheme();
         themeService.ConfigBackdropFallBackColorForWindow10(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);

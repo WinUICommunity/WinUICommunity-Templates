@@ -107,6 +107,26 @@
                             Tag="net6.0"
                             ToolTip=".Net 6.0 will be used." />
                     </ComboBox>
+                    <ComboBox
+                        x:Name="cmbTargetFrameworkVersion"
+                        MinWidth="250"
+                        Margin="-50,5,5,0"
+                        SelectedIndex="0"
+                        SelectionChanged="cmbTargetFrameworkVersion_SelectionChanged"
+                        ToolTip="Choose TargetFramework Version">
+                        <ComboBoxItem
+                            Content="19041"
+                            Tag="19041"
+                            ToolTip="19041" />
+                        <ComboBoxItem
+                            Content="22000"
+                            Tag="22000"
+                            ToolTip="22000" />
+                        <ComboBoxItem
+                            Content="22621"
+                            Tag="22621"
+                            ToolTip="22621" />
+                    </ComboBox>
                 </StackPanel>
             </ui:NavigationView.Header>
 

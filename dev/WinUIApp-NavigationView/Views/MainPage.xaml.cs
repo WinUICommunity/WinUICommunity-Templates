@@ -5,7 +5,7 @@ public sealed partial class MainPage : Page
     public MainPage()
     {
         this.InitializeComponent();
-        appTitleBar.Window = App.currentWindow;
+        appTitleBar.Window = App.CurrentWindow;
         App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame);
         App.Current.JsonNavigationViewService.ConfigJson("Assets/NavViewMenu/AppData.json");
     }
@@ -30,7 +30,7 @@ public sealed partial class MainPage : Page
 
     private void ThemeButton_Click(object sender, RoutedEventArgs e)
     {
-        var element = App.currentWindow.Content as FrameworkElement;
+        var element = App.CurrentWindow.Content as FrameworkElement;
 
         if (element.ActualTheme == ElementTheme.Light)
         {

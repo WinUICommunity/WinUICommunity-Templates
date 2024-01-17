@@ -2,7 +2,7 @@
 
 public partial class App : Application
 {
-    public static Window currentWindow = Window.Current;
+    public static Window CurrentWindow = Window.Current;
     
     public App()
     {
@@ -11,16 +11,16 @@ public partial class App : Application
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
-        currentWindow = new Window();
+        CurrentWindow = new Window();
 
-        if (currentWindow.Content is not Frame rootFrame)
+        if (CurrentWindow.Content is not Frame rootFrame)
         {
-            currentWindow.Content = rootFrame = new Frame();
+            CurrentWindow.Content = rootFrame = new Frame();
         }
 
         rootFrame.Navigate(typeof(MainPage));
 
-        currentWindow.Activate();
+        CurrentWindow.Activate();
     }
 }
 

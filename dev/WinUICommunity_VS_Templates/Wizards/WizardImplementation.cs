@@ -74,11 +74,11 @@ namespace WinUICommunity_VS_Templates
             {
                 _shouldAddProjectItem = true;
 
-                string wasdkVersion = "1.4.231115000";
+                string wasdkVersion = "1.4.231219000";
                 string wasdkBuildToolsVersion = "10.0.22621.2428";
-                string winUICommunityComponentsVersion = "6.0.0";
-                string winUICommunityCoreVersion = "6.0.0";
-                string winUICommunityLandingPagesVersion = "6.0.0";
+                string winUICommunityComponentsVersion = "6.1.0";
+                string winUICommunityCoreVersion = "6.1.0";
+                string winUICommunityLandingPagesVersion = "6.1.0";
                 string communityToolkitMvvmVersion = "8.2.2";
                 string dependencyInjectionVersion = "8.0.0";
                 string winUIManagedVersion = "2.0.9";
@@ -212,6 +212,7 @@ namespace WinUICommunity_VS_Templates
                 }
 
                 replacementsDictionary.Add("$DotNetVersion$", WizardConfig.DotNetVersion.ToString());
+                replacementsDictionary.Add("$TargetFrameworkVersion$", WizardConfig.TargetFrameworkVersion.ToString());
                 replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());
                 replacementsDictionary.Add("$RuntimeIdentifiers$", WizardConfig.RuntimeIdentifiers.ToString());
 

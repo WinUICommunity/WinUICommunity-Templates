@@ -4,7 +4,7 @@ namespace $safeprojectname$;
 
 public partial class App : Application
 {
-    public static Window currentWindow = Window.Current;
+    public static Window CurrentWindow = Window.Current;
     public IThemeService ThemeService { get; set; }
     public new static App Current => (App)Application.Current;
     public string AppVersion { get; set; } = AssemblyInfoHelper.GetAssemblyVersion();
@@ -17,28 +17,28 @@ public partial class App : Application
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
-        currentWindow = new Window();
+        CurrentWindow = new Window();
 
-        currentWindow.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
-        currentWindow.AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
+        CurrentWindow.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
+        CurrentWindow.AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
 
-        if (currentWindow.Content is not Frame rootFrame)
+        if (CurrentWindow.Content is not Frame rootFrame)
         {
-            currentWindow.Content = rootFrame = new Frame();
+            CurrentWindow.Content = rootFrame = new Frame();
         }
 
         ThemeService = new ThemeService();
-        ThemeService.Initialize(currentWindow);
+        ThemeService.Initialize(CurrentWindow);
         ThemeService.ConfigBackdrop();
         ThemeService.ConfigElementTheme();
         ThemeService.ConfigBackdropFallBackColorForWindow10(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);
 
         rootFrame.Navigate(typeof(MainPage));
 
-        currentWindow.Title = currentWindow.AppWindow.Title = $"{AppName} v{AppVersion}";
-        currentWindow.AppWindow.SetIcon("Assets/icon.ico");$AppCenter$$ConfigLogger$
+        CurrentWindow.Title = CurrentWindow.AppWindow.Title = $"{AppName} v{AppVersion}";
+        CurrentWindow.AppWindow.SetIcon("Assets/icon.ico");$AppCenter$$ConfigLogger$
 
-        currentWindow.Activate();await InitializeLocalizer("en-US");$UnhandeledException$
+        CurrentWindow.Activate();await InitializeLocalizer("en-US");$UnhandeledException$
     }private void InitializeLocalizer { };
 }
 

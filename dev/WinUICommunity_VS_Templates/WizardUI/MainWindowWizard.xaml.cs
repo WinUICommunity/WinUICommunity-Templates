@@ -126,5 +126,10 @@ namespace WinUICommunity_VS_Templates
                 }
             }
         }
+
+        private void cmbTargetFrameworkVersion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            WizardConfig.TargetFrameworkVersion = (cmbTargetFrameworkVersion.SelectedItem as ComboBoxItem).Tag.ToString();
+        }
     }
 }
