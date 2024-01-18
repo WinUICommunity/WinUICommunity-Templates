@@ -53,25 +53,25 @@ namespace WinUICommunity_VS_Templates
             {
                 new Library("CommunityToolkit.HighPerformance", "8.2.2"),
                 new Library("CommunityToolkit.Common", "8.2.2"),
-                new Library("CommunityToolkit.WinUI.Behaviors", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Extensions", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Helpers", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Triggers", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Converters", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Animations", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Media", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Collections", "8.0.230907"),
+                new Library("CommunityToolkit.WinUI.Behaviors", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Extensions", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Helpers", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Triggers", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Converters", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Animations", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Media", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Collections", "8.0.240109"),
                 new Library("CommunityToolkit.WinUI.Lottie", "8.0.0-rc", false, true),
-                new Library("CommunityToolkit.WinUI.Controls.Segmented", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Controls.Primitives", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Controls.Sizers", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Controls.HeaderedControls", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Controls.RangeSelector", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Controls.ImageCropper", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Controls.RichSuggestBox", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Controls.RadialGauge", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Controls.CameraPreview", "8.0.230907"),
-                new Library("CommunityToolkit.WinUI.Controls.TokenizingTextBox", "8.0.230907")
+                new Library("CommunityToolkit.WinUI.Controls.Segmented", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Controls.Primitives", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Controls.Sizers", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Controls.HeaderedControls", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Controls.RangeSelector", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Controls.ImageCropper", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Controls.RichSuggestBox", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Controls.RadialGauge", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Controls.CameraPreview", "8.0.240109"),
+                new Library("CommunityToolkit.WinUI.Controls.TokenizingTextBox", "8.0.240109")
             };
             return list;
         }
@@ -80,17 +80,17 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
-                new Library("Microsoft.EntityFrameworkCore", "8.0.0", "7.0.14", "6.0.25"),
-                new Library("Microsoft.EntityFrameworkCore.Sqlite", "8.0.0", "7.0.14", "6.0.25"),
-                new Library("Microsoft.EntityFrameworkCore.SqlServer", "8.0.0", "7.0.14", "6.0.25"),
-                new Library("Microsoft.EntityFrameworkCore.Cosmos", "8.0.0", "7.0.14", "6.0.25"),
-                new Library("Microsoft.EntityFrameworkCore.InMemory", "8.0.0", "7.0.14", "6.0.25"),
-                new Library("Microsoft.EntityFrameworkCore.Relational", "8.0.0", "7.0.14", "6.0.25"),
-                new Library("Microsoft.EntityFrameworkCore.Abstractions", "8.0.0", "7.0.14", "6.0.25"),
-                new Library("Microsoft.EntityFrameworkCore.Analyzers", "8.0.0", "7.0.14", "6.0.25"),
-                new Library("Microsoft.EntityFrameworkCore.Design", "8.0.0", "7.0.14", "6.0.25"),
-                new Library("Microsoft.EntityFrameworkCore.Proxies", "8.0.0", "7.0.14", "6.0.25"),
-                new Library("Microsoft.EntityFrameworkCore.Tools", "8.0.0", "7.0.14", "6.0.25")
+                new Library("Microsoft.EntityFrameworkCore", "8.0.1", "7.0.14", "6.0.25"),
+                new Library("Microsoft.EntityFrameworkCore.Sqlite", "8.0.1", "7.0.14", "6.0.25"),
+                new Library("Microsoft.EntityFrameworkCore.SqlServer", "8.0.1", "7.0.14", "6.0.25"),
+                new Library("Microsoft.EntityFrameworkCore.Cosmos", "8.0.1", "7.0.14", "6.0.25"),
+                new Library("Microsoft.EntityFrameworkCore.InMemory", "8.0.1", "7.0.14", "6.0.25"),
+                new Library("Microsoft.EntityFrameworkCore.Relational", "8.0.1", "7.0.14", "6.0.25"),
+                new Library("Microsoft.EntityFrameworkCore.Abstractions", "8.0.1", "7.0.14", "6.0.25"),
+                new Library("Microsoft.EntityFrameworkCore.Analyzers", "8.0.1", "7.0.14", "6.0.25"),
+                new Library("Microsoft.EntityFrameworkCore.Design", "8.0.1", "7.0.14", "6.0.25"),
+                new Library("Microsoft.EntityFrameworkCore.Proxies", "8.0.1", "7.0.14", "6.0.25"),
+                new Library("Microsoft.EntityFrameworkCore.Tools", "8.0.1", "7.0.14", "6.0.25")
             };
             return list;
         }
@@ -108,9 +108,9 @@ namespace WinUICommunity_VS_Templates
                 new Library("Downloader", "3.0.6"),
                 new Library("Microsoft.Win32.Registry", "5.0.0"),
                 new Library("YamlDotNet", "13.7.1"),
-                new Library("System.Drawing.Common", "8.0.0", "7.0.0", "6.0.0"),
+                new Library("System.Drawing.Common", "8.0.1", "7.0.0", "6.0.0"),
                 new Library("System.Management", "8.0.0", "7.0.2", "6.0.2"),
-                new Library("SharpCompress", "0.35.0"),
+                new Library("SharpCompress", "0.36.0"),
                 new Library("RestSharp", "110.2.0"),
                 new Library("Vanara.Windows.Shell", "3.4.17"),
                 new Library("protobuf-net", "3.2.30"),

@@ -62,7 +62,7 @@
                         Margin="-50,-40,5,0"
                         IsClosable="False"
                         IsOpen="True"
-                        Message="1.4.231115000"
+                        Message="1.4.231219000"
                         Severity="Warning" />
                     <ui:InfoBar
                         Title="Build Tools"
@@ -123,7 +123,7 @@
                             Tag="22000"
                             ToolTip="22000" />
                         <ComboBoxItem
-                            Content="22621"
+                            Content="22621 (Recommended)"
                             Tag="22621"
                             ToolTip="22621" />
                     </ComboBox>
