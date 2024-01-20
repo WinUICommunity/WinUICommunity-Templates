@@ -244,10 +244,12 @@ namespace WinUICommunity_VS_Templates
 
                 if (UseSettingsPage && UseThemeSettingPage)
                 {
+                    replacementsDictionary.Add("$BackdropTintColorViewModel$", Environment.NewLine + "themeService.ConfigBackdropTintColor();");
                     replacementsDictionary.Add("$BackdropTintColor$", Environment.NewLine + "ThemeService.ConfigBackdropTintColor();");
                 }
                 else
                 {
+                    replacementsDictionary.Add("$BackdropTintColorViewModel$", "");
                     replacementsDictionary.Add("$BackdropTintColor$", "");
                 }
 
