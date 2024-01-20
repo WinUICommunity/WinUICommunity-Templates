@@ -62,6 +62,7 @@ namespace WinUICommunity_VS_Templates
                 filePath.Contains("AppUpdateSettingViewModel") ||
                 filePath.Contains("backdrop.png") ||
                 filePath.Contains("color.png") ||
+                filePath.Contains("tint.png") ||
                 filePath.Contains("external.png") ||
                 filePath.Contains("info.png") ||
                 filePath.Contains("settings.png") ||
@@ -85,6 +86,7 @@ namespace WinUICommunity_VS_Templates
                 filePath.Contains("ThemeSettingViewModel") ||
                 filePath.Contains("backdrop.png") ||
                 filePath.Contains("color.png") ||
+                filePath.Contains("tint.png") ||
                 filePath.Contains("external.png") ||
                 filePath.Contains("theme.png")))
             {

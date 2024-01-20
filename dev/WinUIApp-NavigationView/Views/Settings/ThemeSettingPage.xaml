@@ -42,7 +42,7 @@
                     <ComboBoxItem Content="Transparent" Tag="Transparent" />
                 </ComboBox>
 
-                <wuc:SettingsExpander.Items>
+                <wuc:SettingsExpander.ItemsHeader>
                     <wuc:SettingsExpander
                         Description="Make your experience more personalized by adjusting the color of the tint that overlays your backdrop material. You can choose from a variety of colors or use the color picker to select your own."
                         Header="Pick your tint color"
@@ -70,15 +70,11 @@
                                     <ColorPicker
                                         ColorChanged="ColorPicker_ColorChanged"
                                         IsAlphaEnabled="True"
-                                        IsAlphaSliderVisible="True"
-                                        IsAlphaTextInputVisible="True"
-                                        IsColorPreviewVisible="True"
-                                        IsColorSliderVisible="True"
                                         IsMoreButtonVisible="True" />
                                 </Flyout>
                             </Button.Flyout>
                         </Button>
-                        <wuc:SettingsExpander.Items>
+                        <wuc:SettingsExpander.ItemsHeader>
                             <wuc:SettingsCard>
                                 <wuc:SettingsCard.Description>
                                     <wuc:ColorPalette
@@ -91,9 +87,9 @@
                                         Color="NormalLarge" />
                                 </wuc:SettingsCard.Description>
                             </wuc:SettingsCard>
-                        </wuc:SettingsExpander.Items>
+                        </wuc:SettingsExpander.ItemsHeader>
                     </wuc:SettingsExpander>
-                </wuc:SettingsExpander.Items>
+                </wuc:SettingsExpander.ItemsHeader>
             </wuc:SettingsExpander>
             <wuc:SettingsCard
                 ActionIcon="{wuc:BitmapIcon Source=Assets/Fluent/external.png}"

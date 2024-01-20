@@ -9,7 +9,7 @@ public partial class MainViewModel : ObservableObject, ITitleBarAutoSuggestBoxAw
         JsonNavigationViewService = jsonNavigationViewService;
         themeService.Initialize(App.CurrentWindow);
         themeService.ConfigBackdrop();
-        themeService.ConfigElementTheme();
+        themeService.ConfigElementTheme();$BackdropTintColor$
         themeService.ConfigBackdropFallBackColorForWindow10(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);
     }
 
