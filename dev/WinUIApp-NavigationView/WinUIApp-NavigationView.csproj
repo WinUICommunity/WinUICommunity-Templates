@@ -65,6 +65,7 @@
     <Content Include="Assets\Fluent\info.png" />
     <Content Include="Assets\Fluent\settings.png" />
     <Content Include="Assets\Fluent\theme.png" />
+    <Content Include="Assets\Fluent\tint.png" />
     <Content Include="Assets\Fluent\update.png" />
     <Content Include="Assets\icon.ico" />
     <Content Include="Assets\icon.png" />

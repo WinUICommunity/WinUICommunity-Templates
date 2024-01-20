@@ -242,6 +242,15 @@ namespace WinUICommunity_VS_Templates
                     new ColorsDicOption().ConfigColorsDic(replacementsDictionary, UseHomeLandingPage);
                 }
 
+                if (UseSettingsPage && UseThemeSettingPage)
+                {
+                    replacementsDictionary.Add("$BackdropTintColor$", Environment.NewLine + "ThemeService.ConfigBackdropTintColor();");
+                }
+                else
+                {
+                    replacementsDictionary.Add("$BackdropTintColor$", "");
+                }
+
                 new DictionaryOption().ConfigDictionary(replacementsDictionary, hasNavigationView, UseHomeLandingPage, UseColorsDic, UseStylesDic, UseConvertersDic, UseFontsDic);
                 var serilog = new SerilogOption();
                 serilog.ConfigSerilog(replacementsDictionary, libs, UseJsonSettings, UseDeveloperModeSetting);

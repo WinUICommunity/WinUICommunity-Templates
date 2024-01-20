@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-
-using EnvDTE;
-
+﻿using EnvDTE;
 using Microsoft.VisualStudio.TemplateWizard;
+using System.Collections.Generic;
 
 namespace WinUICommunity_VS_Templates
 {
@@ -54,6 +52,7 @@ namespace WinUICommunity_VS_Templates
                 filePath.Contains("GeneralSettingPage") || 
                 filePath.Contains("AppUpdateSettingPage") ||
                 filePath.Contains("backdrop.png") ||
+                filePath.Contains("tint.png") ||
                 filePath.Contains("color.png") ||
                 filePath.Contains("external.png") ||
                 filePath.Contains("info.png") ||
@@ -75,6 +74,7 @@ namespace WinUICommunity_VS_Templates
                 !WizardImplementation.UseThemeSettingPage &&
                 (filePath.Contains("ThemeSettingPage") ||
                 filePath.Contains("backdrop.png") ||
+                filePath.Contains("tint.png") ||
                 filePath.Contains("color.png") ||
                 filePath.Contains("external.png") ||
                 filePath.Contains("theme.png")))
