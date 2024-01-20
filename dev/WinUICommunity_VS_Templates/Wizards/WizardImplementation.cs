@@ -183,7 +183,7 @@ namespace WinUICommunity_VS_Templates
                     {
                         replacementsDictionary.Add("$WinUICommunity.Components$", "");
                     }
-
+                    
                     if (libs != null && libs.ContainsKey("WinUICommunity.LandingPages"))
                     {
                         replacementsDictionary.Add("$WinUICommunity.LandingPages$", Environment.NewLine + "                <ResourceDictionary Source=\"ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml\" />");
@@ -196,6 +196,15 @@ namespace WinUICommunity_VS_Templates
                         replacementsDictionary.Add("$WinUICommunity.LandingPagesItemTemplate$", "");
                         replacementsDictionary.Add("$WinUICommunityRefrence$", "");
                     }
+                }
+
+                if (libs != null && libs.ContainsKey("WinUICommunity.Win2D"))
+                {
+                    replacementsDictionary.Add("$WinUICommunity.Win2D$", Environment.NewLine + "                <ResourceDictionary Source=\"ms-appx:///WinUICommunity.Win2D/Themes/Generic.xaml\" />");
+                }
+                else
+                {
+                    replacementsDictionary.Add("$WinUICommunity.Win2D$", "");
                 }
 
                 if (WizardConfig.DotNetVersion.Contains("net7") || WizardConfig.DotNetVersion.Contains("net6"))
