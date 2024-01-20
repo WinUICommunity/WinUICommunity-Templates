@@ -53,6 +53,7 @@
 	  <Folder Name="Assets\Fluent" TargetFolderName="Assets\Fluent">
 		<ProjectItem ReplaceParameters="false" TargetFileName="backdrop.png">backdrop.png</ProjectItem>
 		<ProjectItem ReplaceParameters="false" TargetFileName="color.png">color.png</ProjectItem>
+		<ProjectItem ReplaceParameters="false" TargetFileName="tint.png">tint.png</ProjectItem>
 		<ProjectItem ReplaceParameters="false" TargetFileName="external.png">external.png</ProjectItem>
 		<ProjectItem ReplaceParameters="false" TargetFileName="info.png">info.png</ProjectItem>
 		<ProjectItem ReplaceParameters="false" TargetFileName="theme.png">theme.png</ProjectItem>
