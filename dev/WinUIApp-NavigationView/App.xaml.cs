@@ -32,8 +32,8 @@ public partial class App : Application
         ThemeService = new ThemeService();
         ThemeService.Initialize(CurrentWindow);
         ThemeService.ConfigBackdrop();
-        ThemeService.ConfigElementTheme();$BackdropTintColor$
-        ThemeService.ConfigBackdropFallBackColorForWindow10(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);
+        ThemeService.ConfigElementTheme();
+        ThemeService.ConfigBackdropFallBackColorForUnSupportedOS(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);
 
         rootFrame.Navigate(typeof(MainPage));
 

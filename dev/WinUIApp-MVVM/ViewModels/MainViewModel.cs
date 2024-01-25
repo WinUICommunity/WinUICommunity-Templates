@@ -8,7 +8,7 @@ public partial class MainViewModel : ObservableObject, ITitleBarAutoSuggestBoxAw
         themeService.Initialize(App.CurrentWindow);
         themeService.ConfigBackdrop();
         themeService.ConfigElementTheme();
-        themeService.ConfigBackdropFallBackColorForWindow10(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);
+        themeService.ConfigBackdropFallBackColorForUnSupportedOS(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);
     }
 
     public void OnAutoSuggestBoxTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)

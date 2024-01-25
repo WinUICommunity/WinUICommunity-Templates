@@ -31,7 +31,7 @@ public partial class App : Application
         ThemeService.Initialize(CurrentWindow);
         ThemeService.ConfigBackdrop();
         ThemeService.ConfigElementTheme();
-        ThemeService.ConfigBackdropFallBackColorForWindow10(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);
+        ThemeService.ConfigBackdropFallBackColorForUnSupportedOS(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);
 
         rootFrame.Navigate(typeof(MainPage));
 
