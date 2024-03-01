@@ -24,6 +24,8 @@ namespace WinUICommunity_VS_Templates
         {
             WizardImplementation.RunFinished(false);
             WizardImplementation.AddSolutionFolder();
+            WizardImplementation.AddEditorConfigFile("WinUIAppBlank");
+            WizardImplementation.AddGithubActionFile("WinUIAppBlank");
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)

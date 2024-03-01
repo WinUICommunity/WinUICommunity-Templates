@@ -26,6 +26,8 @@ namespace WinUICommunity_VS_Templates
         {
             WizardImplementation.RunFinished(false);
             WizardImplementation.AddSolutionFolder();
+            WizardImplementation.AddEditorConfigFile("WinUIApp");
+            WizardImplementation.AddGithubActionFile("WinUIApp");
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
@@ -72,10 +74,6 @@ namespace WinUICommunity_VS_Templates
                 return false;
             }
             else if (!WizardImplementation.UseFontsDic && filePath.Contains("Fonts.xaml"))
-            {
-                return false;
-            }
-            else if (!WizardImplementation.UseGithubWorkflow && filePath.Contains("dotnet-release.yml"))
             {
                 return false;
             }

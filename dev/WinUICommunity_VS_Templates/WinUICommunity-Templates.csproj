@@ -114,10 +114,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include=".editorconfig">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="key.snk" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="workflow.yml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="iNKORE.UI.WPF.Modern">

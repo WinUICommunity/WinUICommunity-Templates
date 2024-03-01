@@ -73,7 +73,6 @@
             <local:OptionUCNoExpander
                 x:Name="tgEditorConfig"
                 Title="6. Add .editorConfig File"
-                IsEnabled="False"
                 IsOn="True"
                 Toggled="tgEditorConfig_Toggled" />
 

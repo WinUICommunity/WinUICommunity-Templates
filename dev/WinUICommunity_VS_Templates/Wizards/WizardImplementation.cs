@@ -45,7 +45,7 @@ namespace WinUICommunity_VS_Templates
         {
             _solution = (Solution2)_dte.Solution;
             project = _dte.Solution.Projects.Item(1);
-
+            
             var templatePath = Directory.GetParent(project.FullName).FullName;
             new DynamicLocalizationOption(UseDynamicLocalization, templatePath);
             new AppUpdateOption(UseSettingsPage, UseAppUpdatePage, UseJsonSettings, isMVVMTemplate, templatePath);
@@ -53,6 +53,73 @@ namespace WinUICommunity_VS_Templates
             new NormalizeGlobalUsingFile(UseJsonSettings, UseFileLogger, UseDebugLogger, templatePath);
             new NormalizeGeneralSettingFile(UseJsonSettings, UseSettingsPage, UseDeveloperModeSetting, UseGeneralSettingPage, templatePath);
             new NormalizeCSProjFile(project, UseDynamicLocalization);
+        }
+        public void AddEditorConfigFile(string vstemplateName)
+        {
+            if (UseEditorConfig)
+            {
+                var inputFile = GetRootFolderPath(vstemplateName).VSIXRootFolder + @"\.editorconfig";
+                string outputDir = Path.GetDirectoryName(_solution.FullName);
+
+                var outputFile = outputDir + @"\.editorconfig";
+                CopyFileToDestination(inputFile, outputFile);
+            }
+        }
+
+        public void AddGithubActionFile(string vstemplateName)
+        {
+            if (UseGithubWorkflow)
+            {
+                var inputFile = GetRootFolderPath(vstemplateName).VSIXRootFolder + @"\workflow.yml";
+                string outputDir = Path.GetDirectoryName(_solution.FullName) + @"\.github\workflows\";
+                
+                if (!Directory.Exists(outputDir))
+                {
+                    Directory.CreateDirectory(outputDir);
+                }
+
+                var outputFile = outputDir + "dotnet-release.yml";
+                CopyFileToDestination(inputFile, outputFile);
+
+                if (File.Exists(outputFile))
+                {
+                    var fileContent = File.ReadAllText(outputFile);
+                    fileContent = fileContent.Replace("YOUR_Folder/YOUR_APP_NAME.csproj", project.UniqueName);
+                    fileContent = fileContent.Replace("YOUR_APP_NAME", project.Name);
+                    var platforms = Platforms.Replace(";", ", ");
+                    fileContent = fileContent.Replace("[x64, x86, arm64]", $"[{platforms}]");
+
+                    File.WriteAllText(outputFile, fileContent);
+                }
+            }
+        }
+        public void CopyFileToDestination(string inputfile, string outputfile)
+        {
+            try
+            {
+                // Check if the file exists
+                if (File.Exists(inputfile))
+                {
+                    // Assuming 'outputfile' is the destination path
+                    string destinationPath = outputfile;
+
+                    // Copy the file
+                    File.Copy(inputfile, destinationPath, true);
+
+                    // Refresh the solution explorer to make sure the new file is visible
+                    _dte.ExecuteCommand("View.Refresh");
+                }
+                else
+                {
+                    // Handle the case where the source file doesn't exist
+                    // Log or show an error message
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                // Log or show an error message
+            }
         }
 
         /// <summary>
@@ -357,7 +424,8 @@ namespace WinUICommunity_VS_Templates
         }
 
         /// <summary>
-        /// Get VSIX Root Folder Path: AppData\Local\Microsoft\VisualStudio\17.0_b6438676Exp\Extensions\{UserName}\WinUICommunity Templates for WinUI\{Version}
+        /// VSIXRootFolder: AppData\Local\Microsoft\VisualStudio\17.0_b6438676Exp\Extensions\{UserName}\WinUICommunity Templates for WinUI\{Version}
+        /// ProjectTemplatesFolder: APPDATA\LOCAL\MICROSOFT\VISUALSTUDIO\{VS_Version}\EXTENSIONS\MAHDI HOSSEINI\WINUICOMMUNITY TEMPLATES FOR WINUI\{Version}\ProjectTemplates\CSharp\1033\{Template}
         /// </summary>
         /// <param name="vstemplateName"></param>
         /// <returns></returns>

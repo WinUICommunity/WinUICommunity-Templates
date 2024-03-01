@@ -100,7 +100,6 @@
     <Content Include="GlobalUsings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".editorconfig" />
     <None Include="Assets\NavViewMenu\AppData.json" />
     <Content Include="Strings\en-US\Resources.resw" />
     <Content Include="Properties\launchSettings.json" />
@@ -110,7 +109,6 @@
     <Content Include="Properties\PublishProfiles\win10-x64.pubxml" />
     <Content Include="Properties\PublishProfiles\win-x86.pubxml" />
     <Content Include="Properties\PublishProfiles\win10-x86.pubxml" />
-    <Content Include="workflow.yml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Themes\Styles.xaml">
