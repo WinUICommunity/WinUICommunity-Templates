@@ -25,8 +25,8 @@
 	</None>
   </ItemGroup>
   <ItemGroup>
-	  <PackageReference Include="Microsoft.WindowsAppSDK" Version="$WASDKVersion$" />
-	  <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />$ExtraLibs$
+	<PackageReference Include="Microsoft.WindowsAppSDK" Version="$WASDKVersion$" />
+	<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />$ExtraLibs$
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 

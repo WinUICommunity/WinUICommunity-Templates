@@ -26,7 +26,7 @@
   </ItemGroup>
   <ItemGroup Label="DynamicLocalization"/>
   <ItemGroup>
-	  <Folder Include="Models\" />
+	<Folder Include="Models\" />
   </ItemGroup>
 	
   <ItemGroup>
@@ -35,9 +35,9 @@
     <PackageReference Include="WinUICommunity.Components" Version="$WinUICommunityComponentsVersion$" />
     <PackageReference Include="WinUICommunity.Core" Version="$WinUICommunityCoreVersion$" />
     <PackageReference Include="WinUICommunity.LandingPages" Version="$WinUICommunityLandingPagesVersion$" />
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="$CommunityToolkitMvvmVersion$" />
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="$DependencyInjectionVersion$" />
-	  <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="$WinUIManagedVersion$" />$ExtraLibs$
+	<PackageReference Include="CommunityToolkit.Mvvm" Version="$CommunityToolkitMvvmVersion$" />
+	<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="$DependencyInjectionVersion$" />
+	<PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="$WinUIManagedVersion$" />$ExtraLibs$
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
