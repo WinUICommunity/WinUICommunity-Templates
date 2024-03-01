@@ -87,9 +87,9 @@
                             Tag="Star"
                             ToolTip="The latest stable version will always be installed" />
                     </ComboBox>
-                    <StackPanel Margin="-50,5,5,0" Orientation="Horizontal">
+                    <StackPanel Margin="-50,10,5,0" Orientation="Horizontal">
                         <TextBlock
-                            Margin="5,0"
+                            Margin="5,5"
                             Style="{StaticResource BaseTextBlockStyle}"
                             Text="TargetFramework" />
                         <ComboBox
@@ -125,9 +125,9 @@
                         </ComboBox>
                     </StackPanel>
 
-                    <StackPanel Margin="-50,5,5,0" Orientation="Horizontal">
+                    <StackPanel Margin="-50,10,5,0" Orientation="Horizontal">
                         <TextBlock
-                            Margin="5,0"
+                            Margin="5,5"
                             Style="{StaticResource BaseTextBlockStyle}"
                             Text="UnPackaged Mode" />
                         <ui:ToggleSwitch x:Name="tgUnPackaged" Toggled="tgUnPackaged_Toggled" />

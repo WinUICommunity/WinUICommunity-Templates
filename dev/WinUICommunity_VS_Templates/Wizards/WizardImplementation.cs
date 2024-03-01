@@ -21,6 +21,7 @@ namespace WinUICommunity_VS_Templates
         public string DotNetVersion;
         public string Platforms;
         public string RuntimeIdentifiers;
+        public bool UseGithubWorkflow;
         public bool UseJsonSettings;
         public bool UseDynamicLocalization;
         public bool UseEditorConfig;
@@ -124,6 +125,7 @@ namespace WinUICommunity_VS_Templates
                 UseConvertersDic = WizardConfig.AddConvertersDic;
                 UseFontsDic = WizardConfig.AddFontsDic;
                 DotNetVersion = WizardConfig.DotNetVersion;
+                UseGithubWorkflow = WizardConfig.UseGithubWorkflow;
 
                 // Add Extra Libs
                 var libs = WizardConfig.LibraryDic;
@@ -226,7 +228,7 @@ namespace WinUICommunity_VS_Templates
 
                 if (WizardConfig.IsUnPackagedMode)
                 {
-                    replacementsDictionary.Add("$WindowsPackageType$", Environment.NewLine + "<WindowsPackageType>None</WindowsPackageType>");
+                    replacementsDictionary.Add("$WindowsPackageType$", Environment.NewLine + "    <WindowsPackageType>None</WindowsPackageType>");
                 }
                 else
                 {

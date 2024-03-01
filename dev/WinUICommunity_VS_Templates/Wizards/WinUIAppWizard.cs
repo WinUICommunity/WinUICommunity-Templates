@@ -75,6 +75,10 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
+            else if (!WizardImplementation.UseGithubWorkflow && filePath.Contains("dotnet-release.yml"))
+            {
+                return false;
+            }
             else
             {
                 return true;

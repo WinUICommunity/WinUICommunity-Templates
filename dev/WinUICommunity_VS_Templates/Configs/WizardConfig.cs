@@ -10,6 +10,7 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static string TargetFrameworkVersion = "22621";
         public static string Platforms = "x86;x64;ARM64";
         public static string RuntimeIdentifiers = "win-x86;win-x64;win-arm64";
+        public static bool UseGithubWorkflow = false;
         public static bool IsUnPackagedMode = false;
         public static bool IsBlank;
         public static bool HasPages;

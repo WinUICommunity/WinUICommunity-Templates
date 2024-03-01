@@ -164,5 +164,10 @@ namespace WinUICommunity_VS_Templates
         {
             WizardConfig.AddSolutionFolder = tgSolutionFolder.IsOn;
         }
+
+        private void tgGithubWorkflow_Toggled(object sender, System.Windows.RoutedEventArgs e)
+        {
+            WizardConfig.UseGithubWorkflow = tgGithubWorkflow.IsOn;
+        }
     }
 }

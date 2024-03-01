@@ -138,6 +138,7 @@
     <Content Include="Properties\PublishProfiles\win10-x64.pubxml" />
     <Content Include="Properties\PublishProfiles\win-x86.pubxml" />
     <Content Include="Properties\PublishProfiles\win10-x86.pubxml" />
+    <Content Include="workflow.yml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ViewModels\Settings\AboutUsSettingViewModel.cs" />
