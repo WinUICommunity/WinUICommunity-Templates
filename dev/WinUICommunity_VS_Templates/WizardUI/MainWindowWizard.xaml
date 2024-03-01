@@ -62,14 +62,14 @@
                         Margin="-50,-40,5,0"
                         IsClosable="False"
                         IsOpen="True"
-                        Message="1.4.231219000"
+                        Message="1.5.240227000"
                         Severity="Warning" />
                     <ui:InfoBar
                         Title="Build Tools"
                         Margin="-50,0,5,0"
                         IsClosable="False"
                         IsOpen="True"
-                        Message="v10.0.22621.2428"
+                        Message="v10.0.22621.3233"
                         Severity="Warning" />
                     <ComboBox
                         x:Name="cmbVersionMechanism"
