@@ -131,20 +131,6 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
-            else if (WizardImplementation.DotNetVersion.Contains("net7") && 
-                (filePath.Contains("win-x64.pubxml") || 
-                filePath.Contains("win-x86.pubxml") || 
-                filePath.Contains("win-arm64.pubxml")))
-            {
-                return false;
-            }
-            else if (!WizardImplementation.DotNetVersion.Contains("net7") && 
-                (filePath.Contains("win10-x64.pubxml") || 
-                filePath.Contains("win10-x86.pubxml") || 
-                filePath.Contains("win10-arm64.pubxml")))
-            {
-                return false;
-            }
             else
             {
                 return true;

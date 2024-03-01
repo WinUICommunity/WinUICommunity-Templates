@@ -72,20 +72,20 @@ namespace WinUICommunity_VS_Templates
         }
         private string GetRuntimeIdentifiers(string platforms)
         {
-            string rid = "win10-x86;win10-x64;win10-arm64";
+            string rid = "win-x86;win-x64;win-arm64";
             if (!platforms.Contains("x86"))
             {
-                rid = rid.Replace("win10-x86;", "");
+                rid = rid.Replace("win-x86;", "");
             }
 
             if (!platforms.Contains("x64"))
             {
-                rid = rid.Replace("win10-x64;", "");
+                rid = rid.Replace("win-x64;", "");
             }
 
             if (!platforms.Contains("ARM64"))
             {
-                rid = rid.Replace("win10-arm64", "");
+                rid = rid.Replace("win-arm64", "");
             }
 
             if (rid.EndsWith(";"))

@@ -207,19 +207,6 @@ namespace WinUICommunity_VS_Templates
                     replacementsDictionary.Add("$WinUICommunity.Win2D$", "");
                 }
 
-                if (WizardConfig.DotNetVersion.Contains("net7") || WizardConfig.DotNetVersion.Contains("net6"))
-                {
-                    replacementsDictionary.Add("$PublishProfileRuntime$", "win10");
-                    replacementsDictionary.Add("$Net8RidGraph$", "");
-                }
-                else
-                {
-                    replacementsDictionary.Add("$PublishProfileRuntime$", "win");
-                    replacementsDictionary.Add("$Net8RidGraph$", Environment.NewLine + "    <UseRidGraph>true</UseRidGraph>");
-                    RuntimeIdentifiers = RuntimeIdentifiers.Replace("win10", "win");
-                    WizardConfig.RuntimeIdentifiers = RuntimeIdentifiers;
-                }
-
                 replacementsDictionary.Add("$DotNetVersion$", WizardConfig.DotNetVersion.ToString());
                 replacementsDictionary.Add("$TargetFrameworkVersion$", WizardConfig.TargetFrameworkVersion.ToString());
                 replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());

@@ -94,11 +94,8 @@
   <ItemGroup>
     <Content Include="Properties\launchSettings.json" />
     <Content Include="Properties\PublishProfiles\win-arm64.pubxml" />
-    <Content Include="Properties\PublishProfiles\win10-arm64.pubxml" />
     <Content Include="Properties\PublishProfiles\win-x64.pubxml" />
-    <Content Include="Properties\PublishProfiles\win10-x64.pubxml" />
     <Content Include="Properties\PublishProfiles\win-x86.pubxml" />
-    <Content Include="Properties\PublishProfiles\win10-x86.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Themes\Converters.xaml">

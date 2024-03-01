@@ -7,9 +7,9 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static Dictionary<string, PackageRefrence> LibraryDic = new Dictionary<string, PackageRefrence>();
 
         public static string DotNetVersion = "net8.0";
-        public static string TargetFrameworkVersion = "19041";
+        public static string TargetFrameworkVersion = "22621";
         public static string Platforms = "x86;x64;ARM64";
-        public static string RuntimeIdentifiers = "win10-x86;win10-x64;win10-arm64";
+        public static string RuntimeIdentifiers = "win-x86;win-x64;win-arm64";
         public static bool IsBlank;
         public static bool HasPages;
         public static bool AddJsonSettings;
