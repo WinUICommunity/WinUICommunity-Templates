@@ -16,7 +16,7 @@
 	  <AccelerateBuildsInVisualStudio>$UseAccelerateBuilds$</AccelerateBuildsInVisualStudio>
 	  <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
-	  <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+	  <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>$WindowsPackageType$
   </PropertyGroup>
   
   <ItemGroup>

@@ -87,38 +87,52 @@
                             Tag="Star"
                             ToolTip="The latest stable version will always be installed" />
                     </ComboBox>
-                    <ComboBox
-                        x:Name="cmbNetVersion"
-                        MinWidth="250"
-                        Margin="-50,5,5,0"
-                        SelectedIndex="0"
-                        SelectionChanged="cmbNetVersion_SelectionChanged"
-                        ToolTip="Choose .Net Version">
-                        <ComboBoxItem
-                            Content=".Net 8.0 (Recommended)"
-                            Tag="net8.0"
-                            ToolTip=".Net 8.0 will be used." />
-                    </ComboBox>
-                    <ComboBox
-                        x:Name="cmbTargetFrameworkVersion"
-                        MinWidth="250"
-                        Margin="-50,5,5,0"
-                        SelectedIndex="0"
-                        SelectionChanged="cmbTargetFrameworkVersion_SelectionChanged"
-                        ToolTip="Choose TargetFramework Version">
-                        <ComboBoxItem
-                            Content="19041"
-                            Tag="19041"
-                            ToolTip="19041" />
-                        <ComboBoxItem
-                            Content="22000"
-                            Tag="22000"
-                            ToolTip="22000" />
-                        <ComboBoxItem
-                            Content="22621 (Recommended)"
-                            Tag="22621"
-                            ToolTip="22621" />
-                    </ComboBox>
+                    <StackPanel Margin="-50,5,5,0" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="5,0"
+                            Style="{StaticResource BaseTextBlockStyle}"
+                            Text="TargetFramework" />
+                        <ComboBox
+                            x:Name="cmbNetVersion"
+                            MinWidth="250"
+                            SelectedIndex="0"
+                            SelectionChanged="cmbNetVersion_SelectionChanged"
+                            ToolTip="Choose .Net Version">
+                            <ComboBoxItem
+                                Content=".Net 8.0 (Recommended)"
+                                Tag="net8.0"
+                                ToolTip=".Net 8.0 will be used." />
+                        </ComboBox>
+                        <ComboBox
+                            x:Name="cmbTargetFrameworkVersion"
+                            MinWidth="250"
+                            Margin="5,0"
+                            SelectedIndex="0"
+                            SelectionChanged="cmbTargetFrameworkVersion_SelectionChanged"
+                            ToolTip="Choose TargetFramework Version">
+                            <ComboBoxItem
+                                Content="22621 (Recommended)"
+                                Tag="22621"
+                                ToolTip="22621" />
+                            <ComboBoxItem
+                                Content="22000"
+                                Tag="22000"
+                                ToolTip="22000" />
+                            <ComboBoxItem
+                                Content="19041"
+                                Tag="19041"
+                                ToolTip="19041" />
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Margin="-50,5,5,0" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="5,0"
+                            Style="{StaticResource BaseTextBlockStyle}"
+                            Text="UnPackaged Mode" />
+                        <ui:ToggleSwitch x:Name="tgUnPackaged" Toggled="tgUnPackaged_Toggled" />
+                    </StackPanel>
+
                 </StackPanel>
             </ui:NavigationView.Header>
 

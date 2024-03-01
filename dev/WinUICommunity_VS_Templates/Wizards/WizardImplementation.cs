@@ -224,6 +224,15 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$AddAboutPage$", WizardConfig.AddAboutPage.ToString());
                 replacementsDictionary.Add("$UseAccelerateBuilds$", WizardConfig.AddAccelerateBuilds.ToString());
 
+                if (WizardConfig.IsUnPackagedMode)
+                {
+                    replacementsDictionary.Add("$WindowsPackageType$", Environment.NewLine + "<WindowsPackageType>None</WindowsPackageType>");
+                }
+                else
+                {
+                    replacementsDictionary.Add("$WindowsPackageType$", "");
+                }
+
                 if (hasNavigationView)
                 {
                     new ColorsDicOption().ConfigColorsDic(replacementsDictionary, UseHomeLandingPage);

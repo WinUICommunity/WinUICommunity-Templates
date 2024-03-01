@@ -1,7 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows;
 using WinUICommunity_VS_Templates.WizardUI;
-using iNKORE.UI.WPF.Modern;
 using iNKORE.UI.WPF.Modern.Controls;
 using System;
 
@@ -130,6 +129,11 @@ namespace WinUICommunity_VS_Templates
         private void cmbTargetFrameworkVersion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             WizardConfig.TargetFrameworkVersion = (cmbTargetFrameworkVersion.SelectedItem as ComboBoxItem).Tag.ToString();
+        }
+
+        private void tgUnPackaged_Toggled(object sender, RoutedEventArgs e)
+        {
+            WizardConfig.IsUnPackagedMode = tgUnPackaged.IsOn;
         }
     }
 }
