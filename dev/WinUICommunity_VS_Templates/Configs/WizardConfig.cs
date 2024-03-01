@@ -5,6 +5,7 @@ namespace WinUICommunity_VS_Templates.WizardUI
     public static class WizardConfig
     {
         public static Dictionary<string, PackageRefrence> LibraryDic = new Dictionary<string, PackageRefrence>();
+        public static Dictionary<string, string> CSProjectElements = new Dictionary<string, string>();
 
         public static string DotNetVersion = "net8.0";
         public static string TargetFrameworkVersion = "22621";

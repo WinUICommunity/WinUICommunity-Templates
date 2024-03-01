@@ -72,6 +72,9 @@
     <Compile Include="Configs\SettingsCardOptions.cs" />
     <Compile Include="Wizards\WinUIAppBlankWizard.cs" />
     <Compile Include="WizardUI\CardControl\CardControl.cs" />
+    <Compile Include="WizardUI\CSProjectPage.xaml.cs">
+      <DependentUpon>CSProjectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WizardUI\LibrariesPage.xaml.cs">
       <DependentUpon>LibrariesPage.xaml</DependentUpon>
     </Compile>
@@ -114,7 +117,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include=".editorconfig">
+    <Content Include="Files\.editorconfig">
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -122,7 +125,7 @@
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="workflow.yml">
+    <Content Include="Files\workflow.yml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -179,6 +182,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="WizardUI\CSProjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WizardUI\ThemeResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

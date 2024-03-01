@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Controls;
 using EnvDTE;
 
 using EnvDTE80;
@@ -18,6 +19,7 @@ namespace WinUICommunity_VS_Templates
         private Solution2 _solution;
         private Project project;
 
+        public Dictionary<string, string> CSProjectElements;
         public string DotNetVersion;
         public string Platforms;
         public string RuntimeIdentifiers;
@@ -193,6 +195,24 @@ namespace WinUICommunity_VS_Templates
                 UseFontsDic = WizardConfig.AddFontsDic;
                 DotNetVersion = WizardConfig.DotNetVersion;
                 UseGithubWorkflow = WizardConfig.UseGithubWorkflow;
+                CSProjectElements = WizardConfig.CSProjectElements;
+
+                // Add CSProjectElements
+                if (CSProjectElements != null && CSProjectElements.Count > 0)
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    foreach (var entity in CSProjectElements)
+                    {
+                        sb.AppendLine(entity.Value);
+                    }
+
+                    replacementsDictionary.Add("$CustomCSProjectElement$", sb.ToString());
+                }
+                else
+                {
+                    replacementsDictionary.Add("$CustomCSProjectElement$", "");
+                }
 
                 // Add Extra Libs
                 var libs = WizardConfig.LibraryDic;
