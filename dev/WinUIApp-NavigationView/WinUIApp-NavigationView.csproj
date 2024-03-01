@@ -86,7 +86,7 @@
     <Content Include="Assets\Store\Wide310x150Logo.scale-200.png" />
     <Content Include="WinUIApp.ico" />
     <Content Include="WinUIApp.png" />
-    <VSTemplate Include="WinUIApp-NavigationVIew.vstemplate" />
+    <VSTemplate Include="WinUIApp-NavigationView.vstemplate" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\MainPage.xaml">

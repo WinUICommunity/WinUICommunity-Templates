@@ -26,8 +26,8 @@ namespace WinUICommunity_VS_Templates
         {
             WizardImplementation.RunFinished(true);
             WizardImplementation.AddSolutionFolder();
-            WizardImplementation.AddEditorConfigFile("WinUIAppMVVMNavigation");
-            WizardImplementation.AddGithubActionFile("WinUIAppMVVMNavigation");
+            WizardImplementation.AddEditorConfigFile("WinUIApp-MVVM-NavigationView");
+            WizardImplementation.AddGithubActionFile("WinUIApp-MVVM-NavigationView");
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)

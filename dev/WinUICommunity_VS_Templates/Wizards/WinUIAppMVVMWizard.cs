@@ -26,8 +26,8 @@ namespace WinUICommunity_VS_Templates
         {
             WizardImplementation.RunFinished(true);
             WizardImplementation.AddSolutionFolder();
-            WizardImplementation.AddEditorConfigFile("WinUIAppMVVM");
-            WizardImplementation.AddGithubActionFile("WinUIAppMVVM");
+            WizardImplementation.AddEditorConfigFile("WinUIApp-MVVM");
+            WizardImplementation.AddGithubActionFile("WinUIApp-MVVM");
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
