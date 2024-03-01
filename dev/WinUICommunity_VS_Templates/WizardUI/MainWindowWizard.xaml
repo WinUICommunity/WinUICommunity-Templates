@@ -145,9 +145,7 @@
                         <ui:SymbolIcon Symbol="Bookmarks" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
-                <ui:NavigationViewItem
-    Content="CSProject"
-    Tag="CSProjectPage">
+                <ui:NavigationViewItem Content="CSProject" Tag="CSProjectPage">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="Tag" />
                     </ui:NavigationViewItem.Icon>

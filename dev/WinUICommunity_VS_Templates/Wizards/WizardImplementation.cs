@@ -207,7 +207,7 @@ namespace WinUICommunity_VS_Templates
                         sb.AppendLine(entity.Value);
                     }
 
-                    replacementsDictionary.Add("$CustomCSProjectElement$", sb.ToString());
+                    replacementsDictionary.Add("$CustomCSProjectElement$", Environment.NewLine + sb.ToString());
                 }
                 else
                 {
