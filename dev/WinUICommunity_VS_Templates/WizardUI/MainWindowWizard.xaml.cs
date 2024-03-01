@@ -12,6 +12,7 @@ namespace WinUICommunity_VS_Templates
         LibrariesPage librariesType;
         PagesPages pagesType;
         ResourcePage resourceType;
+        CSProjectPage cSProjectType;
         public MainWindowWizard()
         {
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
@@ -121,6 +122,13 @@ namespace WinUICommunity_VS_Templates
                             pagesType = new PagesPages();
                         }
                         frame.Navigate(pagesType);
+                        break;
+                    case "CSProjectPage":
+                        if (cSProjectType == null)
+                        {
+                            cSProjectType = new CSProjectPage();
+                        }
+                        frame.Navigate(cSProjectType);
                         break;
                 }
             }
