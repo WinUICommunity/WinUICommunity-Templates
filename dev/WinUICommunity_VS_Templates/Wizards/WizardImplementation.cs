@@ -204,7 +204,7 @@ namespace WinUICommunity_VS_Templates
 
                     foreach (var entity in CSProjectElements)
                     {
-                        sb.AppendLine(entity.Value);
+                        sb.AppendLine($"    {entity.Value}");
                     }
 
                     replacementsDictionary.Add("$CustomCSProjectElement$", Environment.NewLine + $"    {sb.ToString().Trim()}");
