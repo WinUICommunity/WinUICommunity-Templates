@@ -58,7 +58,7 @@ namespace WinUICommunity_VS_Templates
         {
             if (UseEditorConfig)
             {
-                var inputFile = GetRootFolderPath(vstemplateName).VSIXRootFolder + @"\.editorconfig";
+                var inputFile = GetRootFolderPath(vstemplateName).VSIXRootFolder + @"\Files\.editorconfig";
                 string outputDir = Path.GetDirectoryName(_solution.FullName);
 
                 var outputFile = outputDir + @"\.editorconfig";
@@ -70,7 +70,7 @@ namespace WinUICommunity_VS_Templates
         {
             if (UseGithubWorkflow)
             {
-                var inputFile = GetRootFolderPath(vstemplateName).VSIXRootFolder + @"\workflow.yml";
+                var inputFile = GetRootFolderPath(vstemplateName).VSIXRootFolder + @"\Files\workflow.yml";
                 string outputDir = Path.GetDirectoryName(_solution.FullName) + @"\.github\workflows\";
                 
                 if (!Directory.Exists(outputDir))
