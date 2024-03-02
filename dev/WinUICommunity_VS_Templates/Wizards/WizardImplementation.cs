@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Windows.Controls;
 using EnvDTE;
 
 using EnvDTE80;
@@ -16,8 +15,6 @@ namespace WinUICommunity_VS_Templates
     {
         private bool _shouldAddProjectItem;
         private _DTE _dte;
-        private Solution2 _solution;
-        private Project project;
 
         public Dictionary<string, string> CSProjectElements;
         public string DotNetVersion;
@@ -43,11 +40,24 @@ namespace WinUICommunity_VS_Templates
         public bool UseStylesDic;
         public bool UseConvertersDic;
         public bool UseFontsDic;
+
+        // we can use WinUIApp or other template name to get VSIXRootFolder
+        string _vstemplateName = "WinUIApp";
+
+        public string ProjectName; // App35
+        public string SafeProjectName; // App35
+        public string SpecifiedSolutionName; // App35
+        public string SolutionDirectory; // E:\\source\\App35
+        public string DestinationDirectory;// E:\source\App35\App35
         public void RunFinished(bool isMVVMTemplate)
         {
-            _solution = (Solution2)_dte.Solution;
-            project = _dte.Solution.Projects.Item(1);
-            
+            var _solution = (Solution2)_dte.Solution;
+            var project = _dte.Solution.Projects.Item(1);
+
+            AddSolutionFolder(_solution);
+
+            AddGithubActionFile(project);
+
             var templatePath = Directory.GetParent(project.FullName).FullName;
             new DynamicLocalizationOption(UseDynamicLocalization, templatePath);
             new AppUpdateOption(UseSettingsPage, UseAppUpdatePage, UseJsonSettings, isMVVMTemplate, templatePath);
@@ -55,73 +65,6 @@ namespace WinUICommunity_VS_Templates
             new NormalizeGlobalUsingFile(UseJsonSettings, UseFileLogger, UseDebugLogger, templatePath);
             new NormalizeGeneralSettingFile(UseJsonSettings, UseSettingsPage, UseDeveloperModeSetting, UseGeneralSettingPage, templatePath);
             new NormalizeCSProjFile(project, UseDynamicLocalization);
-        }
-        public void AddEditorConfigFile(string vstemplateName)
-        {
-            if (UseEditorConfig)
-            {
-                var inputFile = GetRootFolderPath(vstemplateName).VSIXRootFolder + @"\Files\.editorconfig";
-                string outputDir = Path.GetDirectoryName(_solution.FullName);
-
-                var outputFile = outputDir + @"\.editorconfig";
-                CopyFileToDestination(inputFile, outputFile);
-            }
-        }
-
-        public void AddGithubActionFile(string vstemplateName)
-        {
-            if (UseGithubWorkflow)
-            {
-                var inputFile = GetRootFolderPath(vstemplateName).VSIXRootFolder + @"\Files\workflow.yml";
-                string outputDir = Path.GetDirectoryName(_solution.FullName) + @"\.github\workflows\";
-                
-                if (!Directory.Exists(outputDir))
-                {
-                    Directory.CreateDirectory(outputDir);
-                }
-
-                var outputFile = outputDir + "dotnet-release.yml";
-                CopyFileToDestination(inputFile, outputFile);
-
-                if (File.Exists(outputFile))
-                {
-                    var fileContent = File.ReadAllText(outputFile);
-                    fileContent = fileContent.Replace("YOUR_Folder/YOUR_APP_NAME.csproj", project.UniqueName);
-                    fileContent = fileContent.Replace("YOUR_APP_NAME", project.Name);
-                    var platforms = Platforms.Replace(";", ", ");
-                    fileContent = fileContent.Replace("[x64, x86, arm64]", $"[{platforms}]");
-
-                    File.WriteAllText(outputFile, fileContent);
-                }
-            }
-        }
-        public void CopyFileToDestination(string inputfile, string outputfile)
-        {
-            try
-            {
-                // Check if the file exists
-                if (File.Exists(inputfile))
-                {
-                    // Assuming 'outputfile' is the destination path
-                    string destinationPath = outputfile;
-
-                    // Copy the file
-                    File.Copy(inputfile, destinationPath, true);
-
-                    // Refresh the solution explorer to make sure the new file is visible
-                    _dte.ExecuteCommand("View.Refresh");
-                }
-                else
-                {
-                    // Handle the case where the source file doesn't exist
-                    // Log or show an error message
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle exceptions
-                // Log or show an error message
-            }
         }
 
         /// <summary>
@@ -135,6 +78,12 @@ namespace WinUICommunity_VS_Templates
         {
             _dte = automationObject as _DTE;
 
+            ProjectName = replacementsDictionary["$projectname$"];
+            SafeProjectName = replacementsDictionary["$safeprojectname$"];
+            SpecifiedSolutionName = replacementsDictionary["$specifiedsolutionname$"];
+            SolutionDirectory = replacementsDictionary["$solutiondirectory$"];
+            DestinationDirectory = replacementsDictionary["$destinationdirectory$"];
+
             _shouldAddProjectItem = false;
             WizardConfig.HasPages = hasPages;
             WizardConfig.IsBlank = isBlank;
@@ -143,6 +92,8 @@ namespace WinUICommunity_VS_Templates
             if (result.HasValue && result.Value)
             {
                 _shouldAddProjectItem = true;
+
+                AddEditorConfigFile();
 
                 string wasdkVersion = "1.5.240227000";
                 string wasdkBuildToolsVersion = "10.0.22621.3233";
@@ -435,11 +386,76 @@ namespace WinUICommunity_VS_Templates
             return _shouldAddProjectItem;
         }
 
-        public void AddSolutionFolder()
+        public void AddSolutionFolder(Solution2 solution)
         {
             if (UseSolutionFolder)
             {
-                var solutionFolder = _solution.AddSolutionFolder("Solution Items");
+                var solutionFolder = solution.AddSolutionFolder("Solution Items");
+            }
+        }
+        public void AddEditorConfigFile()
+        {
+            if (UseEditorConfig)
+            {
+                var inputFile = GetRootFolderPath(_vstemplateName).VSIXRootFolder + @"\Files\.editorconfig";
+
+                var outputFile = SolutionDirectory + @"\.editorconfig";
+                CopyFileToDestination(inputFile, outputFile);
+            }
+        }
+        public void AddGithubActionFile(Project project)
+        {
+            if (UseGithubWorkflow)
+            {
+                var inputFile = GetRootFolderPath(_vstemplateName).VSIXRootFolder + @"\Files\workflow.yml";
+                string outputDir = SolutionDirectory + @"\.github\workflows\";
+
+                if (!Directory.Exists(outputDir))
+                {
+                    Directory.CreateDirectory(outputDir);
+                }
+
+                var outputFile = outputDir + "dotnet-release.yml";
+                CopyFileToDestination(inputFile, outputFile);
+
+                if (File.Exists(outputFile))
+                {
+                    var fileContent = File.ReadAllText(outputFile);
+                    fileContent = fileContent.Replace("YOUR_Folder/YOUR_APP_NAME.csproj", project.UniqueName);
+                    fileContent = fileContent.Replace("YOUR_APP_NAME", project.Name);
+                    var platforms = Platforms.Replace(";", ", ");
+                    fileContent = fileContent.Replace("[x64, x86, arm64]", $"[{platforms}]");
+
+                    File.WriteAllText(outputFile, fileContent);
+                }
+            }
+        }
+        public void CopyFileToDestination(string inputfile, string outputfile)
+        {
+            try
+            {
+                // Check if the file exists
+                if (File.Exists(inputfile))
+                {
+                    // Assuming 'outputfile' is the destination path
+                    string destinationPath = outputfile;
+
+                    // Copy the file
+                    File.Copy(inputfile, destinationPath, true);
+
+                    // Refresh the solution explorer to make sure the new file is visible
+                    _dte.ExecuteCommand("View.Refresh");
+                }
+                else
+                {
+                    // Handle the case where the source file doesn't exist
+                    // Log or show an error message
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                // Log or show an error message
             }
         }
 
@@ -451,7 +467,6 @@ namespace WinUICommunity_VS_Templates
         /// <returns></returns>
         public (string VSIXRootFolder, string ProjectTemplatesFolder) GetRootFolderPath(string vstemplateName)
         {
-            _solution = (Solution2)_dte.Solution;
             Solution2 soln = (Solution2)_dte.Solution;
             var vstemplateFileName = soln.GetProjectTemplate($"{vstemplateName}.vstemplate", "CSharp");
 

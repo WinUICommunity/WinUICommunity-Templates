@@ -25,9 +25,6 @@ namespace WinUICommunity_VS_Templates
         public void RunFinished()
         {
             WizardImplementation.RunFinished(false);
-            WizardImplementation.AddSolutionFolder();
-            WizardImplementation.AddEditorConfigFile("WinUIApp");
-            WizardImplementation.AddGithubActionFile("WinUIApp");
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
