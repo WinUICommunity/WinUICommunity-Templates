@@ -49,7 +49,11 @@ namespace WinUICommunity_VS_Templates
             new NormalizeGeneralSettingFile(templatePath);
             new NormalizeCSProjFile(project);
 
-            _dte.ExecuteCommand("Window.CloseAllTabs");
+            foreach (Document doc in _dte.Documents)
+            {
+                doc.Close();
+            }
+
             _dte.ExecuteCommand("Build.RebuildSolution");
         }
 
