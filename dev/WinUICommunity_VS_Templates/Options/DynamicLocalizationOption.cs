@@ -1,4 +1,5 @@
 ﻿using System;
+using WinUICommunity_VS_Templates.WizardUI;
 
 namespace WinUICommunity_VS_Templates.Options
 {
@@ -40,14 +41,14 @@ private async Task InitializeLocalizer(params string[] languages)
             .Build();
     }
 """;
-        public DynamicLocalizationOption(bool useDynamicLocalization, string templatePath)
+        public DynamicLocalizationOption(string templatePath)
         {
             string appFileContent = WizardHelper.ReadAppFileContent(templatePath);
             if (string.IsNullOrEmpty(appFileContent))
             {
                 return;
             }
-            if (useDynamicLocalization)
+            if (WizardConfig.UseDynamicLocalization)
             {
                 appFileContent = appFileContent.Replace("private void InitializeLocalizer { };", $"\n{InitializeCode}");
                 appFileContent = appFileContent.Replace("await InitializeLocalizer(\"en-US\");", Environment.NewLine + Environment.NewLine + "        await InitializeLocalizer(\"en-US\");");

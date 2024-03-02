@@ -42,12 +42,12 @@ namespace WinUICommunity_VS_Templates
             AddGithubActionFile(project);
 
             var templatePath = Directory.GetParent(project.FullName).FullName;
-            new DynamicLocalizationOption(WizardConfig.UseDynamicLocalization, templatePath);
-            new AppUpdateOption(WizardConfig.UseSettingsPage, WizardConfig.UseAppUpdatePage, WizardConfig.UseJsonSettings, isMVVMTemplate, templatePath);
+            new DynamicLocalizationOption(templatePath);
+            new AppUpdateOption(isMVVMTemplate, templatePath);
             new NormalizeAppFile(templatePath);
-            new NormalizeGlobalUsingFile(WizardConfig.UseJsonSettings, UseFileLogger, UseDebugLogger, templatePath);
-            new NormalizeGeneralSettingFile(WizardConfig.UseJsonSettings, WizardConfig.UseSettingsPage, WizardConfig.UseDeveloperModeSetting, WizardConfig.UseGeneralSettingPage, templatePath);
-            new NormalizeCSProjFile(project, WizardConfig.UseDynamicLocalization);
+            new NormalizeGlobalUsingFile(UseFileLogger, UseDebugLogger, templatePath);
+            new NormalizeGeneralSettingFile(templatePath);
+            new NormalizeCSProjFile(project);
         }
 
         /// <summary>

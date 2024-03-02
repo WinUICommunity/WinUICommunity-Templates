@@ -1,14 +1,15 @@
 ﻿using System.Text.RegularExpressions;
+using WinUICommunity_VS_Templates.WizardUI;
 
 namespace WinUICommunity_VS_Templates.Options
 {
     public class NormalizeGeneralSettingFile
     {
-        public NormalizeGeneralSettingFile(bool useJsonSettings, bool useSettingsPage, bool useDeveloperMode, bool useGeneralSettingPage, string templatePath)
+        public NormalizeGeneralSettingFile(string templatePath)
         {
-            if (useSettingsPage && useGeneralSettingPage)
+            if (WizardConfig.UseSettingsPage && WizardConfig.UseGeneralSettingPage)
             {
-                if (!useDeveloperMode || !useJsonSettings)
+                if (!WizardConfig.UseDeveloperModeSetting || !WizardConfig.UseJsonSettings)
                 {
                     string generalSettingFileContent = WizardHelper.ReadGeneralSettingFileContent(templatePath);
                     if (string.IsNullOrEmpty(generalSettingFileContent))
