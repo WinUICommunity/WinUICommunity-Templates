@@ -1,6 +1,7 @@
 ﻿using EnvDTE;
 using Microsoft.VisualStudio.TemplateWizard;
 using System.Collections.Generic;
+using WinUICommunity_VS_Templates.WizardUI;
 
 namespace WinUICommunity_VS_Templates
 {
@@ -38,12 +39,12 @@ namespace WinUICommunity_VS_Templates
                 return false;
             }
 
-            if (!WizardImplementation.UseHomeLandingPage && 
+            if (!WizardConfig.UseHomeLandingPage && 
                 filePath.Contains("HomeLanding"))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseSettingsPage && 
+            else if (!WizardConfig.UseSettingsPage && 
                 (filePath.Contains("SettingsPage.xaml") || 
                 filePath.Contains("BreadcrumbBarUserControl") || 
                 filePath.Contains("AboutUsSettingPage") || 
@@ -62,15 +63,15 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
-            else if (WizardImplementation.UseSettingsPage && 
-                !WizardImplementation.UseAboutPage &&
+            else if (WizardConfig.UseSettingsPage && 
+                !WizardConfig.UseAboutPage &&
                 (filePath.Contains("AboutUsSettingPage") ||
                 filePath.Contains("info.png")))
             {
                 return false;
             }
-            else if (WizardImplementation.UseSettingsPage &&
-                !WizardImplementation.UseThemeSettingPage &&
+            else if (WizardConfig.UseSettingsPage &&
+                !WizardConfig.UseThemeSettingPage &&
                 (filePath.Contains("ThemeSettingPage") ||
                 filePath.Contains("backdrop.png") ||
                 filePath.Contains("tint.png") ||
@@ -80,39 +81,39 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
-            else if (WizardImplementation.UseSettingsPage &&
-                !WizardImplementation.UseGeneralSettingPage &&
+            else if (WizardConfig.UseSettingsPage &&
+                !WizardConfig.UseGeneralSettingPage &&
                 (filePath.Contains("GeneralSettingPage") ||
                 filePath.Contains("settings.png")))
             {
                 return false;
             }
-            else if (WizardImplementation.UseSettingsPage &&
-                !WizardImplementation.UseAppUpdatePage &&
+            else if (WizardConfig.UseSettingsPage &&
+                !WizardConfig.UseAppUpdatePage &&
                 (filePath.Contains("AppUpdateSettingPage") ||
                 filePath.Contains("update.png")))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseJsonSettings &&
+            else if (!WizardConfig.UseJsonSettings &&
                 (filePath.Contains("AppConfig") || 
                 filePath.Contains("AppHelper")))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseHomeLandingPage && 
-                !WizardImplementation.UseColorsDic && 
+            else if (!WizardConfig.UseHomeLandingPage && 
+                !WizardConfig.UseColorsDic && 
                 filePath.Contains("ThemeResources.xaml"))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseDynamicLocalization &&
+            else if (!WizardConfig.UseDynamicLocalization &&
                 filePath.Contains("Resources") && 
                 !filePath.Contains("ThemeResources"))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseDeveloperModeSetting && filePath.Contains("devMode.png"))
+            else if (!WizardConfig.UseDeveloperModeSetting && filePath.Contains("devMode.png"))
             {
                 return false;
             }
@@ -122,11 +123,11 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
-            else if (!WizardImplementation.UseConvertersDic && filePath.Contains("Converters.xaml"))
+            else if (!WizardConfig.UseConvertersDic && filePath.Contains("Converters.xaml"))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseFontsDic && filePath.Contains("Fonts.xaml"))
+            else if (!WizardConfig.UseFontsDic && filePath.Contains("Fonts.xaml"))
             {
                 return false;
             }

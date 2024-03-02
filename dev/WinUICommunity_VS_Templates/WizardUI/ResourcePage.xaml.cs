@@ -13,22 +13,22 @@ namespace WinUICommunity_VS_Templates
 
         private void tgDicColor_Toggled(object sender, RoutedEventArgs e)
         {
-            WizardConfig.AddColorsDic = tgDicColor.IsOn;
+            WizardConfig.UseColorsDic = tgDicColor.IsOn;
         }
 
         private void tgDicStyle_Toggled(object sender, RoutedEventArgs e)
         {
-            WizardConfig.AddStylesDic = tgDicStyle.IsOn;
+            WizardConfig.UseStylesDic = tgDicStyle.IsOn;
         }
 
         private void tgDicFont_Toggled(object sender, RoutedEventArgs e)
         {
-            WizardConfig.AddFontsDic = tgDicFont.IsOn;
+            WizardConfig.UseFontsDic = tgDicFont.IsOn;
         }
 
         private void tgDicConverter_Toggled(object sender, RoutedEventArgs e)
         {
-            WizardConfig.AddConvertersDic = tgDicConverter.IsOn;
+            WizardConfig.UseConvertersDic = tgDicConverter.IsOn;
         }
     }
 }

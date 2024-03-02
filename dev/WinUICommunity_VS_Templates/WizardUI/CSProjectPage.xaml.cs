@@ -39,7 +39,7 @@ namespace WinUICommunity_VS_Templates
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

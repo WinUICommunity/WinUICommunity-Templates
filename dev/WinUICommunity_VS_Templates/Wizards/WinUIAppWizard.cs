@@ -3,6 +3,7 @@
 using EnvDTE;
 
 using Microsoft.VisualStudio.TemplateWizard;
+using WinUICommunity_VS_Templates.WizardUI;
 
 namespace WinUICommunity_VS_Templates
 {
@@ -40,17 +41,17 @@ namespace WinUICommunity_VS_Templates
                 return false;
             }
 
-            if (!WizardImplementation.UseJsonSettings && 
+            if (!WizardConfig.UseJsonSettings && 
                 (filePath.Contains("AppConfig") || 
                 filePath.Contains("AppHelper")))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseColorsDic && filePath.Contains("ThemeResources.xaml"))
+            else if (!WizardConfig.UseColorsDic && filePath.Contains("ThemeResources.xaml"))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseDynamicLocalization && 
+            else if (!WizardConfig.UseDynamicLocalization && 
                 filePath.Contains("Resources") && 
                 !filePath.Contains("ThemeResources"))
             {
@@ -62,15 +63,15 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
-            else if (!WizardImplementation.UseStylesDic && filePath.Contains("Styles.xaml"))
+            else if (!WizardConfig.UseStylesDic && filePath.Contains("Styles.xaml"))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseConvertersDic && filePath.Contains("Converters.xaml"))
+            else if (!WizardConfig.UseConvertersDic && filePath.Contains("Converters.xaml"))
             {
                 return false;
             }
-            else if (!WizardImplementation.UseFontsDic && filePath.Contains("Fonts.xaml"))
+            else if (!WizardConfig.UseFontsDic && filePath.Contains("Fonts.xaml"))
             {
                 return false;
             }

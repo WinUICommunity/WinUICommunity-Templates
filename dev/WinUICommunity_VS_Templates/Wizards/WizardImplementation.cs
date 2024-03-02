@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using EnvDTE;
 
 using EnvDTE80;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.TemplateWizard;
 using WinUICommunity_VS_Templates.Options;
 using WinUICommunity_VS_Templates.WizardUI;
@@ -17,40 +19,21 @@ namespace WinUICommunity_VS_Templates
         private _DTE _dte;
 
         public Dictionary<string, string> CSProjectElements;
-        public string DotNetVersion;
-        public string Platforms;
-        public string RuntimeIdentifiers;
-        public bool UseGithubWorkflow;
-        public bool UseJsonSettings;
-        public bool UseDynamicLocalization;
-        public bool UseEditorConfig;
-        public bool UseSolutionFolder;
-        public bool UseHomeLandingPage;
-        public bool UseSettingsPage;
-        public bool UseGeneralSettingPage;
-        public bool UseThemeSettingPage;
-        public bool UseAppUpdatePage;
-        public bool UseAboutPage;
-        public bool UseAccelerateBuilds;
         public bool UseFileLogger;
         public bool UseDebugLogger;
         public bool UseAppCenter;
-        public bool UseDeveloperModeSetting;
-        public bool UseColorsDic;
-        public bool UseStylesDic;
-        public bool UseConvertersDic;
-        public bool UseFontsDic;
 
         // we can use WinUIApp or other template name to get VSIXRootFolder
         string _vstemplateName = "WinUIApp";
 
-        public string ProjectName; // App35
-        public string SafeProjectName; // App35
-        public string SpecifiedSolutionName; // App35
-        public string SolutionDirectory; // E:\\source\\App35
-        public string DestinationDirectory;// E:\source\App35\App35
-        public void RunFinished(bool isMVVMTemplate)
+        public string ProjectName; // App
+        public string SafeProjectName; // App
+        public string SpecifiedSolutionName; // App
+        public string SolutionDirectory; // E:\\source\\App
+        public string DestinationDirectory;// E:\source\App\App
+        public async void RunFinished(bool isMVVMTemplate)
         {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             var _solution = (Solution2)_dte.Solution;
             var project = _dte.Solution.Projects.Item(1);
 
@@ -59,12 +42,12 @@ namespace WinUICommunity_VS_Templates
             AddGithubActionFile(project);
 
             var templatePath = Directory.GetParent(project.FullName).FullName;
-            new DynamicLocalizationOption(UseDynamicLocalization, templatePath);
-            new AppUpdateOption(UseSettingsPage, UseAppUpdatePage, UseJsonSettings, isMVVMTemplate, templatePath);
+            new DynamicLocalizationOption(WizardConfig.UseDynamicLocalization, templatePath);
+            new AppUpdateOption(WizardConfig.UseSettingsPage, WizardConfig.UseAppUpdatePage, WizardConfig.UseJsonSettings, isMVVMTemplate, templatePath);
             new NormalizeAppFile(templatePath);
-            new NormalizeGlobalUsingFile(UseJsonSettings, UseFileLogger, UseDebugLogger, templatePath);
-            new NormalizeGeneralSettingFile(UseJsonSettings, UseSettingsPage, UseDeveloperModeSetting, UseGeneralSettingPage, templatePath);
-            new NormalizeCSProjFile(project, UseDynamicLocalization);
+            new NormalizeGlobalUsingFile(WizardConfig.UseJsonSettings, UseFileLogger, UseDebugLogger, templatePath);
+            new NormalizeGeneralSettingFile(WizardConfig.UseJsonSettings, WizardConfig.UseSettingsPage, WizardConfig.UseDeveloperModeSetting, WizardConfig.UseGeneralSettingPage, templatePath);
+            new NormalizeCSProjFile(project, WizardConfig.UseDynamicLocalization);
         }
 
         /// <summary>
@@ -74,10 +57,8 @@ namespace WinUICommunity_VS_Templates
         /// <param name="replacementsDictionary"></param>
         /// <param name="runKind"></param>
         /// <param name="customParams"></param>
-        public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, bool hasPages, bool isMVVMTemplate = false, bool hasNavigationView = false, bool isBlank = false)
+        public async void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, bool hasPages, bool isMVVMTemplate = false, bool hasNavigationView = false, bool isBlank = false)
         {
-            _dte = automationObject as _DTE;
-
             ProjectName = replacementsDictionary["$projectname$"];
             SafeProjectName = replacementsDictionary["$safeprojectname$"];
             SpecifiedSolutionName = replacementsDictionary["$specifiedsolutionname$"];
@@ -87,14 +68,20 @@ namespace WinUICommunity_VS_Templates
             _shouldAddProjectItem = false;
             WizardConfig.HasPages = hasPages;
             WizardConfig.IsBlank = isBlank;
+
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
+            _dte = automationObject as _DTE;
+            
             var inputForm = new MainWindowWizard();
             var result = inputForm.ShowDialog();
+            
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
             if (result.HasValue && result.Value)
             {
                 _shouldAddProjectItem = true;
-
-                AddEditorConfigFile();
-
+                
                 string wasdkVersion = "1.5.240227000";
                 string wasdkBuildToolsVersion = "10.0.22621.3233";
                 string winUICommunityComponentsVersion = "6.5.0";
@@ -103,6 +90,8 @@ namespace WinUICommunity_VS_Templates
                 string communityToolkitMvvmVersion = "8.2.2";
                 string dependencyInjectionVersion = "8.0.0";
                 string winUIManagedVersion = "2.0.9";
+
+                AddEditorConfigFile();
 
                 if (WizardConfig.UseAlwaysLatestVersion)
                 {
@@ -125,28 +114,6 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$CommunityToolkitMvvmVersion$", communityToolkitMvvmVersion);
                 replacementsDictionary.Add("$DependencyInjectionVersion$", dependencyInjectionVersion);
                 replacementsDictionary.Add("$WinUIManagedVersion$", winUIManagedVersion);
-
-                Platforms = WizardConfig.Platforms;
-                RuntimeIdentifiers = WizardConfig.RuntimeIdentifiers;
-                UseJsonSettings = WizardConfig.AddJsonSettings;
-                UseDynamicLocalization = WizardConfig.AddDynamicLocalization;
-                UseEditorConfig = WizardConfig.AddEditorConfig;
-                UseSolutionFolder = WizardConfig.AddSolutionFolder;
-                UseHomeLandingPage = WizardConfig.AddHomeLandingPage;
-                UseSettingsPage = WizardConfig.AddSettingsPage;
-                UseGeneralSettingPage = WizardConfig.AddGeneralSettingPage;
-                UseThemeSettingPage = WizardConfig.AddThemeSettingPage;
-                UseAppUpdatePage = WizardConfig.AddAppUpdatePage;
-                UseAboutPage = WizardConfig.AddAboutPage;
-                UseAccelerateBuilds = WizardConfig.AddAccelerateBuilds;
-                UseDeveloperModeSetting = WizardConfig.AddDeveloperModeSetting;
-                UseColorsDic = WizardConfig.AddColorsDic;
-                UseStylesDic = WizardConfig.AddStylesDic;
-                UseConvertersDic = WizardConfig.AddConvertersDic;
-                UseFontsDic = WizardConfig.AddFontsDic;
-                DotNetVersion = WizardConfig.DotNetVersion;
-                UseGithubWorkflow = WizardConfig.UseGithubWorkflow;
-                CSProjectElements = WizardConfig.CSProjectElements;
 
                 // Add CSProjectElements
                 if (CSProjectElements != null && CSProjectElements.Count > 0)
@@ -252,17 +219,17 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());
                 replacementsDictionary.Add("$RuntimeIdentifiers$", WizardConfig.RuntimeIdentifiers.ToString());
 
-                replacementsDictionary.Add("$AddJsonSettings$", WizardConfig.AddJsonSettings.ToString());
-                replacementsDictionary.Add("$AddDynamicLocalization$", WizardConfig.AddDynamicLocalization.ToString());
-                replacementsDictionary.Add("$AddEditorConfig$", WizardConfig.AddEditorConfig.ToString());
-                replacementsDictionary.Add("$AddSolutionFolder$", WizardConfig.AddSolutionFolder.ToString());
-                replacementsDictionary.Add("$AddHomeLandingPage$", WizardConfig.AddHomeLandingPage.ToString());
-                replacementsDictionary.Add("$AddSettingsPage$", WizardConfig.AddSettingsPage.ToString());
-                replacementsDictionary.Add("$AddGeneralSettingPage$", WizardConfig.AddGeneralSettingPage.ToString());
-                replacementsDictionary.Add("$AddThemeSettingPage$", WizardConfig.AddThemeSettingPage.ToString());
-                replacementsDictionary.Add("$AddAppUpdatePage$", WizardConfig.AddAppUpdatePage.ToString());
-                replacementsDictionary.Add("$AddAboutPage$", WizardConfig.AddAboutPage.ToString());
-                replacementsDictionary.Add("$UseAccelerateBuilds$", WizardConfig.AddAccelerateBuilds.ToString());
+                replacementsDictionary.Add("$AddJsonSettings$", WizardConfig.UseJsonSettings.ToString());
+                replacementsDictionary.Add("$AddDynamicLocalization$", WizardConfig.UseDynamicLocalization.ToString());
+                replacementsDictionary.Add("$AddEditorConfig$", WizardConfig.UseEditorConfig.ToString());
+                replacementsDictionary.Add("$AddSolutionFolder$", WizardConfig.UseSolutionFolder.ToString());
+                replacementsDictionary.Add("$AddHomeLandingPage$", WizardConfig.UseHomeLandingPage.ToString());
+                replacementsDictionary.Add("$AddSettingsPage$", WizardConfig.UseSettingsPage.ToString());
+                replacementsDictionary.Add("$AddGeneralSettingPage$", WizardConfig.UseGeneralSettingPage.ToString());
+                replacementsDictionary.Add("$AddThemeSettingPage$", WizardConfig.UseThemeSettingPage.ToString());
+                replacementsDictionary.Add("$AddAppUpdatePage$", WizardConfig.UseAppUpdatePage.ToString());
+                replacementsDictionary.Add("$AddAboutPage$", WizardConfig.UseAboutPage.ToString());
+                replacementsDictionary.Add("$UseAccelerateBuilds$", WizardConfig.UseAccelerateBuilds.ToString());
 
                 if (WizardConfig.IsUnPackagedMode)
                 {
@@ -275,7 +242,7 @@ namespace WinUICommunity_VS_Templates
 
                 if (hasNavigationView)
                 {
-                    new ColorsDicOption().ConfigColorsDic(replacementsDictionary, UseHomeLandingPage);
+                    new ColorsDicOption().ConfigColorsDic(replacementsDictionary, WizardConfig.UseHomeLandingPage);
                 }
 
                 //if (UseSettingsPage && UseThemeSettingPage)
@@ -289,13 +256,13 @@ namespace WinUICommunity_VS_Templates
                 //    replacementsDictionary.Add("$BackdropTintColor$", "");
                 //}
 
-                new DictionaryOption().ConfigDictionary(replacementsDictionary, hasNavigationView, UseHomeLandingPage, UseColorsDic, UseStylesDic, UseConvertersDic, UseFontsDic);
+                new DictionaryOption().ConfigDictionary(replacementsDictionary, hasNavigationView, WizardConfig.UseHomeLandingPage, WizardConfig.UseColorsDic, WizardConfig.UseStylesDic, WizardConfig.UseConvertersDic, WizardConfig.UseFontsDic);
                 var serilog = new SerilogOption();
-                serilog.ConfigSerilog(replacementsDictionary, libs, UseJsonSettings, UseDeveloperModeSetting);
+                serilog.ConfigSerilog(replacementsDictionary, libs, WizardConfig.UseJsonSettings, WizardConfig.UseDeveloperModeSetting);
                 UseFileLogger = serilog.UseFileLogger;
                 UseDebugLogger = serilog.UseDebugLogger;
 
-                var configCodes = new ConfigCodes(UseAboutPage, UseAppUpdatePage, UseGeneralSettingPage, UseHomeLandingPage, UseSettingsPage, UseThemeSettingPage, UseDeveloperModeSetting, UseJsonSettings);
+                var configCodes = new ConfigCodes(WizardConfig.UseAboutPage, WizardConfig.UseAppUpdatePage, WizardConfig.UseGeneralSettingPage, WizardConfig.UseHomeLandingPage, WizardConfig.UseSettingsPage, WizardConfig.UseThemeSettingPage, WizardConfig.UseDeveloperModeSetting, WizardConfig.UseJsonSettings);
 
                 if (isMVVMTemplate)
                 {
@@ -337,7 +304,7 @@ namespace WinUICommunity_VS_Templates
                 {
                     replacementsDictionary.AddIfNotExists("$GeneralSettingsCards$", generalSettingsCards);
 
-                    if (UseJsonSettings && UseDeveloperModeSetting && UseSettingsPage && UseGeneralSettingPage)
+                    if (WizardConfig.UseJsonSettings && WizardConfig.UseDeveloperModeSetting && WizardConfig.UseSettingsPage && WizardConfig.UseGeneralSettingPage)
                     {
                         replacementsDictionary.AddIfNotExists("$GoToLogPathEvent$", Environment.NewLine + Environment.NewLine + SettingsCardOptions.GoToLogPathEvent);
                         replacementsDictionary.AddIfNotExists("$DeveloperModeConfig$", Environment.NewLine + "public virtual bool UseDeveloperMode { get; set; }");
@@ -355,11 +322,11 @@ namespace WinUICommunity_VS_Templates
                     replacementsDictionary.AddIfNotExists("$DeveloperModeConfig$", "");
                 }
 
-                if (UseJsonSettings)
+                if (WizardConfig.UseJsonSettings)
                 {
                     replacementsDictionary.Add("$AppConfigFilePath$", Environment.NewLine + """public static readonly string AppConfigPath = Path.Combine(RootDirectoryPath, "AppConfig.json");""");
 
-                    if (UseAppUpdatePage && UseSettingsPage)
+                    if (WizardConfig.UseAppUpdatePage && WizardConfig.UseSettingsPage)
                     {
                         replacementsDictionary.Add("$AppUpdateConfig$", Environment.NewLine + """public virtual string LastUpdateCheck { get; set; }""");
                     }
@@ -388,26 +355,29 @@ namespace WinUICommunity_VS_Templates
 
         public void AddSolutionFolder(Solution2 solution)
         {
-            if (UseSolutionFolder)
+            if (WizardConfig.UseSolutionFolder)
             {
                 var solutionFolder = solution.AddSolutionFolder("Solution Items");
             }
         }
-        public void AddEditorConfigFile()
+        public async void AddEditorConfigFile()
         {
-            if (UseEditorConfig)
+            if (WizardConfig.UseEditorConfig)
             {
-                var inputFile = GetRootFolderPath(_vstemplateName).VSIXRootFolder + @"\Files\.editorconfig";
+                var vsixRoot = await GetRootFolderPathAsync(_vstemplateName);
+
+                var inputFile = vsixRoot.VSIXRootFolder + @"\Files\.editorconfig";
 
                 var outputFile = SolutionDirectory + @"\.editorconfig";
                 CopyFileToDestination(inputFile, outputFile);
             }
         }
-        public void AddGithubActionFile(Project project)
+        public async void AddGithubActionFile(Project project)
         {
-            if (UseGithubWorkflow)
+            if (WizardConfig.UseGithubWorkflow)
             {
-                var inputFile = GetRootFolderPath(_vstemplateName).VSIXRootFolder + @"\Files\workflow.yml";
+                var vsixRoot = await GetRootFolderPathAsync(_vstemplateName);
+                var inputFile = vsixRoot.VSIXRootFolder + @"\Files\workflow.yml";
                 string outputDir = SolutionDirectory + @"\.github\workflows\";
 
                 if (!Directory.Exists(outputDir))
@@ -423,17 +393,19 @@ namespace WinUICommunity_VS_Templates
                     var fileContent = File.ReadAllText(outputFile);
                     fileContent = fileContent.Replace("YOUR_Folder/YOUR_APP_NAME.csproj", project.UniqueName);
                     fileContent = fileContent.Replace("YOUR_APP_NAME", project.Name);
-                    var platforms = Platforms.Replace(";", ", ");
+                    var platforms = WizardConfig.Platforms.Replace(";", ", ");
                     fileContent = fileContent.Replace("[x64, x86, arm64]", $"[{platforms}]");
 
                     File.WriteAllText(outputFile, fileContent);
                 }
             }
         }
-        public void CopyFileToDestination(string inputfile, string outputfile)
+        public async void CopyFileToDestination(string inputfile, string outputfile)
         {
             try
             {
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
                 // Check if the file exists
                 if (File.Exists(inputfile))
                 {
@@ -452,7 +424,7 @@ namespace WinUICommunity_VS_Templates
                     // Log or show an error message
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Handle exceptions
                 // Log or show an error message
@@ -465,8 +437,9 @@ namespace WinUICommunity_VS_Templates
         /// </summary>
         /// <param name="vstemplateName"></param>
         /// <returns></returns>
-        public (string VSIXRootFolder, string ProjectTemplatesFolder) GetRootFolderPath(string vstemplateName)
+        public async Task<(string VSIXRootFolder, string ProjectTemplatesFolder)> GetRootFolderPathAsync(string vstemplateName)
         {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             Solution2 soln = (Solution2)_dte.Solution;
             var vstemplateFileName = soln.GetProjectTemplate($"{vstemplateName}.vstemplate", "CSharp");
 

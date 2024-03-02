@@ -15,22 +15,22 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static bool IsUnPackagedMode = false;
         public static bool IsBlank;
         public static bool HasPages;
-        public static bool AddJsonSettings;
-        public static bool AddDynamicLocalization;
-        public static bool AddEditorConfig;
-        public static bool AddSolutionFolder;
-        public static bool AddHomeLandingPage;
-        public static bool AddSettingsPage;
-        public static bool AddGeneralSettingPage;
-        public static bool AddThemeSettingPage;
-        public static bool AddAppUpdatePage;
-        public static bool AddAboutPage;
-        public static bool AddAccelerateBuilds;
+        public static bool UseJsonSettings;
+        public static bool UseDynamicLocalization;
+        public static bool UseEditorConfig;
+        public static bool UseSolutionFolder;
+        public static bool UseHomeLandingPage;
+        public static bool UseSettingsPage;
+        public static bool UseGeneralSettingPage;
+        public static bool UseThemeSettingPage;
+        public static bool UseAppUpdatePage;
+        public static bool UseAboutPage;
+        public static bool UseAccelerateBuilds;
         public static bool UseAlwaysLatestVersion;
-        public static bool AddDeveloperModeSetting;
-        public static bool AddColorsDic;
-        public static bool AddStylesDic;
-        public static bool AddConvertersDic;
-        public static bool AddFontsDic;
+        public static bool UseDeveloperModeSetting;
+        public static bool UseColorsDic;
+        public static bool UseStylesDic;
+        public static bool UseConvertersDic;
+        public static bool UseFontsDic;
     }
 }

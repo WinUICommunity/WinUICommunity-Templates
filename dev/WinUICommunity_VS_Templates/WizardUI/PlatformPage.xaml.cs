@@ -142,27 +142,27 @@ namespace WinUICommunity_VS_Templates
 
         private void tgAccelerateBuilds_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
-            WizardConfig.AddAccelerateBuilds = tgAccelerateBuilds.IsOn;
+            WizardConfig.UseAccelerateBuilds = tgAccelerateBuilds.IsOn;
         }
 
         private void tgJsonSettings_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
-            WizardConfig.AddJsonSettings = tgJsonSettings.IsOn;
+            WizardConfig.UseJsonSettings = tgJsonSettings.IsOn;
         }
 
         private void tgDynamicLocalization_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
-            WizardConfig.AddDynamicLocalization = tgDynamicLocalization.IsOn;
+            WizardConfig.UseDynamicLocalization = tgDynamicLocalization.IsOn;
         }
 
         private void tgEditorConfig_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
-            WizardConfig.AddEditorConfig = tgEditorConfig.IsOn;
+            WizardConfig.UseEditorConfig = tgEditorConfig.IsOn;
         }
 
         private void tgSolutionFolder_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
-            WizardConfig.AddSolutionFolder = tgSolutionFolder.IsOn;
+            WizardConfig.UseSolutionFolder = tgSolutionFolder.IsOn;
         }
 
         private void tgGithubWorkflow_Toggled(object sender, System.Windows.RoutedEventArgs e)
