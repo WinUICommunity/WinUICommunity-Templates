@@ -9,6 +9,13 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/TextStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <local:CardControl Margin="10,0,10,0" HorizontalContentAlignment="Left">
         <StackPanel Orientation="Horizontal">
             <TextBlock

@@ -19,7 +19,6 @@ namespace WinUICommunity_VS_Templates
             {
                 Source = new System.Uri("/WinUICommunity_VS_Templates;component/WizardUI/ThemeResources.xaml", UriKind.RelativeOrAbsolute)
             });
-            Application.Current.Resources.MergedDictionaries.Add(new XamlControlsResources());
 
             InitializeComponent();
             Loaded += MainWindowWizard_Loaded;
