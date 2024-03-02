@@ -37,9 +37,9 @@ namespace WinUICommunity_VS_Templates
             var _solution = (Solution2)_dte.Solution;
             var project = _dte.Solution.Projects.Item(1);
 
-            AddSolutionFolder(_solution);
-
             AddGithubActionFile(project);
+
+            AddSolutionFolder(_solution);
 
             var templatePath = Directory.GetParent(project.FullName).FullName;
             new DynamicLocalizationOption(templatePath);
@@ -49,6 +49,7 @@ namespace WinUICommunity_VS_Templates
             new NormalizeGeneralSettingFile(templatePath);
             new NormalizeCSProjFile(project);
 
+            _dte.ExecuteCommand("Window.CloseAllTabs");
             _dte.ExecuteCommand("Build.RebuildSolution");
         }
 

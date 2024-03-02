@@ -84,6 +84,7 @@
                         x:Name="TrimModeOption"
                         Title="8. Add TrimMode"
                         InfoBarTitle="This property will produce a trimmed app on self-contained publish. It also turns off trim-incompatible features and shows trim compatibility warnings during build."
+                        IsEnabled="{Binding ElementName=PublishTrimOption, Path=IsOn}"
                         OffContent="partial"
                         OnContent="full"
                         Tag="TrimMode"

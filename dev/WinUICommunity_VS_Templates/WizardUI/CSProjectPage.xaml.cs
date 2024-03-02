@@ -83,7 +83,14 @@ namespace WinUICommunity_VS_Templates
         {
             Toggled(sender, e);
 
-            AddOrUpdateElementWithOnOffContent(TrimModeOption);
+            if (PublishTrimOption.IsOn)
+            {
+                AddOrUpdateElementWithOnOffContent(TrimModeOption);
+            }
+            else
+            {
+                TrimModeOption_Toggled(null, null);
+            }
         }
 
         private void TrimModeOption_Toggled(object sender, RoutedEventArgs e)
