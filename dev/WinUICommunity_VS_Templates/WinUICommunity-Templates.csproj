@@ -134,7 +134,8 @@
     <PackageReference Include="iNKORE.UI.WPF.Modern">
       <Version>0.9.26.3</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.0.5240" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WinUIApp-Blank\WinUIApp-Blank.csproj">
