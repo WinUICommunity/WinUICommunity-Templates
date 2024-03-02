@@ -12,20 +12,17 @@ namespace WinUICommunity_VS_Templates
             InitializeComponent();
         }
 
-        private void tgIncludeNativeLibrariesForSelfExtract_Toggled(object sender, RoutedEventArgs e)
+        private void Toggled(object sender, RoutedEventArgs e)
         {
-            AddOrRemoveElement(tgIncludeNativeLibrariesForSelfExtract, "IncludeNativeLibrariesForSelfExtract");
+            var optionUC = sender as OptionUC;
+            AddOrRemoveElement(optionUC);
         }
 
-        private void tgIncludeAllContentForSelfExtract_Toggled(object sender, RoutedEventArgs e)
-        {
-            AddOrRemoveElement(tgIncludeAllContentForSelfExtract, "IncludeAllContentForSelfExtract");
-        }
-
-        private void AddOrRemoveElement(OptionUC optionUC, string keyValue)
+        private void AddOrRemoveElement(OptionUC optionUC)
         {
             try
             {
+                string keyValue = optionUC.Tag.ToString();
                 if (optionUC.IsOn)
                 {
                     WizardConfig.CSProjectElements.AddIfNotExists(keyValue, $"<{keyValue}>true</{keyValue}>");
@@ -42,6 +39,68 @@ namespace WinUICommunity_VS_Templates
             catch (Exception)
             {
 
+            }
+        }
+
+        private void AddOrUpdateElementWithOnOffContent(OptionUC optionUC)
+        {
+            try
+            {
+                var key = optionUC.Tag.ToString();
+                var onValue = optionUC.OnContent;
+                var offValue = optionUC.OffContent;
+
+                WizardConfig.CSProjectElements.TryGetValue(key, out var valueExist);
+                if (!string.IsNullOrEmpty(valueExist))
+                {
+                    if (optionUC.IsOn)
+                    {
+                        WizardConfig.CSProjectElements.Update(key, $"<{key}>{onValue}</{key}>");
+                    }
+                    else
+                    {
+                        WizardConfig.CSProjectElements.Update(key, $"<{key}>{offValue}</{key}>");
+                    }
+                }
+                else
+                {
+                    if (optionUC.IsOn)
+                    {
+                        WizardConfig.CSProjectElements.AddIfNotExists(key, $"<{key}>{onValue}</{key}>");
+                    }
+                    else
+                    {
+                        WizardConfig.CSProjectElements.AddIfNotExists(key, $"<{key}>{offValue}</{key}>");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        private void TrimToggled(object sender, RoutedEventArgs e)
+        {
+            Toggled(sender, e);
+
+            AddOrUpdateElementWithOnOffContent(TrimModeOption);
+        }
+
+        private void TrimModeOption_Toggled(object sender, RoutedEventArgs e)
+        {
+            var key = TrimModeOption.Tag.ToString();
+
+            if (PublishTrimOption.IsOn)
+            {
+                AddOrUpdateElementWithOnOffContent(TrimModeOption);
+            }
+            else
+            {
+                WizardConfig.CSProjectElements.TryGetValue(key, out var valueExist);
+                if (!string.IsNullOrEmpty(valueExist))
+                {
+                    WizardConfig.CSProjectElements.Remove(key);
+                }
             }
         }
     }

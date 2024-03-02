@@ -32,8 +32,8 @@
                     Margin="10,0"
                     VerticalAlignment="Center"
                     IsOn="{Binding IsOn, RelativeSource={RelativeSource AncestorType=local:OptionUC}}"
-                    OffContent=""
-                    OnContent=""
+                    OffContent="{Binding OffContent, RelativeSource={RelativeSource AncestorType=local:OptionUC}}"
+                    OnContent="{Binding OnContent, RelativeSource={RelativeSource AncestorType=local:OptionUC}}"
                     Toggled="tgSettings_Toggled" />
             </StackPanel>
         </Expander.Header>

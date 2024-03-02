@@ -15,10 +15,10 @@ namespace WinUICommunity_VS_Templates
 {
     public class WizardImplementation
     {
+        private Dictionary<string, string> solutionFiles = new();
         private bool _shouldAddProjectItem;
         private _DTE _dte;
 
-        public Dictionary<string, string> CSProjectElements;
         public bool UseFileLogger;
         public bool UseDebugLogger;
         public bool UseAppCenter;
@@ -118,14 +118,16 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$WinUIManagedVersion$", winUIManagedVersion);
 
                 // Add CSProjectElements
-                if (CSProjectElements != null && CSProjectElements.Count > 0)
+                if (WizardConfig.CSProjectElements != null && WizardConfig.CSProjectElements.Count > 0)
                 {
                     StringBuilder sb = new StringBuilder();
 
-                    foreach (var entity in CSProjectElements)
+                    foreach (var entity in WizardConfig.CSProjectElements)
                     {
                         sb.AppendLine($"    {entity.Value}");
                     }
+
+                    WizardConfig.CSProjectElements?.Clear();
 
                     replacementsDictionary.Add("$CustomCSProjectElement$", Environment.NewLine + $"    {sb.ToString().Trim()}");
                 }
@@ -160,6 +162,8 @@ namespace WinUICommunity_VS_Templates
                             outputBuilder.AppendLine(lib.Package);
                         }
                     }
+
+                    WizardConfig.LibraryDic?.Clear();
                 }
 
                 new AppCenterOption().ConfigAppCenter(UseAppCenter, replacementsDictionary);
@@ -231,7 +235,6 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$AddThemeSettingPage$", WizardConfig.UseThemeSettingPage.ToString());
                 replacementsDictionary.Add("$AddAppUpdatePage$", WizardConfig.UseAppUpdatePage.ToString());
                 replacementsDictionary.Add("$AddAboutPage$", WizardConfig.UseAboutPage.ToString());
-                replacementsDictionary.Add("$UseAccelerateBuilds$", WizardConfig.UseAccelerateBuilds.ToString());
 
                 if (WizardConfig.IsUnPackagedMode)
                 {
@@ -355,11 +358,22 @@ namespace WinUICommunity_VS_Templates
             return _shouldAddProjectItem;
         }
 
-        public void AddSolutionFolder(Solution2 solution)
+        public async void AddSolutionFolder(Solution2 solution)
         {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
             if (WizardConfig.UseSolutionFolder)
             {
-                var solutionFolder = solution.AddSolutionFolder("Solution Items");
+                var solutionFolder = solution.AddSolutionFolder(WizardConfig.SolutionFolderName);
+                if (solutionFolder != null)
+                {
+                    foreach (var item in solutionFiles)
+                    {
+                        solutionFolder.ProjectItems.AddFromFile(item.Value);
+                    }
+
+                    solutionFiles.Clear();
+                }
             }
         }
         public async void AddEditorConfigFile()
@@ -371,7 +385,9 @@ namespace WinUICommunity_VS_Templates
                 var inputFile = vsixRoot.VSIXRootFolder + @"\Files\.editorconfig";
 
                 var outputFile = SolutionDirectory + @"\.editorconfig";
+                solutionFiles.AddIfNotExists("EditorConfig", outputFile);
                 CopyFileToDestination(inputFile, outputFile);
+
             }
         }
         public async void AddGithubActionFile(Project project)
@@ -388,6 +404,7 @@ namespace WinUICommunity_VS_Templates
                 }
 
                 var outputFile = outputDir + "dotnet-release.yml";
+                solutionFiles.AddIfNotExists("workflow", outputFile);
                 CopyFileToDestination(inputFile, outputFile);
 
                 if (File.Exists(outputFile))

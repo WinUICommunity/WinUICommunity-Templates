@@ -140,11 +140,6 @@ namespace WinUICommunity_VS_Templates
             return resultString;
         }
 
-        private void tgAccelerateBuilds_Toggled(object sender, System.Windows.RoutedEventArgs e)
-        {
-            WizardConfig.UseAccelerateBuilds = tgAccelerateBuilds.IsOn;
-        }
-
         private void tgJsonSettings_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
             WizardConfig.UseJsonSettings = tgJsonSettings.IsOn;
@@ -168,6 +163,18 @@ namespace WinUICommunity_VS_Templates
         private void tgGithubWorkflow_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
             WizardConfig.UseGithubWorkflow = tgGithubWorkflow.IsOn;
+        }
+
+        private void txtSolutionFolderName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtSolutionFolderName.Text))
+            {
+                WizardConfig.SolutionFolderName = txtSolutionFolderName.Text;
+            }
+            else
+            {
+                WizardConfig.SolutionFolderName = WizardConfig.SolutionFolderNameDefault;
+            }
         }
     }
 }

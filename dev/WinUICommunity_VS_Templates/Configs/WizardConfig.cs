@@ -4,6 +4,8 @@ namespace WinUICommunity_VS_Templates.WizardUI
 {
     public static class WizardConfig
     {
+        public static readonly string SolutionFolderNameDefault = "Solution Items";
+
         public static Dictionary<string, PackageRefrence> LibraryDic = new Dictionary<string, PackageRefrence>();
         public static Dictionary<string, string> CSProjectElements = new Dictionary<string, string>();
 
@@ -11,8 +13,9 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static string TargetFrameworkVersion = "22621";
         public static string Platforms = "x86;x64;ARM64";
         public static string RuntimeIdentifiers = "win-x86;win-x64;win-arm64";
-        public static bool UseGithubWorkflow = false;
-        public static bool IsUnPackagedMode = false;
+        public static string SolutionFolderName = "Solution Items";
+        public static bool UseGithubWorkflow;
+        public static bool IsUnPackagedMode;
         public static bool IsBlank;
         public static bool HasPages;
         public static bool UseJsonSettings;
@@ -25,7 +28,6 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static bool UseThemeSettingPage;
         public static bool UseAppUpdatePage;
         public static bool UseAboutPage;
-        public static bool UseAccelerateBuilds;
         public static bool UseAlwaysLatestVersion;
         public static bool UseDeveloperModeSetting;
         public static bool UseColorsDic;
