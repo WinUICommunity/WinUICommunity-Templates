@@ -48,6 +48,8 @@ namespace WinUICommunity_VS_Templates
             new NormalizeGlobalUsingFile(UseFileLogger, UseDebugLogger, templatePath);
             new NormalizeGeneralSettingFile(templatePath);
             new NormalizeCSProjFile(project);
+
+            _dte.ExecuteCommand("Build.RebuildSolution");
         }
 
         /// <summary>
