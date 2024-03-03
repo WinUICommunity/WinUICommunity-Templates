@@ -1,15 +1,13 @@
-﻿using System.Collections.Generic;
-
-using EnvDTE;
-
+﻿using EnvDTE;
 using Microsoft.VisualStudio.TemplateWizard;
+using System.Collections.Generic;
 using WinUICommunity_VS_Templates.WizardUI;
 
 namespace WinUICommunity_VS_Templates
 {
-    public class WinUIAppWizard : IWizard
+    public class WinUIAppBlankWizard : IWizard
     {
-        WizardImplementation WizardImplementation;
+        SharedWizard WizardImplementation;
 
         public void BeforeOpeningFile(ProjectItem projectItem)
         {
@@ -30,8 +28,8 @@ namespace WinUICommunity_VS_Templates
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
-            WizardImplementation = new WizardImplementation();
-            WizardImplementation.RunStarted(automationObject, replacementsDictionary, false);
+            WizardImplementation = new SharedWizard();
+            WizardImplementation.RunStarted(automationObject, replacementsDictionary, false, false, false, true);
         }
 
         public bool ShouldAddProjectItem(string filePath)
@@ -41,25 +39,7 @@ namespace WinUICommunity_VS_Templates
                 return false;
             }
 
-            if (!WizardConfig.UseJsonSettings && 
-                (filePath.Contains("AppConfig") || 
-                filePath.Contains("AppHelper")))
-            {
-                return false;
-            }
             else if (!WizardConfig.UseColorsDic && filePath.Contains("ThemeResources.xaml"))
-            {
-                return false;
-            }
-            else if (!WizardConfig.UseDynamicLocalization && 
-                filePath.Contains("Resources") && 
-                !filePath.Contains("ThemeResources"))
-            {
-                return false;
-            }
-            else if (!WizardImplementation.UseDebugLogger && 
-                !WizardImplementation.UseFileLogger && 
-                filePath.Contains("LoggerSetup"))
             {
                 return false;
             }

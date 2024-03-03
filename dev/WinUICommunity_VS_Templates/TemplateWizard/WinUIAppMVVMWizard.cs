@@ -9,7 +9,7 @@ namespace WinUICommunity_VS_Templates
 {
     public class WinUIAppMVVMWizard : IWizard
     {
-        WizardImplementation WizardImplementation;
+        SharedWizard WizardImplementation;
 
         public void BeforeOpeningFile(ProjectItem projectItem)
         {
@@ -30,7 +30,7 @@ namespace WinUICommunity_VS_Templates
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
-            WizardImplementation = new WizardImplementation();
+            WizardImplementation = new SharedWizard();
             WizardImplementation.RunStarted(automationObject, replacementsDictionary, false, true);
         }
 

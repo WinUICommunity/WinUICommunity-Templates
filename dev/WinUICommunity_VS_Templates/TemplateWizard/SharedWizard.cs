@@ -13,7 +13,7 @@ using WinUICommunity_VS_Templates.WizardUI;
 
 namespace WinUICommunity_VS_Templates
 {
-    public class WizardImplementation
+    public class SharedWizard
     {
         private Dictionary<string, string> solutionFiles = new();
         private bool _shouldAddProjectItem;
@@ -84,7 +84,7 @@ namespace WinUICommunity_VS_Templates
 
             _dte = automationObject as _DTE;
             
-            var inputForm = new MainWindowWizard();
+            var inputForm = new MainWindow();
             var result = inputForm.ShowDialog();
             
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
@@ -369,13 +369,13 @@ namespace WinUICommunity_VS_Templates
 
         public async void AddSolutionFolder(Solution2 solution)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-
             if (WizardConfig.UseSolutionFolder)
             {
                 var solutionFolder = solution.AddSolutionFolder(WizardConfig.SolutionFolderName);
                 if (solutionFolder != null)
                 {
+                    await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
                     foreach (var item in solutionFiles)
                     {
                         solutionFolder.ProjectItems.AddFromFile(item.Value);
@@ -418,6 +418,7 @@ namespace WinUICommunity_VS_Templates
 
                 if (File.Exists(outputFile))
                 {
+                    await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
                     var fileContent = File.ReadAllText(outputFile);
                     fileContent = fileContent.Replace("YOUR_Folder/YOUR_APP_NAME.csproj", project.UniqueName);
                     fileContent = fileContent.Replace("YOUR_APP_NAME", project.Name);
@@ -445,8 +446,6 @@ namespace WinUICommunity_VS_Templates
         {
             try
             {
-                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-
                 // Check if the file exists
                 if (File.Exists(inputfile))
                 {
@@ -455,6 +454,8 @@ namespace WinUICommunity_VS_Templates
 
                     // Copy the file
                     File.Copy(inputfile, destinationPath, true);
+
+                    await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
                     // Refresh the solution explorer to make sure the new file is visible
                     _dte.ExecuteCommand("View.Refresh");

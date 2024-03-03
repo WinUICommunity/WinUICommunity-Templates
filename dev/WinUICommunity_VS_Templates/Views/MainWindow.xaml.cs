@@ -6,7 +6,7 @@ using System;
 
 namespace WinUICommunity_VS_Templates
 {
-    public partial class MainWindowWizard : Window
+    public partial class MainWindow : Window
     {
         PlatformPage platformType;
         LibrariesPage librariesType;
@@ -14,11 +14,11 @@ namespace WinUICommunity_VS_Templates
         ResourcePage resourceType;
         CSProjectPage cSProjectType;
         FilePage filePage;
-        public MainWindowWizard()
+        public MainWindow()
         {
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
             {
-                Source = new System.Uri("/WinUICommunity_VS_Templates;component/WizardUI/ThemeResources.xaml", UriKind.RelativeOrAbsolute)
+                Source = new System.Uri("/WinUICommunity_VS_Templates;component/Styles/ThemeResources.xaml", UriKind.RelativeOrAbsolute)
             });
 
             InitializeComponent();

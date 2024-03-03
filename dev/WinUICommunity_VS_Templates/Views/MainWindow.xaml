@@ -1,5 +1,5 @@
 ﻿<Window
-    x:Class="WinUICommunity_VS_Templates.MainWindowWizard"
+    x:Class="WinUICommunity_VS_Templates.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -21,9 +21,9 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardUI/ThemeResources.xaml" />
+                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/Styles/ThemeResources.xaml" />
                 <ui:XamlControlsResources />
-                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/WizardUI/CardControl/CardControl.xaml" />
+                <ResourceDictionary Source="/WinUICommunity_VS_Templates;component/Styles/CardControl/CardControl.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>

@@ -1,15 +1,13 @@
-﻿using System.Collections.Generic;
-
-using EnvDTE;
-
+﻿using EnvDTE;
 using Microsoft.VisualStudio.TemplateWizard;
+using System.Collections.Generic;
 using WinUICommunity_VS_Templates.WizardUI;
 
 namespace WinUICommunity_VS_Templates
 {
-    public class WinUIAppMVVMNavigationWizard : IWizard
+    public class WinUIAppNavigationWizard : IWizard
     {
-        WizardImplementation WizardImplementation;
+        SharedWizard WizardImplementation;
 
         public void BeforeOpeningFile(ProjectItem projectItem)
         {
@@ -25,13 +23,13 @@ namespace WinUICommunity_VS_Templates
 
         public void RunFinished()
         {
-            WizardImplementation.RunFinished(true);
+            WizardImplementation.RunFinished(false);
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
-            WizardImplementation = new WizardImplementation();
-            WizardImplementation.RunStarted(automationObject, replacementsDictionary, true, true, true);
+            WizardImplementation = new SharedWizard();
+            WizardImplementation.RunStarted(automationObject, replacementsDictionary, true, false, true);
         }
 
         public bool ShouldAddProjectItem(string filePath)
@@ -41,28 +39,21 @@ namespace WinUICommunity_VS_Templates
                 return false;
             }
 
-            if (!WizardConfig.UseHomeLandingPage &&
-                (filePath.Contains("HomeLanding") || 
-                filePath.Contains("HomeLandingViewModel")))
+            if (!WizardConfig.UseHomeLandingPage && 
+                filePath.Contains("HomeLanding"))
             {
                 return false;
             }
-            else if (!WizardConfig.UseSettingsPage &&
-                (filePath.Contains("SettingsPage.xaml") ||
-                filePath.Contains("SettingsViewModel") ||
-                filePath.Contains("BreadCrumbBarViewModel") ||
-                filePath.Contains("BreadcrumbBarUserControl") ||
-                filePath.Contains("AboutUsSettingPage") ||
-                filePath.Contains("ThemeSettingPage") ||
-                filePath.Contains("AboutUsSettingViewModel") ||
-                filePath.Contains("ThemeSettingViewModel") ||
-                filePath.Contains("GeneralSettingPage") ||
-                filePath.Contains("GeneralSettingViewModel") ||
+            else if (!WizardConfig.UseSettingsPage && 
+                (filePath.Contains("SettingsPage.xaml") || 
+                filePath.Contains("BreadcrumbBarUserControl") || 
+                filePath.Contains("AboutUsSettingPage") || 
+                filePath.Contains("ThemeSettingPage") || 
+                filePath.Contains("GeneralSettingPage") || 
                 filePath.Contains("AppUpdateSettingPage") ||
-                filePath.Contains("AppUpdateSettingViewModel") ||
                 filePath.Contains("backdrop.png") ||
-                filePath.Contains("color.png") ||
                 filePath.Contains("tint.png") ||
+                filePath.Contains("color.png") ||
                 filePath.Contains("external.png") ||
                 filePath.Contains("info.png") ||
                 filePath.Contains("settings.png") ||
@@ -72,10 +63,9 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
-            else if (WizardConfig.UseSettingsPage &&
+            else if (WizardConfig.UseSettingsPage && 
                 !WizardConfig.UseAboutPage &&
                 (filePath.Contains("AboutUsSettingPage") ||
-                filePath.Contains("AboutUsSettingViewModel") ||
                 filePath.Contains("info.png")))
             {
                 return false;
@@ -83,10 +73,9 @@ namespace WinUICommunity_VS_Templates
             else if (WizardConfig.UseSettingsPage &&
                 !WizardConfig.UseThemeSettingPage &&
                 (filePath.Contains("ThemeSettingPage") ||
-                filePath.Contains("ThemeSettingViewModel") ||
                 filePath.Contains("backdrop.png") ||
-                filePath.Contains("color.png") ||
                 filePath.Contains("tint.png") ||
+                filePath.Contains("color.png") ||
                 filePath.Contains("external.png") ||
                 filePath.Contains("theme.png")))
             {
@@ -95,7 +84,6 @@ namespace WinUICommunity_VS_Templates
             else if (WizardConfig.UseSettingsPage &&
                 !WizardConfig.UseGeneralSettingPage &&
                 (filePath.Contains("GeneralSettingPage") ||
-                filePath.Contains("GeneralSettingViewModel") ||
                 filePath.Contains("settings.png")))
             {
                 return false;
@@ -103,13 +91,12 @@ namespace WinUICommunity_VS_Templates
             else if (WizardConfig.UseSettingsPage &&
                 !WizardConfig.UseAppUpdatePage &&
                 (filePath.Contains("AppUpdateSettingPage") ||
-                filePath.Contains("AppUpdateSettingViewModel") ||
                 filePath.Contains("update.png")))
             {
                 return false;
             }
             else if (!WizardConfig.UseJsonSettings &&
-                (filePath.Contains("AppConfig") ||
+                (filePath.Contains("AppConfig") || 
                 filePath.Contains("AppHelper")))
             {
                 return false;

@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.Shell;
+using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-
-using Microsoft.VisualStudio.Shell;
-
 using Task = System.Threading.Tasks.Task;
 
 namespace WinUICommunity_VS_Templates

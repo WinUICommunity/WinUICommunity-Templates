@@ -136,7 +136,7 @@
 	<FullClassName>Microsoft.VisualStudio.WinRT.TemplateWizards.UpdatePublisherInManifestWizard</FullClassName>
   </WizardExtension>
   <WizardExtension>
-	<Assembly>WinUICommunity_VS_Templates, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=00733b7636c94b01</Assembly>
+	<Assembly>WinUICommunity_VS_Templates, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=edaf1469a7184ea2</Assembly>
 	<FullClassName>WinUICommunity_VS_Templates.WinUIAppMVVMNavigationWizard</FullClassName>
   </WizardExtension>
 </VSTemplate>
