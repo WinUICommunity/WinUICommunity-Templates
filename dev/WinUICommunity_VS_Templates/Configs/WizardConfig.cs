@@ -14,13 +14,14 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static string Platforms = "x86;x64;ARM64";
         public static string RuntimeIdentifiers = "win-x86;win-x64;win-arm64";
         public static string SolutionFolderName = "Solution Items";
-        public static bool UseGithubWorkflow;
+        public static bool UseGithubWorkflowFile;
+        public static bool UseEditorConfigFile;
+        public static bool UseXamlStylerFile;
         public static bool IsUnPackagedMode;
         public static bool IsBlank;
         public static bool HasPages;
         public static bool UseJsonSettings;
         public static bool UseDynamicLocalization;
-        public static bool UseEditorConfig;
         public static bool UseSolutionFolder;
         public static bool UseHomeLandingPage;
         public static bool UseSettingsPage;

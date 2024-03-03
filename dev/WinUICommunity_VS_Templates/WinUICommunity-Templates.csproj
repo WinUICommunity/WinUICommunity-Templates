@@ -75,6 +75,9 @@
     <Compile Include="WizardUI\CSProjectPage.xaml.cs">
       <DependentUpon>CSProjectPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WizardUI\FilePage.xaml.cs">
+      <DependentUpon>FilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WizardUI\LibrariesPage.xaml.cs">
       <DependentUpon>LibrariesPage.xaml</DependentUpon>
     </Compile>
@@ -187,6 +190,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="WizardUI\CSProjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WizardUI\FilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

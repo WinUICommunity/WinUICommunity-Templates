@@ -150,19 +150,9 @@ namespace WinUICommunity_VS_Templates
             WizardConfig.UseDynamicLocalization = tgDynamicLocalization.IsOn;
         }
 
-        private void tgEditorConfig_Toggled(object sender, System.Windows.RoutedEventArgs e)
-        {
-            WizardConfig.UseEditorConfig = tgEditorConfig.IsOn;
-        }
-
         private void tgSolutionFolder_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
             WizardConfig.UseSolutionFolder = tgSolutionFolder.IsOn;
-        }
-
-        private void tgGithubWorkflow_Toggled(object sender, System.Windows.RoutedEventArgs e)
-        {
-            WizardConfig.UseGithubWorkflow = tgGithubWorkflow.IsOn;
         }
 
         private void txtSolutionFolderName_TextChanged(object sender, TextChangedEventArgs e)

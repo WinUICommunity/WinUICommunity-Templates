@@ -145,6 +145,11 @@
                         <ui:SymbolIcon Symbol="Bookmarks" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
+                <ui:NavigationViewItem Content="Files" Tag="FilePage">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:SymbolIcon Symbol="OpenFile" />
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
                 <ui:NavigationViewItem Content="CSProject" Tag="CSProjectPage">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="Tag" />

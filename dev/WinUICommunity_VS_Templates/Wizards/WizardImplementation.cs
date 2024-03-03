@@ -38,6 +38,7 @@ namespace WinUICommunity_VS_Templates
             var project = _dte.Solution.Projects.Item(1);
 
             AddGithubActionFile(project);
+            AddXamlStylerConfigFile();
 
             AddSolutionFolder(_solution);
 
@@ -232,7 +233,7 @@ namespace WinUICommunity_VS_Templates
 
                 replacementsDictionary.Add("$AddJsonSettings$", WizardConfig.UseJsonSettings.ToString());
                 replacementsDictionary.Add("$AddDynamicLocalization$", WizardConfig.UseDynamicLocalization.ToString());
-                replacementsDictionary.Add("$AddEditorConfig$", WizardConfig.UseEditorConfig.ToString());
+                replacementsDictionary.Add("$AddEditorConfig$", WizardConfig.UseEditorConfigFile.ToString());
                 replacementsDictionary.Add("$AddSolutionFolder$", WizardConfig.UseSolutionFolder.ToString());
                 replacementsDictionary.Add("$AddHomeLandingPage$", WizardConfig.UseHomeLandingPage.ToString());
                 replacementsDictionary.Add("$AddSettingsPage$", WizardConfig.UseSettingsPage.ToString());
@@ -383,7 +384,7 @@ namespace WinUICommunity_VS_Templates
         }
         public async void AddEditorConfigFile()
         {
-            if (WizardConfig.UseEditorConfig)
+            if (WizardConfig.UseEditorConfigFile)
             {
                 var vsixRoot = await GetRootFolderPathAsync(_vstemplateName);
 
@@ -397,10 +398,10 @@ namespace WinUICommunity_VS_Templates
         }
         public async void AddGithubActionFile(Project project)
         {
-            if (WizardConfig.UseGithubWorkflow)
+            if (WizardConfig.UseGithubWorkflowFile)
             {
                 var vsixRoot = await GetRootFolderPathAsync(_vstemplateName);
-                var inputFile = vsixRoot.VSIXRootFolder + @"\Files\workflow.yml";
+                var inputFile = vsixRoot.VSIXRootFolder + @"\Files\dotnet-release.yml";
                 string outputDir = SolutionDirectory + @"\.github\workflows\";
 
                 if (!Directory.Exists(outputDir))
@@ -422,6 +423,19 @@ namespace WinUICommunity_VS_Templates
 
                     File.WriteAllText(outputFile, fileContent);
                 }
+            }
+        }
+        public async void AddXamlStylerConfigFile()
+        {
+            if (WizardConfig.UseXamlStylerFile)
+            {
+                var vsixRoot = await GetRootFolderPathAsync(_vstemplateName);
+
+                var inputFile = vsixRoot.VSIXRootFolder + @"\Files\settings.xamlstyler";
+
+                var outputFile = SolutionDirectory + @"\settings.xamlstyler";
+                solutionFiles.AddIfNotExists("XamlStyler", outputFile);
+                CopyFileToDestination(inputFile, outputFile);
             }
         }
         public async void CopyFileToDestination(string inputfile, string outputfile)

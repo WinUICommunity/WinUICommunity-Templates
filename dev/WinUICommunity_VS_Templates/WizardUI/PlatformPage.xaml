@@ -51,16 +51,8 @@
             <Separator Margin="0,5" />
 
             <local:OptionUC
-                x:Name="tgGithubWorkflow"
-                Title="2. Add Github Action (Workflow) yml file"
-                InfoBarMessage="Github Action provide a way to publish your (UnPackaged) app in zip files for x64, x86 and arm64, and upload them into github release section. you need to open yml file and modify its options based on your needs."
-                InfoBarTitle="This option allows you to add a yml (github action) file in your project. "
-                IsOn="False"
-                Toggled="tgGithubWorkflow_Toggled" />
-
-            <local:OptionUC
                 x:Name="tgJsonSettings"
-                Title="3. Add Json Settings"
+                Title="2. Add Json Settings"
                 InfoBarMessage="Saving and restoring settings will be very fast and simple and will be done with only one line: Settings.SomeProperty = newValue;"
                 InfoBarTitle="AppConfig.cs and AppHelper.cs classes will be added and you can save and restore app settings in json file."
                 IsOn="True"
@@ -68,24 +60,20 @@
 
             <local:OptionUC
                 x:Name="tgDynamicLocalization"
-                Title="4. Add Dynamic Localization"
+                Title="3. Add Dynamic Localization"
                 InfoBarTitle="The resource (resw) file will be added and the App.xaml.cs file will be configured to use localization"
                 Toggled="tgDynamicLocalization_Toggled" />
-            <local:OptionUCNoExpander
-                x:Name="tgEditorConfig"
-                Title="5. Add .editorConfig File"
-                IsOn="True"
-                Toggled="tgEditorConfig_Toggled" />
 
             <local:OptionUC
                 x:Name="tgSolutionFolder"
-                Title="6. Add Empty Solution Folder"
+                Title="4. Add Empty Solution Folder"
                 InfoBarMessage="Solution folders provide a way to organize and group related projects, files, or items within your solution without affecting the actual project structure. Adding an empty solution folder can be useful for maintaining a tidy and well-structured solution, especially when you have numerous files and projects to manage."
                 InfoBarTitle="This option allows you to include an empty solution folder in your project. "
                 IsOn="True"
                 Toggled="tgSolutionFolder_Toggled" />
             <TextBox
-                x:Name="txtSolutionFolderName" Margin="10,0"
+                x:Name="txtSolutionFolderName"
+                Margin="10,0"
                 IsEnabled="{Binding ElementName=tgSolutionFolder, Path=IsOn}"
                 Text="Solution Items"
                 TextChanged="txtSolutionFolderName_TextChanged" />
