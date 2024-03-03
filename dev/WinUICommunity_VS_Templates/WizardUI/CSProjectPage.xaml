@@ -33,7 +33,7 @@
                 Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}">
                 <StackPanel>
                     <local:OptionUC
-                        Title="1. Add AccelerateBuildsInVisualStudio"
+                        Title="1. AccelerateBuildsInVisualStudio"
                         InfoBarTitle="Build acceleration is an opt-in feature that directs Visual Studio to only build projects that had modifications while skipping projects that were unchanged. Enabling Build Acceleration can reduce incremental build times by up to 80% for SDK-style .NET projects."
                         Tag="AccelerateBuildsInVisualStudio"
                         Toggled="Toggled" />
@@ -46,43 +46,43 @@
                 Style="{StaticResource {x:Static ui:ThemeKeys.ExpanderCardStyleKey}}">
                 <StackPanel>
                     <local:OptionUC
-                        Title="1. Add PublishSingleFile"
+                        Title="1. PublishSingleFile"
                         InfoBarTitle="Enables single file publishing. Also enables single file warnings during dotnet build"
                         Tag="PublishSingleFile"
                         Toggled="Toggled" />
                     <local:OptionUC
-                        Title="2. Add SelfContained"
+                        Title="2. SelfContained"
                         InfoBarTitle="Determines whether the app is self-contained or framework-dependent."
                         Tag="SelfContained"
                         Toggled="Toggled" />
                     <local:OptionUC
-                        Title="3. Add PublishReadyToRun"
+                        Title="3. PublishReadyToRun"
                         InfoBarTitle="R2R binaries improve startup performance by reducing the amount of work the just-in-time (JIT) compiler needs to do as your application loads."
                         Tag="PublishReadyToRun"
                         Toggled="Toggled" />
                     <local:OptionUC
-                        Title="4. Add IncludeNativeLibrariesForSelfExtract"
+                        Title="4. IncludeNativeLibrariesForSelfExtract"
                         InfoBarMessage="Only managed DLLs are bundled with the app into a single executable. When the app starts, the managed DLLs are extracted and loaded in memory, avoiding the extraction to a folder. With this approach, the managed binaries are embedded in the single file bundle, but the native binaries of the core runtime itself are separate files.  To embed those files for extraction and get one output file, set the property IncludeNativeLibrariesForSelfExtract to true"
                         Tag="IncludeNativeLibrariesForSelfExtract"
                         Toggled="Toggled" />
                     <local:OptionUC
-                        Title="5. Add IncludeAllContentForSelfExtract"
+                        Title="5. IncludeAllContentForSelfExtract"
                         InfoBarMessage="Specifying IncludeAllContentForSelfExtract extracts all files, including the managed assemblies, before running the executable. This may be helpful for rare application compatibility problems."
                         Tag="IncludeAllContentForSelfExtract"
                         Toggled="Toggled" />
                     <local:OptionUC
-                        Title="6. Add PublishAot"
+                        Title="6. PublishAot"
                         InfoBarTitle="Soon"
                         IsEnabled="False" />
                     <local:OptionUC
                         x:Name="PublishTrimOption"
-                        Title="7. Add PublishTrimmed"
+                        Title="7. PublishTrimmed"
                         InfoBarTitle="This property will produce a trimmed app on self-contained publish. It also turns off trim-incompatible features and shows trim compatibility warnings during build."
                         Tag="PublishTrimmed"
                         Toggled="TrimToggled" />
                     <local:OptionUC
                         x:Name="TrimModeOption"
-                        Title="8. Add TrimMode"
+                        Title="8. TrimMode"
                         InfoBarTitle="This property will produce a trimmed app on self-contained publish. It also turns off trim-incompatible features and shows trim compatibility warnings during build."
                         IsEnabled="{Binding ElementName=PublishTrimOption, Path=IsOn}"
                         OffContent="partial"

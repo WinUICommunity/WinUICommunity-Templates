@@ -56,25 +56,34 @@
             PaneDisplayMode="Left"
             SelectionChanged="NavigationView_SelectionChanged">
             <ui:NavigationView.Header>
-                <StackPanel VerticalAlignment="Top">
-                    <ui:InfoBar
-                        Title="Windows App SDK"
-                        Margin="-50,-40,5,0"
-                        IsClosable="False"
-                        IsOpen="True"
-                        Message="1.5.240227000"
-                        Severity="Warning" />
-                    <ui:InfoBar
-                        Title="Build Tools"
-                        Margin="-50,0,5,0"
-                        IsClosable="False"
-                        IsOpen="True"
-                        Message="v10.0.22621.3233"
-                        Severity="Warning" />
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Grid Margin="-50,-35,5,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ui:InfoBar
+                            Title="Windows App SDK"
+                            BorderThickness="1,1,0,1"
+                            CornerRadius="4,0,0,4"
+                            IsClosable="False"
+                            IsOpen="True"
+                            Message="1.5.240227000"
+                            Severity="Success" />
+                        <ui:InfoBar
+                            Title="Build Tools"
+                            Grid.Column="1"
+                            BorderThickness="0,1,1,1"
+                            CornerRadius="0,4,4,0"
+                            IsClosable="False"
+                            IsOpen="True"
+                            Message="v10.0.22621.3233"
+                            Severity="Success" />
+                    </Grid>
                     <ComboBox
                         x:Name="cmbVersionMechanism"
                         MinWidth="250"
-                        Margin="-50,5,5,0"
+                        Margin="-50,10,5,0"
                         HorizontalAlignment="Left"
                         SelectedIndex="0"
                         SelectionChanged="cmbVersionMechanism_SelectionChanged">
