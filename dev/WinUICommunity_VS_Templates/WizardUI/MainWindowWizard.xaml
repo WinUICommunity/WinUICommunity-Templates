@@ -142,10 +142,13 @@
                         <ui:ToggleSwitch x:Name="tgUnPackaged" Toggled="tgUnPackaged_Toggled" />
 
                         <TextBlock
-                            Margin="5,5"
+                            Margin="-20,5,5,5"
                             Style="{StaticResource BaseTextBlockStyle}"
                             Text="ReBuild Solution After the Project is Created" />
-                        <ui:ToggleSwitch x:Name="tgRebuildSolution" Toggled="tgRebuildSolution_Toggled" />
+                        <ui:ToggleSwitch
+                            x:Name="tgRebuildSolution"
+                            IsOn="True"
+                            Toggled="tgRebuildSolution_Toggled" />
                     </StackPanel>
 
                 </StackPanel>
