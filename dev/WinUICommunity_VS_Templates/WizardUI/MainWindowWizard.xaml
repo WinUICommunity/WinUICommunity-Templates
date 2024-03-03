@@ -196,12 +196,12 @@
                 MinWidth="200"
                 Margin="10,0"
                 Click="btnCancel_Click"
-                Content="Cancel"
+                Content="Cancel [Esc]"
                 IsCancel="True" />
             <Button
                 MinWidth="200"
                 Click="btnCreate_Click"
-                Content="Create Project"
+                Content="Create Project [Enter]"
                 IsDefault="True"
                 Style="{StaticResource AccentButtonStyle}" />
         </StatusBar>
