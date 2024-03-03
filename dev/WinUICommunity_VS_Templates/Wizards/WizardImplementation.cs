@@ -55,7 +55,10 @@ namespace WinUICommunity_VS_Templates
                 doc.Close();
             }
 
-            _dte.ExecuteCommand("Build.RebuildSolution");
+            if (WizardConfig.UseReBuildSolution)
+            {
+                _dte.ExecuteCommand("Build.RebuildSolution");
+            }
         }
 
         /// <summary>

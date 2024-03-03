@@ -18,6 +18,7 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static bool UseEditorConfigFile;
         public static bool UseXamlStylerFile;
         public static bool IsUnPackagedMode;
+        public static bool UseReBuildSolution;
         public static bool IsBlank;
         public static bool HasPages;
         public static bool UseJsonSettings;

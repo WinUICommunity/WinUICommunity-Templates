@@ -140,6 +140,12 @@
                             Style="{StaticResource BaseTextBlockStyle}"
                             Text="UnPackaged Mode" />
                         <ui:ToggleSwitch x:Name="tgUnPackaged" Toggled="tgUnPackaged_Toggled" />
+
+                        <TextBlock
+                            Margin="5,5"
+                            Style="{StaticResource BaseTextBlockStyle}"
+                            Text="ReBuild Solution After the Project is Created" />
+                        <ui:ToggleSwitch x:Name="tgRebuildSolution" Toggled="tgRebuildSolution_Toggled" />
                     </StackPanel>
 
                 </StackPanel>
