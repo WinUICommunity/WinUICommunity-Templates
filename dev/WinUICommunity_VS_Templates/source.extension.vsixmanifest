@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="WinUICommunity_VS_Templates.8944ffa3-95dc-4d19-8ec7-2b21dad0eaf5" Version="6.5.5" Language="en-US" Publisher="Mahdi Hosseini" />
+        <Identity Id="WinUICommunity_VS_Templates.8944ffa3-95dc-4d19-8ec7-2b21dad0eaf5" Version="7.0.0" Language="en-US" Publisher="Mahdi Hosseini" />
         <DisplayName>WinUICommunity Templates for WinUI</DisplayName>
         <Description xml:space="preserve">WinUICommunity Project Template, help you quickly create a new WinUI 3 App with WinUICommunity and MVVM Packages. We prepare your project with the following features: NavigationView, Custom TitleBar, HomeLandingPage and Settings Page (with Theme settings).
 We also always use the latest version of WindowsAppSDK. 
@@ -11,17 +11,23 @@ Jump right into coding your project, and let us prepare project for you.</Descri
         <Tags>winui3, winui 3, wasdk, windows app sdk, windowsappsdk, winuicommunity, settingsui, components, titlebar, navigationview, theme, mvvm, template, winui</Tags>
     </Metadata>
     <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0,17.0)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,19.0)">
+            <ProductArchitecture>arm64</ProductArchitecture>
+        </InstallationTarget>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,19.0)">
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>
 
-        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[16.0,17.0)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,19.0)">
+            <ProductArchitecture>arm64</ProductArchitecture>
+        </InstallationTarget>
         <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,19.0)">
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>
 
-        <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[16.0,17.0)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[17.0,19.0)">
+            <ProductArchitecture>arm64</ProductArchitecture>
+        </InstallationTarget>
         <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[17.0,19.0)">
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>
@@ -29,8 +35,8 @@ Jump right into coding your project, and let us prepare project for you.</Descri
     <Prerequisites>
         <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,19.0)" DisplayName="Visual Studio core editor" />
         <Prerequisite Id="Microsoft.NetCore.Component.Runtime.8.0" Version="[17.0,19.0)" DisplayName=".NET 8.0 Runtime (Long Term Support)" />
-        <Prerequisite Id="Microsoft.VisualStudio.Component.Windows11SDK.22621" Version="[17.0,19.0)" DisplayName="Windows 11 SDK (10.0.22621.0)" />
         <Prerequisite Id="Microsoft.VisualStudio.ComponentGroup.WindowsAppSDK.Cs" Version="[17.0,19.0)" DisplayName="Windows App SDK C# Templates" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.Windows11SDK.22621" Version="[17.0,18.0)" DisplayName="Windows 11 SDK (10.0.22621.0)" />
     </Prerequisites>
     <Assets>
         <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
