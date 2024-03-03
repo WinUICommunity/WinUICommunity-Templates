@@ -72,6 +72,12 @@
     <Compile Include="Configs\SettingsCardOptions.cs" />
     <Compile Include="Wizards\WinUIAppBlankWizard.cs" />
     <Compile Include="WizardUI\CardControl\CardControl.cs" />
+    <Compile Include="WizardUI\CSProjectPage.xaml.cs">
+      <DependentUpon>CSProjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WizardUI\FilePage.xaml.cs">
+      <DependentUpon>FilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WizardUI\LibrariesPage.xaml.cs">
       <DependentUpon>LibrariesPage.xaml</DependentUpon>
     </Compile>
@@ -114,16 +120,32 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="Files\.editorconfig">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\settings.xamlstyler">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="key.snk" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Files\dotnet-release.yml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="iNKORE.UI.WPF.Modern">
       <Version>0.9.26.3</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.9.3168">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WinUIApp-Blank\WinUIApp-Blank.csproj">
@@ -171,6 +193,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="WizardUI\CSProjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WizardUI\FilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WizardUI\ThemeResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

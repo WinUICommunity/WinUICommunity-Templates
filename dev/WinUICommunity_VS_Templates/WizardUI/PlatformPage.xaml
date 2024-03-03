@@ -9,6 +9,13 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/TextStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <ScrollViewer Margin="5" VerticalAlignment="Top">
         <StackPanel>
             <Separator Margin="0,5" />
@@ -44,14 +51,8 @@
             <Separator Margin="0,5" />
 
             <local:OptionUC
-                x:Name="tgAccelerateBuilds"
-                Title="2. Accelerate Builds In Visual Studio"
-                InfoBarTitle="Build acceleration is an opt-in feature that directs Visual Studio to only build projects that had modifications while skipping projects that were unchanged. Enabling Build Acceleration can reduce incremental build times by up to 80% for SDK-style .NET projects."
-                Toggled="tgAccelerateBuilds_Toggled" />
-
-            <local:OptionUC
                 x:Name="tgJsonSettings"
-                Title="3. Add Json Settings"
+                Title="2. Add Json Settings"
                 InfoBarMessage="Saving and restoring settings will be very fast and simple and will be done with only one line: Settings.SomeProperty = newValue;"
                 InfoBarTitle="AppConfig.cs and AppHelper.cs classes will be added and you can save and restore app settings in json file."
                 IsOn="True"
@@ -59,23 +60,23 @@
 
             <local:OptionUC
                 x:Name="tgDynamicLocalization"
-                Title="4. Add Dynamic Localization"
+                Title="3. Add Dynamic Localization"
                 InfoBarTitle="The resource (resw) file will be added and the App.xaml.cs file will be configured to use localization"
                 Toggled="tgDynamicLocalization_Toggled" />
-            <local:OptionUCNoExpander
-                x:Name="tgEditorConfig"
-                Title="5. Add .editorConfig File"
-                IsEnabled="False"
-                IsOn="True"
-                Toggled="tgEditorConfig_Toggled" />
 
             <local:OptionUC
                 x:Name="tgSolutionFolder"
-                Title="6. Add Empty Solution Folder"
+                Title="4. Add Empty Solution Folder"
                 InfoBarMessage="Solution folders provide a way to organize and group related projects, files, or items within your solution without affecting the actual project structure. Adding an empty solution folder can be useful for maintaining a tidy and well-structured solution, especially when you have numerous files and projects to manage."
                 InfoBarTitle="This option allows you to include an empty solution folder in your project. "
                 IsOn="True"
                 Toggled="tgSolutionFolder_Toggled" />
+            <TextBox
+                x:Name="txtSolutionFolderName"
+                Margin="10,0"
+                IsEnabled="{Binding ElementName=tgSolutionFolder, Path=IsOn}"
+                Text="Solution Items"
+                TextChanged="txtSolutionFolderName_TextChanged" />
 
         </StackPanel>
     </ScrollViewer>

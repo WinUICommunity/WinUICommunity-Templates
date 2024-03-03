@@ -1,6 +1,9 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 using EnvDTE;
+using Microsoft.VisualStudio.Shell;
+using WinUICommunity_VS_Templates.WizardUI;
 
 namespace WinUICommunity_VS_Templates.Options
 {
@@ -16,10 +19,16 @@ namespace WinUICommunity_VS_Templates.Options
                       </ItemGroup>
                     """;
 
-        public NormalizeCSProjFile(Project project, bool useDynamicLocalization)
+        public NormalizeCSProjFile(Project project)
         {
+            Run(project);
+        }
+
+        private async void Run(Project project)
+        {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             var csprojFileContent = File.ReadAllText(project.FullName);
-            if (useDynamicLocalization)
+            if (WizardConfig.UseDynamicLocalization)
             {
                 csprojFileContent = csprojFileContent.Replace(baseReswItemGroupCode, reswItemGroupCode);
             }

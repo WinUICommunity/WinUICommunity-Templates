@@ -7,16 +7,15 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>$Platforms$</Platforms>
     <RuntimeIdentifiers>$RuntimeIdentifiers$</RuntimeIdentifiers>
-    <PublishProfile>$PublishProfileRuntime$-$(Platform).pubxml</PublishProfile>
+    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
 	  <Version>1.0.0</Version>
 	  <ImplicitUsings>true</ImplicitUsings>
 	  <LangVersion>Latest</LangVersion>
-	  <AccelerateBuildsInVisualStudio>$UseAccelerateBuilds$</AccelerateBuildsInVisualStudio>
 	  <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
-	  <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>$Net8RidGraph$
+	  <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>$CustomCSProjectElement$$WindowsPackageType$
   </PropertyGroup>
   
   <ItemGroup>

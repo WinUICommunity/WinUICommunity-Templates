@@ -1,7 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows;
 using WinUICommunity_VS_Templates.WizardUI;
-using iNKORE.UI.WPF.Modern;
 using iNKORE.UI.WPF.Modern.Controls;
 using System;
 
@@ -13,13 +12,14 @@ namespace WinUICommunity_VS_Templates
         LibrariesPage librariesType;
         PagesPages pagesType;
         ResourcePage resourceType;
+        CSProjectPage cSProjectType;
+        FilePage filePage;
         public MainWindowWizard()
         {
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
             {
                 Source = new System.Uri("/WinUICommunity_VS_Templates;component/WizardUI/ThemeResources.xaml", UriKind.RelativeOrAbsolute)
             });
-            Application.Current.Resources.MergedDictionaries.Add(new XamlControlsResources());
 
             InitializeComponent();
             Loaded += MainWindowWizard_Loaded;
@@ -123,6 +123,20 @@ namespace WinUICommunity_VS_Templates
                         }
                         frame.Navigate(pagesType);
                         break;
+                    case "CSProjectPage":
+                        if (cSProjectType == null)
+                        {
+                            cSProjectType = new CSProjectPage();
+                        }
+                        frame.Navigate(cSProjectType);
+                        break;
+                    case "FilePage":
+                        if (filePage == null)
+                        {
+                            filePage = new FilePage();
+                        }
+                        frame.Navigate(filePage);
+                        break;
                 }
             }
         }
@@ -130,6 +144,16 @@ namespace WinUICommunity_VS_Templates
         private void cmbTargetFrameworkVersion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             WizardConfig.TargetFrameworkVersion = (cmbTargetFrameworkVersion.SelectedItem as ComboBoxItem).Tag.ToString();
+        }
+
+        private void tgUnPackaged_Toggled(object sender, RoutedEventArgs e)
+        {
+            WizardConfig.IsUnPackagedMode = tgUnPackaged.IsOn;
+        }
+
+        private void tgRebuildSolution_Toggled(object sender, RoutedEventArgs e)
+        {
+            WizardConfig.UseReBuildSolution = tgRebuildSolution.IsOn;
         }
     }
 }

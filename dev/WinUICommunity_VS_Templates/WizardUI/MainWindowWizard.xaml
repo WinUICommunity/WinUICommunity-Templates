@@ -56,25 +56,34 @@
             PaneDisplayMode="Left"
             SelectionChanged="NavigationView_SelectionChanged">
             <ui:NavigationView.Header>
-                <StackPanel VerticalAlignment="Top">
-                    <ui:InfoBar
-                        Title="Windows App SDK"
-                        Margin="-50,-40,5,0"
-                        IsClosable="False"
-                        IsOpen="True"
-                        Message="1.5.240227000"
-                        Severity="Warning" />
-                    <ui:InfoBar
-                        Title="Build Tools"
-                        Margin="-50,0,5,0"
-                        IsClosable="False"
-                        IsOpen="True"
-                        Message="v10.0.22621.3233"
-                        Severity="Warning" />
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Grid Margin="-50,-35,5,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ui:InfoBar
+                            Title="Windows App SDK"
+                            BorderThickness="1,1,0,1"
+                            CornerRadius="4,0,0,4"
+                            IsClosable="False"
+                            IsOpen="True"
+                            Message="1.5.240227000"
+                            Severity="Success" />
+                        <ui:InfoBar
+                            Title="Build Tools"
+                            Grid.Column="1"
+                            BorderThickness="0,1,1,1"
+                            CornerRadius="0,4,4,0"
+                            IsClosable="False"
+                            IsOpen="True"
+                            Message="v10.0.22621.3233"
+                            Severity="Success" />
+                    </Grid>
                     <ComboBox
                         x:Name="cmbVersionMechanism"
                         MinWidth="250"
-                        Margin="-50,5,5,0"
+                        Margin="-50,10,5,0"
                         HorizontalAlignment="Left"
                         SelectedIndex="0"
                         SelectionChanged="cmbVersionMechanism_SelectionChanged">
@@ -87,46 +96,61 @@
                             Tag="Star"
                             ToolTip="The latest stable version will always be installed" />
                     </ComboBox>
-                    <ComboBox
-                        x:Name="cmbNetVersion"
-                        MinWidth="250"
-                        Margin="-50,5,5,0"
-                        SelectedIndex="0"
-                        SelectionChanged="cmbNetVersion_SelectionChanged"
-                        ToolTip="Choose .Net Version">
-                        <ComboBoxItem
-                            Content=".Net 8.0 (Recommended)"
-                            Tag="net8.0"
-                            ToolTip=".Net 8.0 will be used." />
-                        <ComboBoxItem
-                            Content=".Net 7.0"
-                            Tag="net7.0"
-                            ToolTip=".Net 7.0 will be used." />
-                        <ComboBoxItem
-                            Content=".Net 6.0"
-                            Tag="net6.0"
-                            ToolTip=".Net 6.0 will be used." />
-                    </ComboBox>
-                    <ComboBox
-                        x:Name="cmbTargetFrameworkVersion"
-                        MinWidth="250"
-                        Margin="-50,5,5,0"
-                        SelectedIndex="0"
-                        SelectionChanged="cmbTargetFrameworkVersion_SelectionChanged"
-                        ToolTip="Choose TargetFramework Version">
-                        <ComboBoxItem
-                            Content="19041"
-                            Tag="19041"
-                            ToolTip="19041" />
-                        <ComboBoxItem
-                            Content="22000"
-                            Tag="22000"
-                            ToolTip="22000" />
-                        <ComboBoxItem
-                            Content="22621 (Recommended)"
-                            Tag="22621"
-                            ToolTip="22621" />
-                    </ComboBox>
+                    <StackPanel Margin="-50,10,5,0" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="5,5"
+                            Style="{StaticResource BaseTextBlockStyle}"
+                            Text="TargetFramework" />
+                        <ComboBox
+                            x:Name="cmbNetVersion"
+                            MinWidth="250"
+                            SelectedIndex="0"
+                            SelectionChanged="cmbNetVersion_SelectionChanged"
+                            ToolTip="Choose .Net Version">
+                            <ComboBoxItem
+                                Content=".Net 8.0 (Recommended)"
+                                Tag="net8.0"
+                                ToolTip=".Net 8.0 will be used." />
+                        </ComboBox>
+                        <ComboBox
+                            x:Name="cmbTargetFrameworkVersion"
+                            MinWidth="250"
+                            Margin="5,0"
+                            SelectedIndex="0"
+                            SelectionChanged="cmbTargetFrameworkVersion_SelectionChanged"
+                            ToolTip="Choose TargetFramework Version">
+                            <ComboBoxItem
+                                Content="22621 (Recommended)"
+                                Tag="22621"
+                                ToolTip="22621" />
+                            <ComboBoxItem
+                                Content="22000"
+                                Tag="22000"
+                                ToolTip="22000" />
+                            <ComboBoxItem
+                                Content="19041"
+                                Tag="19041"
+                                ToolTip="19041" />
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Margin="-50,10,5,0" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="5,5"
+                            Style="{StaticResource BaseTextBlockStyle}"
+                            Text="UnPackaged Mode" />
+                        <ui:ToggleSwitch x:Name="tgUnPackaged" Toggled="tgUnPackaged_Toggled" />
+
+                        <TextBlock
+                            Margin="-20,5,5,5"
+                            Style="{StaticResource BaseTextBlockStyle}"
+                            Text="ReBuild Solution After the Project is Created" />
+                        <ui:ToggleSwitch
+                            x:Name="tgRebuildSolution"
+                            IsOn="True"
+                            Toggled="tgRebuildSolution_Toggled" />
+                    </StackPanel>
+
                 </StackPanel>
             </ui:NavigationView.Header>
 
@@ -137,6 +161,16 @@
                     Tag="PlatformPage">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="Bookmarks" />
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+                <ui:NavigationViewItem Content="Files" Tag="FilePage">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:SymbolIcon Symbol="OpenFile" />
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+                <ui:NavigationViewItem Content="CSProject" Tag="CSProjectPage">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:SymbolIcon Symbol="Tag" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
                 <ui:NavigationViewItem Content="Resource Dictionary" Tag="ResourcePage">
@@ -171,12 +205,12 @@
                 MinWidth="200"
                 Margin="10,0"
                 Click="btnCancel_Click"
-                Content="Cancel"
+                Content="Cancel [Esc]"
                 IsCancel="True" />
             <Button
                 MinWidth="200"
                 Click="btnCreate_Click"
-                Content="Create Project"
+                Content="Create Project [Enter]"
                 IsDefault="True"
                 Style="{StaticResource AccentButtonStyle}" />
         </StatusBar>

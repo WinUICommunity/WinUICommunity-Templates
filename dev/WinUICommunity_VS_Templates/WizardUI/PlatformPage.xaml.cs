@@ -72,20 +72,20 @@ namespace WinUICommunity_VS_Templates
         }
         private string GetRuntimeIdentifiers(string platforms)
         {
-            string rid = "win10-x86;win10-x64;win10-arm64";
+            string rid = "win-x86;win-x64;win-arm64";
             if (!platforms.Contains("x86"))
             {
-                rid = rid.Replace("win10-x86;", "");
+                rid = rid.Replace("win-x86;", "");
             }
 
             if (!platforms.Contains("x64"))
             {
-                rid = rid.Replace("win10-x64;", "");
+                rid = rid.Replace("win-x64;", "");
             }
 
             if (!platforms.Contains("ARM64"))
             {
-                rid = rid.Replace("win10-arm64", "");
+                rid = rid.Replace("win-arm64", "");
             }
 
             if (rid.EndsWith(";"))
@@ -140,29 +140,31 @@ namespace WinUICommunity_VS_Templates
             return resultString;
         }
 
-        private void tgAccelerateBuilds_Toggled(object sender, System.Windows.RoutedEventArgs e)
-        {
-            WizardConfig.AddAccelerateBuilds = tgAccelerateBuilds.IsOn;
-        }
-
         private void tgJsonSettings_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
-            WizardConfig.AddJsonSettings = tgJsonSettings.IsOn;
+            WizardConfig.UseJsonSettings = tgJsonSettings.IsOn;
         }
 
         private void tgDynamicLocalization_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
-            WizardConfig.AddDynamicLocalization = tgDynamicLocalization.IsOn;
-        }
-
-        private void tgEditorConfig_Toggled(object sender, System.Windows.RoutedEventArgs e)
-        {
-            WizardConfig.AddEditorConfig = tgEditorConfig.IsOn;
+            WizardConfig.UseDynamicLocalization = tgDynamicLocalization.IsOn;
         }
 
         private void tgSolutionFolder_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
-            WizardConfig.AddSolutionFolder = tgSolutionFolder.IsOn;
+            WizardConfig.UseSolutionFolder = tgSolutionFolder.IsOn;
+        }
+
+        private void txtSolutionFolderName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtSolutionFolderName.Text))
+            {
+                WizardConfig.SolutionFolderName = txtSolutionFolderName.Text;
+            }
+            else
+            {
+                WizardConfig.SolutionFolderName = WizardConfig.SolutionFolderNameDefault;
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>17.0</MinimumVisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <LangVersion>Latest</LangVersion>
   </PropertyGroup>
@@ -89,16 +89,10 @@
     <Content Include="GlobalUsings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".editorconfig" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Properties\launchSettings.json" />
     <Content Include="Properties\PublishProfiles\win-arm64.pubxml" />
-    <Content Include="Properties\PublishProfiles\win10-arm64.pubxml" />
     <Content Include="Properties\PublishProfiles\win-x64.pubxml" />
-    <Content Include="Properties\PublishProfiles\win10-x64.pubxml" />
     <Content Include="Properties\PublishProfiles\win-x86.pubxml" />
-    <Content Include="Properties\PublishProfiles\win10-x86.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Themes\Converters.xaml">

@@ -20,15 +20,10 @@ namespace WinUICommunity_VS_Templates
             {
                 string libVersion = lib.Version;
                 string libVersion2 = lib.Version;
-                if (WizardConfig.DotNetVersion.Contains("net6") && !string.IsNullOrEmpty(lib.Net6Version))
+                if (WizardConfig.DotNetVersion.Contains("net9") && !string.IsNullOrEmpty(lib.Net9Version))
                 {
-                    libVersion = lib.Net6Version;
-                    libVersion2 = lib.Net6Version;
-                }
-                else if (WizardConfig.DotNetVersion.Contains("net7") && !string.IsNullOrEmpty(lib.Net7Version))
-                {
-                    libVersion = lib.Net7Version;
-                    libVersion2 = lib.Net7Version;
+                    libVersion = lib.Net9Version;
+                    libVersion2 = lib.Net9Version;
                 }
                 
                 if (WizardConfig.UseAlwaysLatestVersion && !lib.SkipStarVersion)

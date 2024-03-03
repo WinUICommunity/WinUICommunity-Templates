@@ -1,6 +1,4 @@
-﻿using Microsoft.UI.Xaml.Media;using Windows.Storage;
-
-namespace $safeprojectname$;
+﻿using Windows.Storage;namespace $safeprojectname$;
 
 public partial class App : Application
 {
@@ -33,7 +31,6 @@ public partial class App : Application
         ThemeService.Initialize(CurrentWindow);
         ThemeService.ConfigBackdrop();
         ThemeService.ConfigElementTheme();
-        ThemeService.ConfigBackdropFallBackColorForUnSupportedOS(Application.Current.Resources["ApplicationPageBackgroundThemeBrush"] as Brush);
 
         rootFrame.Navigate(typeof(MainPage));
 

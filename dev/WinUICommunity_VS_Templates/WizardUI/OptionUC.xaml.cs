@@ -43,6 +43,24 @@ public partial class OptionUC : UserControl
     public static readonly DependencyProperty IsOnProperty =
         DependencyProperty.Register("IsOn", typeof(bool), typeof(OptionUC), new PropertyMetadata(false));
 
+    public string OnContent
+    {
+        get { return (string)GetValue(OnContentProperty); }
+        set { SetValue(OnContentProperty, value); }
+    }
+
+    public static readonly DependencyProperty OnContentProperty =
+        DependencyProperty.Register("OnContent", typeof(string), typeof(OptionUC), new PropertyMetadata(null));
+
+    public string OffContent
+    {
+        get { return (string)GetValue(OffContentProperty); }
+        set { SetValue(OffContentProperty, value); }
+    }
+
+    public static readonly DependencyProperty OffContentProperty =
+        DependencyProperty.Register("OffContent", typeof(string), typeof(OptionUC), new PropertyMetadata(null));
+
     public OptionUC()
     {
         InitializeComponent();
@@ -50,6 +68,6 @@ public partial class OptionUC : UserControl
 
     private void tgSettings_Toggled(object sender, RoutedEventArgs e)
     {
-        Toggled?.Invoke(sender, e);
+        Toggled?.Invoke(this, e);
     }
 }

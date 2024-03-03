@@ -7,26 +7,25 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>$Platforms$</Platforms>
     <RuntimeIdentifiers>$RuntimeIdentifiers$</RuntimeIdentifiers>
-    <PublishProfile>$PublishProfileRuntime$-$(Platform).pubxml</PublishProfile>
+    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
-	  <Version>1.0.0</Version>
-	  <ImplicitUsings>true</ImplicitUsings>
-	  <LangVersion>Latest</LangVersion>
-	  <AccelerateBuildsInVisualStudio>$UseAccelerateBuilds$</AccelerateBuildsInVisualStudio>
-	  <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+	<Version>1.0.0</Version>
+	<ImplicitUsings>true</ImplicitUsings>
+	<LangVersion>Latest</LangVersion>
+	<ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
-	  <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>$Net8RidGraph$
+	<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>$CustomCSProjectElement$$WindowsPackageType$
   </PropertyGroup>
   
   <ItemGroup>
-	  <None Include="Assets\**\*">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
+	<None Include="Assets\**\*">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</None>
   </ItemGroup>
   <ItemGroup>
-	  <PackageReference Include="Microsoft.WindowsAppSDK" Version="$WASDKVersion$" />
-	  <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />$ExtraLibs$
+	<PackageReference Include="Microsoft.WindowsAppSDK" Version="$WASDKVersion$" />
+	<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />$ExtraLibs$
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 

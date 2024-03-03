@@ -1,12 +1,14 @@
-﻿namespace WinUICommunity_VS_Templates.Options
+﻿using WinUICommunity_VS_Templates.WizardUI;
+
+namespace WinUICommunity_VS_Templates.Options
 {
     public class AppUpdateOption
     {
-        public AppUpdateOption(bool useSettingsPage, bool useAppUpdatePage, bool useJsonSettings, bool isMVVMTemplate, string templatePath)
+        public AppUpdateOption(bool isMVVMTemplate, string templatePath)
         {
-            if (useSettingsPage && useAppUpdatePage)
+            if (WizardConfig.UseSettingsPage && WizardConfig.UseAppUpdatePage)
             {
-                if (!useJsonSettings)
+                if (!WizardConfig.UseJsonSettings)
                 {
                     if (isMVVMTemplate)
                     {

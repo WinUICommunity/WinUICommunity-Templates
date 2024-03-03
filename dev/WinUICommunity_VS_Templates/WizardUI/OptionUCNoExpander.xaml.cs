@@ -32,6 +32,6 @@ public partial class OptionUCNoExpander : UserControl
 
     private void tgSettings_Toggled(object sender, RoutedEventArgs e)
     {
-        Toggled?.Invoke(sender, e);
+        Toggled?.Invoke(this, e);
     }
 }

@@ -9,6 +9,14 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/TextStyles.xaml" />
+                <ResourceDictionary Source="/iNKORE.UI.WPF.Modern;component/Themes/Styles/Expander.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Expander
         Margin="10,0,10,2"
         HorizontalAlignment="Stretch"
@@ -24,8 +32,8 @@
                     Margin="10,0"
                     VerticalAlignment="Center"
                     IsOn="{Binding IsOn, RelativeSource={RelativeSource AncestorType=local:OptionUC}}"
-                    OffContent=""
-                    OnContent=""
+                    OffContent="{Binding OffContent, RelativeSource={RelativeSource AncestorType=local:OptionUC}}"
+                    OnContent="{Binding OnContent, RelativeSource={RelativeSource AncestorType=local:OptionUC}}"
                     Toggled="tgSettings_Toggled" />
             </StackPanel>
         </Expander.Header>

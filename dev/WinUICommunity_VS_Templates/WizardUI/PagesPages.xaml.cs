@@ -13,37 +13,37 @@ namespace WinUICommunity_VS_Templates
 
         private void tgHomePage_Toggled(object sender, RoutedEventArgs e)
         {
-            WizardConfig.AddHomeLandingPage = tgHomePage.IsOn;
+            WizardConfig.UseHomeLandingPage = tgHomePage.IsOn;
         }
 
         private void tgSettingsPage_Toggled(object sender, RoutedEventArgs e)
         {
-            WizardConfig.AddSettingsPage = tgSettingsPage.IsOn;
+            WizardConfig.UseSettingsPage = tgSettingsPage.IsOn;
         }
 
         private void tgGeneralSettingPage_Toggled(object sender, RoutedEventArgs e)
         {
-            WizardConfig.AddGeneralSettingPage = tgGeneralSettingPage.IsOn;
+            WizardConfig.UseGeneralSettingPage = tgGeneralSettingPage.IsOn;
         }
 
         private void tgDeveloperMode_Toggled(object sender, RoutedEventArgs e)
         {
-            WizardConfig.AddDeveloperModeSetting = tgDeveloperMode.IsOn;
+            WizardConfig.UseDeveloperModeSetting = tgDeveloperMode.IsOn;
         }
 
         private void tgThemeSetting_Toggled(object sender, RoutedEventArgs e)
         {
-            WizardConfig.AddThemeSettingPage = tgThemeSetting.IsOn;
+            WizardConfig.UseThemeSettingPage = tgThemeSetting.IsOn;
         }
 
         private void tgAppUpdate_Toggled(object sender, RoutedEventArgs e)
         {
-            WizardConfig.AddAppUpdatePage = tgAppUpdate.IsOn;
+            WizardConfig.UseAppUpdatePage = tgAppUpdate.IsOn;
         }
 
         private void tgAboutSetting_Toggled(object sender, RoutedEventArgs e)
         {
-            WizardConfig.AddAboutPage = tgAboutSetting.IsOn;
+            WizardConfig.UseAboutPage = tgAboutSetting.IsOn;
         }
     }
 }
