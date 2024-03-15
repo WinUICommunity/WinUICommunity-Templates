@@ -68,7 +68,7 @@
                             CornerRadius="4,0,0,4"
                             IsClosable="False"
                             IsOpen="True"
-                            Message="1.5.240227000"
+                            Message="1.5.240311000"
                             Severity="Success" />
                         <ui:InfoBar
                             Title="Build Tools"

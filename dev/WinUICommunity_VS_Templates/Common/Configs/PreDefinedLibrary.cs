@@ -77,17 +77,17 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
-                new Library("Microsoft.EntityFrameworkCore", "8.0.2"),
-                new Library("Microsoft.EntityFrameworkCore.Sqlite", "8.0.2"),
-                new Library("Microsoft.EntityFrameworkCore.SqlServer", "8.0.2"),
-                new Library("Microsoft.EntityFrameworkCore.Cosmos", "8.0.2"),
-                new Library("Microsoft.EntityFrameworkCore.InMemory", "8.0.2"),
-                new Library("Microsoft.EntityFrameworkCore.Relational", "8.0.2"),
-                new Library("Microsoft.EntityFrameworkCore.Abstractions", "8.0.2"),
-                new Library("Microsoft.EntityFrameworkCore.Analyzers", "8.0.2"),
-                new Library("Microsoft.EntityFrameworkCore.Design", "8.0.2"),
-                new Library("Microsoft.EntityFrameworkCore.Proxies", "8.0.2"),
-                new Library("Microsoft.EntityFrameworkCore.Tools", "8.0.2")
+                new Library("Microsoft.EntityFrameworkCore", "8.0.3"),
+                new Library("Microsoft.EntityFrameworkCore.Sqlite", "8.0.3"),
+                new Library("Microsoft.EntityFrameworkCore.SqlServer", "8.0.3"),
+                new Library("Microsoft.EntityFrameworkCore.Cosmos", "8.0.3"),
+                new Library("Microsoft.EntityFrameworkCore.InMemory", "8.0.3"),
+                new Library("Microsoft.EntityFrameworkCore.Relational", "8.0.3"),
+                new Library("Microsoft.EntityFrameworkCore.Abstractions", "8.0.3"),
+                new Library("Microsoft.EntityFrameworkCore.Analyzers", "8.0.3"),
+                new Library("Microsoft.EntityFrameworkCore.Design", "8.0.3"),
+                new Library("Microsoft.EntityFrameworkCore.Proxies", "8.0.3"),
+                new Library("Microsoft.EntityFrameworkCore.Tools", "8.0.3")
             };
             return list;
         }
@@ -99,13 +99,14 @@ namespace WinUICommunity_VS_Templates
                 new Library("Microsoft.Windows.CsWinRT", "2.0.7"),
                 new Library("Microsoft.Windows.CsWin32", "0.3.49-beta", false, true),
                 new Library("WinUIEx", "2.3.4"),
+                new Library("Microsoft.Graphics.Win2D", "1.2.0"),
                 new Library("Microsoft.Graphics.Win2D", "1.0.5.1"),
                 new Library("Newtonsoft.Json", "13.0.3"),
                 new Library("HtmlAgilityPack", "1.11.59"),
                 new Library("Downloader", "3.0.6"),
                 new Library("Microsoft.Win32.Registry", "5.0.0"),
                 new Library("YamlDotNet", "15.1.2"),
-                new Library("System.Drawing.Common", "8.0.2"),
+                new Library("System.Drawing.Common", "8.0.3"),
                 new Library("System.Management", "8.0.0"),
                 new Library("SharpCompress", "0.36.0"),
                 new Library("RestSharp", "110.2.0"),
@@ -123,11 +124,11 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
-                new Library("WinUICommunity.Win2D", "6.5.0"),
-                new Library("WinUICommunity.Core", "6.5.0"),
-                new Library("WinUICommunity.Components", "6.5.0"),
-                new Library("WinUICommunity.LandingPages", "6.5.0"),
-                new Library("WinUICommunity.ContextMenuExtensions", "6.5.0")
+                new Library("WinUICommunity.Win2D", "6.6.0"),
+                new Library("WinUICommunity.Core", "6.6.0"),
+                new Library("WinUICommunity.Components", "6.6.0"),
+                new Library("WinUICommunity.LandingPages", "6.6.0"),
+                new Library("WinUICommunity.ContextMenuExtensions", "6.6.0")
             };
             return list;
         }
