@@ -23,8 +23,9 @@ namespace WinUICommunity_VS_Templates
         public bool UseDebugLogger;
         public bool UseAppCenter;
 
-        // we can use WinUIApp or other template name to get VSIXRootFolder
-        string _vstemplateName = "WinUIApp";
+        public string VSTemplateFilePath; // %AppData%\...\Extensions\Mahdi Hosseini\WinUICommunity Templates for WinUI\{Version}\ProjectTemplates\CSharp\1033\{Template}\{Template}.vstemplate
+        public string ProjectTemplatesFolderPath; // %AppData%\...\Extensions\Mahdi Hosseini\WinUICommunity Templates for WinUI\{Version}\ProjectTemplates\CSharp\1033\{Template}
+        public string VSIXRootFolderPath; // %AppData%\...\Extensions\Mahdi Hosseini\WinUICommunity Templates for WinUI\{Version}
 
         public string ProjectName; // App
         public string SafeProjectName; // App
@@ -68,7 +69,7 @@ namespace WinUICommunity_VS_Templates
         /// <param name="replacementsDictionary"></param>
         /// <param name="runKind"></param>
         /// <param name="customParams"></param>
-        public async void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, bool hasPages, bool isMVVMTemplate = false, bool hasNavigationView = false, bool isBlank = false)
+        public async void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, string templateName, bool hasPages, bool isMVVMTemplate = false, bool hasNavigationView = false, bool isBlank = false)
         {
             ProjectName = replacementsDictionary["$projectname$"];
             SafeProjectName = replacementsDictionary["$safeprojectname$"];
@@ -91,6 +92,11 @@ namespace WinUICommunity_VS_Templates
 
             if (result.HasValue && result.Value)
             {
+                var vsix = await GetVSIXPathAsync(templateName);
+                VSTemplateFilePath = vsix.VSTemplatePath;
+                ProjectTemplatesFolderPath = vsix.ProjectTemplatesFolder;
+                VSIXRootFolderPath = vsix.VSIXRootFolder;
+
                 _shouldAddProjectItem = true;
                 
                 string wasdkVersion = "1.5.240311000";
@@ -385,26 +391,22 @@ namespace WinUICommunity_VS_Templates
                 }
             }
         }
-        public async void AddEditorConfigFile()
+        public void AddEditorConfigFile()
         {
             if (WizardConfig.UseEditorConfigFile)
             {
-                var vsixRoot = await GetRootFolderPathAsync(_vstemplateName);
-
-                var inputFile = vsixRoot.VSIXRootFolder + @"\Files\.editorconfig";
+                var inputFile = VSIXRootFolderPath + @"\Files\.editorconfig";
 
                 var outputFile = SolutionDirectory + @"\.editorconfig";
                 solutionFiles.AddIfNotExists("EditorConfig", outputFile);
                 CopyFileToDestination(inputFile, outputFile);
-
             }
         }
         public async void AddGithubActionFile(Project project)
         {
             if (WizardConfig.UseGithubWorkflowFile)
             {
-                var vsixRoot = await GetRootFolderPathAsync(_vstemplateName);
-                var inputFile = vsixRoot.VSIXRootFolder + @"\Files\dotnet-release.yml";
+                var inputFile = VSIXRootFolderPath + @"\Files\dotnet-release.yml";
                 string outputDir = SolutionDirectory + @"\.github\workflows\";
 
                 if (!Directory.Exists(outputDir))
@@ -429,13 +431,11 @@ namespace WinUICommunity_VS_Templates
                 }
             }
         }
-        public async void AddXamlStylerConfigFile()
+        public void AddXamlStylerConfigFile()
         {
             if (WizardConfig.UseXamlStylerFile)
             {
-                var vsixRoot = await GetRootFolderPathAsync(_vstemplateName);
-
-                var inputFile = vsixRoot.VSIXRootFolder + @"\Files\settings.xamlstyler";
+                var inputFile = VSIXRootFolderPath + @"\Files\settings.xamlstyler";
 
                 var outputFile = SolutionDirectory + @"\settings.xamlstyler";
                 solutionFiles.AddIfNotExists("XamlStyler", outputFile);
@@ -474,12 +474,13 @@ namespace WinUICommunity_VS_Templates
         }
 
         /// <summary>
-        /// VSIXRootFolder: AppData\Local\Microsoft\VisualStudio\17.0_b6438676Exp\Extensions\{UserName}\WinUICommunity Templates for WinUI\{Version}
-        /// ProjectTemplatesFolder: APPDATA\LOCAL\MICROSOFT\VISUALSTUDIO\{VS_Version}\EXTENSIONS\MAHDI HOSSEINI\WINUICOMMUNITY TEMPLATES FOR WINUI\{Version}\ProjectTemplates\CSharp\1033\{Template}
+        /// VSIXRootFolder: %AppData%\...\EXTENSIONS\Mahdi Hosseini\WinUICommunity Templates for WinUI\{Version}
+        /// ProjectTemplatesFolder: %AppData%\...\EXTENSIONS\Mahdi Hosseini\WINUICOMMUNITY TEMPLATES FOR WINUI\{Version}\ProjectTemplates\CSharp\1033\{Template}
+        /// ProjectTemplatesFolder: // %AppData%\...\Extensions\Mahdi Hosseini\WinUICommunity Templates for WinUI\{Version}\ProjectTemplates\CSharp\1033\{Template}\{Template}.vstemplate
         /// </summary>
-        /// <param name="vstemplateName"></param>
+        /// <param name="vstemplateName">WinUIApp</param>
         /// <returns></returns>
-        public async Task<(string VSIXRootFolder, string ProjectTemplatesFolder)> GetRootFolderPathAsync(string vstemplateName)
+        public async Task<(string VSIXRootFolder, string ProjectTemplatesFolder, string VSTemplatePath)> GetVSIXPathAsync(string vstemplateName)
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             Solution2 soln = (Solution2)_dte.Solution;
@@ -491,7 +492,8 @@ namespace WinUICommunity_VS_Templates
             {
                 folderPath = Directory.GetParent(folderPath).FullName;
             }
-            return (folderPath, projectTemplatesFolder);
+
+            return (folderPath, projectTemplatesFolder, vstemplateFileName);
         }
     }
 }

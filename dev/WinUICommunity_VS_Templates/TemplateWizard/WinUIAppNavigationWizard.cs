@@ -29,7 +29,7 @@ namespace WinUICommunity_VS_Templates
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
             WizardImplementation = new SharedWizard();
-            WizardImplementation.RunStarted(automationObject, replacementsDictionary, true, false, true);
+            WizardImplementation.RunStarted(automationObject, replacementsDictionary, "WinUIApp-NavigationView", true, false, true);
         }
 
         public bool ShouldAddProjectItem(string filePath)
