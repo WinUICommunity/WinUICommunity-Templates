@@ -11,6 +11,8 @@ public partial class App : Application
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
+        Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.CreateDefaultUI();
+
         CurrentWindow = new Window();
 
         if (CurrentWindow.Content is not Frame rootFrame)
@@ -21,6 +23,9 @@ public partial class App : Application
         rootFrame.Navigate(typeof(MainPage));
         CurrentWindow.ExtendsContentIntoTitleBar = true;
         CurrentWindow.Activate();
+        
+        UITestMethodAttribute.DispatcherQueue = CurrentWindow.DispatcherQueue;
+        Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.Run(Environment.CommandLine);
     }
 }
 

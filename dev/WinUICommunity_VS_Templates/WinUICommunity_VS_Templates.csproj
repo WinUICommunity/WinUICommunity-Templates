@@ -71,6 +71,7 @@
     <Compile Include="Common\Options\WizardHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Styles\CardControl\CardControl.cs" />
+    <Compile Include="TemplateWizard\WinUIAppBlankUnitTestWizard.cs" />
     <Compile Include="TemplateWizard\WinUIAppBlankWizard.cs" />
     <Compile Include="TemplateWizard\WinUIAppMVVMNavigationWizard.cs" />
     <Compile Include="TemplateWizard\WinUIAppMVVMWizard.cs" />
@@ -139,6 +140,13 @@
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.9.3174" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WinUIApp-Blank-UnitTest\WinUIApp-Blank-UnitTest.csproj">
+      <Project>{B8948970-C773-4711-9839-BA3A311A2F2A}</Project>
+      <Name>WinUIApp-Blank-UnitTest</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
     <ProjectReference Include="..\WinUIApp-Blank\WinUIApp-Blank.csproj">
       <Project>{AAF6A3C7-A34B-440C-A31B-04A6E07CB344}</Project>
       <Name>WinUIApp-Blank</Name>

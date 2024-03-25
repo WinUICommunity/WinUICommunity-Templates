@@ -50,5 +50,6 @@ Jump right into coding your project, and let us prepare project for you.</Descri
         <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="WinUIApp-MVVM" TargetVersion="[17.0, 18.0)" d:TargetPath="|WinUIApp-MVVM;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
         <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="WinUIApp-MVVM-NavigationView" TargetVersion="[17.0, 18.0)" d:TargetPath="|WinUIApp-MVVM-NavigationView;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
         <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="WinUIApp-NavigationView" TargetVersion="[17.0, 18.0)" d:TargetPath="|WinUIApp-NavigationView;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="WinUIApp-Blank-UnitTest" TargetVersion="[17.0, 18.0)" d:TargetPath="|WinUIApp-Blank-UnitTest;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
     </Assets>
 </PackageManifest>
