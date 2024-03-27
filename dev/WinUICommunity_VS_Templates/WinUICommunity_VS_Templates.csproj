@@ -53,16 +53,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Common\Configs\ConfigCodes.cs" />
-    <Compile Include="Common\Configs\DictionaryExtension.cs" />
-    <Compile Include="Common\Configs\PreDefinedLibrary.cs" />
-    <Compile Include="Common\Configs\PredefinedCodes.cs" />
-    <Compile Include="Common\Configs\WizardConfig.cs" />
+    <Compile Include="Common\Options\ConfigCodes.cs" />
+    <Compile Include="Common\Extensions\DictionaryExtension.cs" />
+    <Compile Include="Common\PreDefinedLibrary.cs" />
+    <Compile Include="Common\PredefinedCodes.cs" />
+    <Compile Include="Common\WizardConfig.cs" />
     <Compile Include="Common\Options\ColorsDicOption.cs" />
     <Compile Include="Common\Options\DictionaryOption.cs" />
     <Compile Include="Common\Options\GlobalUsingOption.cs" />
     <Compile Include="Common\Options\SerilogOption.cs" />
-    <Compile Include="Common\Options\WizardHelper.cs" />
+    <Compile Include="Common\VSDocumentHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Styles\CardControl\CardControl.cs" />
     <Compile Include="TemplateWizard\WinUIAppBlankUnitTestWizard.cs" />

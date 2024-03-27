@@ -44,7 +44,9 @@ namespace WinUICommunity_VS_Templates
 
             //var templatePath = Directory.GetParent(project.FullName).FullName;
             //new AppUpdateOption(isMVVMTemplate, templatePath);
-            
+
+            VSDocumentHelper.FormatDocument(_dte, project.FullName);
+
             foreach (Document doc in _dte.Documents)
             {
                 doc.Close();

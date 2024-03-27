@@ -12,13 +12,12 @@ namespace WinUICommunity_VS_Templates.Options
         //{
         //    return Path.Combine(templatePath, "Views", "Settings", "GeneralSettingPage.xaml");
         //}
-        public static async void FormatDocument(string filePath)
+        public static async void FormatDocument(DTE dte, string filePath)
         {
             if (File.Exists(filePath))
             {
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-                DTE2 dte = (DTE2)System.Runtime.InteropServices.Marshal.GetActiveObject("VisualStudio.DTE");
                 dte.ItemOperations.OpenFile(filePath);
                 Document activeDoc = dte.ActiveDocument;
 
