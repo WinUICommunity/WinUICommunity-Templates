@@ -58,7 +58,7 @@ namespace WinUICommunity_VS_Templates
                 new Library("CommunityToolkit.WinUI.Animations", "8.0.240109"),
                 new Library("CommunityToolkit.WinUI.Media", "8.0.240109"),
                 new Library("CommunityToolkit.WinUI.Collections", "8.0.240109"),
-                new Library("CommunityToolkit.WinUI.Lottie", "8.0.0-rc", false, true),
+                new Library("CommunityToolkit.WinUI.Lottie", "8.0.280224"),
                 new Library("CommunityToolkit.WinUI.Controls.Segmented", "8.0.240109"),
                 new Library("CommunityToolkit.WinUI.Controls.Primitives", "8.0.240109"),
                 new Library("CommunityToolkit.WinUI.Controls.Sizers", "8.0.240109"),
