@@ -59,7 +59,6 @@
     <Compile Include="Common\Configs\PreDefinedLibrary.cs" />
     <Compile Include="Common\Configs\SettingsCardOptions.cs" />
     <Compile Include="Common\Configs\WizardConfig.cs" />
-    <Compile Include="Common\Options\AppUpdateOption.cs" />
     <Compile Include="Common\Options\ColorsDicOption.cs" />
     <Compile Include="Common\Options\DictionaryOption.cs" />
     <Compile Include="Common\Options\GlobalUsingOption.cs" />

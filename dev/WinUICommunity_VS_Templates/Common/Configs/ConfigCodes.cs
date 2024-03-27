@@ -98,7 +98,7 @@ namespace WinUICommunity_VS_Templates
             return outputBuilder.ToString();
         }
 
-        public void ConfigAllMVVM()
+        public void ConfigAllMVVM(string safeProjectName)
         {
             if (UseGeneralSettingPage)
             {
@@ -122,7 +122,9 @@ namespace WinUICommunity_VS_Templates
 
             if (UseAboutPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseAboutPage), SettingsCardOptions.AboutSettingMVVMCode);
+                var aboutCode = SettingsCardOptions.AboutSettingMVVMCode;
+                aboutCode = aboutCode.Replace("$safeprojectname$", safeProjectName);
+                SettingsPageOptionsDic.Add(nameof(UseAboutPage), aboutCode);
                 ServiceDic.Add(nameof(UseAboutPage), "services.AddTransient<AboutUsSettingViewModel>();");
             }
 

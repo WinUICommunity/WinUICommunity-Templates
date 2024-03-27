@@ -42,9 +42,8 @@ namespace WinUICommunity_VS_Templates
 
             AddSolutionFolder(_solution);
 
-            var templatePath = Directory.GetParent(project.FullName).FullName;
-
-            new AppUpdateOption(isMVVMTemplate, templatePath);
+            //var templatePath = Directory.GetParent(project.FullName).FullName;
+            //new AppUpdateOption(isMVVMTemplate, templatePath);
             
             foreach (Document doc in _dte.Documents)
             {
@@ -258,7 +257,7 @@ namespace WinUICommunity_VS_Templates
 
                 if (isMVVMTemplate)
                 {
-                    configCodes.ConfigAllMVVM();
+                    configCodes.ConfigAllMVVM(SafeProjectName);
                 }
                 else
                 {
@@ -326,6 +325,17 @@ namespace WinUICommunity_VS_Templates
                 #region Json Settings
                 if (WizardConfig.UseJsonSettings)
                 {
+                    if (isMVVMTemplate)
+                    {
+                        replacementsDictionary.Add("$AppUpdateMVVMGetDateTime$", Environment.NewLine + """LastUpdateCheck = Settings.LastUpdateCheck;""");
+                        replacementsDictionary.Add("$AppUpdateMVVMSetDateTime$", Environment.NewLine + """Settings.LastUpdateCheck = DateTime.Now.ToShortDateString();""");
+                    }
+                    else
+                    {
+                        replacementsDictionary.Add("$AppUpdateGetDateTime$", Environment.NewLine + Environment.NewLine + """TxtLastUpdateCheck.Text = Settings.LastUpdateCheck;""");
+                        replacementsDictionary.Add("$AppUpdateSetDateTime$", Environment.NewLine + """Settings.LastUpdateCheck = DateTime.Now.ToShortDateString();""");
+                    }
+
                     replacementsDictionary.Add("$AppConfigFilePath$", Environment.NewLine + """public static readonly string AppConfigPath = Path.Combine(RootDirectoryPath, "AppConfig.json");""");
 
                     if (WizardConfig.UseAppUpdatePage && WizardConfig.UseSettingsPage)
@@ -339,6 +349,8 @@ namespace WinUICommunity_VS_Templates
                 }
                 else
                 {
+                    replacementsDictionary.Add("$AppUpdateMVVMGetDateTime$", "");
+                    replacementsDictionary.Add("$AppUpdateMVVMSetDateTime$", "");
                     replacementsDictionary.Add("$AppConfigFilePath$", "");
                     replacementsDictionary.Add("$AppUpdateConfig$", "");
                 }

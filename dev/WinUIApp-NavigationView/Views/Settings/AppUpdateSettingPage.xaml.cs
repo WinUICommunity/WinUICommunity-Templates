@@ -11,9 +11,7 @@ public sealed partial class AppUpdateSettingPage : Page
     public AppUpdateSettingPage()
     {
         this.InitializeComponent();
-        CurrentVersion = $"Current Version v{App.Current.AppVersion}";
-
-        TxtLastUpdateCheck.Text = Settings.LastUpdateCheck;
+        CurrentVersion = $"Current Version v{App.Current.AppVersion}";$AppUpdateGetDateTime$
 
         BtnReleaseNote.Visibility = Visibility.Collapsed;
         BtnDownloadUpdate.Visibility = Visibility.Collapsed;
@@ -34,14 +32,12 @@ public sealed partial class AppUpdateSettingPage : Page
         StatusCard.Header = "Checking for new version";
         if (NetworkHelper.IsNetworkAvailable())
         {
-            TxtLastUpdateCheck.Text = DateTime.Now.ToShortDateString();
-            Settings.LastUpdateCheck = DateTime.Now.ToShortDateString();
-
             try
             {
                 //Todo: Fix UserName and Repo
                 string username = "";
                 string repo = "";
+                TxtLastUpdateCheck.Text = DateTime.Now.ToShortDateString();$AppUpdateSetDateTime$
                 var update = await UpdateHelper.CheckUpdateAsync(username, repo, new Version(App.Current.AppVersion));
                 if (update.IsExistNewVersion)
                 {
