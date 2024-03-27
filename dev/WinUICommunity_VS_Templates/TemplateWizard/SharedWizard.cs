@@ -154,7 +154,7 @@ namespace WinUICommunity_VS_Templates
                 // Add Extra Libs
                 var libs = WizardConfig.LibraryDic;
                 StringBuilder outputBuilder = new StringBuilder();
-                if (libs != null)
+                if (libs != null && libs.Count > 0)
                 {
                     foreach (var lib in libs.Values)
                     {
@@ -178,28 +178,18 @@ namespace WinUICommunity_VS_Templates
                         }
                     }
 
-                    WizardConfig.LibraryDic?.Clear();
-                }
+                    string outputText = outputBuilder.ToString();
 
-                new AppCenterOption().ConfigAppCenter(UseAppCenter, replacementsDictionary);
-
-                string outputText = outputBuilder.ToString();
-
-                if (libs != null)
-                {
-                    if (libs.Count > 0)
-                    {
-                        replacementsDictionary.Add("$ExtraLibs$", Environment.NewLine + outputText);
-                    }
-                    else
-                    {
-                        replacementsDictionary.Add("$ExtraLibs$", "");
-                    }
+                    replacementsDictionary.Add("$ExtraLibs$", Environment.NewLine + outputText);
                 }
                 else
                 {
                     replacementsDictionary.Add("$ExtraLibs$", "");
                 }
+
+                WizardConfig.LibraryDic?.Clear();
+
+                new AppCenterOption().ConfigAppCenter(UseAppCenter, replacementsDictionary);
 
                 if (isBlank)
                 {

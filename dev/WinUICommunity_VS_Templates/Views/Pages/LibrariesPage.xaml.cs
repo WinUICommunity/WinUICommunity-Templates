@@ -40,7 +40,7 @@ namespace WinUICommunity_VS_Templates
                 option.Checked += (s, e) =>
                 {
 
-                    WizardConfig.LibraryDic.Add(lib.Name, new PackageRefrence($"""    <PackageReference Include="{lib.Name}" Version="{libVersion}" />""", lib.CheckBeforeInsert, lib.SkipStarVersion));
+                    WizardConfig.LibraryDic.AddIfNotExists(lib.Name, new PackageRefrence($"""    <PackageReference Include="{lib.Name}" Version="{libVersion}" />""", lib.CheckBeforeInsert, lib.SkipStarVersion));
                 };
 
                 option.Unchecked += (s, e) =>
