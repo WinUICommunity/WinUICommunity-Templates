@@ -305,7 +305,7 @@ namespace WinUICommunity_VS_Templates
 
                     if (WizardConfig.UseJsonSettings && WizardConfig.UseDeveloperModeSetting && WizardConfig.UseSettingsPage && WizardConfig.UseGeneralSettingPage)
                     {
-                        replacementsDictionary.AddIfNotExists("$GoToLogPathEvent$", Environment.NewLine + Environment.NewLine + SettingsCardOptions.GoToLogPathEvent);
+                        replacementsDictionary.AddIfNotExists("$GoToLogPathEvent$", Environment.NewLine + Environment.NewLine + PredefinedCodes.GoToLogPathEvent);
                         replacementsDictionary.AddIfNotExists("$DeveloperModeConfig$", Environment.NewLine + "public virtual bool UseDeveloperMode { get; set; }");
                     }
                     else
@@ -360,9 +360,9 @@ namespace WinUICommunity_VS_Templates
                 if (WizardConfig.UseDynamicLocalization)
                 {
                     replacementsDictionary.Add("$LocalizerAsyncKeyword$", "async ");
-                    replacementsDictionary.Add("$LocalizerActivate$", Environment.NewLine + Codes.LocalizerActivateCode);
-                    replacementsDictionary.Add("$LocalizerItemGroup$", Environment.NewLine + Environment.NewLine + Codes.LocalizerItemGroupCode);
-                    replacementsDictionary.Add("$Localizer$", Codes.LocalizerInitializeCode);
+                    replacementsDictionary.Add("$LocalizerActivate$", Environment.NewLine + PredefinedCodes.LocalizerActivateCode);
+                    replacementsDictionary.Add("$LocalizerItemGroup$", Environment.NewLine + Environment.NewLine + PredefinedCodes.LocalizerItemGroupCode);
+                    replacementsDictionary.Add("$Localizer$", PredefinedCodes.LocalizerInitializeCode);
                 }
                 else
                 {
