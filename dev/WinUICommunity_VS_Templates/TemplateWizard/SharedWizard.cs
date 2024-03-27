@@ -21,7 +21,6 @@ namespace WinUICommunity_VS_Templates
 
         public bool UseFileLogger;
         public bool UseDebugLogger;
-        public bool UseAppCenter;
 
         public string VSTemplateFilePath; // %AppData%\...\Extensions\Mahdi Hosseini\WinUICommunity Templates for WinUI\{Version}\ProjectTemplates\CSharp\1033\{Template}\{Template}.vstemplate
         public string ProjectTemplatesFolderPath; // %AppData%\...\Extensions\Mahdi Hosseini\WinUICommunity Templates for WinUI\{Version}\ProjectTemplates\CSharp\1033\{Template}
@@ -163,19 +162,7 @@ namespace WinUICommunity_VS_Templates
                             continue;
                         }
 
-                        if (lib.Package.Contains("Microsoft.AppCenter"))
-                        {
-                            lib.Package = lib.Package.Replace("Microsoft.AppCenter", "Microsoft.AppCenter.Crashes");
-                            outputBuilder.AppendLine(lib.Package);
-
-                            lib.Package = lib.Package.Replace("Microsoft.AppCenter.Crashes", "Microsoft.AppCenter.Analytics");
-                            outputBuilder.AppendLine(lib.Package);
-                            UseAppCenter = true;
-                        }
-                        else
-                        {
-                            outputBuilder.AppendLine(lib.Package);
-                        }
+                        outputBuilder.AppendLine(lib.Package);
                     }
 
                     string outputText = outputBuilder.ToString();
@@ -188,8 +175,6 @@ namespace WinUICommunity_VS_Templates
                 }
 
                 WizardConfig.LibraryDic?.Clear();
-
-                new AppCenterOption().ConfigAppCenter(UseAppCenter, replacementsDictionary);
 
                 if (isBlank)
                 {

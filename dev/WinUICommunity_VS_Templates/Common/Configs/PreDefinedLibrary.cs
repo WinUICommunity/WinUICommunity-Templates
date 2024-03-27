@@ -114,7 +114,6 @@ namespace WinUICommunity_VS_Templates
                 new Library("protobuf-net", "3.2.30"),
                 new Library("protobuf-net.Core", "3.2.30"),
                 new Library("Humanizer.Core", "2.14.1"),
-                new Library("Microsoft.AppCenter", "5.0.3"),
                 new Library("LiveChartsCore.SkiaSharpView.WinUI", "2.0.0-rc2.1", false, true),
             };
             return list;

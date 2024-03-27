@@ -33,7 +33,7 @@ public partial class App : Application
         rootFrame.Navigate(typeof(MainPage));
 
         CurrentWindow.Title = CurrentWindow.AppWindow.Title = $"{AppName} v{AppVersion}";
-        CurrentWindow.AppWindow.SetIcon("Assets/icon.ico");$AppCenter$$ConfigLogger$
+        CurrentWindow.AppWindow.SetIcon("Assets/icon.ico");$ConfigLogger$
 
         CurrentWindow.Activate();await InitializeLocalizer("en-US");$UnhandeledException$
     }private void InitializeLocalizer { };
