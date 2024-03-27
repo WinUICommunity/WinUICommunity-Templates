@@ -102,27 +102,27 @@ namespace WinUICommunity_VS_Templates
         {
             if (UseGeneralSettingPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), SettingsCardOptions.GeneralSettingMVVMCode);
+                SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), PredefinedCodes.GeneralSettingMVVMCode);
 
                 ServiceDic.Add(nameof(UseGeneralSettingPage), "services.AddTransient<GeneralSettingViewModel>();");
             }
 
             if (UseThemeSettingPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), SettingsCardOptions.ThemeSettingMVVMCode);
+                SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), PredefinedCodes.ThemeSettingMVVMCode);
                 ServiceDic.Add(nameof(UseThemeSettingPage), "services.AddTransient<ThemeSettingViewModel>();");
             }
 
             if (UseAppUpdatePage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseAppUpdatePage), SettingsCardOptions.AppUpdateSettingMVVMCode);
+                SettingsPageOptionsDic.Add(nameof(UseAppUpdatePage), PredefinedCodes.AppUpdateSettingMVVMCode);
 
                 ServiceDic.Add(nameof(UseAppUpdatePage), "services.AddTransient<AppUpdateSettingViewModel>();");
             }
 
             if (UseAboutPage)
             {
-                var aboutCode = SettingsCardOptions.AboutSettingMVVMCode;
+                var aboutCode = PredefinedCodes.AboutSettingMVVMCode;
                 aboutCode = aboutCode.Replace("$safeprojectname$", safeProjectName);
                 SettingsPageOptionsDic.Add(nameof(UseAboutPage), aboutCode);
                 ServiceDic.Add(nameof(UseAboutPage), "services.AddTransient<AboutUsSettingViewModel>();");
@@ -143,7 +143,7 @@ namespace WinUICommunity_VS_Templates
 
             if (SettingsPageOptionsDic.Count == 0)
             {
-                SettingsPageOptionsDic.Add("comment", SettingsCardOptions.SettingsCardMVVMCommentCode);
+                SettingsPageOptionsDic.Add("comment", PredefinedCodes.SettingsCardMVVMCommentCode);
             }
         }
 
@@ -151,22 +151,22 @@ namespace WinUICommunity_VS_Templates
         {
             if (UseGeneralSettingPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), SettingsCardOptions.GeneralSettingCode);
+                SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), PredefinedCodes.GeneralSettingCode);
             }
 
             if (UseThemeSettingPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), SettingsCardOptions.ThemeSettingCode);
+                SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), PredefinedCodes.ThemeSettingCode);
             }
 
             if (UseAppUpdatePage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseAppUpdatePage), SettingsCardOptions.AppUpdateSettingCode);
+                SettingsPageOptionsDic.Add(nameof(UseAppUpdatePage), PredefinedCodes.AppUpdateSettingCode);
             }
 
             if (UseAboutPage)
             {
-                var aboutCode = SettingsCardOptions.AboutSettingCode;
+                var aboutCode = PredefinedCodes.AboutSettingCode;
                 aboutCode = aboutCode.Replace("$safeprojectname$", safeProjectName);
                 SettingsPageOptionsDic.Add(nameof(UseAboutPage), aboutCode);
             }
@@ -183,7 +183,7 @@ namespace WinUICommunity_VS_Templates
 
             if (SettingsPageOptionsDic.Count == 0)
             {
-                SettingsPageOptionsDic.Add("comment", SettingsCardOptions.SettingsCardCommentCode);
+                SettingsPageOptionsDic.Add("comment", PredefinedCodes.SettingsCardCommentCode);
             }
         }
 
@@ -191,11 +191,11 @@ namespace WinUICommunity_VS_Templates
         {
             if (UseSettingsPage && UseGeneralSettingPage && UseDeveloperModeSetting && !UseJsonSetting)
             {
-                GeneralSettingsPageOptionsDic.Add(nameof(UseDeveloperModeSetting), Environment.NewLine + SettingsCardOptions.DeveloperModeSettingCode);
+                GeneralSettingsPageOptionsDic.Add(nameof(UseDeveloperModeSetting), Environment.NewLine + PredefinedCodes.DeveloperModeSettingCode);
             }
             else if (UseSettingsPage && UseGeneralSettingPage && UseDeveloperModeSetting && UseJsonSetting)
             {
-                GeneralSettingsPageOptionsDic.Add(nameof(UseDeveloperModeSetting), Environment.NewLine + SettingsCardOptions.DeveloperModeSettingCode2);
+                GeneralSettingsPageOptionsDic.Add(nameof(UseDeveloperModeSetting), Environment.NewLine + PredefinedCodes.DeveloperModeSettingCode2);
             }
         }
     }

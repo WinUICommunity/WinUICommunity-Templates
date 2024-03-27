@@ -53,11 +53,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Common\Configs\Codes.cs" />
     <Compile Include="Common\Configs\ConfigCodes.cs" />
     <Compile Include="Common\Configs\DictionaryExtension.cs" />
     <Compile Include="Common\Configs\PreDefinedLibrary.cs" />
-    <Compile Include="Common\Configs\SettingsCardOptions.cs" />
+    <Compile Include="Common\Configs\PredefinedCodes.cs" />
     <Compile Include="Common\Configs\WizardConfig.cs" />
     <Compile Include="Common\Options\ColorsDicOption.cs" />
     <Compile Include="Common\Options\DictionaryOption.cs" />
