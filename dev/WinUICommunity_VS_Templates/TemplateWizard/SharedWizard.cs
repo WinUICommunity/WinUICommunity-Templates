@@ -43,12 +43,11 @@ namespace WinUICommunity_VS_Templates
             AddSolutionFolder(_solution);
 
             var templatePath = Directory.GetParent(project.FullName).FullName;
-            new DynamicLocalizationOption(templatePath);
+
             new AppUpdateOption(isMVVMTemplate, templatePath);
             new NormalizeAppFile(templatePath);
             new NormalizeGlobalUsingFile(UseFileLogger, UseDebugLogger, templatePath);
             new NormalizeGeneralSettingFile(templatePath);
-            new NormalizeCSProjFile(project);
 
             foreach (Document doc in _dte.Documents)
             {
@@ -131,6 +130,23 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$DependencyInjectionVersion$", dependencyInjectionVersion);
                 replacementsDictionary.Add("$WinUIManagedVersion$", winUIManagedVersion);
 
+                replacementsDictionary.Add("$DotNetVersion$", WizardConfig.DotNetVersion.ToString());
+                replacementsDictionary.Add("$TargetFrameworkVersion$", WizardConfig.TargetFrameworkVersion.ToString());
+                replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());
+                replacementsDictionary.Add("$RuntimeIdentifiers$", WizardConfig.RuntimeIdentifiers.ToString());
+
+                replacementsDictionary.Add("$AddJsonSettings$", WizardConfig.UseJsonSettings.ToString());
+                replacementsDictionary.Add("$AddDynamicLocalization$", WizardConfig.UseDynamicLocalization.ToString());
+                replacementsDictionary.Add("$AddEditorConfig$", WizardConfig.UseEditorConfigFile.ToString());
+                replacementsDictionary.Add("$AddSolutionFolder$", WizardConfig.UseSolutionFolder.ToString());
+                replacementsDictionary.Add("$AddHomeLandingPage$", WizardConfig.UseHomeLandingPage.ToString());
+                replacementsDictionary.Add("$AddSettingsPage$", WizardConfig.UseSettingsPage.ToString());
+                replacementsDictionary.Add("$AddGeneralSettingPage$", WizardConfig.UseGeneralSettingPage.ToString());
+                replacementsDictionary.Add("$AddThemeSettingPage$", WizardConfig.UseThemeSettingPage.ToString());
+                replacementsDictionary.Add("$AddAppUpdatePage$", WizardConfig.UseAppUpdatePage.ToString());
+                replacementsDictionary.Add("$AddAboutPage$", WizardConfig.UseAboutPage.ToString());
+
+                #region CSProjectElements
                 // Add CSProjectElements
                 if (WizardConfig.CSProjectElements != null && WizardConfig.CSProjectElements.Count > 0)
                 {
@@ -150,6 +166,9 @@ namespace WinUICommunity_VS_Templates
                     replacementsDictionary.Add("$CustomCSProjectElement$", "");
                 }
 
+                #endregion
+
+                #region Extra Libs
                 // Add Extra Libs
                 var libs = WizardConfig.LibraryDic;
                 StringBuilder outputBuilder = new StringBuilder();
@@ -175,7 +194,10 @@ namespace WinUICommunity_VS_Templates
                 }
 
                 WizardConfig.LibraryDic?.Clear();
+                #endregion
 
+                #region Add Xaml Dictionary if User Use Extra Lib
+                #region Blank
                 if (isBlank)
                 {
                     if (libs != null && libs.ContainsKey("WinUICommunity.Components"))
@@ -201,6 +223,9 @@ namespace WinUICommunity_VS_Templates
                     }
                 }
 
+                #endregion
+
+
                 if (libs != null && libs.ContainsKey("WinUICommunity.Win2D"))
                 {
                     replacementsDictionary.Add("$WinUICommunity.Win2D$", Environment.NewLine + "                <ResourceDictionary Source=\"ms-appx:///WinUICommunity.Win2D/Themes/Generic.xaml\" />");
@@ -210,53 +235,28 @@ namespace WinUICommunity_VS_Templates
                     replacementsDictionary.Add("$WinUICommunity.Win2D$", "");
                 }
 
-                replacementsDictionary.Add("$DotNetVersion$", WizardConfig.DotNetVersion.ToString());
-                replacementsDictionary.Add("$TargetFrameworkVersion$", WizardConfig.TargetFrameworkVersion.ToString());
-                replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());
-                replacementsDictionary.Add("$RuntimeIdentifiers$", WizardConfig.RuntimeIdentifiers.ToString());
+                #endregion
 
-                replacementsDictionary.Add("$AddJsonSettings$", WizardConfig.UseJsonSettings.ToString());
-                replacementsDictionary.Add("$AddDynamicLocalization$", WizardConfig.UseDynamicLocalization.ToString());
-                replacementsDictionary.Add("$AddEditorConfig$", WizardConfig.UseEditorConfigFile.ToString());
-                replacementsDictionary.Add("$AddSolutionFolder$", WizardConfig.UseSolutionFolder.ToString());
-                replacementsDictionary.Add("$AddHomeLandingPage$", WizardConfig.UseHomeLandingPage.ToString());
-                replacementsDictionary.Add("$AddSettingsPage$", WizardConfig.UseSettingsPage.ToString());
-                replacementsDictionary.Add("$AddGeneralSettingPage$", WizardConfig.UseGeneralSettingPage.ToString());
-                replacementsDictionary.Add("$AddThemeSettingPage$", WizardConfig.UseThemeSettingPage.ToString());
-                replacementsDictionary.Add("$AddAppUpdatePage$", WizardConfig.UseAppUpdatePage.ToString());
-                replacementsDictionary.Add("$AddAboutPage$", WizardConfig.UseAboutPage.ToString());
-
+                #region IsUnPackaged
                 if (WizardConfig.IsUnPackagedMode)
                 {
-                    replacementsDictionary.Add("$WindowsPackageType$", Environment.NewLine + "    <WindowsPackageType>None</WindowsPackageType>");
+                    replacementsDictionary.Add("$WindowsPackageType$", "None");
                 }
                 else
                 {
-                    replacementsDictionary.Add("$WindowsPackageType$", "");
+                    replacementsDictionary.Add("$WindowsPackageType$", "MSIX");
                 }
+                #endregion
 
                 if (hasNavigationView)
                 {
                     new ColorsDicOption().ConfigColorsDic(replacementsDictionary, WizardConfig.UseHomeLandingPage);
                 }
 
-                //if (UseSettingsPage && UseThemeSettingPage)
-                //{
-                //    replacementsDictionary.Add("$BackdropTintColorViewModel$", Environment.NewLine + "themeService.ConfigBackdropTintColor();");
-                //    replacementsDictionary.Add("$BackdropTintColor$", Environment.NewLine + "ThemeService.ConfigBackdropTintColor();");
-                //}
-                //else
-                //{
-                //    replacementsDictionary.Add("$BackdropTintColorViewModel$", "");
-                //    replacementsDictionary.Add("$BackdropTintColor$", "");
-                //}
-
+                // Add Xaml Dictionary
                 new DictionaryOption().ConfigDictionary(replacementsDictionary, hasNavigationView, WizardConfig.UseHomeLandingPage, WizardConfig.UseColorsDic, WizardConfig.UseStylesDic, WizardConfig.UseConvertersDic, WizardConfig.UseFontsDic);
-                var serilog = new SerilogOption();
-                serilog.ConfigSerilog(replacementsDictionary, libs, WizardConfig.UseJsonSettings, WizardConfig.UseDeveloperModeSetting);
-                UseFileLogger = serilog.UseFileLogger;
-                UseDebugLogger = serilog.UseDebugLogger;
 
+                #region Codes
                 var configCodes = new ConfigCodes(WizardConfig.UseAboutPage, WizardConfig.UseAppUpdatePage, WizardConfig.UseGeneralSettingPage, WizardConfig.UseHomeLandingPage, WizardConfig.UseSettingsPage, WizardConfig.UseThemeSettingPage, WizardConfig.UseDeveloperModeSetting, WizardConfig.UseJsonSettings);
 
                 if (isMVVMTemplate)
@@ -295,6 +295,14 @@ namespace WinUICommunity_VS_Templates
 
                 replacementsDictionary.Add("$SettingsCards$", settingsCards);
 
+                #endregion
+
+                #region Serilog
+                var serilog = new SerilogOption();
+                serilog.ConfigSerilog(replacementsDictionary, libs, WizardConfig.UseJsonSettings, WizardConfig.UseDeveloperModeSetting);
+                UseFileLogger = serilog.UseFileLogger;
+                UseDebugLogger = serilog.UseDebugLogger;
+
                 if (libs.ContainsKey("Serilog.Sinks.Debug") || libs.ContainsKey("Serilog.Sinks.File"))
                 {
                     replacementsDictionary.AddIfNotExists("$GeneralSettingsCards$", generalSettingsCards);
@@ -316,7 +324,9 @@ namespace WinUICommunity_VS_Templates
                     replacementsDictionary.AddIfNotExists("$GeneralSettingsCards$", "");
                     replacementsDictionary.AddIfNotExists("$DeveloperModeConfig$", "");
                 }
+                #endregion
 
+                #region Json Settings
                 if (WizardConfig.UseJsonSettings)
                 {
                     replacementsDictionary.Add("$AppConfigFilePath$", Environment.NewLine + """public static readonly string AppConfigPath = Path.Combine(RootDirectoryPath, "AppConfig.json");""");
@@ -335,6 +345,36 @@ namespace WinUICommunity_VS_Templates
                     replacementsDictionary.Add("$AppConfigFilePath$", "");
                     replacementsDictionary.Add("$AppUpdateConfig$", "");
                 }
+                #endregion
+
+                #region Dynamic Localization
+                if (WizardConfig.UseDynamicLocalization)
+                {
+                    replacementsDictionary.Add("$LocalizerAsyncKeyword$", "async ");
+                    replacementsDictionary.Add("$LocalizerActivate$", Environment.NewLine + Codes.LocalizerActivateCode);
+                    replacementsDictionary.Add("$LocalizerItemGroup$", Environment.NewLine + Environment.NewLine + Codes.LocalizerItemGroupCode);
+                    replacementsDictionary.Add("$Localizer$", Codes.LocalizerInitializeCode);
+                }
+                else
+                {
+                    replacementsDictionary.Add("$LocalizerAsyncKeyword$", "");
+                    replacementsDictionary.Add("$LocalizerActivate$", "");
+                    replacementsDictionary.Add("$LocalizerItemGroup$", "");
+                    replacementsDictionary.Add("$Localizer$", "");
+                }
+                #endregion
+
+
+                //if (UseSettingsPage && UseThemeSettingPage)
+                //{
+                //    replacementsDictionary.Add("$BackdropTintColorViewModel$", Environment.NewLine + "themeService.ConfigBackdropTintColor();");
+                //    replacementsDictionary.Add("$BackdropTintColor$", Environment.NewLine + "ThemeService.ConfigBackdropTintColor();");
+                //}
+                //else
+                //{
+                //    replacementsDictionary.Add("$BackdropTintColorViewModel$", "");
+                //    replacementsDictionary.Add("$BackdropTintColor$", "");
+                //}
             }
             else
             {

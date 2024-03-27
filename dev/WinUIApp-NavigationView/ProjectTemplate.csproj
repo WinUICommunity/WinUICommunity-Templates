@@ -15,15 +15,16 @@
 	<LangVersion>Latest</LangVersion>
 	<ApplicationIcon>Assets\icon.ico</ApplicationIcon>
 	<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
-	<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>$CustomCSProjectElement$$WindowsPackageType$
+	<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+	<WindowsPackageType>$WindowsPackageType$</WindowsPackageType>$CustomCSProjectElement$
   </PropertyGroup>
 
   <ItemGroup>
 	<None Include="Assets\**\*">
 	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	</None>
-  </ItemGroup>
-  <ItemGroup Label="DynamicLocalization"/>
+  </ItemGroup>$LocalizerItemGroup$
+
   <ItemGroup>
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="$WASDKVersion$" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />

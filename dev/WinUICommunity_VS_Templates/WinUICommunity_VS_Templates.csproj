@@ -53,6 +53,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Common\Configs\Codes.cs" />
     <Compile Include="Common\Configs\ConfigCodes.cs" />
     <Compile Include="Common\Configs\DictionaryExtension.cs" />
     <Compile Include="Common\Configs\PreDefinedLibrary.cs" />
@@ -61,9 +62,7 @@
     <Compile Include="Common\Options\AppUpdateOption.cs" />
     <Compile Include="Common\Options\ColorsDicOption.cs" />
     <Compile Include="Common\Options\DictionaryOption.cs" />
-    <Compile Include="Common\Options\DynamicLocalizationOption.cs" />
     <Compile Include="Common\Options\NormalizeAppFile.cs" />
-    <Compile Include="Common\Options\NormalizeCSProjFile.cs" />
     <Compile Include="Common\Options\NormalizeGeneralSettingFile.cs" />
     <Compile Include="Common\Options\NormalizeGlobalUsingFile.cs" />
     <Compile Include="Common\Options\SerilogOption.cs" />

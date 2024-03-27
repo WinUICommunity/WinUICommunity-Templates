@@ -15,7 +15,8 @@
 	<LangVersion>Latest</LangVersion>
 	<ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
-	<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>$CustomCSProjectElement$$WindowsPackageType$
+	<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+	<WindowsPackageType>$WindowsPackageType$</WindowsPackageType>$CustomCSProjectElement$
   </PropertyGroup>
   
   <ItemGroup>
@@ -23,6 +24,7 @@
 	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	</None>
   </ItemGroup>
+  
   <ItemGroup>
 	<PackageReference Include="Microsoft.WindowsAppSDK" Version="$WASDKVersion$" />
 	<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />$ExtraLibs$
