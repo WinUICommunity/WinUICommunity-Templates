@@ -44,7 +44,6 @@ namespace WinUICommunity_VS_Templates
 
             //var templatePath = Directory.GetParent(project.FullName).FullName;
             //new AppUpdateOption(isMVVMTemplate, templatePath);
-
             VSDocumentHelper.FormatDocument(_dte, project.FullName);
 
             foreach (Document doc in _dte.Documents)
@@ -182,7 +181,7 @@ namespace WinUICommunity_VS_Templates
                         outputBuilder.AppendLine(lib.Package);
                     }
 
-                    string outputText = outputBuilder.ToString();
+                    string outputText = outputBuilder.ToString().Trim();
 
                     replacementsDictionary.Add("$ExtraLibs$", Environment.NewLine + outputText);
                 }
