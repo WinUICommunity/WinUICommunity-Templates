@@ -45,10 +45,7 @@ namespace WinUICommunity_VS_Templates
             var templatePath = Directory.GetParent(project.FullName).FullName;
 
             new AppUpdateOption(isMVVMTemplate, templatePath);
-            new NormalizeAppFile(templatePath);
-            new NormalizeGlobalUsingFile(UseFileLogger, UseDebugLogger, templatePath);
-            new NormalizeGeneralSettingFile(templatePath);
-
+            
             foreach (Document doc in _dte.Documents)
             {
                 doc.Close();
@@ -265,7 +262,7 @@ namespace WinUICommunity_VS_Templates
                 }
                 else
                 {
-                    configCodes.ConfigAll();
+                    configCodes.ConfigAll(SafeProjectName);
                 }
 
                 configCodes.ConfigGeneral();
@@ -281,7 +278,7 @@ namespace WinUICommunity_VS_Templates
                 }
                 else
                 {
-                    replacementsDictionary.Add("$Configs$", configs);
+                    replacementsDictionary.Add("$Configs$", "");
                 }
 
                 if (configCodes.ServiceDic.Count > 0)
@@ -290,7 +287,7 @@ namespace WinUICommunity_VS_Templates
                 }
                 else
                 {
-                    replacementsDictionary.Add("$Services$", services);
+                    replacementsDictionary.Add("$Services$", "");
                 }
 
                 replacementsDictionary.Add("$SettingsCards$", settingsCards);
@@ -364,6 +361,7 @@ namespace WinUICommunity_VS_Templates
                 }
                 #endregion
 
+                new GlobalUsingOption(replacementsDictionary, SafeProjectName, UseFileLogger, UseDebugLogger);
 
                 //if (UseSettingsPage && UseThemeSettingPage)
                 //{

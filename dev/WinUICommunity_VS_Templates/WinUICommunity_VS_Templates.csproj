@@ -62,9 +62,7 @@
     <Compile Include="Common\Options\AppUpdateOption.cs" />
     <Compile Include="Common\Options\ColorsDicOption.cs" />
     <Compile Include="Common\Options\DictionaryOption.cs" />
-    <Compile Include="Common\Options\NormalizeAppFile.cs" />
-    <Compile Include="Common\Options\NormalizeGeneralSettingFile.cs" />
-    <Compile Include="Common\Options\NormalizeGlobalUsingFile.cs" />
+    <Compile Include="Common\Options\GlobalUsingOption.cs" />
     <Compile Include="Common\Options\SerilogOption.cs" />
     <Compile Include="Common\Options\WizardHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

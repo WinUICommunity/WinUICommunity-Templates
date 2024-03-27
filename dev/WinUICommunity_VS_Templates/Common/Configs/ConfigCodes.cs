@@ -38,7 +38,8 @@ namespace WinUICommunity_VS_Templates
             {
                 outputBuilder.AppendLine(item);
             }
-            return outputBuilder.ToString();
+
+            return outputBuilder.ToString().Trim();
         }
 
         public string GetServices()
@@ -49,7 +50,7 @@ namespace WinUICommunity_VS_Templates
                 outputBuilder.AppendLine(item);
             }
 
-            return outputBuilder.ToString();
+            return outputBuilder.ToString().Trim();
         }
 
         public string GetSettingsPageOptions()
@@ -144,7 +145,7 @@ namespace WinUICommunity_VS_Templates
             }
         }
 
-        public void ConfigAll()
+        public void ConfigAll(string safeProjectName)
         {
             if (UseGeneralSettingPage)
             {
@@ -163,7 +164,9 @@ namespace WinUICommunity_VS_Templates
 
             if (UseAboutPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseAboutPage), SettingsCardOptions.AboutSettingCode);
+                var aboutCode = SettingsCardOptions.AboutSettingCode;
+                aboutCode = aboutCode.Replace("$safeprojectname$", safeProjectName);
+                SettingsPageOptionsDic.Add(nameof(UseAboutPage), aboutCode);
             }
 
             if (UseHomeLandingPage)

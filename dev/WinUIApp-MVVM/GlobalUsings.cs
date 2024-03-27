@@ -6,6 +6,4 @@ global using CommunityToolkit.Mvvm.ComponentModel;
 global using Microsoft.Extensions.DependencyInjection;
 global using $safeprojectname$.Views;
 global using $safeprojectname$.Common;
-global using $safeprojectname$.ViewModels;
-global using static $safeprojectname$.Common.AppHelper;
-global using static $safeprojectname$.Common.LoggerSetup;
+global using $safeprojectname$.ViewModels;$ExtraGlobalUsing$
