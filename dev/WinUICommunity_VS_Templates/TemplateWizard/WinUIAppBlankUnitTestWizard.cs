@@ -59,6 +59,14 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
+            else if (!WizardConfig.UseWindow11ContextMenu && filePath.Contains("Package-managed.WinContextMenu.appxmanifest"))
+            {
+                return false;
+            }
+            else if (WizardConfig.UseWindow11ContextMenu && filePath.Contains("Package-managed.appxmanifest"))
+            {
+                return false;
+            }
             else
             {
                 return true;

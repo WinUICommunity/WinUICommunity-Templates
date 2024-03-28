@@ -134,6 +134,9 @@
     <Content Include="Properties\PublishProfiles\win-arm64.pubxml" />
     <Content Include="Properties\PublishProfiles\win-x64.pubxml" />
     <Content Include="Properties\PublishProfiles\win-x86.pubxml" />
+    <Content Include="Package-managed.WinContextMenu.appxmanifest">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ViewModels\Settings\AboutUsSettingViewModel.cs" />

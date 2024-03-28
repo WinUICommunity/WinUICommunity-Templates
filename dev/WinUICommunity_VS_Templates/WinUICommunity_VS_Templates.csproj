@@ -53,6 +53,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Common\Extensions\EnumerableExtension.cs" />
     <Compile Include="Common\Options\ConfigCodes.cs" />
     <Compile Include="Common\Extensions\DictionaryExtension.cs" />
     <Compile Include="Common\PreDefinedLibrary.cs" />
