@@ -250,7 +250,6 @@ namespace WinUICommunity_VS_Templates
 
                 #endregion
 
-
                 if (libs != null && libs.ContainsKey("WinUICommunity.Win2D"))
                 {
                     replacementsDictionary.Add("$WinUICommunity.Win2D$", Environment.NewLine + "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.Win2D/Themes/Generic.xaml\" />");
@@ -258,6 +257,17 @@ namespace WinUICommunity_VS_Templates
                 else
                 {
                     replacementsDictionary.Add("$WinUICommunity.Win2D$", "");
+                }
+
+                if (libs != null && libs.ContainsKey("WinUICommunity.ContextMenuExtensions"))
+                {
+                    WizardConfig.UseWindow11ContextMenu = true;
+                    replacementsDictionary.Add("$CLSID$", WizardConfig.CLSID.PickRandom());
+                }
+                else
+                {
+                    WizardConfig.UseWindow11ContextMenu = false;
+                    replacementsDictionary.Add("$CLSID$", "");
                 }
 
                 #endregion
