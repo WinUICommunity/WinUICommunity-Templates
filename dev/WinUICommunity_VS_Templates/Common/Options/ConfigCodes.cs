@@ -65,7 +65,7 @@ namespace WinUICommunity_VS_Templates
                 }
                 else
                 {
-                    outputBuilder.AppendLine($"            {item}");
+                    outputBuilder.AppendLine($"{item}");
                 }
                 index++;
             }
@@ -90,7 +90,7 @@ namespace WinUICommunity_VS_Templates
                 }
                 else
                 {
-                    outputBuilder.AppendLine($"            {item}");
+                    outputBuilder.AppendLine($"{item}");
                 }
                 index++;
             }

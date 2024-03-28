@@ -44,7 +44,17 @@ namespace WinUICommunity_VS_Templates
 
             //var templatePath = Directory.GetParent(project.FullName).FullName;
             //new AppUpdateOption(isMVVMTemplate, templatePath);
+
             VSDocumentHelper.FormatXmlBasedFile(project.FullName);
+
+            var appXaml = _solution.FindProjectItem("App.xaml");
+            var appXamlCS = _solution.FindProjectItem("App.xaml.cs");
+            var settingsPageXaml = _solution.FindProjectItem("SettingsPage.xaml");
+            var generalSettingsPageXaml = _solution.FindProjectItem("GeneralSettingPage.xaml");
+            VSDocumentHelper.FormatDocument(_dte, appXaml.FileNames[1]);
+            VSDocumentHelper.FormatDocument(_dte, appXamlCS.FileNames[1]);
+            VSDocumentHelper.FormatDocument(_dte, settingsPageXaml.FileNames[1], settingsPageXaml);
+            VSDocumentHelper.FormatDocument(_dte, generalSettingsPageXaml.FileNames[1], generalSettingsPageXaml);
 
             foreach (Document doc in _dte.Documents)
             {
@@ -154,9 +164,7 @@ namespace WinUICommunity_VS_Templates
                         sb.AppendLine($"    {entity.Value}");
                     }
 
-                    WizardConfig.CSProjectElements?.Clear();
-
-                    replacementsDictionary.Add("$CustomCSProjectElement$", Environment.NewLine + $"    {sb.ToString().Trim()}");
+                    replacementsDictionary.Add("$CustomCSProjectElement$", Environment.NewLine + $"{sb.ToString().Trim()}");
                 }
                 else
                 {
@@ -189,8 +197,6 @@ namespace WinUICommunity_VS_Templates
                 {
                     replacementsDictionary.Add("$ExtraLibs$", "");
                 }
-
-                WizardConfig.LibraryDic?.Clear();
                 #endregion
 
                 #region Add Xaml Dictionary if User Use Extra Lib
@@ -199,7 +205,7 @@ namespace WinUICommunity_VS_Templates
                 {
                     if (libs != null && libs.ContainsKey("WinUICommunity.Components"))
                     {
-                        replacementsDictionary.Add("$WinUICommunity.Components$", Environment.NewLine + "                <ResourceDictionary Source=\"ms-appx:///WinUICommunity.Components/Themes/Generic.xaml\" />");
+                        replacementsDictionary.Add("$WinUICommunity.Components$", Environment.NewLine + "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.Components/Themes/Generic.xaml\" />");
                     }
                     else
                     {
@@ -208,15 +214,13 @@ namespace WinUICommunity_VS_Templates
                     
                     if (libs != null && libs.ContainsKey("WinUICommunity.LandingPages"))
                     {
-                        replacementsDictionary.Add("$WinUICommunity.LandingPages$", Environment.NewLine + "                <ResourceDictionary Source=\"ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml\" />");
-                        replacementsDictionary.Add("$WinUICommunity.LandingPagesItemTemplate$", Environment.NewLine + "                <wuc:ItemTemplates />");
-                        replacementsDictionary.Add("$WinUICommunityRefrence$", Environment.NewLine + "             xmlns:wuc=\"using:WinUICommunity\"");
+                        replacementsDictionary.Add("$WinUICommunity.LandingPages$", Environment.NewLine + "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml\" />");
+                        replacementsDictionary.Add("$WinUICommunity.LandingPagesItemTemplate$", Environment.NewLine + "<ItemTemplates xmlns=\"using:WinUICommunity\"/>");
                     }
                     else
                     {
                         replacementsDictionary.Add("$WinUICommunity.LandingPages$", "");
                         replacementsDictionary.Add("$WinUICommunity.LandingPagesItemTemplate$", "");
-                        replacementsDictionary.Add("$WinUICommunityRefrence$", "");
                     }
                 }
 
@@ -225,7 +229,7 @@ namespace WinUICommunity_VS_Templates
 
                 if (libs != null && libs.ContainsKey("WinUICommunity.Win2D"))
                 {
-                    replacementsDictionary.Add("$WinUICommunity.Win2D$", Environment.NewLine + "                <ResourceDictionary Source=\"ms-appx:///WinUICommunity.Win2D/Themes/Generic.xaml\" />");
+                    replacementsDictionary.Add("$WinUICommunity.Win2D$", Environment.NewLine + "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.Win2D/Themes/Generic.xaml\" />");
                 }
                 else
                 {
@@ -375,6 +379,9 @@ namespace WinUICommunity_VS_Templates
                 #endregion
 
                 new GlobalUsingOption(replacementsDictionary, SafeProjectName, UseFileLogger, UseDebugLogger);
+
+                WizardConfig.LibraryDic?.Clear();
+                WizardConfig.CSProjectElements?.Clear();
 
                 //if (UseSettingsPage && UseThemeSettingPage)
                 //{
