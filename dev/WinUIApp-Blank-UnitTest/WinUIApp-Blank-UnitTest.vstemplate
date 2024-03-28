@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-	<Name>WinUI 3 Blank - UnitTest</Name>
-	<Description>Creates a new Blank WinUI 3 Unit Test App without WinUICommunity Packages and Configs using MSTest</Description>
+	<Name>WinUI 3 MSTest - (Unit Test)</Name>
+	<Description>Creates a new Blank WinUI 3 App that contains MSTest unit test without WinUICommunity Packages and Configs</Description>
     <Icon>WinUIApp.ico</Icon>
     <TemplateID>WinUIApp-Blank-UnitTest-{AD16C803-9A57-46D9-A2D0-0338C16CE455}</TemplateID>
     <TemplateGroupID>WinRT-Managed</TemplateGroupID>
@@ -23,7 +23,7 @@
     <ProjectTypeTag>desktop</ProjectTypeTag>
     <ProjectTypeTag>WinUI</ProjectTypeTag>
 	<ProjectTypeTag>WinUICommunity</ProjectTypeTag>
-  <ProjectTypeTag>Test</ProjectTypeTag>
+    <ProjectTypeTag>Test</ProjectTypeTag>
   </TemplateData>
   <TemplateContent PreferedSolutionConfiguration="Debug|x86">
     <Project File="ProjectTemplate.csproj" ReplaceParameters="true">

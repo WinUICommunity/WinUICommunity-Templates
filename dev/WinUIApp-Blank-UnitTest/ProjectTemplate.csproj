@@ -32,8 +32,8 @@
   <ItemGroup>
 	<PackageReference Include="Microsoft.WindowsAppSDK" Version="$WASDKVersion$" />
 	<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />
-	<PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
-	<PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
+	<PackageReference Include="MSTest.TestAdapter" Version="3.2.2" />
+	<PackageReference Include="MSTest.TestFramework" Version="3.2.2" />
 	<PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.7.2">
       <ExcludeAssets>build</ExcludeAssets>
 	</PackageReference>$ExtraLibs$

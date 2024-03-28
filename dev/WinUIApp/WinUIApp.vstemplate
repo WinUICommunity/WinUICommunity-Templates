@@ -2,7 +2,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
 	<Name>WinUI 3 App</Name>
-	<Description>Creates a new Blank WinUI 3 App with WinUICommunity Packages and Custom TitleBar</Description>
+	<Description>Creates a new WinUI 3 App with WinUICommunity Packages and Custom TitleBar</Description>
     <Icon>WinUIApp.ico</Icon>
     <TemplateID>WinUIApp-{AF97DF11-A759-4AB1-AA13-0C96274A6522}</TemplateID>
     <TemplateGroupID>WinRT-Managed</TemplateGroupID>
