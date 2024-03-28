@@ -2,6 +2,17 @@
 {
     public static class PredefinedCodes
     {
+        public static string Windows11ContextMenuInitializer =
+"""
+ContextMenuItem menu = new ContextMenuItem
+{
+    Title = "Open $projectname$ Here",
+    AcceptDirectory = true,
+    Exe = "$projectname$.exe",
+    Param = "{path}"
+};
+await ContextMenuService.Ins.SaveAsync(menu);
+""";
         public static string LocalizerInitializeCode =
 """
 public static async Task InitializeLocalizer(params string[] languages)
@@ -39,7 +50,7 @@ public static async Task InitializeLocalizer(params string[] languages)
 }
 """;
         public static string LocalizerItemGroupCode =
- """
+"""
 <ItemGroup>
   <Content Include="Strings\**\*.resw">
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -52,7 +63,7 @@ public static async Task InitializeLocalizer(params string[] languages)
 await DynamicLocalizerHelper.InitializeLocalizer("en-US");
 """;
     
-    public static readonly string SettingsCardCommentCode =
+        public static readonly string SettingsCardCommentCode =
 """
 <!-- <wuc:SettingsCard x:Name="MySetting"
                               Click="OnSettingCard_Click"

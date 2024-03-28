@@ -14,7 +14,7 @@ public partial class App : Application
         JsonNavigationViewService = new JsonNavigationViewService();$Configs$
     }
 
-    protected $LocalizerAsyncKeyword$override void OnLaunched(LaunchActivatedEventArgs args)
+    protected $OnLaunchedAsyncKeyword$override void OnLaunched(LaunchActivatedEventArgs args)
     {
         CurrentWindow = new Window();
 
@@ -36,7 +36,7 @@ public partial class App : Application
         CurrentWindow.Title = CurrentWindow.AppWindow.Title = $"{AppName} v{AppVersion}";
         CurrentWindow.AppWindow.SetIcon("Assets/icon.ico");$ConfigLogger$
 
-        CurrentWindow.Activate();$LocalizerActivate$$UnhandeledException$
+        CurrentWindow.Activate();$Windows11ContextMenuInitializer$$LocalizerActivate$$UnhandeledException$
     }
 }
 

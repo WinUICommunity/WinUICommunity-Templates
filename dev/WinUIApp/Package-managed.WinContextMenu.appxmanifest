@@ -9,13 +9,13 @@
   xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
   xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
   xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
-  xmlns:desktop5="http://schemas.microsoft.com/appx/manifest/desktop/windows10/5"$AppxManifestDesktop6=""
+  xmlns:desktop5="http://schemas.microsoft.com/appx/manifest/desktop/windows10/5"$AppxManifestDesktop6$
   IgnorableNamespaces="uap rescap">
 
 	<Identity
 	  Name="$guid9$"
 	  Publisher="$XmlEscapedPublisherDistinguishedName$"
-	  Version="1.0.0.0" />
+	  Version="1.0.0.0"/>
 
 	<mp:PhoneIdentity PhoneProductId="$guid9$" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -26,8 +26,8 @@
 	</Properties>
 
 	<Dependencies>
-		<TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.$MinimumTargetPlatform$.0" MaxVersionTested="10.0.19041.0" />
-		<TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.$MinimumTargetPlatform$.0" MaxVersionTested="10.0.19041.0" />
+		<TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.$MinimumTargetPlatform$.0" MaxVersionTested="10.0.19041.0"/>
+		<TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.$MinimumTargetPlatform$.0" MaxVersionTested="10.0.19041.0"/>
 	</Dependencies>
 
 	<Resources>
@@ -44,20 +44,20 @@
 			  BackgroundColor="transparent"
 			  Square150x150Logo="Assets\Store\Square150x150Logo.png"
 			  Square44x44Logo="Assets\Store\Square44x44Logo.png">
-				<uap:DefaultTile Wide310x150Logo="Assets\Store\Wide310x150Logo.png" />
-				<uap:SplashScreen Image="Assets\Store\SplashScreen.png" />
+				<uap:DefaultTile Wide310x150Logo="Assets\Store\Wide310x150Logo.png"/>
+				<uap:SplashScreen Image="Assets\Store\SplashScreen.png"/>
 			</uap:VisualElements>
 			<Extensions>
 				<desktop4:Extension Category="windows.fileExplorerContextMenus">
 					<desktop4:FileExplorerContextMenus>
 						<desktop5:ItemType Type="Directory">
-							<desktop5:Verb Id="CustomMenu" Clsid="$CLSID$" />
+							<desktop5:Verb Id="CustomMenu" Clsid="$CLSID$"/>
 						</desktop5:ItemType>
-						<desktop5:ItemType Type="*"  >
-							<desktop5:Verb Id="CustomMenu" Clsid="$CLSID$" />
+						<desktop5:ItemType Type="*">
+							<desktop5:Verb Id="CustomMenu" Clsid="$CLSID$"/>
 						</desktop5:ItemType>
 						<desktop5:ItemType Type="Directory\Background">
-							<desktop5:Verb Id="CustomMenu" Clsid="$CLSID$" />
+							<desktop5:Verb Id="CustomMenu" Clsid="$CLSID$"/>
 						</desktop5:ItemType>
 					</desktop4:FileExplorerContextMenus>
 				</desktop4:Extension>
@@ -70,7 +70,7 @@
 				</com:Extension>
 				<uap3:Extension Category="windows.appExecutionAlias">
 					<uap3:AppExecutionAlias>
-						<desktop:ExecutionAlias Alias="App5.exe"/>
+						<desktop:ExecutionAlias Alias="$projectname$.exe"/>
 					</uap3:AppExecutionAlias>
 				</uap3:Extension>
 			</Extensions>
@@ -78,6 +78,6 @@
 	</Applications>
 
 	<Capabilities>
-		<rescap:Capability Name="runFullTrust" />$UnvirtualizedResourcesCapability$
+		<rescap:Capability Name="runFullTrust"/>$UnvirtualizedResourcesCapability$
 	</Capabilities>
 </Package>

@@ -263,11 +263,15 @@ namespace WinUICommunity_VS_Templates
                 {
                     WizardConfig.UseWindow11ContextMenu = true;
                     replacementsDictionary.Add("$CLSID$", WizardConfig.CLSID.PickRandom());
+                    var windows11ContextMenu = PredefinedCodes.Windows11ContextMenuInitializer;
+                    windows11ContextMenu = windows11ContextMenu.Replace("$projectname$", ProjectName);
+                    replacementsDictionary.Add("$Windows11ContextMenuInitializer$", Environment.NewLine + windows11ContextMenu);
                 }
                 else
                 {
                     WizardConfig.UseWindow11ContextMenu = false;
                     replacementsDictionary.Add("$CLSID$", "");
+                    replacementsDictionary.Add("$Windows11ContextMenuInitializer$", "");
                 }
 
                 #endregion
@@ -398,19 +402,26 @@ namespace WinUICommunity_VS_Templates
                 #region Dynamic Localization
                 if (WizardConfig.UseDynamicLocalization)
                 {
-                    replacementsDictionary.Add("$LocalizerAsyncKeyword$", "async ");
                     replacementsDictionary.Add("$LocalizerActivate$", Environment.NewLine + PredefinedCodes.LocalizerActivateCode);
                     replacementsDictionary.Add("$LocalizerItemGroup$", Environment.NewLine + Environment.NewLine + PredefinedCodes.LocalizerItemGroupCode);
                     replacementsDictionary.Add("$Localizer$", PredefinedCodes.LocalizerInitializeCode);
                 }
                 else
                 {
-                    replacementsDictionary.Add("$LocalizerAsyncKeyword$", "");
                     replacementsDictionary.Add("$LocalizerActivate$", "");
                     replacementsDictionary.Add("$LocalizerItemGroup$", "");
                     replacementsDictionary.Add("$Localizer$", "");
                 }
                 #endregion
+
+                if (WizardConfig.UseDynamicLocalization || WizardConfig.UseWindow11ContextMenu)
+                {
+                    replacementsDictionary.Add("$OnLaunchedAsyncKeyword$", "async ");
+                }
+                else
+                {
+                    replacementsDictionary.Add("$OnLaunchedAsyncKeyword$", "");
+                }
 
                 new GlobalUsingOption(replacementsDictionary, SafeProjectName, UseFileLogger, UseDebugLogger);
 

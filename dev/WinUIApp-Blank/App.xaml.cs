@@ -9,7 +9,7 @@ public partial class App : Application
         this.InitializeComponent();
     }
 
-    protected async override void OnLaunched(LaunchActivatedEventArgs args)
+    protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
         CurrentWindow = new Window();
 
