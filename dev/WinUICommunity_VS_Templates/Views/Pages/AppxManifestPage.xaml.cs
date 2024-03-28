@@ -34,7 +34,7 @@ namespace WinUICommunity_VS_Templates
                 }
                 else
                 {
-                    WizardConfig.UnvirtualizedResources.AddIfNotExists(keyValue, $"<{keyValue}>disabled</{keyValue}>");
+                    WizardConfig.UnvirtualizedResources.AddIfNotExists(keyValue, $"    <{keyValue}>disabled</{keyValue}>");
                     WizardConfig.MinimumTargetPlatform = "18362";
                 }
             }

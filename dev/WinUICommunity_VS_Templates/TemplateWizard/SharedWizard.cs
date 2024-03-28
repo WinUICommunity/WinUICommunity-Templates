@@ -186,7 +186,7 @@ namespace WinUICommunity_VS_Templates
                     }
 
                     replacementsDictionary.Add("$UnvirtualizedResourcesCapability$", Environment.NewLine + "    <rescap:Capability Name=\"unvirtualizedResources\" />");
-                    replacementsDictionary.Add("$UnvirtualizedResources$", Environment.NewLine + $"    {sb.ToString().Trim()}");
+                    replacementsDictionary.Add("$UnvirtualizedResources$", Environment.NewLine + $"{sb.ToString().Trim()}");
                     replacementsDictionary.Add("$AppxManifestDesktop6$", Environment.NewLine + "  xmlns:desktop6=\"http://schemas.microsoft.com/appx/manifest/desktop/windows10/6\"");
                 }
                 else
