@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>$DotNetVersion$-windows10.0.$TargetFrameworkVersion$.0</TargetFramework>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.$MinimumTargetPlatform$.0</TargetPlatformMinVersion>
     <RootNamespace>$safeprojectname$</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>$Platforms$</Platforms>

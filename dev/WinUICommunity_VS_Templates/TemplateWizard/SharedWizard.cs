@@ -140,6 +140,7 @@ namespace WinUICommunity_VS_Templates
 
                 replacementsDictionary.Add("$DotNetVersion$", WizardConfig.DotNetVersion.ToString());
                 replacementsDictionary.Add("$TargetFrameworkVersion$", WizardConfig.TargetFrameworkVersion.ToString());
+                replacementsDictionary.Add("$MinimumTargetPlatform$", WizardConfig.MinimumTargetPlatform.ToString());
                 replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());
                 replacementsDictionary.Add("$RuntimeIdentifiers$", WizardConfig.RuntimeIdentifiers.ToString());
 
@@ -162,7 +163,7 @@ namespace WinUICommunity_VS_Templates
 
                     foreach (var entity in WizardConfig.CSProjectElements)
                     {
-                        sb.AppendLine($"    {entity.Value}");
+                        sb.AppendLine($"{entity.Value}");
                     }
 
                     replacementsDictionary.Add("$CustomCSProjectElement$", Environment.NewLine + $"{sb.ToString().Trim()}");
@@ -172,6 +173,28 @@ namespace WinUICommunity_VS_Templates
                     replacementsDictionary.Add("$CustomCSProjectElement$", "");
                 }
 
+                #endregion
+
+                #region AppxManifest
+                if (WizardConfig.UnvirtualizedResources != null && WizardConfig.UnvirtualizedResources.Count > 0)
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    foreach (var entity in WizardConfig.UnvirtualizedResources)
+                    {
+                        sb.AppendLine($"{entity.Value}");
+                    }
+
+                    replacementsDictionary.Add("$UnvirtualizedResourcesCapability$", Environment.NewLine + "    <rescap:Capability Name=\"unvirtualizedResources\" />");
+                    replacementsDictionary.Add("$UnvirtualizedResources$", Environment.NewLine + $"    {sb.ToString().Trim()}");
+                    replacementsDictionary.Add("$AppxManifestDesktop6$", Environment.NewLine + "  xmlns:desktop6=\"http://schemas.microsoft.com/appx/manifest/desktop/windows10/6\"");
+                }
+                else
+                {
+                    replacementsDictionary.Add("$UnvirtualizedResourcesCapability$", "");
+                    replacementsDictionary.Add("$UnvirtualizedResources$", "");
+                    replacementsDictionary.Add("$AppxManifestDesktop6$", "");
+                }
                 #endregion
 
                 #region Extra Libs

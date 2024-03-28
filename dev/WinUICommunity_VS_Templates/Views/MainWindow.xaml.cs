@@ -13,6 +13,7 @@ namespace WinUICommunity_VS_Templates
         PagesPages pagesType;
         ResourcePage resourceType;
         CSProjectPage cSProjectType;
+        AppxManifestPage appxManifestPage;
         FilePage filePage;
         public MainWindow()
         {
@@ -129,6 +130,13 @@ namespace WinUICommunity_VS_Templates
                             cSProjectType = new CSProjectPage();
                         }
                         frame.Navigate(cSProjectType);
+                        break;
+                    case "AppxManifestPage":
+                        if (appxManifestPage == null)
+                        {
+                            appxManifestPage = new AppxManifestPage();
+                        }
+                        frame.Navigate(appxManifestPage);
                         break;
                     case "FilePage":
                         if (filePage == null)

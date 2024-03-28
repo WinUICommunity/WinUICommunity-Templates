@@ -173,6 +173,11 @@
                         <ui:SymbolIcon Symbol="Tag" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
+                <ui:NavigationViewItem Content="AppxManifest" Tag="AppxManifestPage">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:SymbolIcon Symbol="Permissions" />
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
                 <ui:NavigationViewItem Content="Resource Dictionary" Tag="ResourcePage">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="List" />

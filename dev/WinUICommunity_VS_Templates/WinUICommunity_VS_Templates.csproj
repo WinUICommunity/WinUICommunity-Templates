@@ -71,6 +71,9 @@
     <Compile Include="TemplateWizard\WinUIAppMVVMWizard.cs" />
     <Compile Include="TemplateWizard\WinUIAppNavigationWizard.cs" />
     <Compile Include="TemplateWizard\WinUIAppWizard.cs" />
+    <Compile Include="Views\Pages\AppxManifestPage.xaml.cs">
+      <DependentUpon>AppxManifestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\CSProjectPage.xaml.cs">
       <DependentUpon>CSProjectPage.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,7 @@
     <Reference Include="System" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="iNKORE.UI.WPF.Modern">
@@ -196,6 +200,10 @@
     <Page Include="Styles\ThemeResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\AppxManifestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\CSProjectPage.xaml">
       <Generator>MSBuild:Compile</Generator>
