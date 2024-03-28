@@ -11,14 +11,26 @@ namespace WinUICommunity_VS_Templates.Options
         //{
         //    return Path.Combine(templatePath, "Views", "Settings", "GeneralSettingPage.xaml");
         //}
-        public static async void FormatDocument(DTE dte, string filePath, ProjectItem projectItem = null)
+
+        public static async void FormatDocument(DTE dte, ProjectItem item)
         {
             try
             {
-                if (File.Exists(filePath))
+                if (item == null || dte == null)
                 {
-                    await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                    return;
+                }
 
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
+                var filePath = item.Properties?.Item("FullPath")?.Value?.ToString();
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    filePath = item.FileNames[1];
+                }
+
+                if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
+                {
                     dte.ItemOperations.OpenFile(filePath);
                     Document activeDoc = dte.ActiveDocument;
 
@@ -32,7 +44,7 @@ namespace WinUICommunity_VS_Templates.Options
             }
             catch (System.Exception)
             {
-                var window = projectItem.Open();
+                var window = item.Open();
                 TextDocument textDocument = window.Document.Object() as TextDocument;
                 textDocument.Selection.SelectAll();
                 textDocument.Selection.SmartFormat();

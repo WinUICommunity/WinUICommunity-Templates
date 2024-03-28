@@ -51,10 +51,11 @@ namespace WinUICommunity_VS_Templates
             var appXamlCS = _solution.FindProjectItem("App.xaml.cs");
             var settingsPageXaml = _solution.FindProjectItem("SettingsPage.xaml");
             var generalSettingsPageXaml = _solution.FindProjectItem("GeneralSettingPage.xaml");
-            VSDocumentHelper.FormatDocument(_dte, appXaml.FileNames[1]);
-            VSDocumentHelper.FormatDocument(_dte, appXamlCS.FileNames[1]);
-            VSDocumentHelper.FormatDocument(_dte, settingsPageXaml.FileNames[1], settingsPageXaml);
-            VSDocumentHelper.FormatDocument(_dte, generalSettingsPageXaml.FileNames[1], generalSettingsPageXaml);
+
+            VSDocumentHelper.FormatDocument(_dte, appXaml);
+            VSDocumentHelper.FormatDocument(_dte, appXamlCS);
+            VSDocumentHelper.FormatDocument(_dte, settingsPageXaml);
+            VSDocumentHelper.FormatDocument(_dte, generalSettingsPageXaml);
 
             foreach (Document doc in _dte.Documents)
             {
