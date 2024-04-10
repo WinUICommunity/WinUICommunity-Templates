@@ -54,6 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Common\Extensions\EnumerableExtension.cs" />
+    <Compile Include="Common\NugetClientHelper.cs" />
     <Compile Include="Common\Options\ConfigCodes.cs" />
     <Compile Include="Common\Extensions\DictionaryExtension.cs" />
     <Compile Include="Common\PreDefinedLibrary.cs" />
@@ -139,6 +140,9 @@
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="17.5.33428.366" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.9.3174" />
+    <PackageReference Include="NuGet.Protocol">
+      <Version>6.9.1</Version>
+    </PackageReference>
     <PackageReference Include="NuGet.VisualStudio" Version="17.6.1" GeneratePathProperty="true" />
   </ItemGroup>
   <ItemGroup>

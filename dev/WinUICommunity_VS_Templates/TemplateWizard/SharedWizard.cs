@@ -599,7 +599,7 @@ namespace WinUICommunity_VS_Templates
             }
             return null;
         }
-        private Task InstallNuGetPackageAsync()
+        private async Task<Task> InstallNuGetPackageAsync()
         {
             if (_packageId.Count == 0)
             {
@@ -608,13 +608,31 @@ namespace WinUICommunity_VS_Templates
                 LogError(message);
                 return Task.CompletedTask;
             }
-            IVsPackageInstaller installer = _componentModel.GetService<IVsPackageInstaller>();
+
+            IVsPackageInstaller2 installer2 = _componentModel.GetService<IVsPackageInstaller2>();
 
             foreach (var item in _packageId)
             {
                 try
                 {
-                    installer.InstallPackage(null, _project, item, "", false);
+                    if (NugetClientHelper.IsInternetAvailable()) 
+                    {
+                        var packageMeta = await NugetClientHelper.GetPackageMetaDataAsync(item);
+                        var isCacheAvailable = NugetClientHelper.IsCacheAvailableForSpecifiedVersion(item, packageMeta.Identity.Version.ToString());
+
+                        if (isCacheAvailable)
+                        {
+                            installer2.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, item, false, false);
+                        }
+                        else
+                        {
+                            installer2.InstallLatestPackage(null, _project, item, false, false);
+                        }
+                    }
+                    else
+                    {
+                        installer2.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, item, false, false);
+                    }
                 }
                 catch (Exception ex)
                 {
