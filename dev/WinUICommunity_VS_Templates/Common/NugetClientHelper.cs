@@ -4,9 +4,7 @@ using NuGet.Packaging.Core;
 using NuGet.Protocol;
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -42,35 +40,11 @@ namespace WinUICommunity_VS_Templates
 
             return results?.FirstOrDefault();
         }
-        public static bool IsCacheAvailableForSpecifiedVersion(string packageId, string packageVersion)
+        public static bool IsCacheAvailableForPackage(string packageId, string packageVersion)
         {
             NuGetVersion version = new NuGetVersion(packageVersion);
             var package = GlobalPackagesFolderUtility.GetPackage(new PackageIdentity(packageId, version), globalPackagesFolder);
-            if (package != null)
-            {
-                return true;
-            }
-
-            return false;
-        }
-        public static string? GetLocalNugetPackageLatestVersion(string packageId)
-        {
-            var packageFolderPath = System.IO.Path.Combine(globalPackagesFolder, packageId.ToLowerInvariant());
-
-            if (Directory.Exists(packageFolderPath))
-            {
-                DirectoryInfo directoryInfo = new DirectoryInfo(packageFolderPath);
-
-                DirectoryInfo[] packageFolders = directoryInfo.GetDirectories();
-                var latestVersion = packageFolders.Where(x => !x.Name.Contains("-"))
-                    .Select(x => x.Name).Max();
-
-                return latestVersion;
-            }
-            else
-            {
-                return null;
-            }
+            return package != null;
         }
     }
 }

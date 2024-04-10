@@ -618,7 +618,7 @@ namespace WinUICommunity_VS_Templates
                     if (NugetClientHelper.IsInternetAvailable()) 
                     {
                         var packageMeta = await NugetClientHelper.GetPackageMetaDataAsync(item);
-                        var isCacheAvailable = NugetClientHelper.IsCacheAvailableForSpecifiedVersion(item, packageMeta.Identity.Version.ToString());
+                        var isCacheAvailable = NugetClientHelper.IsCacheAvailableForPackage(item, packageMeta.Identity.Version.ToString());
 
                         if (isCacheAvailable)
                         {
