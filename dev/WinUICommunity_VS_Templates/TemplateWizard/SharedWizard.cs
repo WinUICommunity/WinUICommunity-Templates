@@ -142,6 +142,7 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$TargetFrameworkVersion$", WizardConfig.TargetFrameworkVersion.ToString());
                 replacementsDictionary.Add("$MinimumTargetPlatform$", WizardConfig.MinimumTargetPlatform.ToString());
                 replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());
+                replacementsDictionary.Add("$RuntimeIdentifiers10$", WizardConfig.RuntimeIdentifiers10.ToString());
                 replacementsDictionary.Add("$RuntimeIdentifiers$", WizardConfig.RuntimeIdentifiers.ToString());
 
                 replacementsDictionary.Add("$AddJsonSettings$", WizardConfig.UseJsonSettings.ToString());
