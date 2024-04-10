@@ -31,14 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="$WASDKVersion$" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />
-    <PackageReference Include="WinUICommunity.Components" Version="$WinUICommunityComponentsVersion$" />
-    <PackageReference Include="WinUICommunity.Core" Version="$WinUICommunityCoreVersion$" />
-    <PackageReference Include="WinUICommunity.LandingPages" Version="$WinUICommunityLandingPagesVersion$" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="$CommunityToolkitMvvmVersion$" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="$DependencyInjectionVersion$" />
-    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="$WinUIManagedVersion$" />$ExtraLibs$
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />$ExtraLibs$
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 

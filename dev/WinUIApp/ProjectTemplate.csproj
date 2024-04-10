@@ -27,11 +27,7 @@
   </ItemGroup>$LocalizerItemGroup$
   
   <ItemGroup>
-	<PackageReference Include="Microsoft.WindowsAppSDK" Version="$WASDKVersion$" />
-	<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />
-	<PackageReference Include="WinUICommunity.Components" Version="$WinUICommunityComponentsVersion$" />
-	<PackageReference Include="WinUICommunity.Core" Version="$WinUICommunityCoreVersion$" />
-	<PackageReference Include="WinUICommunity.LandingPages" Version="$WinUICommunityLandingPagesVersion$" />$ExtraLibs$
+	<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />$ExtraLibs$
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 

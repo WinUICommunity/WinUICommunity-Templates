@@ -45,8 +45,6 @@ namespace WinUICommunity_VS_Templates
             //var templatePath = Directory.GetParent(project.FullName).FullName;
             //new AppUpdateOption(isMVVMTemplate, templatePath);
 
-            VSDocumentHelper.FormatXmlBasedFile(project.FullName);
-
             var appXaml = _solution.FindProjectItem("App.xaml");
             var appXamlCS = _solution.FindProjectItem("App.xaml.cs");
             var settingsPageXaml = _solution.FindProjectItem("SettingsPage.xaml");
@@ -62,10 +60,10 @@ namespace WinUICommunity_VS_Templates
                 doc.Close();
             }
 
-            if (WizardConfig.UseReBuildSolution)
-            {
-                _dte.ExecuteCommand("Build.RebuildSolution");
-            }
+            //if (WizardConfig.UseReBuildSolution)
+            //{
+            //    _dte.ExecuteCommand("Build.RebuildSolution");
+            //}
         }
 
         /// <summary>
@@ -105,38 +103,17 @@ namespace WinUICommunity_VS_Templates
 
                 _shouldAddProjectItem = true;
                 
-                string wasdkVersion = "1.5.240311000";
                 string wasdkBuildToolsVersion = "10.0.22621.3233";
-                string winUICommunityComponentsVersion = "6.6.0";
-                string winUICommunityCoreVersion = "6.6.0";
-                string winUICommunityLandingPagesVersion = "6.6.0";
-                string communityToolkitMvvmVersion = "8.2.2";
-                string dependencyInjectionVersion = "8.0.0";
-                string winUIManagedVersion = "2.0.9";
 
                 AddEditorConfigFile();
 
                 if (WizardConfig.UseAlwaysLatestVersion)
                 {
-                    wasdkVersion = "*";
                     wasdkBuildToolsVersion = "*";
-                    winUICommunityComponentsVersion = "*";
-                    winUICommunityCoreVersion = "*";
-                    winUICommunityLandingPagesVersion = "*";
-                    communityToolkitMvvmVersion = "*";
-                    dependencyInjectionVersion = "*";
-                    winUIManagedVersion = "*";
                 }
 
                 // Add Base Library Versions
-                replacementsDictionary.Add("$WASDKVersion$", wasdkVersion);
                 replacementsDictionary.Add("$WASDKBuildToolsVersion$", wasdkBuildToolsVersion);
-                replacementsDictionary.Add("$WinUICommunityComponentsVersion$", winUICommunityComponentsVersion);
-                replacementsDictionary.Add("$WinUICommunityCoreVersion$", winUICommunityCoreVersion);
-                replacementsDictionary.Add("$WinUICommunityLandingPagesVersion$", winUICommunityLandingPagesVersion);
-                replacementsDictionary.Add("$CommunityToolkitMvvmVersion$", communityToolkitMvvmVersion);
-                replacementsDictionary.Add("$DependencyInjectionVersion$", dependencyInjectionVersion);
-                replacementsDictionary.Add("$WinUIManagedVersion$", winUIManagedVersion);
 
                 replacementsDictionary.Add("$DotNetVersion$", WizardConfig.DotNetVersion.ToString());
                 replacementsDictionary.Add("$TargetFrameworkVersion$", WizardConfig.TargetFrameworkVersion.ToString());

@@ -66,6 +66,7 @@
     <Compile Include="Common\VSDocumentHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Styles\CardControl\CardControl.cs" />
+    <Compile Include="TemplateWizard\NuGetPackageInstaller.cs" />
     <Compile Include="TemplateWizard\WinUIAppBlankUnitTestWizard.cs" />
     <Compile Include="TemplateWizard\WinUIAppBlankWizard.cs" />
     <Compile Include="TemplateWizard\WinUIAppMVVMNavigationWizard.cs" />
@@ -124,12 +125,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.TemplateWizardInterface, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -137,7 +138,16 @@
       <Version>0.9.26.3</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="17.5.33428.366" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.9.3174" />
+    <PackageReference Include="NuGet.VisualStudio" Version="17.6.1" GeneratePathProperty="true" />
+  </ItemGroup>
+  <ItemGroup>
+    <ExtensionDependencies Include="$(PkgNuget_VisualStudio)\**\NuGet.VisualStudio.dll" />
+    <Content Include="@(ExtensionDependencies)">
+      <VSIXSubPath>.</VSIXSubPath>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WinUIApp-Blank-UnitTest\WinUIApp-Blank-UnitTest.csproj">
