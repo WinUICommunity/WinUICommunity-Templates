@@ -23,7 +23,6 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static bool UseXamlStylerFile;
 
         public static bool UseEditorConfigFile = true;
-        public static bool UseReBuildSolution = true;
         public static bool UseJsonSettings = true;
         public static bool UseSolutionFolder = true;
 

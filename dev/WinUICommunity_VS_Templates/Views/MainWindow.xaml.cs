@@ -158,10 +158,5 @@ namespace WinUICommunity_VS_Templates
         {
             WizardConfig.IsUnPackagedMode = tgUnPackaged.IsOn;
         }
-
-        private void tgRebuildSolution_Toggled(object sender, RoutedEventArgs e)
-        {
-            WizardConfig.UseReBuildSolution = tgRebuildSolution.IsOn;
-        }
     }
 }

@@ -141,10 +141,6 @@
 	<Assembly>WinUICommunity_VS_Templates, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=edaf1469a7184ea2</Assembly>
 	<FullClassName>WinUICommunity_VS_Templates.WinUIAppMVVMNavigationWizard</FullClassName>
   </WizardExtension>
-  <WizardExtension>
-	<Assembly>WinUICommunity_VS_Templates, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=edaf1469a7184ea2</Assembly>
-	<FullClassName>WinUICommunity_VS_Templates.NuGetPackageInstaller</FullClassName>
-  </WizardExtension>
   <WizardData>
 	<packages>
 	  <package id="Microsoft.WindowsAppSDK" />
