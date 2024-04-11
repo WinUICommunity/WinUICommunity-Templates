@@ -77,17 +77,17 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
-                new Library("Microsoft.EntityFrameworkCore", "8.0.3"),
-                new Library("Microsoft.EntityFrameworkCore.Sqlite", "8.0.3"),
-                new Library("Microsoft.EntityFrameworkCore.SqlServer", "8.0.3"),
-                new Library("Microsoft.EntityFrameworkCore.Cosmos", "8.0.3"),
-                new Library("Microsoft.EntityFrameworkCore.InMemory", "8.0.3"),
-                new Library("Microsoft.EntityFrameworkCore.Relational", "8.0.3"),
-                new Library("Microsoft.EntityFrameworkCore.Abstractions", "8.0.3"),
-                new Library("Microsoft.EntityFrameworkCore.Analyzers", "8.0.3"),
-                new Library("Microsoft.EntityFrameworkCore.Design", "8.0.3"),
-                new Library("Microsoft.EntityFrameworkCore.Proxies", "8.0.3"),
-                new Library("Microsoft.EntityFrameworkCore.Tools", "8.0.3")
+                new Library("Microsoft.EntityFrameworkCore", "8.0.4"),
+                new Library("Microsoft.EntityFrameworkCore.Sqlite", "8.0.4"),
+                new Library("Microsoft.EntityFrameworkCore.SqlServer", "8.0.4"),
+                new Library("Microsoft.EntityFrameworkCore.Cosmos", "8.0.4"),
+                new Library("Microsoft.EntityFrameworkCore.InMemory", "8.0.4"),
+                new Library("Microsoft.EntityFrameworkCore.Relational", "8.0.4"),
+                new Library("Microsoft.EntityFrameworkCore.Abstractions", "8.0.4"),
+                new Library("Microsoft.EntityFrameworkCore.Analyzers", "8.0.4"),
+                new Library("Microsoft.EntityFrameworkCore.Design", "8.0.4"),
+                new Library("Microsoft.EntityFrameworkCore.Proxies", "8.0.4"),
+                new Library("Microsoft.EntityFrameworkCore.Tools", "8.0.4")
             };
             return list;
         }
@@ -96,6 +96,7 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
+                new Library("WinUI.TableView", "1.0.0-preview4", false, true),
                 new Library("Microsoft.Windows.CsWinRT", "2.0.7"),
                 new Library("Microsoft.Windows.CsWin32", "0.3.49-beta", false, true),
                 new Library("WinUIEx", "2.3.4"),
@@ -106,11 +107,11 @@ namespace WinUICommunity_VS_Templates
                 new Library("Downloader", "3.0.6"),
                 new Library("Microsoft.Win32.Registry", "5.0.0"),
                 new Library("YamlDotNet", "15.1.2"),
-                new Library("System.Drawing.Common", "8.0.3"),
+                new Library("System.Drawing.Common", "8.0.4"),
                 new Library("System.Management", "8.0.0"),
                 new Library("SharpCompress", "0.36.0"),
                 new Library("RestSharp", "110.2.0"),
-                new Library("Vanara.Windows.Shell", "3.4.17"),
+                new Library("Vanara.Windows.Shell", "4.0.0"),
                 new Library("protobuf-net", "3.2.30"),
                 new Library("protobuf-net.Core", "3.2.30"),
                 new Library("Humanizer.Core", "2.14.1"),
@@ -140,7 +141,7 @@ namespace WinUICommunity_VS_Templates
                 new Library("Serilog.Sinks.File", "5.0.0"),
                 new Library("Serilog.Sinks.Debug", "2.0.0"),
                 new Library("Serilog.Sinks.Console", "5.0.1"),
-                new Library("log4net", "2.0.15"),
+                new Library("log4net", "2.0.17"),
                 new Library("NLog", "5.2.8")
             };
             return list;
