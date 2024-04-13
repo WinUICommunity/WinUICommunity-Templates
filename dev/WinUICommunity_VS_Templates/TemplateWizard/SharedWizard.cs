@@ -132,7 +132,7 @@ namespace WinUICommunity_VS_Templates
 
                 _shouldAddProjectItem = true;
                 
-                string wasdkBuildToolsVersion = "10.0.22621.3233";
+                string wasdkBuildToolsVersion = Constants.WASDK_BuildTools_Version;
 
                 AddEditorConfigFile();
 
@@ -234,19 +234,19 @@ namespace WinUICommunity_VS_Templates
                 #region Blank
                 if (isBlank)
                 {
-                    if (libs != null && libs.ContainsKey("WinUICommunity.Components"))
+                    if (libs != null && libs.ContainsKey(Constants.WinUICommunity_Components))
                     {
-                        replacementsDictionary.Add("$WinUICommunity.Components$", Environment.NewLine + "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.Components/Themes/Generic.xaml\" />");
+                        replacementsDictionary.Add("$WinUICommunity.Components$", Environment.NewLine + Constants.WinUICommunity_Components_Xaml);
                     }
                     else
                     {
                         replacementsDictionary.Add("$WinUICommunity.Components$", "");
                     }
                     
-                    if (libs != null && libs.ContainsKey("WinUICommunity.LandingPages"))
+                    if (libs != null && libs.ContainsKey(Constants.WinUICommunity_LandingPages))
                     {
-                        replacementsDictionary.Add("$WinUICommunity.LandingPages$", Environment.NewLine + "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml\" />");
-                        replacementsDictionary.Add("$WinUICommunity.LandingPagesItemTemplate$", Environment.NewLine + "<ItemTemplates xmlns=\"using:WinUICommunity\"/>");
+                        replacementsDictionary.Add("$WinUICommunity.LandingPages$", Environment.NewLine + Constants.WinUICommunity_LandingPages_Xaml);
+                        replacementsDictionary.Add("$WinUICommunity.LandingPagesItemTemplate$", Environment.NewLine + Constants.WinUICommunity_LandingPagesItemTemplates_Xaml);
                     }
                     else
                     {
@@ -257,16 +257,16 @@ namespace WinUICommunity_VS_Templates
 
                 #endregion
 
-                if (libs != null && libs.ContainsKey("WinUICommunity.Win2D"))
+                if (libs != null && libs.ContainsKey(Constants.WinUICommunity_Win2D))
                 {
-                    replacementsDictionary.Add("$WinUICommunity.Win2D$", Environment.NewLine + "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.Win2D/Themes/Generic.xaml\" />");
+                    replacementsDictionary.Add("$WinUICommunity.Win2D$", Environment.NewLine + Constants.WinUICommunity_Win2D_Xaml);
                 }
                 else
                 {
                     replacementsDictionary.Add("$WinUICommunity.Win2D$", "");
                 }
 
-                if (libs != null && libs.ContainsKey("WinUICommunity.ContextMenuExtensions"))
+                if (libs != null && libs.ContainsKey(Constants.WinUICommunity_ContextMenuExtensions))
                 {
                     WizardConfig.UseWindow11ContextMenu = true;
                     replacementsDictionary.Add("$CLSID$", WizardConfig.CLSID.PickRandom());

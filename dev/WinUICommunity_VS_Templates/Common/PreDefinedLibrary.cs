@@ -96,6 +96,7 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
+                new Library("TenMica", "1.0.0-beta", false, true),
                 new Library("WinUI.TableView", "1.0.0-preview4", false, true),
                 new Library("Microsoft.Windows.CsWinRT", "2.0.7"),
                 new Library("Microsoft.Windows.CsWin32", "0.3.49-beta", false, true),
@@ -124,11 +125,11 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
-                new Library("WinUICommunity.Win2D", "6.6.0"),
-                new Library("WinUICommunity.Core", "6.6.0"),
-                new Library("WinUICommunity.Components", "6.6.0"),
-                new Library("WinUICommunity.LandingPages", "6.6.0"),
-                new Library("WinUICommunity.ContextMenuExtensions", "6.6.0")
+                new Library(Constants.WinUICommunity_Win2D, "6.7.0"),
+                new Library(Constants.WinUICommunity_Core, "6.7.0"),
+                new Library(Constants.WinUICommunity_Components, "6.7.0"),
+                new Library(Constants.WinUICommunity_LandingPages, "6.7.0"),
+                new Library(Constants.WinUICommunity_ContextMenuExtensions, "6.7.0")
             };
             return list;
         }
