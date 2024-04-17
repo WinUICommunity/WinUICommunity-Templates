@@ -1,10 +1,6 @@
 ﻿using EnvDTE;
 using Microsoft.VisualStudio.TemplateWizard;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WinUICommunity_VS_Templates.WizardUI;
 
 namespace WinUICommunity_VS_Templates
@@ -19,6 +15,7 @@ namespace WinUICommunity_VS_Templates
 
         public void ProjectFinishedGenerating(Project project)
         {
+            WizardImplementation.ProjectFinishedGenerating(project);
         }
 
         public void ProjectItemFinishedGenerating(ProjectItem projectItem)
@@ -27,7 +24,6 @@ namespace WinUICommunity_VS_Templates
 
         public void RunFinished()
         {
-            WizardImplementation.RunFinished(false);
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)

@@ -2,7 +2,6 @@
 {
     public static class Constants
     {
-        internal readonly static string WASDK_BuildTools_Version = "10.0.22621.3233";
         internal readonly static string WinUICommunity_Win2D = "WinUICommunity.Win2D";
         internal readonly static string WinUICommunity_Core = "WinUICommunity.Core";
         internal readonly static string WinUICommunity_Components = "WinUICommunity.Components";

@@ -66,6 +66,9 @@
 		<ProjectItem ReplaceParameters="true" TargetFileName="MainPage.xaml.cs">MainPage.xaml.cs</ProjectItem>
 	  </Folder>
     </Project>
+	<CustomParameters>
+	  <CustomParameter Name="$NuGetPackages$" Value="Microsoft.WindowsAppSDK;Microsoft.Windows.SDK.BuildTools"/>
+	</CustomParameters>
   </TemplateContent>
   <WizardExtension>
     <!-- Generates Publisher name for appxmanifest -->
@@ -76,9 +79,4 @@
 	<Assembly>WinUICommunity_VS_Templates, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=edaf1469a7184ea2</Assembly>
 	<FullClassName>WinUICommunity_VS_Templates.WinUIAppBlankUnitTestWizard</FullClassName>
   </WizardExtension>
-	<WizardData>
-	<packages>
-	  <package id="Microsoft.WindowsAppSDK" />
-	</packages>
-  </WizardData>
 </VSTemplate>

@@ -27,8 +27,7 @@
   </ItemGroup>$LocalizerItemGroup$
   
   <ItemGroup>
-	<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />$ExtraLibs$
-    <Manifest Include="$(ApplicationManifest)" />
+    <Manifest Include="$(ApplicationManifest)" />$ExtraLibs$
   </ItemGroup>
 
   <!-- 

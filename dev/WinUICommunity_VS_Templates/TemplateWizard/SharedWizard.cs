@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using EnvDTE;
 
 using EnvDTE80;
@@ -38,15 +37,18 @@ namespace WinUICommunity_VS_Templates
         public string SolutionDirectory; // E:\\source\\App
         public string DestinationDirectory;// E:\source\App\App
 
-        private List<string> _packageId;
-        private IComponentModel _componentModel;
-        private IVsNuGetProjectUpdateEvents _nugetProjectUpdateEvents;
         private Project _project;
-        public async void RunFinished(bool isMVVMTemplate)
+        private IComponentModel _componentModel;
+        private IEnumerable<string> _nuGetPackages;
+        private IVsNuGetProjectUpdateEvents _nugetProjectUpdateEvents;
+
+        public async void ProjectFinishedGenerating(Project project, bool isMVVMTemplate = false)
         {
+            _project = project;
+
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
             var _solution = (Solution2)_dte.Solution;
-            _project = _dte.Solution.Projects.Item(1);
 
             AddGithubActionFile(_project);
             AddXamlStylerConfigFile();
@@ -78,9 +80,8 @@ namespace WinUICommunity_VS_Templates
             // during solution restore.
             _nugetProjectUpdateEvents.SolutionRestoreFinished -= OnSolutionRestoreFinished;
             var joinableTaskFactory = new JoinableTaskFactory(ThreadHelper.JoinableTaskContext);
-            joinableTaskFactory.RunAsync(InstallNuGetPackageAsync);
+            _ = joinableTaskFactory.RunAsync(InstallNuGetPackagesAsync);
         }
-
         private void OnSolutionRestoreStarted(IReadOnlyList<string> projects)
         {
             _nugetProjectUpdateEvents.SolutionRestoreStarted -= OnSolutionRestoreStarted;
@@ -99,11 +100,18 @@ namespace WinUICommunity_VS_Templates
         /// <param name="customParams"></param>
         public async void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, string templateName, bool hasPages, bool isMVVMTemplate = false, bool hasNavigationView = false, bool isBlank = false)
         {
-            _packageId = ExtractPackageId(replacementsDictionary);
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             _componentModel = (IComponentModel)ServiceProvider.GlobalProvider.GetService(typeof(SComponentModel));
             _nugetProjectUpdateEvents = _componentModel.GetService<IVsNuGetProjectUpdateEvents>();
             _nugetProjectUpdateEvents.SolutionRestoreStarted += OnSolutionRestoreStarted;
             _nugetProjectUpdateEvents.SolutionRestoreFinished += OnSolutionRestoreFinished;
+
+            // Assuming package list is passed via a custom parameter in the .vstemplate file
+            if (replacementsDictionary.TryGetValue("$NuGetPackages$", out string packages))
+            {
+                _nuGetPackages = packages.Split(';').Where(p => !string.IsNullOrEmpty(p));
+            }
+
             ProjectName = replacementsDictionary["$projectname$"];
             SafeProjectName = replacementsDictionary["$safeprojectname$"];
             SpecifiedSolutionName = replacementsDictionary["$specifiedsolutionname$"];
@@ -132,18 +140,9 @@ namespace WinUICommunity_VS_Templates
 
                 _shouldAddProjectItem = true;
                 
-                string wasdkBuildToolsVersion = Constants.WASDK_BuildTools_Version;
-
                 AddEditorConfigFile();
 
-                if (WizardConfig.UseAlwaysLatestVersion)
-                {
-                    wasdkBuildToolsVersion = "*";
-                }
-
                 // Add Base Library Versions
-                replacementsDictionary.Add("$WASDKBuildToolsVersion$", wasdkBuildToolsVersion);
-
                 replacementsDictionary.Add("$DotNetVersion$", WizardConfig.DotNetVersion.ToString());
                 replacementsDictionary.Add("$TargetFrameworkVersion$", WizardConfig.TargetFrameworkVersion.ToString());
                 replacementsDictionary.Add("$MinimumTargetPlatform$", WizardConfig.MinimumTargetPlatform.ToString());
@@ -581,52 +580,27 @@ namespace WinUICommunity_VS_Templates
             return (folderPath, projectTemplatesFolder, vstemplateFileName);
         }
 
-        private List<string> ExtractPackageId(Dictionary<string, string> replacementsDictionary)
+        private async Task InstallNuGetPackagesAsync()
         {
-            if (replacementsDictionary.TryGetValue("$wizarddata$", out string wizardDataXml))
-            {
-                XDocument xDoc = XDocument.Parse(wizardDataXml);
-                XNamespace ns = xDoc.Root.GetDefaultNamespace();
-                var packageId = xDoc.Descendants(ns + "package")
-                                      .Attributes("id")
-                                      .Select(attr => attr.Value)
-                                      .ToList();
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            var installer2 = _componentModel.GetService<IVsPackageInstaller2>();
 
-                if (packageId.Count > 0)
-                {
-                    return packageId;
-                }
-            }
-            return null;
-        }
-        private async Task<Task> InstallNuGetPackageAsync()
-        {
-            if (_packageId.Count == 0)
-            {
-                string message = "Failed to install the NuGet package. The package ID provided in the template configuration is either missing or invalid. Please ensure the template is correctly configured with a valid package ID.";
-                DisplayMessageToUser(message, "Error", OLEMSGICON.OLEMSGICON_CRITICAL);
-                LogError(message);
-                return Task.CompletedTask;
-            }
-
-            IVsPackageInstaller2 installer2 = _componentModel.GetService<IVsPackageInstaller2>();
-
-            foreach (var item in _packageId)
+            foreach (var packageId in _nuGetPackages)
             {
                 try
                 {
-                    if (NugetClientHelper.IsInternetAvailable()) 
+                    if (NugetClientHelper.IsInternetAvailable())
                     {
-                        var packageMeta = await NugetClientHelper.GetPackageMetaDataAsync(item);
-                        var isCacheAvailable = NugetClientHelper.IsCacheAvailableForPackage(item, packageMeta.Identity.Version.ToString());
+                        var packageMeta = await NugetClientHelper.GetPackageMetaDataAsync(packageId);
+                        var isCacheAvailable = NugetClientHelper.IsCacheAvailableForPackage(packageId, packageMeta.Identity.Version.ToString());
 
                         if (isCacheAvailable)
                         {
-                            installer2.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, item, false, false);
+                            installer2.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, packageId, false, false);
                         }
                         else
                         {
-                            installer2.InstallLatestPackage(null, _project, item, false, false);
+                            installer2.InstallLatestPackage(null, _project, packageId, false, false);
                         }
                     }
                     else
@@ -636,50 +610,23 @@ namespace WinUICommunity_VS_Templates
                 }
                 catch (Exception ex)
                 {
-                    string errorMessage = $"Failed to install the {item} package. You can try installing it manually from: https://www.nuget.org/packages/{item}";
-                    DisplayMessageToUser(errorMessage, "Installation Error", OLEMSGICON.OLEMSGICON_CRITICAL);
-
-                    string logMessage = $"Failed to install {item} package. Exception details: \n" +
-                                        $"Message: {ex.Message}\n" +
-                                        $"Source: {ex.Source}\n" +
-                                        $"Stack Trace: {ex.StackTrace}\n" +
-                                        $"Target Site: {ex.TargetSite}\n";
-
-                    if (ex.InnerException != null)
-                    {
-                        logMessage += $"Inner Exception Message: {ex.InnerException.Message}\n" +
-                                      $"Inner Exception Stack Trace: {ex.InnerException.StackTrace}\n";
-                    }
-                    LogError(logMessage);
+                    LogError($"Failed to install NuGet package: {packageId}. Error: {ex.Message}");
                 }
             }
-
-            return Task.CompletedTask;
         }
-        private void DisplayMessageToUser(string message, string title, OLEMSGICON icon)
+
+        private void LogError(string message)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             ThreadHelper.JoinableTaskFactory.Run(async delegate
             {
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                VsShellUtilities.ShowMessageBox(
-                    ServiceProvider.GlobalProvider,
-                    message,
-                    title,
-                    icon,
-                    OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+                IVsActivityLog log = ServiceProvider.GlobalProvider.GetService(typeof(SVsActivityLog)) as IVsActivityLog;
+                if (log != null)
+                {
+                    int hr = log.LogEntry((uint)__ACTIVITYLOG_ENTRYTYPE.ALE_ERROR, ToString(), message);
+                }
             });
-        }
-        private void LogError(string message)
-        {
-            IVsActivityLog log = ServiceProvider.GlobalProvider.GetService(typeof(SVsActivityLog)) as IVsActivityLog;
-            if (log != null)
-            {
-                log.LogEntry(
-                    (UInt32)__ACTIVITYLOG_ENTRYTYPE.ALE_ERROR,
-                    "WinUICommunity_VS_Templates",
-                    message);
-            }
         }
     }
 }

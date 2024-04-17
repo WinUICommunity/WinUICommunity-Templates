@@ -31,13 +31,12 @@
   </ItemGroup>
 	
   <ItemGroup>
-	<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$WASDKBuildToolsVersion$" />
 	<PackageReference Include="MSTest.TestAdapter" Version="3.2.2" />
 	<PackageReference Include="MSTest.TestFramework" Version="3.2.2" />
 	<PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.7.2">
       <ExcludeAssets>build</ExcludeAssets>
-	</PackageReference>$ExtraLibs$
-    <Manifest Include="$(ApplicationManifest)" />
+	</PackageReference>
+    <Manifest Include="$(ApplicationManifest)" />$ExtraLibs$
   </ItemGroup>
 
   <!-- 

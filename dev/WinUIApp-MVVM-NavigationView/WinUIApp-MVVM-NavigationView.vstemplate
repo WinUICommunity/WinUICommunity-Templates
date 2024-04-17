@@ -131,6 +131,9 @@
 		<ProjectItem ReplaceParameters="true" TargetFileName="Resources.resw">Resources.resw</ProjectItem>
 	  </Folder>
 	</Project>
+	<CustomParameters>
+	  <CustomParameter Name="$NuGetPackages$" Value="Microsoft.WindowsAppSDK;Microsoft.Windows.SDK.BuildTools;WinUICommunity.Core;WinUICommunity.Components;WinUICommunity.LandingPages;CommunityToolkit.Mvvm;Microsoft.Extensions.DependencyInjection;Microsoft.Xaml.Behaviors.WinUI.Managed"/>
+	</CustomParameters>
   </TemplateContent>
   <WizardExtension>
 	<!-- Generates Publisher name for appxmanifest -->
@@ -141,15 +144,4 @@
 	<Assembly>WinUICommunity_VS_Templates, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=edaf1469a7184ea2</Assembly>
 	<FullClassName>WinUICommunity_VS_Templates.WinUIAppMVVMNavigationWizard</FullClassName>
   </WizardExtension>
-  <WizardData>
-	<packages>
-	  <package id="Microsoft.WindowsAppSDK" />
-	  <package id="WinUICommunity.Core" />
-	  <package id="WinUICommunity.Components" />
-	  <package id="WinUICommunity.LandingPages" />
-	  <package id="CommunityToolkit.Mvvm" />
-	  <package id="Microsoft.Extensions.DependencyInjection" />
-	  <package id="Microsoft.Xaml.Behaviors.WinUI.Managed" />
-	</packages>
-  </WizardData>
 </VSTemplate>
