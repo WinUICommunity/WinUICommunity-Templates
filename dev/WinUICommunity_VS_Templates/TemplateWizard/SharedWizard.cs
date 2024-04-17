@@ -42,10 +42,13 @@ namespace WinUICommunity_VS_Templates
         private IEnumerable<string> _nuGetPackages;
         private IVsNuGetProjectUpdateEvents _nugetProjectUpdateEvents;
 
-        public async void ProjectFinishedGenerating(Project project, bool isMVVMTemplate = false)
+        public void ProjectFinishedGenerating(Project project)
         {
             _project = project;
+        }
 
+        public async void RunFinished()
+        {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
             var _solution = (Solution2)_dte.Solution;
@@ -54,9 +57,6 @@ namespace WinUICommunity_VS_Templates
             AddXamlStylerConfigFile();
 
             AddSolutionFolder(_solution);
-
-            //var templatePath = Directory.GetParent(project.FullName).FullName;
-            //new AppUpdateOption(isMVVMTemplate, templatePath);
 
             var appXaml = _solution.FindProjectItem("App.xaml");
             var appXamlCS = _solution.FindProjectItem("App.xaml.cs");
@@ -73,7 +73,6 @@ namespace WinUICommunity_VS_Templates
                 doc.Close();
             }
         }
-
         private void OnSolutionRestoreFinished(IReadOnlyList<string> projects)
         {
             // Debouncing prevents multiple rapid executions of 'InstallNuGetPackageAsync'

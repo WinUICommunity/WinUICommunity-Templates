@@ -17,7 +17,7 @@ namespace WinUICommunity_VS_Templates
 
         public void ProjectFinishedGenerating(Project project)
         {
-            WizardImplementation.ProjectFinishedGenerating(project, true);
+            WizardImplementation.ProjectFinishedGenerating(project);
         }
 
         public void ProjectItemFinishedGenerating(ProjectItem projectItem)
@@ -26,6 +26,7 @@ namespace WinUICommunity_VS_Templates
 
         public void RunFinished()
         {
+            WizardImplementation.RunFinished();
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
