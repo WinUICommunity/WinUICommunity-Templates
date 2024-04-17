@@ -65,7 +65,7 @@
                                     CornerRadius="4,0,0,4"
                                     IsClosable="False"
                                     IsOpen="True"
-                                    Message="1.5.240311000"
+                                    Message="Latest Stable"
                                     Severity="Success" />
                         <ui:InfoBar Title="Build Tools"
                                     Grid.Column="1"
@@ -73,7 +73,7 @@
                                     CornerRadius="0,4,4,0"
                                     IsClosable="False"
                                     IsOpen="True"
-                                    Message="v10.0.22621.3233"
+                                    Message="Latest Stable"
                                     Severity="Success" />
                     </Grid>
                     <ComboBox x:Name="cmbVersionMechanism"
@@ -102,6 +102,9 @@
                             <ComboBoxItem Content=".Net 8.0 (Recommended)"
                                           Tag="net8.0"
                                           ToolTip=".Net 8.0 will be used." />
+                            <ComboBoxItem Content=".Net 7.0"
+                                          Tag="net7.0"
+                                          ToolTip=".Net 7.0 will be used." />
                         </ComboBox>
                         <ComboBox x:Name="cmbTargetFrameworkVersion"
                                   MinWidth="250"
