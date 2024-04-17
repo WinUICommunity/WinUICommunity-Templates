@@ -605,7 +605,7 @@ namespace WinUICommunity_VS_Templates
                     }
                     else
                     {
-                        installer2.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, item, false, false);
+                        installer2.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, packageId, false, false);
                     }
                 }
                 catch (Exception ex)
