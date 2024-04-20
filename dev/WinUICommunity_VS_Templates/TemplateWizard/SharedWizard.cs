@@ -79,6 +79,7 @@ namespace WinUICommunity_VS_Templates
             // during solution restore.
             _nugetProjectUpdateEvents.SolutionRestoreFinished -= OnSolutionRestoreFinished;
          
+            // Fix Conflict because of Formatting csproj file
             await Task.Delay(1000);
             var joinableTaskFactory = new JoinableTaskFactory(ThreadHelper.JoinableTaskContext);
             _ = joinableTaskFactory.RunAsync(InstallNuGetPackagesAsync);
