@@ -73,11 +73,13 @@ namespace WinUICommunity_VS_Templates
                 doc.Close();
             }
         }
-        private void OnSolutionRestoreFinished(IReadOnlyList<string> projects)
+        private async void OnSolutionRestoreFinished(IReadOnlyList<string> projects)
         {
             // Debouncing prevents multiple rapid executions of 'InstallNuGetPackageAsync'
             // during solution restore.
             _nugetProjectUpdateEvents.SolutionRestoreFinished -= OnSolutionRestoreFinished;
+         
+            await Task.Delay(1000);
             var joinableTaskFactory = new JoinableTaskFactory(ThreadHelper.JoinableTaskContext);
             _ = joinableTaskFactory.RunAsync(InstallNuGetPackagesAsync);
         }
