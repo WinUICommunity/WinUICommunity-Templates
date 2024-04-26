@@ -73,24 +73,17 @@ namespace WinUICommunity_VS_Templates
                 doc.Close();
             }
         }
-        private async void OnSolutionRestoreFinished(IReadOnlyList<string> projects)
+        private void OnSolutionRestoreFinished(IReadOnlyList<string> projects)
         {
             // Debouncing prevents multiple rapid executions of 'InstallNuGetPackageAsync'
             // during solution restore.
+            if (_nugetProjectUpdateEvents == null)
+            {
+                return;
+            }
             _nugetProjectUpdateEvents.SolutionRestoreFinished -= OnSolutionRestoreFinished;
-         
-            // Fix Conflict because of Formatting csproj file
-            await Task.Delay(1000);
             var joinableTaskFactory = new JoinableTaskFactory(ThreadHelper.JoinableTaskContext);
             _ = joinableTaskFactory.RunAsync(InstallNuGetPackagesAsync);
-        }
-        private void OnSolutionRestoreStarted(IReadOnlyList<string> projects)
-        {
-            _nugetProjectUpdateEvents.SolutionRestoreStarted -= OnSolutionRestoreStarted;
-            foreach (var item in projects)
-            {
-                VSDocumentHelper.FormatXmlBasedFile(item);
-            }
         }
 
         /// <summary>
@@ -104,9 +97,14 @@ namespace WinUICommunity_VS_Templates
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             _componentModel = (IComponentModel)ServiceProvider.GlobalProvider.GetService(typeof(SComponentModel));
-            _nugetProjectUpdateEvents = _componentModel.GetService<IVsNuGetProjectUpdateEvents>();
-            _nugetProjectUpdateEvents.SolutionRestoreStarted += OnSolutionRestoreStarted;
-            _nugetProjectUpdateEvents.SolutionRestoreFinished += OnSolutionRestoreFinished;
+            if (_componentModel != null)
+            {
+                _nugetProjectUpdateEvents = _componentModel.GetService<IVsNuGetProjectUpdateEvents>();
+                if (_nugetProjectUpdateEvents != null)
+                {
+                    _nugetProjectUpdateEvents.SolutionRestoreFinished += OnSolutionRestoreFinished;
+                }
+            }
 
             // Assuming package list is passed via a custom parameter in the .vstemplate file
             if (replacementsDictionary.TryGetValue("$NuGetPackages$", out string packages))
@@ -582,10 +580,30 @@ namespace WinUICommunity_VS_Templates
             return (folderPath, projectTemplatesFolder, vstemplateFileName);
         }
 
+        private async Task InstallNuGetPackageAsync(IVsPackageInstaller2 installer, string packageId, string source)
+        {
+            await Task.Run(() =>
+            {
+                try
+                {
+                    installer.InstallLatestPackage(source, _project, packageId, false, false);
+                    // If there's any CPU-bound work, it will be done on the background thread.
+                }
+                catch (Exception ex)
+                {
+                    LogError($"Error installing package {packageId}: {ex.Message}");
+                }
+            });
+        }
+        // InstallNuGetPackagesAsync iterates over the package list and installs each
         private async Task InstallNuGetPackagesAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-            var installer2 = _componentModel.GetService<IVsPackageInstaller2>();
+            IVsPackageInstaller2 installer = _componentModel.GetService<IVsPackageInstaller2>();
+            if (installer == null)
+            {
+                LogError("Could not obtain IVsPackageInstaller service.");
+
+            }
 
             foreach (var packageId in _nuGetPackages)
             {
@@ -598,16 +616,16 @@ namespace WinUICommunity_VS_Templates
 
                         if (isCacheAvailable)
                         {
-                            installer2.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, packageId, false, false);
+                            await InstallNuGetPackageAsync(installer, packageId, NugetClientHelper.globalPackagesFolder);
                         }
                         else
                         {
-                            installer2.InstallLatestPackage(null, _project, packageId, false, false);
+                            await InstallNuGetPackageAsync(installer, packageId, null);
                         }
                     }
                     else
                     {
-                        installer2.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, packageId, false, false);
+                        await InstallNuGetPackageAsync(installer, packageId, NugetClientHelper.globalPackagesFolder);
                     }
                 }
                 catch (Exception ex)
@@ -615,11 +633,30 @@ namespace WinUICommunity_VS_Templates
                     LogError($"Failed to install NuGet package: {packageId}. Error: {ex.Message}");
                 }
             }
-        }
 
-        private void LogError(string message)
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            SaveAllProjects();
+        }
+        private void SaveAllProjects()
         {
-            ThreadHelper.ThrowIfNotOnUIThread();
+            ThreadHelper.ThrowIfNotOnUIThread("SaveAllProjects must be called on the UI thread.");
+
+            var dte = Package.GetGlobalService(typeof(DTE)) as DTE;
+            if (dte != null && dte.Solution != null && dte.Solution.Projects != null)
+            {
+                foreach (Project project in dte.Solution.Projects)
+                {
+                    if (project != null)
+                    {
+                        project.Save();
+                        VSDocumentHelper.FormatXmlBasedFile(project.FullName);
+                    }
+                }
+            }
+        }
+        private async void LogError(string message)
+        {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             ThreadHelper.JoinableTaskFactory.Run(async delegate
             {
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
