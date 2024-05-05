@@ -41,7 +41,7 @@ namespace WinUICommunity_VS_Templates
         private IComponentModel _componentModel;
         private IEnumerable<string> _nuGetPackages;
         private IVsNuGetProjectUpdateEvents _nugetProjectUpdateEvents;
-
+        private IVsThreadedWaitDialog2 _waitDialog;
         public void ProjectFinishedGenerating(Project project)
         {
             _project = project;
@@ -97,6 +97,7 @@ namespace WinUICommunity_VS_Templates
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             _componentModel = (IComponentModel)ServiceProvider.GlobalProvider.GetService(typeof(SComponentModel));
+            _waitDialog = ServiceProvider.GlobalProvider.GetService(typeof(SVsThreadedWaitDialog)) as IVsThreadedWaitDialog2;
             if (_componentModel != null)
             {
                 _nugetProjectUpdateEvents = _componentModel.GetService<IVsNuGetProjectUpdateEvents>();
@@ -580,29 +581,40 @@ namespace WinUICommunity_VS_Templates
             return (folderPath, projectTemplatesFolder, vstemplateFileName);
         }
 
-        private async Task InstallNuGetPackageAsync(IVsPackageInstaller2 installer, string packageId, string source)
+        private async Task InstallNuGetPackagesAsync()
         {
-            await Task.Run(() =>
+            await ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
             {
-                try
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                int canceled; // This variable will store the status after the dialog is closed
+
+                // Start the package installation task but do not await it here
+                var installationTask = StartInstallationAsync();
+
+                // Start the threaded wait dialog
+                _waitDialog.StartWaitDialog("Installing NuGet packages", "Please wait while NuGet packages are being installed to your project...", null, null, "Operation in progress...", 0, false, true);
+
+                // Now await the installation task to complete
+                await installationTask;
+
+                // Once the installation is complete, end the wait dialog
+                _waitDialog.EndWaitDialog(out canceled);
+                // Check if the process was canceled before proceeding
+                if (canceled == 0) // If not canceled, finalize the process
                 {
-                    installer.InstallLatestPackage(source, _project, packageId, false, false);
-                    // If there's any CPU-bound work, it will be done on the background thread.
-                }
-                catch (Exception ex)
-                {
-                    LogError($"Error installing package {packageId}: {ex.Message}");
+                    await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                    SaveAllProjects();
                 }
             });
         }
-        // InstallNuGetPackagesAsync iterates over the package list and installs each
-        private async Task InstallNuGetPackagesAsync()
+
+        private async Task StartInstallationAsync()
         {
             IVsPackageInstaller2 installer = _componentModel.GetService<IVsPackageInstaller2>();
             if (installer == null)
             {
                 LogError("Could not obtain IVsPackageInstaller service.");
-
+                return;
             }
 
             foreach (var packageId in _nuGetPackages)
@@ -633,10 +645,20 @@ namespace WinUICommunity_VS_Templates
                     LogError($"Failed to install NuGet package: {packageId}. Error: {ex.Message}");
                 }
             }
-
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-            SaveAllProjects();
         }
+        private async Task InstallNuGetPackageAsync(IVsPackageInstaller2 installer, string packageId, string source)
+        {
+            try
+            {
+                // Simulate or perform package installation, which might be CPU-bound
+                await Task.Run(() => installer.InstallLatestPackage(source, _project, packageId, false, false));
+            }
+            catch (Exception ex)
+            {
+                LogError($"Error installing package {packageId}: {ex.Message}");
+            }
+        }
+        
         private void SaveAllProjects()
         {
             ThreadHelper.ThrowIfNotOnUIThread("SaveAllProjects must be called on the UI thread.");

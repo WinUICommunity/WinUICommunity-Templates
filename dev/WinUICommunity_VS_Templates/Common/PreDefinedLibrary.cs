@@ -97,7 +97,7 @@ namespace WinUICommunity_VS_Templates
             List<Library> list = new()
             {
                 new Library("TenMica", "1.0.0-beta", false, true),
-                new Library("WinUI.TableView", "1.0.0-preview4", false, true),
+                new Library("WinUI.TableView", "1.0.0"),
                 new Library("Microsoft.Windows.CsWinRT", "2.0.7"),
                 new Library("Microsoft.Windows.CsWin32", "0.3.49-beta", false, true),
                 new Library("WinUIEx", "2.3.4"),
@@ -110,7 +110,7 @@ namespace WinUICommunity_VS_Templates
                 new Library("YamlDotNet", "15.1.2"),
                 new Library("System.Drawing.Common", "8.0.4"),
                 new Library("System.Management", "8.0.0"),
-                new Library("SharpCompress", "0.36.0"),
+                new Library("SharpCompress", "0.37.2"),
                 new Library("RestSharp", "110.2.0"),
                 new Library("Vanara.Windows.Shell", "4.0.0"),
                 new Library("protobuf-net", "3.2.30"),
@@ -125,11 +125,11 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
-                new Library(Constants.WinUICommunity_Win2D, "6.7.0"),
-                new Library(Constants.WinUICommunity_Core, "6.7.0"),
-                new Library(Constants.WinUICommunity_Components, "6.7.0"),
-                new Library(Constants.WinUICommunity_LandingPages, "6.7.0"),
-                new Library(Constants.WinUICommunity_ContextMenuExtensions, "6.7.0")
+                new Library(Constants.WinUICommunity_Win2D, "6.8.0"),
+                new Library(Constants.WinUICommunity_Core, "6.8.0"),
+                new Library(Constants.WinUICommunity_Components, "6.8.0"),
+                new Library(Constants.WinUICommunity_LandingPages, "6.8.0"),
+                new Library(Constants.WinUICommunity_ContextMenuExtensions, "6.8.0")
             };
             return list;
         }
@@ -143,7 +143,7 @@ namespace WinUICommunity_VS_Templates
                 new Library("Serilog.Sinks.Debug", "2.0.0"),
                 new Library("Serilog.Sinks.Console", "5.0.1"),
                 new Library("log4net", "2.0.17"),
-                new Library("NLog", "5.2.8")
+                new Library("NLog", "5.3.2")
             };
             return list;
         }
