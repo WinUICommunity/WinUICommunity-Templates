@@ -592,7 +592,7 @@ namespace WinUICommunity_VS_Templates
                 var installationTask = StartInstallationAsync();
 
                 // Start the threaded wait dialog
-                _waitDialog.StartWaitDialog("Installing NuGet packages", "Please wait while NuGet packages are being installed to your project...", null, null, "Operation in progress...", 0, false, true);
+                _waitDialog.StartWaitDialog(null, "Please wait while NuGet packages are being installed to your project...", null, null, "Operation in progress...", 0, false, true);
 
                 // Now await the installation task to complete
                 await installationTask;
