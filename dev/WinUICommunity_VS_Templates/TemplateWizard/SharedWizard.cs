@@ -613,10 +613,12 @@ namespace WinUICommunity_VS_Templates
             IVsPackageInstaller2 installer = _componentModel.GetService<IVsPackageInstaller2>();
             if (installer == null)
             {
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
                 LogError("Could not obtain IVsPackageInstaller service.");
                 return;
             }
 
+            // Process each package installation
             foreach (var packageId in _nuGetPackages)
             {
                 try
@@ -628,34 +630,23 @@ namespace WinUICommunity_VS_Templates
 
                         if (isCacheAvailable)
                         {
-                            await InstallNuGetPackageAsync(installer, packageId, NugetClientHelper.globalPackagesFolder);
+                            await Task.Run(() => installer.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, packageId, false, false));
                         }
                         else
                         {
-                            await InstallNuGetPackageAsync(installer, packageId, null);
+                            await Task.Run(() => installer.InstallLatestPackage(null, _project, packageId, false, false));
                         }
                     }
                     else
                     {
-                        await InstallNuGetPackageAsync(installer, packageId, NugetClientHelper.globalPackagesFolder);
+                        await Task.Run(() => installer.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, packageId, false, false));
                     }
                 }
                 catch (Exception ex)
                 {
+                    await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
                     LogError($"Failed to install NuGet package: {packageId}. Error: {ex.Message}");
                 }
-            }
-        }
-        private async Task InstallNuGetPackageAsync(IVsPackageInstaller2 installer, string packageId, string source)
-        {
-            try
-            {
-                // Simulate or perform package installation, which might be CPU-bound
-                await Task.Run(() => installer.InstallLatestPackage(source, _project, packageId, false, false));
-            }
-            catch (Exception ex)
-            {
-                LogError($"Error installing package {packageId}: {ex.Message}");
             }
         }
         
