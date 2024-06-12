@@ -16,7 +16,7 @@
 ## Dynamic Retrieval of Microsoft.WindowsAppSDK and Other Packages Version
 
 > [!TIP]
-> After version `8.0.0`, you do not need to update the WinUICommunity-Template.vsix to use the `latest version` of  Microsoft.WindowsAppSDK and Other Packages (built-in packages, not wizard libraries). With the new method added in version 8.0.0, if there is an internet connection, the latest version will always be added to the project. And if the internet connection is not connected, the latest version available in the Local/Cache will be used.
+> After version `8.0.0`, you do not need to update the WinUICommunity-Template.vsix to use the `latest version` of  Microsoft.WindowsAppSDK and Other Packages. With the new method added in version 8.0.0+, if there is an internet connection, the latest version will always be added to the project. And if the internet connection is not connected, the latest version available in the Local/Cache will be used.
 
 > [!TIP] 
 > After creating the project, wait a few seconds for the packages to be installed
