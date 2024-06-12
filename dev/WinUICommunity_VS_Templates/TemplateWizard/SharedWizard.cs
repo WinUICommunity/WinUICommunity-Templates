@@ -39,7 +39,7 @@ namespace WinUICommunity_VS_Templates
 
         private Project _project;
         private IComponentModel _componentModel;
-        private IEnumerable<string> _nuGetPackages;
+        private List<Library> _nuGetPackages;
         private IVsNuGetProjectUpdateEvents _nugetProjectUpdateEvents;
         private IVsThreadedWaitDialog2 _waitDialog;
         public void ProjectFinishedGenerating(Project project)
@@ -93,7 +93,7 @@ namespace WinUICommunity_VS_Templates
         /// <param name="replacementsDictionary"></param>
         /// <param name="runKind"></param>
         /// <param name="customParams"></param>
-        public async void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, string templateName, bool hasPages, bool isMVVMTemplate = false, bool hasNavigationView = false, bool isBlank = false)
+        public async void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, string templateName, bool hasPages, bool isMVVMTemplate = false, bool hasNavigationView = false, bool isBlank = false, bool isTest = false)
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             _componentModel = (IComponentModel)ServiceProvider.GlobalProvider.GetService(typeof(SComponentModel));
@@ -105,12 +105,6 @@ namespace WinUICommunity_VS_Templates
                 {
                     _nugetProjectUpdateEvents.SolutionRestoreFinished += OnSolutionRestoreFinished;
                 }
-            }
-
-            // Assuming package list is passed via a custom parameter in the .vstemplate file
-            if (replacementsDictionary.TryGetValue("$NuGetPackages$", out string packages))
-            {
-                _nuGetPackages = packages.Split(';').Where(p => !string.IsNullOrEmpty(p));
             }
 
             ProjectName = replacementsDictionary["$projectname$"];
@@ -162,6 +156,29 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$AddAppUpdatePage$", WizardConfig.UseAppUpdatePage.ToString());
                 replacementsDictionary.Add("$AddAboutPage$", WizardConfig.UseAboutPage.ToString());
 
+                var libs = WizardConfig.LibraryDic;
+
+                #region Libs
+                // Assuming package list is passed via a custom parameter in the .vstemplate file
+                if (replacementsDictionary.TryGetValue("$NuGetPackages$", out string packages))
+                {
+                    _nuGetPackages = new();
+                    var basePackages = packages.Split(';').Where(p => !string.IsNullOrEmpty(p));
+
+                    foreach (var baseItem in basePackages)
+                    {
+                        _nuGetPackages.Add(new Library(baseItem, WizardConfig.UsePreReleaseVersion));
+                    }
+
+                    foreach (var lib in libs.Values)
+                    {
+                        _nuGetPackages.Add(new Library(lib.Name, lib.IncludePreRelease));
+                    }
+
+                    _nuGetPackages = _nuGetPackages.Distinct().ToList();
+                }
+                #endregion
+
                 #region CSProjectElements
                 // Add CSProjectElements
                 if (WizardConfig.CSProjectElements != null && WizardConfig.CSProjectElements.Count > 0)
@@ -204,34 +221,9 @@ namespace WinUICommunity_VS_Templates
                 }
                 #endregion
 
-                #region Extra Libs
-                // Add Extra Libs
-                var libs = WizardConfig.LibraryDic;
-                StringBuilder outputBuilder = new StringBuilder();
-                if (libs != null && libs.Count > 0)
-                {
-                    foreach (var lib in libs.Values)
-                    {
-                        if (isMVVMTemplate && lib.CheckBeforeInsert)
-                        {
-                            continue;
-                        }
-
-                        outputBuilder.AppendLine(lib.Package);
-                    }
-
-                    string outputText = outputBuilder.ToString().Trim();
-
-                    replacementsDictionary.Add("$ExtraLibs$", Environment.NewLine + outputText);
-                }
-                else
-                {
-                    replacementsDictionary.Add("$ExtraLibs$", "");
-                }
-                #endregion
-
                 #region Add Xaml Dictionary if User Use Extra Lib
                 #region Blank
+
                 if (isBlank)
                 {
                     if (libs != null && libs.ContainsKey(Constants.WinUICommunity_Components))
@@ -625,21 +617,21 @@ namespace WinUICommunity_VS_Templates
                 {
                     if (NugetClientHelper.IsInternetAvailable())
                     {
-                        var packageMeta = await NugetClientHelper.GetPackageMetaDataAsync(packageId);
-                        var isCacheAvailable = NugetClientHelper.IsCacheAvailableForPackage(packageId, packageMeta.Identity.Version.ToString());
+                        var packageMeta = await NugetClientHelper.GetPackageMetaDataAsync(packageId.Name, packageId.IncludePreRelease);
+                        var isCacheAvailable = NugetClientHelper.IsCacheAvailableForPackage(packageId.Name, packageMeta.Identity.Version.ToString());
 
                         if (isCacheAvailable)
                         {
-                            await Task.Run(() => installer.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, packageId, false, false));
+                            await Task.Run(() => installer.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, packageId.Name, packageId.IncludePreRelease, false));
                         }
                         else
                         {
-                            await Task.Run(() => installer.InstallLatestPackage(null, _project, packageId, false, false));
+                            await Task.Run(() => installer.InstallLatestPackage(null, _project, packageId.Name, packageId.IncludePreRelease, false));
                         }
                     }
                     else
                     {
-                        await Task.Run(() => installer.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, packageId, false, false));
+                        await Task.Run(() => installer.InstallLatestPackage(NugetClientHelper.globalPackagesFolder, _project, packageId.Name, packageId.IncludePreRelease, false));
                     }
                 }
                 catch (Exception ex)

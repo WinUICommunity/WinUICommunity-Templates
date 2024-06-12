@@ -7,7 +7,7 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static readonly string SolutionFolderNameDefault = "Solution Items";
         public static readonly string MinimumTargetPlatformDefault = "17763";
 
-        public static Dictionary<string, PackageRefrence> LibraryDic = new Dictionary<string, PackageRefrence>();
+        public static Dictionary<string, Library> LibraryDic = new Dictionary<string, Library>();
         public static Dictionary<string, string> CSProjectElements = new Dictionary<string, string>();
         public static Dictionary<string, string> UnvirtualizedResources = new Dictionary<string, string>();
 
@@ -36,7 +36,7 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static bool UseThemeSettingPage;
         public static bool UseAppUpdatePage;
         public static bool UseAboutPage;
-        public static bool UseAlwaysLatestVersion;
+        public static bool UsePreReleaseVersion;
         public static bool UseDeveloperModeSetting;
         public static bool UseColorsDic;
         public static bool UseStylesDic;

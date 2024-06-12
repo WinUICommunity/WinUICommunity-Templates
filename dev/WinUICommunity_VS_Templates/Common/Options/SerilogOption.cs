@@ -7,7 +7,7 @@ namespace WinUICommunity_VS_Templates.Options
     {
         public bool UseFileLogger { get; set; } = false;
         public bool UseDebugLogger { get; set; } = false;
-        public void ConfigSerilog(Dictionary<string, string> replacementsDictionary, Dictionary<string, PackageRefrence> libs, bool useJsonSetting, bool useDeveloperMode)
+        public void ConfigSerilog(Dictionary<string, string> replacementsDictionary, Dictionary<string, Library> libs, bool useJsonSetting, bool useDeveloperMode)
         {
             if (libs.ContainsKey("Serilog.Sinks.File"))
             {

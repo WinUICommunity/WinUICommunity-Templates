@@ -25,22 +25,26 @@ namespace WinUICommunity_VS_Templates
                     libVersion = lib.Net9Version;
                     libVersion2 = lib.Net9Version;
                 }
-                
-                if (WizardConfig.UseAlwaysLatestVersion && !lib.SkipStarVersion)
+
+                if (!lib.IncludePreRelease)
                 {
-                    libVersion = "*";
-                    libVersion2 = "Latest Stable";
+                    lib.IncludePreRelease = WizardConfig.UsePreReleaseVersion;
                 }
 
-                var option = new LibraryOptionUC
+                var option = new LibraryOptionUC();
+
+                if (string.IsNullOrEmpty(libVersion2))
                 {
-                    Title = $"{lib.Name} - {libVersion2}"
-                };
+                    option.Title = lib.Name;
+                }
+                else
+                {
+                    option.Title = $"{lib.Name} - {libVersion2}";
+                }
 
                 option.Checked += (s, e) =>
                 {
-
-                    WizardConfig.LibraryDic.AddIfNotExists(lib.Name, new PackageRefrence($"""    <PackageReference Include="{lib.Name}" Version="{libVersion}" />""", lib.CheckBeforeInsert, lib.SkipStarVersion));
+                    WizardConfig.LibraryDic.AddIfNotExists(lib.Name, new Library(lib.Name, lib.IncludePreRelease));
                 };
 
                 option.Unchecked += (s, e) =>

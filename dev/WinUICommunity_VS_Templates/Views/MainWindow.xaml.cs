@@ -48,7 +48,8 @@ namespace WinUICommunity_VS_Templates
 
         private void cmbVersionMechanism_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            WizardConfig.UseAlwaysLatestVersion = cmbVersionMechanism.SelectedIndex == 1;
+            WizardConfig.UsePreReleaseVersion = cmbVersionMechanism.SelectedIndex != 0;
+            
             if (LibrariesPage.Instance != null)
             {
                 LibrariesPage.Instance.CreateBoxes();

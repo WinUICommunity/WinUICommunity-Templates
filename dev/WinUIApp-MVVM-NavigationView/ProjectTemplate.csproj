@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Manifest Include="$(ApplicationManifest)" />$ExtraLibs$
+    <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
   <!-- 

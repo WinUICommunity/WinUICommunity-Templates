@@ -82,11 +82,11 @@
                               HorizontalAlignment="Left"
                               SelectedIndex="0"
                               SelectionChanged="cmbVersionMechanism_SelectionChanged">
-                        <ComboBoxItem Content="Use Predefined Versions for Libraries"
-                                      Tag="Predefined"
-                                      ToolTip="It is usually the latest version. We update it with every new version" />
-                        <ComboBoxItem Content="Always Use Latest Version by * Symbol"
-                                      Tag="Star"
+                        <ComboBoxItem Content="Use Latest Stable Version"
+                                      Tag="Stable"
+                                      ToolTip="Latest Stable version will be install" />
+                        <ComboBoxItem Content="Use Latest PreRelease Version"
+                                      Tag="PreRelease"
                                       ToolTip="The latest stable version will always be installed" />
                     </ComboBox>
                     <StackPanel Margin="-50,10,5,0"
