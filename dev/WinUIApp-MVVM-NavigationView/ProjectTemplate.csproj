@@ -43,7 +43,7 @@
 	<None Include="Assets\**\*">
 	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	</None>
-  </ItemGroup>$LocalizerItemGroup$
+  </ItemGroup>
 
   <ItemGroup>
 	<Folder Include="Models\" />

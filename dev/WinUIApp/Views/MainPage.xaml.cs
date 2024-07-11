@@ -1,11 +1,14 @@
-﻿namespace $safeprojectname$.Views;
+﻿using System;
+
+namespace $safeprojectname$.Views;
 
 public sealed partial class MainPage : Page
 {
     public MainPage()
     {
         this.InitializeComponent();
-        appTitleBar.Window = App.CurrentWindow;
+        App.CurrentWindow.ExtendContentIntoTitleBar = true;
+        App.CurrentWindow.SetTitleBar(AppTitleBar);
     }
 }
 

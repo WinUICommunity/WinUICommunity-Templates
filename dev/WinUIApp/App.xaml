@@ -8,8 +8,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <ResourceDictionary Source="ms-appx:///WinUICommunity.Components/Themes/Generic.xaml" />
-                <ResourceDictionary Source="ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml" /> $WinUICommunity.Win2D$
-                <ItemTemplates xmlns="using:WinUICommunity"/> $AppDicColors$$AppDicFonts$$AppDicConverters$$AppDicStyles$
+                <ResourceDictionary Source="ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml" />
+                $WinUICommunity.Win2D$
+                <ItemTemplates xmlns="using:WinUICommunity" />
+                $AppDicColors$$AppDicFonts$$AppDicConverters$$AppDicStyles$
             </ResourceDictionary.MergedDictionaries>
             <!--  Other app resources here  -->
         </ResourceDictionary>

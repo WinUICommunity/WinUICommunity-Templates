@@ -121,8 +121,7 @@ namespace WinUICommunity_VS_Templates
             {
                 return false;
             }
-            else if (!WizardConfig.UseDynamicLocalization &&
-                (filePath.Contains("Resources") || filePath.Contains("DynamicLocalizerHelper")) && 
+            else if (filePath.Contains("Resources") && 
                 !filePath.Contains("ThemeResources"))
             {
                 return false;

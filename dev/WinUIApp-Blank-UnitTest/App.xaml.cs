@@ -21,7 +21,6 @@ public partial class App : Application
         }
 
         rootFrame.Navigate(typeof(MainPage));
-        CurrentWindow.ExtendsContentIntoTitleBar = true;
         CurrentWindow.Activate();
         
         UITestMethodAttribute.DispatcherQueue = CurrentWindow.DispatcherQueue;

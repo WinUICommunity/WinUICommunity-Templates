@@ -155,7 +155,6 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$PublishSingleFile$", WizardConfig.PublishSingleFile.ToString());
 
                 replacementsDictionary.Add("$AddJsonSettings$", WizardConfig.UseJsonSettings.ToString());
-                replacementsDictionary.Add("$AddDynamicLocalization$", WizardConfig.UseDynamicLocalization.ToString());
                 replacementsDictionary.Add("$AddEditorConfig$", WizardConfig.UseEditorConfigFile.ToString());
                 replacementsDictionary.Add("$AddSolutionFolder$", WizardConfig.UseSolutionFolder.ToString());
                 replacementsDictionary.Add("$AddHomeLandingPage$", WizardConfig.UseHomeLandingPage.ToString());
@@ -407,22 +406,8 @@ namespace WinUICommunity_VS_Templates
                 }
                 #endregion
 
-                #region Dynamic Localization
-                if (WizardConfig.UseDynamicLocalization)
-                {
-                    replacementsDictionary.Add("$LocalizerActivate$", Environment.NewLine + PredefinedCodes.LocalizerActivateCode);
-                    replacementsDictionary.Add("$LocalizerItemGroup$", Environment.NewLine + Environment.NewLine + PredefinedCodes.LocalizerItemGroupCode);
-                    replacementsDictionary.Add("$Localizer$", PredefinedCodes.LocalizerInitializeCode);
-                }
-                else
-                {
-                    replacementsDictionary.Add("$LocalizerActivate$", "");
-                    replacementsDictionary.Add("$LocalizerItemGroup$", "");
-                    replacementsDictionary.Add("$Localizer$", "");
-                }
-                #endregion
 
-                if (WizardConfig.UseDynamicLocalization || WizardConfig.UseWindow11ContextMenu)
+                if (WizardConfig.UseWindow11ContextMenu)
                 {
                     replacementsDictionary.Add("$OnLaunchedAsyncKeyword$", "async ");
                 }

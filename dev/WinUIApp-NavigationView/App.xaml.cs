@@ -17,9 +17,6 @@ public partial class App : Application
     protected $OnLaunchedAsyncKeyword$override void OnLaunched(LaunchActivatedEventArgs args)
     {
         CurrentWindow = new Window();
-
-        CurrentWindow.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
-        CurrentWindow.AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
        
         if (CurrentWindow.Content is not Frame rootFrame)
         {
@@ -36,7 +33,7 @@ public partial class App : Application
         CurrentWindow.Title = CurrentWindow.AppWindow.Title = $"{AppName} v{AppVersion}";
         CurrentWindow.AppWindow.SetIcon("Assets/icon.ico");$ConfigLogger$
 
-        CurrentWindow.Activate();$Windows11ContextMenuInitializer$$LocalizerActivate$$UnhandeledException$
+        CurrentWindow.Activate();$Windows11ContextMenuInitializer$$UnhandeledException$
     }
 }
 

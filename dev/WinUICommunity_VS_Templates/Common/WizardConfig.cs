@@ -37,7 +37,6 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static bool IsUnPackagedMode;
         public static bool IsBlank;
         public static bool HasPages;
-        public static bool UseDynamicLocalization;
         public static bool UseHomeLandingPage;
         public static bool UseSettingsPage;
         public static bool UseGeneralSettingPage;
