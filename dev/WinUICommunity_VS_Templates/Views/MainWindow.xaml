@@ -131,6 +131,14 @@
                                    Text="UnPackaged Mode" />
                         <ui:ToggleSwitch x:Name="tgUnPackaged"
                                          Toggled="tgUnPackaged_Toggled" />
+
+                        <TextBlock Margin="5,5"
+                                   Style="{StaticResource BaseTextBlockStyle}"
+                                   Text="Nullable" />
+                        <ui:ToggleSwitch x:Name="tgNullable"
+                                         OffContent="disable"
+                                         OnContent="enable"
+                                         Toggled="tgNullable_Toggled" />
                     </StackPanel>
 
                 </StackPanel>

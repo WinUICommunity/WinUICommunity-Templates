@@ -159,5 +159,10 @@ namespace WinUICommunity_VS_Templates
         {
             WizardConfig.IsUnPackagedMode = tgUnPackaged.IsOn;
         }
+
+        private void tgNullable_Toggled(object sender, RoutedEventArgs e)
+        {
+            WizardConfig.Nullable = tgNullable.IsOn ? tgNullable.OnContent.ToString() : tgNullable.OffContent.ToString();
+        }
     }
 }

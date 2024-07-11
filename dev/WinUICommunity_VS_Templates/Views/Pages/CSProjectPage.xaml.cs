@@ -81,34 +81,37 @@ namespace WinUICommunity_VS_Templates
         }
         private void TrimToggled(object sender, RoutedEventArgs e)
         {
-            Toggled(sender, e);
-
-            if (PublishTrimOption.IsOn)
-            {
-                AddOrUpdateElementWithOnOffContent(TrimModeOption);
-            }
-            else
-            {
-                TrimModeOption_Toggled(null, null);
-            }
+            WizardConfig.PublishTrimmed = OUTrim.IsOn;
         }
 
         private void TrimModeOption_Toggled(object sender, RoutedEventArgs e)
         {
-            var key = TrimModeOption.Tag.ToString();
+            WizardConfig.TrimMode = TrimModeOption.IsOn ? TrimModeOption.OnContent : TrimModeOption.OffContent;
+        }
 
-            if (PublishTrimOption.IsOn)
-            {
-                AddOrUpdateElementWithOnOffContent(TrimModeOption);
-            }
-            else
-            {
-                WizardConfig.CSProjectElements.TryGetValue(key, out var valueExist);
-                if (!string.IsNullOrEmpty(valueExist))
-                {
-                    WizardConfig.CSProjectElements.Remove(key);
-                }
-            }
+        private void OUSingleFile_Toggled(object sender, RoutedEventArgs e)
+        {
+            WizardConfig.PublishSingleFile = OUSingleFile.IsOn;
+        }
+
+        private void OUReadyToRun_Toggled(object sender, RoutedEventArgs e)
+        {
+            WizardConfig.PublishReadyToRun = OUReadyToRun.IsOn;
+        }
+
+        private void OUAOT_Toggled(object sender, RoutedEventArgs e)
+        {
+            WizardConfig.PublishAot = OUAOT.IsOn;
+        }
+
+        private void OUNativeSelfExt_Toggled(object sender, RoutedEventArgs e)
+        {
+            WizardConfig.IncludeNativeLibrariesForSelfExtract = OUNativeSelfExt.IsOn;
+        }
+
+        private void OUAllContentSelfExt_Toggled(object sender, RoutedEventArgs e)
+        {
+            WizardConfig.IncludeAllContentForSelfExtract = OUAllContentSelfExt.IsOn;
         }
     }
 }

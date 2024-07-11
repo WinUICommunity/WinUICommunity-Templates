@@ -18,6 +18,8 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static string RuntimeIdentifiers = "win-x86;win-x64;win-arm64";
         public static string RuntimeIdentifiers10 = "win10-x86;win10-x64;win10-arm64";
         public static string SolutionFolderName = "Solution Items";
+        public static string TrimMode = "partial";
+        public static string Nullable = "disable";
         
         public static bool UseGithubWorkflowFile;
         public static bool UseXamlStylerFile;
@@ -25,6 +27,12 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static bool UseEditorConfigFile = true;
         public static bool UseJsonSettings = true;
         public static bool UseSolutionFolder = true;
+        public static bool PublishTrimmed = true;
+        public static bool PublishAot = false;
+        public static bool IncludeAllContentForSelfExtract = false;
+        public static bool IncludeNativeLibrariesForSelfExtract = false;
+        public static bool PublishReadyToRun = true;
+        public static bool PublishSingleFile = false;
 
         public static bool IsUnPackagedMode;
         public static bool IsBlank;
