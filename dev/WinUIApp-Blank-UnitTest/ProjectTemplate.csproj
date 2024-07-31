@@ -39,7 +39,7 @@
 	
   <ItemGroup>
 	<None Include="Assets\**\*">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 	</None>
   </ItemGroup>
 	
