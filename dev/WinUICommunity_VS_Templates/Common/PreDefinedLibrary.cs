@@ -80,6 +80,8 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
+                new Library("NotifyIconEx"),
+                new Library("Ulid"),
                 new Library("TenMica", true),
                 new Library("WinUI.TableView"),
                 new Library("Microsoft.Windows.CsWinRT"),
