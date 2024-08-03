@@ -25,7 +25,7 @@ public partial class AppUpdateSettingViewModel : ObservableObject
 
     public AppUpdateSettingViewModel()
     {
-        CurrentVersion = $"Current Version v{App.Current.AppVersion}";$AppUpdateMVVMGetDateTime$
+        CurrentVersion = $"Current Version v{ProcessInfoHelper.GetVersionString}";$AppUpdateMVVMGetDateTime$
     }
 
     [RelayCommand]
@@ -43,7 +43,7 @@ public partial class AppUpdateSettingViewModel : ObservableObject
                 string username = "";
                 string repo = "";
                 LastUpdateCheck = DateTime.Now.ToShortDateString();$AppUpdateMVVMSetDateTime$
-                var update = await UpdateHelper.CheckUpdateAsync(username, repo, new Version(App.Current.AppVersion));
+                var update = await UpdateHelper.CheckUpdateAsync(username, repo, new Version(ProcessInfoHelper.GetVersionString));
                 if (update.IsExistNewVersion)
                 {
                     IsUpdateAvailable = true;

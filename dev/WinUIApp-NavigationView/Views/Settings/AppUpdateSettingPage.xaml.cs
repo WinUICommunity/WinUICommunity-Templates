@@ -11,7 +11,7 @@ public sealed partial class AppUpdateSettingPage : Page
     public AppUpdateSettingPage()
     {
         this.InitializeComponent();
-        CurrentVersion = $"Current Version v{App.Current.AppVersion}";$AppUpdateGetDateTime$
+        CurrentVersion = $"Current Version v{ProcessInfoHelper.GetVersionString}";$AppUpdateGetDateTime$
 
         BtnReleaseNote.Visibility = Visibility.Collapsed;
         BtnDownloadUpdate.Visibility = Visibility.Collapsed;
@@ -38,7 +38,7 @@ public sealed partial class AppUpdateSettingPage : Page
                 string username = "";
                 string repo = "";
                 TxtLastUpdateCheck.Text = DateTime.Now.ToShortDateString();$AppUpdateSetDateTime$
-                var update = await UpdateHelper.CheckUpdateAsync(username, repo, new Version(App.Current.AppVersion));
+                var update = await UpdateHelper.CheckUpdateAsync(username, repo, new Version(ProcessInfoHelper.GetVersionString));
                 if (update.IsExistNewVersion)
                 {
                     BtnReleaseNote.Visibility = Visibility.Visible;

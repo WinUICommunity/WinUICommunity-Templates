@@ -7,8 +7,8 @@ public sealed partial class MainPage : Page
     {
         ViewModel = App.GetService<MainViewModel>();
         this.InitializeComponent();
-        App.CurrentWindow.ExtendContentIntoTitleBar = true;
-        App.CurrentWindow.SetTitleBar(AppTitleBar);
+        App.MainWindow.ExtendContentIntoTitleBar = true;
+        App.MainWindow.SetTitleBar(AppTitleBar);
     }
 
     private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)

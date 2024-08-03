@@ -13,7 +13,7 @@
         x:Name="allLandingPage"
         HeaderImage="{ThemeResource HeaderCover}"
         HeaderOverlayImage="{ThemeResource HeaderCover}"
-        HeaderText="{x:Bind AppInfo}">
+        HeaderText="{x:Bind ProcessInfoHelper.GetProductNameAndVersion()}">
         <i:Interaction.Behaviors>
             <ic:EventTriggerBehavior EventName="OnItemClick">
                 <ic:EventTriggerBehavior.Actions>

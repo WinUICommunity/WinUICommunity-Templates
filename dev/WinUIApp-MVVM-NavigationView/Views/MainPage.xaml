@@ -13,13 +13,13 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TitleBar x:Name="AppTitleBar"
-                  Title="{x:Bind local:App.Current.AppName}"
+                  Title="{x:Bind wuc:ProcessInfoHelper.GetProductName()}"
                   BackButtonClick="AppTitleBar_BackButtonClick"
                   Icon="{wuc:BitmapIcon Source=ms-appx:///Assets/icon.png}"
                   IsBackButtonVisible="True"
                   IsPaneButtonVisible="True"
                   PaneButtonClick="AppTitleBar_PaneButtonClick"
-                  Subtitle="{x:Bind local:App.Current.AppVersion}">
+                  Subtitle="{x:Bind wuc:ProcessInfoHelper.GetVersionString}">
             <TitleBar.Content>
                 <AutoSuggestBox PlaceholderText="Search"
                                 QueryIcon="Find"

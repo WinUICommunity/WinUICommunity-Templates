@@ -7,10 +7,15 @@ public sealed partial class MainPage : Page
     {
         ViewModel = App.GetService<MainViewModel>();
         this.InitializeComponent();
-        App.CurrentWindow.ExtendContentIntoTitleBar = true;
-        App.CurrentWindow.SetTitleBar(AppTitleBar);
-        ViewModel.JsonNavigationViewService.Initialize(NavView, NavFrame);
-        ViewModel.JsonNavigationViewService.ConfigJson("Assets/NavViewMenu/AppData.json");
+        App.MainWindow.ExtendContentIntoTitleBar = true;
+        App.MainWindow.SetTitleBar(AppTitleBar);
+
+        var jsonNavigationViewService = Services.GetService<IJsonNavigationViewService>() as JsonNavigationViewService;
+        if (jsonNavigationViewService != null)
+        {
+            jsonNavigationViewService.Initialize(NavView, NavFrame);
+            jsonNavigationViewService.ConfigJson("Assets/NavViewMenu/AppData.json");
+        }
     }
 
     private void AppTitleBar_BackButtonClick(object sender, RoutedEventArgs e)

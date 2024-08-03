@@ -15,7 +15,9 @@
         <TitleBar x:Name="AppTitleBar"
                   Title="$safeprojectname$"
                   Subtitle="1.0.0" />
-        <StackPanel Grid.Row="1" />
+        <StackPanel Grid.Row="1">
+            
+        </StackPanel>
     </Grid>
 </Page>
 

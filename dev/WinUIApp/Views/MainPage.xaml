@@ -13,10 +13,12 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TitleBar x:Name="AppTitleBar"
-                  Title="{x:Bind local:App.Current.AppName}"
+                  Title="{x:Bind wuc:ProcessInfoHelper.GetProductName()}"
                   Icon="{wuc:BitmapIcon Source=ms-appx:///Assets/icon.png}"
-                  Subtitle="{x:Bind local:App.Current.AppVersion}" />
-        <StackPanel Grid.Row="1" />
+                  Subtitle="{x:Bind wuc:ProcessInfoHelper.GetVersionString}" />
+        <StackPanel Grid.Row="1">
+            
+        </StackPanel>
     </Grid>
 </Page>
 

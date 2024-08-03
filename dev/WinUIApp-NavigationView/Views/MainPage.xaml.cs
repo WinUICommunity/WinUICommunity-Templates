@@ -5,8 +5,8 @@ public sealed partial class MainPage : Page
     public MainPage()
     {
         this.InitializeComponent();
-        App.CurrentWindow.ExtendContentIntoTitleBar = true;
-        App.CurrentWindow.SetTitleBar(AppTitleBar);
+        App.MainWindow.ExtendContentIntoTitleBar = true;
+        App.MainWindow.SetTitleBar(AppTitleBar);
         App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame);
         App.Current.JsonNavigationViewService.ConfigJson("Assets/NavViewMenu/AppData.json");
     }
