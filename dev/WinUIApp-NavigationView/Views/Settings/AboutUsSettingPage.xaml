@@ -21,7 +21,7 @@
 
                 <TextBlock Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                            IsTextSelectionEnabled="True"
-                           Text="{x:Bind wuc:ProcessInfoHelper.ProductNameAndVersion}" />
+                           Text="{x:Bind wuc:ProcessInfoHelper.VersionWithPrefix}" />
                 <wuc:SettingsExpander.Items>
                     <wuc:SettingsCard HorizontalContentAlignment="Left"
                                       ContentAlignment="Left">
