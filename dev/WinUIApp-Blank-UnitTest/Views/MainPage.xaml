@@ -14,7 +14,8 @@
         </Grid.RowDefinitions>
         <TitleBar x:Name="AppTitleBar"
                   Title="$safeprojectname$"
-                  Subtitle="1.0.0" />
+                  Subtitle="1.0.0"
+                  IconSource="{wuc:BitmapIconSource Source=ms-appx:///Assets/icon.png}"/>
         <StackPanel Grid.Row="1">
             
         </StackPanel>

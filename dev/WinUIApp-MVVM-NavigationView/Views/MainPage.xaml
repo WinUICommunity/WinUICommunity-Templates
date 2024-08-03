@@ -15,7 +15,7 @@
         <TitleBar x:Name="AppTitleBar"
                   Title="{x:Bind wuc:ProcessInfoHelper.GetProductName()}"
                   BackButtonClick="AppTitleBar_BackButtonClick"
-                  Icon="{wuc:BitmapIcon Source=ms-appx:///Assets/icon.png}"
+                  IconSource="{wuc:BitmapIconSource Source=ms-appx:///Assets/icon.png}"
                   IsBackButtonVisible="True"
                   IsPaneButtonVisible="True"
                   PaneButtonClick="AppTitleBar_PaneButtonClick"

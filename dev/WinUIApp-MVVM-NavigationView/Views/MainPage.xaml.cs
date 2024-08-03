@@ -7,7 +7,7 @@ public sealed partial class MainPage : Page
     {
         ViewModel = App.GetService<MainViewModel>();
         this.InitializeComponent();
-        App.MainWindow.ExtendContentIntoTitleBar = true;
+        App.MainWindow.ExtendsContentIntoTitleBar = true;
         App.MainWindow.SetTitleBar(AppTitleBar);
 
         var jsonNavigationViewService = Services.GetService<IJsonNavigationViewService>() as JsonNavigationViewService;
