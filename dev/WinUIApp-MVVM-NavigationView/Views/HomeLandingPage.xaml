@@ -11,7 +11,7 @@
     <wuc:AllLandingPage x:Name="allLandingPage"
                         HeaderImage="{ThemeResource HeaderCover}"
                         HeaderOverlayImage="{ThemeResource HeaderCover}"
-                        HeaderText="{x:Bind ProcessInfoHelper.ProductNameAndVersion}">
+                        HeaderText="{x:Bind wuc:ProcessInfoHelper.ProductNameAndVersion}">
         <i:Interaction.Behaviors>
             <ic:EventTriggerBehavior EventName="OnItemClick">
                 <ic:EventTriggerBehavior.Actions>

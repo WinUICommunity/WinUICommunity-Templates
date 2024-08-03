@@ -11,7 +11,7 @@ ContextMenuItem menu = new ContextMenuItem
     Exe = "$projectname$.exe",
     Param = "{path}"
 };
-await ContextMenuService.Ins.SaveAsync(menu);
+await new ContextMenuService.SaveAsync(menu);
 """;
         
         public static readonly string SettingsCardCommentCode =

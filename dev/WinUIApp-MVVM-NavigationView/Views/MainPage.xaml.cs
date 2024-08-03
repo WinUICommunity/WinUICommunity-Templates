@@ -10,7 +10,7 @@ public sealed partial class MainPage : Page
         App.MainWindow.ExtendsContentIntoTitleBar = true;
         App.MainWindow.SetTitleBar(AppTitleBar);
 
-        var jsonNavigationViewService = Services.GetService<IJsonNavigationViewService>() as JsonNavigationViewService;
+        var jsonNavigationViewService = App.GetService<IJsonNavigationViewService>() as JsonNavigationViewService;
         if (jsonNavigationViewService != null)
         {
             jsonNavigationViewService.Initialize(NavView, NavFrame);
