@@ -11,7 +11,24 @@ ContextMenuItem menu = new ContextMenuItem
     Exe = "$projectname$.exe",
     Param = "{path}"
 };
+
 await new ContextMenuService.SaveAsync(menu);
+""";
+        public static string Windows11ContextMenuMVVMInitializer =
+"""
+var menuService = GetService<ContextMenuService>();
+if (menuService != null)
+{
+    ContextMenuItem menu = new ContextMenuItem
+    {
+        Title = "Open $projectname$ Here",
+        AcceptDirectory = true,
+        Exe = "$projectname$.exe",
+        Param = "{path}"
+    };
+
+    await menuService.SaveAsync(menu);
+}
 """;
         
         public static readonly string SettingsCardCommentCode =

@@ -271,14 +271,18 @@ namespace WinUICommunity_VS_Templates
                     WizardConfig.UseWindow11ContextMenu = true;
                     replacementsDictionary.Add("$CLSID$", WizardConfig.CLSID.PickRandom());
                     var windows11ContextMenu = PredefinedCodes.Windows11ContextMenuInitializer;
+                    var windows11ContextMenuMVVM = PredefinedCodes.Windows11ContextMenuMVVMInitializer;
                     windows11ContextMenu = windows11ContextMenu.Replace("$projectname$", ProjectName);
+                    windows11ContextMenuMVVM = windows11ContextMenuMVVM.Replace("$projectname$", ProjectName);
                     replacementsDictionary.Add("$Windows11ContextMenuInitializer$", Environment.NewLine + windows11ContextMenu);
+                    replacementsDictionary.Add("$Windows11ContextMenuMVVMInitializer$", Environment.NewLine + Environment.NewLine + windows11ContextMenuMVVM);
                 }
                 else
                 {
                     WizardConfig.UseWindow11ContextMenu = false;
                     replacementsDictionary.Add("$CLSID$", "");
                     replacementsDictionary.Add("$Windows11ContextMenuInitializer$", "");
+                    replacementsDictionary.Add("$Windows11ContextMenuMVVMInitializer$", "");
                 }
 
                 #endregion
@@ -303,7 +307,7 @@ namespace WinUICommunity_VS_Templates
                 new DictionaryOption().ConfigDictionary(replacementsDictionary, hasNavigationView, WizardConfig.UseHomeLandingPage, WizardConfig.UseColorsDic, WizardConfig.UseStylesDic, WizardConfig.UseConvertersDic, WizardConfig.UseFontsDic);
 
                 #region Codes
-                var configCodes = new ConfigCodes(WizardConfig.UseAboutPage, WizardConfig.UseAppUpdatePage, WizardConfig.UseGeneralSettingPage, WizardConfig.UseHomeLandingPage, WizardConfig.UseSettingsPage, WizardConfig.UseThemeSettingPage, WizardConfig.UseDeveloperModeSetting, WizardConfig.UseJsonSettings);
+                var configCodes = new ConfigCodes(WizardConfig.UseAboutPage, WizardConfig.UseAppUpdatePage, WizardConfig.UseGeneralSettingPage, WizardConfig.UseHomeLandingPage, WizardConfig.UseSettingsPage, WizardConfig.UseThemeSettingPage, WizardConfig.UseDeveloperModeSetting, WizardConfig.UseJsonSettings, WizardConfig.UseWindow11ContextMenu);
 
                 if (isMVVMTemplate)
                 {

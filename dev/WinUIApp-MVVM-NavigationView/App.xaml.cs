@@ -46,18 +46,18 @@ public partial class App : Application
             MainWindow.Content = rootFrame = new Frame();
         }
 
-        var themeService = Services.GetService<IThemeService>() as ThemeService;
+        var themeService = GetService<IThemeService>() as ThemeService;
         if (themeService != null)
         {
             themeService.AutoInitialize(MainWindow);
-        }
+        }$Windows11ContextMenuMVVMInitializer$
 
         rootFrame.Navigate(typeof(MainPage));
 
         MainWindow.Title = MainWindow.AppWindow.Title = ProcessInfoHelper.ProductNameAndVersion;
         MainWindow.AppWindow.SetIcon("Assets/icon.ico");$ConfigLogger$
 
-        MainWindow.Activate();$Windows11ContextMenuInitializer$$UnhandeledException$
+        MainWindow.Activate();$UnhandeledException$
     }
 }
 
