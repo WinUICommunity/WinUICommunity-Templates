@@ -7,19 +7,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <Grid RowDefinitions="Auto, *">
         <TitleBar x:Name="AppTitleBar"
-                  Title="{x:Bind wuc:ProcessInfoHelper.GetProductName()}"
-                  BackButtonClick="AppTitleBar_BackButtonClick"
+                  Title="{x:Bind wuc:ProcessInfoHelper.ProductName}"
+                  BackRequested="AppTitleBar_BackRequested"
                   IconSource="{wuc:BitmapIconSource Source=ms-appx:///Assets/icon.png}"
                   IsBackButtonVisible="True"
-                  IsPaneButtonVisible="True"
-                  PaneButtonClick="AppTitleBar_PaneButtonClick"
-                  Subtitle="{x:Bind wuc:ProcessInfoHelper.GetVersionString}">
+                  IsPaneToggleButtonVisible="True"
+                  PaneToggleRequested="AppTitleBar_PaneToggleRequested"
+                  Subtitle="{x:Bind wuc:ProcessInfoHelper.VersionWithPrefix}">
             <TitleBar.Content>
                 <AutoSuggestBox PlaceholderText="Search"
                                 QueryIcon="Find"

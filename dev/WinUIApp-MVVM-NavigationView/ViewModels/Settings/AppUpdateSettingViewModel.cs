@@ -25,7 +25,7 @@ public partial class AppUpdateSettingViewModel : ObservableObject
 
     public AppUpdateSettingViewModel()
     {
-        CurrentVersion = $"Current Version v{ProcessInfoHelper.GetVersionString}";$AppUpdateMVVMGetDateTime$
+        CurrentVersion = $"Current Version {ProcessInfoHelper.VersionWithPrefix}";$AppUpdateMVVMGetDateTime$
     }
 
     [RelayCommand]
@@ -43,7 +43,7 @@ public partial class AppUpdateSettingViewModel : ObservableObject
                 string username = "";
                 string repo = "";
                 LastUpdateCheck = DateTime.Now.ToShortDateString();$AppUpdateMVVMSetDateTime$
-                var update = await UpdateHelper.CheckUpdateAsync(username, repo, new Version(ProcessInfoHelper.GetVersionString));
+                var update = await UpdateHelper.CheckUpdateAsync(username, repo, new Version(ProcessInfoHelper.Version));
                 if (update.IsExistNewVersion)
                 {
                     IsUpdateAvailable = true;
@@ -95,7 +95,7 @@ public partial class AppUpdateSettingViewModel : ObservableObject
             },
             Margin = new Thickness(10),
             DefaultButton = ContentDialogButton.Close,
-            XamlRoot = App.CurrentWindow.Content.XamlRoot
+            XamlRoot = App.MainWindow.Content.XamlRoot
         };
 
         await dialog.ShowAsyncQueue();

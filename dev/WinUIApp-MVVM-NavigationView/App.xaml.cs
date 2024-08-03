@@ -49,12 +49,12 @@ public partial class App : Application
         var themeService = Services.GetService<IThemeService>() as ThemeService;
         if (themeService != null)
         {
-            themeService.AutoInitialize(CurrentWindow);
+            themeService.AutoInitialize(MainWindow);
         }
 
         rootFrame.Navigate(typeof(MainPage));
 
-        MainWindow.Title = MainWindow.AppWindow.Title = ProcessInfoHelper.GetProductNameAndVersion();
+        MainWindow.Title = MainWindow.AppWindow.Title = ProcessInfoHelper.ProductNameAndVersion;
         MainWindow.AppWindow.SetIcon("Assets/icon.ico");$ConfigLogger$
 
         MainWindow.Activate();$Windows11ContextMenuInitializer$$UnhandeledException$

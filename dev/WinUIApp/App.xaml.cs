@@ -5,6 +5,7 @@ public partial class App : Application
     public static Window MainWindow = Window.Current;
     public IThemeService ThemeService { get; set; }
     public new static App Current => (App)Application.Current;
+
     public App()
     {
         this.InitializeComponent();
@@ -23,7 +24,7 @@ public partial class App : Application
 
         rootFrame.Navigate(typeof(MainPage));
 
-        MainWindow.Title = MainWindow.AppWindow.Title = ProcessInfoHelper.GetProductNameAndVersion();
+        MainWindow.Title = MainWindow.AppWindow.Title = ProcessInfoHelper.ProductNameAndVersion;
         MainWindow.AppWindow.SetIcon("Assets/icon.ico");$ConfigLogger$
 
         MainWindow.Activate();$Windows11ContextMenuInitializer$$UnhandeledException$
