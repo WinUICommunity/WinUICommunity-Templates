@@ -147,12 +147,7 @@ namespace WinUICommunity_VS_Templates
                 
                 replacementsDictionary.Add("$Nullable$", WizardConfig.Nullable);
                 replacementsDictionary.Add("$TrimMode$", WizardConfig.TrimMode);
-                replacementsDictionary.Add("$PublishTrimmed$", WizardConfig.PublishTrimmed.ToString());
                 replacementsDictionary.Add("$PublishAot$", WizardConfig.PublishAot.ToString());
-                replacementsDictionary.Add("$IncludeAllContentForSelfExtract$", WizardConfig.IncludeAllContentForSelfExtract.ToString());
-                replacementsDictionary.Add("$IncludeNativeLibrariesForSelfExtract$", WizardConfig.IncludeNativeLibrariesForSelfExtract.ToString());
-                replacementsDictionary.Add("$PublishReadyToRun$", WizardConfig.PublishReadyToRun.ToString());
-                replacementsDictionary.Add("$PublishSingleFile$", WizardConfig.PublishSingleFile.ToString());
 
                 replacementsDictionary.Add("$AddJsonSettings$", WizardConfig.UseJsonSettings.ToString());
                 replacementsDictionary.Add("$AddEditorConfig$", WizardConfig.UseEditorConfigFile.ToString());

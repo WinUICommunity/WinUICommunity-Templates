@@ -11,7 +11,7 @@ Jump right into coding your project, and let us prepare project for you.</Descri
         <ReleaseNotes>https://github.com/winUICommunity/WinUICommunity-Templates</ReleaseNotes>
         <Icon>Assets\WinUIApp.png</Icon>
         <PreviewImage>Assets\Preview.png</PreviewImage>
-        <Tags>winui3, winui 3, wasdk, windows app sdk, windowsappsdk, winuicommunity, settingsui, components, titlebar, navigationview, theme, mvvm, template, winui</Tags>
+        <Tags>WindowsAppSDK, WinAppSDK, WinUI, XAML, C#, Managed, winui3, winui 3, wasdk, windows app sdk, windowsappsdk, winuicommunity, settingsui, components, titlebar, navigationview, theme, mvvm, template, winui</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
