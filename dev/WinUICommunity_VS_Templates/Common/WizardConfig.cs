@@ -16,7 +16,6 @@ namespace WinUICommunity_VS_Templates.WizardUI
         public static string MinimumTargetPlatform = "17763";
         public static string Platforms = "x86;x64;ARM64";
         public static string RuntimeIdentifiers = "win-x86;win-x64;win-arm64";
-        public static string RuntimeIdentifiers10 = "win10-x86;win10-x64;win10-arm64";
         public static string SolutionFolderName = "Solution Items";
         public static string TrimMode = "partial";
         public static string Nullable = "disable";

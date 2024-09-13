@@ -6,8 +6,7 @@
     <RootNamespace>$safeprojectname$</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>$Platforms$</Platforms>
-    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) >= 8">$RuntimeIdentifiers$</RuntimeIdentifiers>
-    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">$RuntimeIdentifiers10$</RuntimeIdentifiers>
+    <RuntimeIdentifiers>$RuntimeIdentifiers$</RuntimeIdentifiers>
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
@@ -15,9 +14,9 @@
     <ImplicitUsings>true</ImplicitUsings>
     <LangVersion>Latest</LangVersion>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
-	  <WindowsPackageType>$WindowsPackageType$</WindowsPackageType>
+	<WindowsPackageType>$WindowsPackageType$</WindowsPackageType>
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
-	  <Version>1.0.0</Version>
+	<Version>1.0.0</Version>
 
     <!--Remove git hash from assembly informational version in .NET 8, Example: false = 1.0.0, true = 1.0.0+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>

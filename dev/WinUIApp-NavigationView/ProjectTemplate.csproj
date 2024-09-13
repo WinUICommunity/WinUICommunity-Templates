@@ -6,8 +6,7 @@
 	<RootNamespace>$safeprojectname$</RootNamespace>
 	<ApplicationManifest>app.manifest</ApplicationManifest>
 	<Platforms>$Platforms$</Platforms>
-	<RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) >= 8">$RuntimeIdentifiers$</RuntimeIdentifiers>
-    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">$RuntimeIdentifiers10$</RuntimeIdentifiers>
+	<RuntimeIdentifiers>$RuntimeIdentifiers$</RuntimeIdentifiers>
 	<PublishProfile>win-$(Platform).pubxml</PublishProfile>
 	<UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>

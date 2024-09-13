@@ -119,7 +119,6 @@ namespace WinUICommunity_VS_Templates
 
             WizardConfig.Platforms = platforms;
             var identifiers = GetRuntimeIdentifiers(platforms);
-            WizardConfig.RuntimeIdentifiers10 = identifiers;
             WizardConfig.RuntimeIdentifiers = identifiers.Replace("10", "");
         }
 
