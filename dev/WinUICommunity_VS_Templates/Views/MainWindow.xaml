@@ -102,16 +102,19 @@
                             <ComboBoxItem Content=".Net 8.0 (Recommended)"
                                           Tag="net8.0"
                                           ToolTip=".Net 8.0 will be used." />
-                            <ComboBoxItem Content=".Net 7.0"
-                                          Tag="net7.0"
-                                          ToolTip=".Net 7.0 will be used." />
+                            <ComboBoxItem Content=".Net 9.0 (RC)"
+                                          Tag="net9.0"
+                                          ToolTip=".Net 9.0 will be used." />
                         </ComboBox>
                         <ComboBox x:Name="cmbTargetFrameworkVersion"
                                   MinWidth="250"
                                   Margin="5,0"
-                                  SelectedIndex="0"
+                                  SelectedIndex="1"
                                   SelectionChanged="cmbTargetFrameworkVersion_SelectionChanged"
                                   ToolTip="Choose TargetFramework Version">
+                            <ComboBoxItem Content="26100"
+                                          Tag="26100"
+                                          ToolTip="26100" />
                             <ComboBoxItem Content="22621 (Recommended)"
                                           Tag="22621"
                                           ToolTip="22621" />
