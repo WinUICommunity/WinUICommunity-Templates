@@ -19,7 +19,8 @@ namespace WinUICommunity_VS_Templates
         bool UseThemeSettingPage;
         bool UseDeveloperModeSetting;
         bool UseJsonSetting;
-        public ConfigCodes(bool UseAboutPage, bool UseAppUpdatePage, bool UseGeneralSettingPage, bool UseHomeLandingPage, bool UseSettingsPage, bool UseThemeSettingPage, bool UseDeveloperModeSetting, bool UseJsonSetting)
+        bool UseContextMenu;
+        public ConfigCodes(bool UseAboutPage, bool UseAppUpdatePage, bool UseGeneralSettingPage, bool UseHomeLandingPage, bool UseSettingsPage, bool UseThemeSettingPage, bool UseDeveloperModeSetting, bool UseJsonSetting, bool useContextMenu)
         {
             this.UseAboutPage = UseAboutPage;
             this.UseAppUpdatePage = UseAppUpdatePage;
@@ -29,6 +30,7 @@ namespace WinUICommunity_VS_Templates
             this.UseThemeSettingPage = UseThemeSettingPage;
             this.UseDeveloperModeSetting = UseDeveloperModeSetting;
             this.UseJsonSetting = UseJsonSetting;
+            UseContextMenu = useContextMenu;
         }
 
         public string GetConfigJson()
@@ -100,6 +102,11 @@ namespace WinUICommunity_VS_Templates
 
         public void ConfigAllMVVM(string safeProjectName)
         {
+            if (UseContextMenu)
+            {
+                ServiceDic.Add(nameof(UseContextMenu), "services.AddSingleton<ContextMenuService>();");
+            }
+
             if (UseGeneralSettingPage)
             {
                 SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), PredefinedCodes.GeneralSettingMVVMCode);

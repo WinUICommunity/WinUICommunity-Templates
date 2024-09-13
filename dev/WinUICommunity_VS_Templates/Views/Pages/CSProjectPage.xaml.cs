@@ -79,39 +79,15 @@ namespace WinUICommunity_VS_Templates
 
             }
         }
-        private void TrimToggled(object sender, RoutedEventArgs e)
-        {
-            WizardConfig.PublishTrimmed = OUTrim.IsOn;
-        }
 
         private void TrimModeOption_Toggled(object sender, RoutedEventArgs e)
         {
             WizardConfig.TrimMode = TrimModeOption.IsOn ? TrimModeOption.OnContent : TrimModeOption.OffContent;
         }
 
-        private void OUSingleFile_Toggled(object sender, RoutedEventArgs e)
-        {
-            WizardConfig.PublishSingleFile = OUSingleFile.IsOn;
-        }
-
-        private void OUReadyToRun_Toggled(object sender, RoutedEventArgs e)
-        {
-            WizardConfig.PublishReadyToRun = OUReadyToRun.IsOn;
-        }
-
         private void OUAOT_Toggled(object sender, RoutedEventArgs e)
         {
             WizardConfig.PublishAot = OUAOT.IsOn;
-        }
-
-        private void OUNativeSelfExt_Toggled(object sender, RoutedEventArgs e)
-        {
-            WizardConfig.IncludeNativeLibrariesForSelfExtract = OUNativeSelfExt.IsOn;
-        }
-
-        private void OUAllContentSelfExt_Toggled(object sender, RoutedEventArgs e)
-        {
-            WizardConfig.IncludeAllContentForSelfExtract = OUAllContentSelfExt.IsOn;
         }
     }
 }

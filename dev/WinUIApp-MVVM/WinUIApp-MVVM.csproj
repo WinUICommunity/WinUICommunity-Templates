@@ -98,9 +98,6 @@
     <Content Include="Common\AppHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Strings\en-US\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Common\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,9 +128,6 @@
     <Content Include="Properties\PublishProfiles\win-arm64.pubxml" />
     <Content Include="Properties\PublishProfiles\win-x64.pubxml" />
     <Content Include="Properties\PublishProfiles\win-x86.pubxml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Common\DynamicLocalizerHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Package-managed.WinContextMenu.appxmanifest">

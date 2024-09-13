@@ -142,20 +142,13 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$TargetFrameworkVersion$", WizardConfig.TargetFrameworkVersion.ToString());
                 replacementsDictionary.Add("$MinimumTargetPlatform$", WizardConfig.MinimumTargetPlatform.ToString());
                 replacementsDictionary.Add("$Platforms$", WizardConfig.Platforms.ToString());
-                replacementsDictionary.Add("$RuntimeIdentifiers10$", WizardConfig.RuntimeIdentifiers10.ToString());
                 replacementsDictionary.Add("$RuntimeIdentifiers$", WizardConfig.RuntimeIdentifiers.ToString());
                 
                 replacementsDictionary.Add("$Nullable$", WizardConfig.Nullable);
                 replacementsDictionary.Add("$TrimMode$", WizardConfig.TrimMode);
-                replacementsDictionary.Add("$PublishTrimmed$", WizardConfig.PublishTrimmed.ToString());
                 replacementsDictionary.Add("$PublishAot$", WizardConfig.PublishAot.ToString());
-                replacementsDictionary.Add("$IncludeAllContentForSelfExtract$", WizardConfig.IncludeAllContentForSelfExtract.ToString());
-                replacementsDictionary.Add("$IncludeNativeLibrariesForSelfExtract$", WizardConfig.IncludeNativeLibrariesForSelfExtract.ToString());
-                replacementsDictionary.Add("$PublishReadyToRun$", WizardConfig.PublishReadyToRun.ToString());
-                replacementsDictionary.Add("$PublishSingleFile$", WizardConfig.PublishSingleFile.ToString());
 
                 replacementsDictionary.Add("$AddJsonSettings$", WizardConfig.UseJsonSettings.ToString());
-                replacementsDictionary.Add("$AddDynamicLocalization$", WizardConfig.UseDynamicLocalization.ToString());
                 replacementsDictionary.Add("$AddEditorConfig$", WizardConfig.UseEditorConfigFile.ToString());
                 replacementsDictionary.Add("$AddSolutionFolder$", WizardConfig.UseSolutionFolder.ToString());
                 replacementsDictionary.Add("$AddHomeLandingPage$", WizardConfig.UseHomeLandingPage.ToString());
@@ -272,14 +265,18 @@ namespace WinUICommunity_VS_Templates
                     WizardConfig.UseWindow11ContextMenu = true;
                     replacementsDictionary.Add("$CLSID$", WizardConfig.CLSID.PickRandom());
                     var windows11ContextMenu = PredefinedCodes.Windows11ContextMenuInitializer;
+                    var windows11ContextMenuMVVM = PredefinedCodes.Windows11ContextMenuMVVMInitializer;
                     windows11ContextMenu = windows11ContextMenu.Replace("$projectname$", ProjectName);
+                    windows11ContextMenuMVVM = windows11ContextMenuMVVM.Replace("$projectname$", ProjectName);
                     replacementsDictionary.Add("$Windows11ContextMenuInitializer$", Environment.NewLine + windows11ContextMenu);
+                    replacementsDictionary.Add("$Windows11ContextMenuMVVMInitializer$", Environment.NewLine + Environment.NewLine + windows11ContextMenuMVVM);
                 }
                 else
                 {
                     WizardConfig.UseWindow11ContextMenu = false;
                     replacementsDictionary.Add("$CLSID$", "");
                     replacementsDictionary.Add("$Windows11ContextMenuInitializer$", "");
+                    replacementsDictionary.Add("$Windows11ContextMenuMVVMInitializer$", "");
                 }
 
                 #endregion
@@ -304,7 +301,7 @@ namespace WinUICommunity_VS_Templates
                 new DictionaryOption().ConfigDictionary(replacementsDictionary, hasNavigationView, WizardConfig.UseHomeLandingPage, WizardConfig.UseColorsDic, WizardConfig.UseStylesDic, WizardConfig.UseConvertersDic, WizardConfig.UseFontsDic);
 
                 #region Codes
-                var configCodes = new ConfigCodes(WizardConfig.UseAboutPage, WizardConfig.UseAppUpdatePage, WizardConfig.UseGeneralSettingPage, WizardConfig.UseHomeLandingPage, WizardConfig.UseSettingsPage, WizardConfig.UseThemeSettingPage, WizardConfig.UseDeveloperModeSetting, WizardConfig.UseJsonSettings);
+                var configCodes = new ConfigCodes(WizardConfig.UseAboutPage, WizardConfig.UseAppUpdatePage, WizardConfig.UseGeneralSettingPage, WizardConfig.UseHomeLandingPage, WizardConfig.UseSettingsPage, WizardConfig.UseThemeSettingPage, WizardConfig.UseDeveloperModeSetting, WizardConfig.UseJsonSettings, WizardConfig.UseWindow11ContextMenu);
 
                 if (isMVVMTemplate)
                 {
@@ -407,22 +404,8 @@ namespace WinUICommunity_VS_Templates
                 }
                 #endregion
 
-                #region Dynamic Localization
-                if (WizardConfig.UseDynamicLocalization)
-                {
-                    replacementsDictionary.Add("$LocalizerActivate$", Environment.NewLine + PredefinedCodes.LocalizerActivateCode);
-                    replacementsDictionary.Add("$LocalizerItemGroup$", Environment.NewLine + Environment.NewLine + PredefinedCodes.LocalizerItemGroupCode);
-                    replacementsDictionary.Add("$Localizer$", PredefinedCodes.LocalizerInitializeCode);
-                }
-                else
-                {
-                    replacementsDictionary.Add("$LocalizerActivate$", "");
-                    replacementsDictionary.Add("$LocalizerItemGroup$", "");
-                    replacementsDictionary.Add("$Localizer$", "");
-                }
-                #endregion
 
-                if (WizardConfig.UseDynamicLocalization || WizardConfig.UseWindow11ContextMenu)
+                if (WizardConfig.UseWindow11ContextMenu)
                 {
                     replacementsDictionary.Add("$OnLaunchedAsyncKeyword$", "async ");
                 }

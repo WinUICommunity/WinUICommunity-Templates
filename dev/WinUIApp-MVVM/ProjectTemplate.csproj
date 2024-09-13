@@ -6,44 +6,37 @@
     <RootNamespace>$safeprojectname$</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>$Platforms$</Platforms>
-    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) >= 8">$RuntimeIdentifiers$</RuntimeIdentifiers>
-    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">$RuntimeIdentifiers10$</RuntimeIdentifiers>
+    <RuntimeIdentifiers>$RuntimeIdentifiers$</RuntimeIdentifiers>
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
-
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
+    <Nullable>$Nullable$</Nullable>
+    <TrimMode>$TrimMode$</TrimMode>
+    <ImplicitUsings>true</ImplicitUsings>
+	<LangVersion>Latest</LangVersion>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
 	<WindowsPackageType>$WindowsPackageType$</WindowsPackageType>
-
-    <Nullable>$Nullable$</Nullable>
-	<ImplicitUsings>true</ImplicitUsings>
-	<LangVersion>Latest</LangVersion>
+    <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+	<Version>1.0.0</Version>
 
     <!--Remove git hash from assembly informational version in .NET 8, Example: false = 1.0.0, true = 1.0.0+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
-	
-	<ApplicationIcon>Assets\icon.ico</ApplicationIcon>
-	<Version>1.0.0</Version>
   </PropertyGroup>
 
     <!-- Publish Properties -->
   <PropertyGroup>
-	<PublishSingleFile>$PublishSingleFile$</PublishSingleFile>
-	<IncludeNativeLibrariesForSelfExtract>$IncludeNativeLibrariesForSelfExtract$</IncludeNativeLibrariesForSelfExtract>
-	<IncludeAllContentForSelfExtract>$IncludeAllContentForSelfExtract$</IncludeAllContentForSelfExtract>
 	<PublishAot>$PublishAot$</PublishAot>
 	<PublishReadyToRun Condition="'$(Configuration)' == 'Debug'">False</PublishReadyToRun>
-    <PublishReadyToRun Condition="'$(Configuration)' != 'Debug'">$PublishReadyToRun$</PublishReadyToRun>
+    <PublishReadyToRun Condition="'$(Configuration)' != 'Debug'">True</PublishReadyToRun>
     <PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
-    <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">$PublishTrimmed$</PublishTrimmed>
-	<TrimMode>$TrimMode$</TrimMode>
+    <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="Assets\**\*">
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
-  </ItemGroup>$LocalizerItemGroup$
+  </ItemGroup>
   
   <ItemGroup>
 	<Folder Include="Models\" />
@@ -70,10 +63,4 @@
   <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
   </PropertyGroup>
-
-  <!-- Needed in order for running unpackaged to work properly. -->
-  <Target Name="CopyContentToOutputDirectory" AfterTargets="Build">
-    <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(OutDir)%(Identity)')" SkipUnchangedFiles="true" Condition="!$([System.IO.Path]::IsPathRooted('%(Content.Identity)'))" />
-    <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(OutDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" Condition="$([System.IO.Path]::IsPathRooted('%(Content.Identity)'))" />
-  </Target>
 </Project>

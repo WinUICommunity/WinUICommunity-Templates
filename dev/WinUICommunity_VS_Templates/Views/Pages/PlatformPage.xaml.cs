@@ -19,9 +19,8 @@ namespace WinUICommunity_VS_Templates
         {
             if (WizardConfig.IsBlank)
             {
-                if (tgDynamicLocalization != null && tgJsonSettings != null)
+                if (tgJsonSettings != null)
                 {
-                    tgDynamicLocalization.IsEnabled = false;
                     tgJsonSettings.IsEnabled = false;
                 }
             }
@@ -120,7 +119,6 @@ namespace WinUICommunity_VS_Templates
 
             WizardConfig.Platforms = platforms;
             var identifiers = GetRuntimeIdentifiers(platforms);
-            WizardConfig.RuntimeIdentifiers10 = identifiers;
             WizardConfig.RuntimeIdentifiers = identifiers.Replace("10", "");
         }
 
@@ -145,11 +143,6 @@ namespace WinUICommunity_VS_Templates
         private void tgJsonSettings_Toggled(object sender, System.Windows.RoutedEventArgs e)
         {
             WizardConfig.UseJsonSettings = tgJsonSettings.IsOn;
-        }
-
-        private void tgDynamicLocalization_Toggled(object sender, System.Windows.RoutedEventArgs e)
-        {
-            WizardConfig.UseDynamicLocalization = tgDynamicLocalization.IsOn;
         }
 
         private void tgSolutionFolder_Toggled(object sender, System.Windows.RoutedEventArgs e)

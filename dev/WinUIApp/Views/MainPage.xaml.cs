@@ -5,7 +5,8 @@ public sealed partial class MainPage : Page
     public MainPage()
     {
         this.InitializeComponent();
-        appTitleBar.Window = App.CurrentWindow;
+        App.MainWindow.ExtendsContentIntoTitleBar = true;
+        App.MainWindow.SetTitleBar(AppTitleBar);
     }
 }
 

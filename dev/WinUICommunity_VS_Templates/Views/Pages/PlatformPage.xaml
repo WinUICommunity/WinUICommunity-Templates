@@ -54,13 +54,8 @@
                             IsOn="True"
                             Toggled="tgJsonSettings_Toggled" />
 
-            <local:OptionUC x:Name="tgDynamicLocalization"
-                            Title="3. Add Dynamic Localization"
-                            InfoBarTitle="The resource (resw) file will be added and the App.xaml.cs file will be configured to use localization"
-                            Toggled="tgDynamicLocalization_Toggled" />
-
             <local:OptionUC x:Name="tgSolutionFolder"
-                            Title="4. Add Empty Solution Folder"
+                            Title="3. Add Empty Solution Folder"
                             InfoBarMessage="Solution folders provide a way to organize and group related projects, files, or items within your solution without affecting the actual project structure. Adding an empty solution folder can be useful for maintaining a tidy and well-structured solution, especially when you have numerous files and projects to manage."
                             InfoBarTitle="This option allows you to include an empty solution folder in your project. "
                             IsOn="True"

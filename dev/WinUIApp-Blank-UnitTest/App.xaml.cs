@@ -2,7 +2,7 @@
 
 public partial class App : Application
 {
-    public static Window CurrentWindow = Window.Current;
+    public static Window MainWindow = Window.Current;
     
     public App()
     {
@@ -13,18 +13,17 @@ public partial class App : Application
     {
         Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.CreateDefaultUI();
 
-        CurrentWindow = new Window();
+        MainWindow = new Window();
 
-        if (CurrentWindow.Content is not Frame rootFrame)
+        if (MainWindow.Content is not Frame rootFrame)
         {
-            CurrentWindow.Content = rootFrame = new Frame();
+            MainWindow.Content = rootFrame = new Frame();
         }
 
         rootFrame.Navigate(typeof(MainPage));
-        CurrentWindow.ExtendsContentIntoTitleBar = true;
-        CurrentWindow.Activate();
+        MainWindow.Activate();
         
-        UITestMethodAttribute.DispatcherQueue = CurrentWindow.DispatcherQueue;
+        UITestMethodAttribute.DispatcherQueue = MainWindow.DispatcherQueue;
         Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.Run(Environment.CommandLine);
     }
 }

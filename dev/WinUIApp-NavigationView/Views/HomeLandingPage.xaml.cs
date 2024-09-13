@@ -2,11 +2,9 @@
 
 public sealed partial class HomeLandingPage : Page
 {
-    public string AppInfo { get; set; }
     public HomeLandingPage()
     {
         this.InitializeComponent();
-        AppInfo = $"{App.Current.AppName} v{App.Current.AppVersion}";
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)

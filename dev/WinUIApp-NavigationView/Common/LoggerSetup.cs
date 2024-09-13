@@ -14,7 +14,7 @@ public static class LoggerSetup
         }
 
         Logger = new LoggerConfiguration()
-            .Enrich.WithProperty("Version", App.Current.AppVersion)$SerilogFile$$SerilogDebug$
+            .Enrich.WithProperty("Version", ProcessInfoHelper.Version)$SerilogFile$$SerilogDebug$
             .CreateLogger();
     }
 }

@@ -52,7 +52,11 @@ namespace WinUICommunity_VS_Templates
                 new Library("CommunityToolkit.WinUI.Controls.RichSuggestBox"),
                 new Library("CommunityToolkit.WinUI.Controls.RadialGauge"),
                 new Library("CommunityToolkit.WinUI.Controls.CameraPreview"),
-                new Library("CommunityToolkit.WinUI.Controls.TokenizingTextBox")
+                new Library("CommunityToolkit.WinUI.Controls.TokenizingTextBox"),
+                new Library("CommunityToolkit.WinUI.Controls.LayoutTransformControl"),
+                new Library("CommunityToolkit.WinUI.Controls.ColorPicker"),
+                new Library("CommunityToolkit.WinUI.Controls.TabbedCommandBar"),
+                new Library("CommunityToolkit.WinUI.Controls.SettingsControls")
             };
             return list;
         }
@@ -80,6 +84,9 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
+                new Library("messagepack"),
+                new Library("NotifyIconEx"),
+                new Library("Ulid"),
                 new Library("TenMica", true),
                 new Library("WinUI.TableView"),
                 new Library("Microsoft.Windows.CsWinRT"),

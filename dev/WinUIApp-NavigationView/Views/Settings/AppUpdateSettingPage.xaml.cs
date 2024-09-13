@@ -11,7 +11,7 @@ public sealed partial class AppUpdateSettingPage : Page
     public AppUpdateSettingPage()
     {
         this.InitializeComponent();
-        CurrentVersion = $"Current Version v{App.Current.AppVersion}";$AppUpdateGetDateTime$
+        CurrentVersion = $"Current Version {ProcessInfoHelper.VersionWithPrefix}";$AppUpdateGetDateTime$
 
         BtnReleaseNote.Visibility = Visibility.Collapsed;
         BtnDownloadUpdate.Visibility = Visibility.Collapsed;
@@ -38,7 +38,7 @@ public sealed partial class AppUpdateSettingPage : Page
                 string username = "";
                 string repo = "";
                 TxtLastUpdateCheck.Text = DateTime.Now.ToShortDateString();$AppUpdateSetDateTime$
-                var update = await UpdateHelper.CheckUpdateAsync(username, repo, new Version(App.Current.AppVersion));
+                var update = await UpdateHelper.CheckUpdateAsync(username, repo, new Version(ProcessInfoHelper.Version));
                 if (update.IsExistNewVersion)
                 {
                     BtnReleaseNote.Visibility = Visibility.Visible;
@@ -89,7 +89,7 @@ public sealed partial class AppUpdateSettingPage : Page
             },
             Margin = new Thickness(10),
             DefaultButton = ContentDialogButton.Close,
-            XamlRoot = App.CurrentWindow.Content.XamlRoot
+            XamlRoot = App.MainWindow.Content.XamlRoot
         };
 
         await dialog.ShowAsyncQueue();

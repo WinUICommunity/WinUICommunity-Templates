@@ -5,12 +5,13 @@ public sealed partial class MainPage : Page
     public MainPage()
     {
         this.InitializeComponent();
-        appTitleBar.Window = App.CurrentWindow;
+        App.MainWindow.ExtendsContentIntoTitleBar = true;
+        App.MainWindow.SetTitleBar(AppTitleBar);
         App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame);
         App.Current.JsonNavigationViewService.ConfigJson("Assets/NavViewMenu/AppData.json");
     }
 
-    private void appTitleBar_BackButtonClick(object sender, RoutedEventArgs e)
+    private void AppTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
     {
         if (NavFrame.CanGoBack)
         {
@@ -18,19 +19,19 @@ public sealed partial class MainPage : Page
         }
     }
 
-    private void appTitleBar_PaneButtonClick(object sender, RoutedEventArgs e)
+    private void AppTitleBar_PaneToggleRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
     {
         NavView.IsPaneOpen = !NavView.IsPaneOpen;
     }
 
     private void NavFrame_Navigated(object sender, NavigationEventArgs e)
     {
-        appTitleBar.IsBackButtonVisible = NavFrame.CanGoBack;
+        AppTitleBar.IsBackButtonVisible = NavFrame.CanGoBack;
     }
 
     private void ThemeButton_Click(object sender, RoutedEventArgs e)
     {
-        var element = App.CurrentWindow.Content as FrameworkElement;
+        var element = App.MainWindow.Content as FrameworkElement;
 
         if (element.ActualTheme == ElementTheme.Light)
         {

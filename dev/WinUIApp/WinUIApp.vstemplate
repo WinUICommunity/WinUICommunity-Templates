@@ -61,16 +61,12 @@
 		<ProjectItem ReplaceParameters="true" TargetFileName="AppHelper.cs">AppHelper.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="Constants.cs">Constants.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="LoggerSetup.cs">LoggerSetup.cs</ProjectItem>
-		<ProjectItem ReplaceParameters="true" TargetFileName="DynamicLocalizerHelper.cs">DynamicLocalizerHelper.cs</ProjectItem>
 	  </Folder>
 	  <Folder Name="Themes" TargetFolderName="Themes">
 		<ProjectItem ReplaceParameters="true" TargetFileName="Styles.xaml">Styles.xaml</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="ThemeResources.xaml">ThemeResources.xaml</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="Fonts.xaml">Fonts.xaml</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="Converters.xaml">Converters.xaml</ProjectItem>
-	  </Folder>
-	  <Folder Name="Strings\en-US" TargetFolderName="Strings\en-US">
-		<ProjectItem ReplaceParameters="true" TargetFileName="Resources.resw">Resources.resw</ProjectItem>
 	  </Folder>
     </Project>
 	<CustomParameters>
