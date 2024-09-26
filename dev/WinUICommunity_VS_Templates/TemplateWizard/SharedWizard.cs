@@ -166,7 +166,6 @@ namespace WinUICommunity_VS_Templates
                 {
                     _nuGetPackages = new();
                     var basePackages = packages.Split(';').Where(p => !string.IsNullOrEmpty(p));
-
                     foreach (var baseItem in basePackages)
                     {
                         _nuGetPackages.Add(new Library(baseItem, WizardConfig.UsePreReleaseVersion));
@@ -175,6 +174,12 @@ namespace WinUICommunity_VS_Templates
                     foreach (var lib in libs.Values)
                     {
                         _nuGetPackages.Add(new Library(lib.Name, lib.IncludePreRelease));
+                    }
+
+                    if (WizardConfig.UseJsonSettings)
+                    {
+                        _nuGetPackages.Add(new Library("nucs.JsonSettings", WizardConfig.UsePreReleaseVersion));
+                        _nuGetPackages.Add(new Library("nucs.JsonSettings.Autosave", WizardConfig.UsePreReleaseVersion));
                     }
 
                     _nuGetPackages = _nuGetPackages.Distinct().ToList();

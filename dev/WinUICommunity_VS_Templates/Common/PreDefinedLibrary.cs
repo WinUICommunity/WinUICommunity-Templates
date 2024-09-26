@@ -84,6 +84,7 @@ namespace WinUICommunity_VS_Templates
         {
             List<Library> list = new()
             {
+                new Library("Config.Net"),
                 new Library("messagepack"),
                 new Library("NotifyIconEx"),
                 new Library("Ulid"),
