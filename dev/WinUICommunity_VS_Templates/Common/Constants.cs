@@ -11,6 +11,5 @@
         internal readonly static string WinUICommunity_Win2D_Xaml = "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.Win2D/Themes/Generic.xaml\" />";
         internal readonly static string WinUICommunity_Components_Xaml = "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.Components/Themes/Generic.xaml\" />";
         internal readonly static string WinUICommunity_LandingPages_Xaml = "<ResourceDictionary Source=\"ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml\" />";
-        internal readonly static string WinUICommunity_LandingPagesItemTemplates_Xaml = "<ItemTemplates xmlns=\"using:WinUICommunity\"/>";
     }
 }

@@ -3,33 +3,42 @@
     public static class PredefinedCodes
     {
         public static string Windows11ContextMenuInitializer =
-"""
+""""
 ContextMenuItem menu = new ContextMenuItem
 {
     Title = "Open $projectname$ Here",
-    AcceptDirectory = true,
-    Exe = "$projectname$.exe",
-    Param = "{path}"
+    Param = @"""{path}""",
+    AcceptFileFlag = (int)FileMatchFlagEnum.All,
+    AcceptDirectoryFlag = (int)(DirectoryMatchFlagEnum.Directory | DirectoryMatchFlagEnum.Background | DirectoryMatchFlagEnum.Desktop),
+    AcceptMultipleFilesFlag = (int)FilesMatchFlagEnum.Each,
+    Index = 0,
+    Enabled = true,
+    Exe = "$projectname$.exe"
 };
 
-await new ContextMenuService.SaveAsync(menu);
-""";
+ContextMenuService menuService = new ContextMenuService();
+await menuService.SaveAsync(menu);
+"""";
         public static string Windows11ContextMenuMVVMInitializer =
-"""
+""""
 var menuService = GetService<ContextMenuService>();
 if (menuService != null)
 {
     ContextMenuItem menu = new ContextMenuItem
     {
         Title = "Open $projectname$ Here",
-        AcceptDirectory = true,
-        Exe = "$projectname$.exe",
-        Param = "{path}"
+        Param = @"""{path}""",
+        AcceptFileFlag = (int)FileMatchFlagEnum.All,
+        AcceptDirectoryFlag = (int)(DirectoryMatchFlagEnum.Directory | DirectoryMatchFlagEnum.Background | DirectoryMatchFlagEnum.Desktop),
+        AcceptMultipleFilesFlag = (int)FilesMatchFlagEnum.Each,
+        Index = 0,
+        Enabled = true,
+        Exe = "$projectname$.exe"
     };
 
     await menuService.SaveAsync(menu);
 }
-""";
+"""";
         
         public static readonly string SettingsCardCommentCode =
 """

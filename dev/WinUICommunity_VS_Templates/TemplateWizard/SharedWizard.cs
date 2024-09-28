@@ -245,12 +245,10 @@ namespace WinUICommunity_VS_Templates
                     if (libs != null && libs.ContainsKey(Constants.WinUICommunity_LandingPages))
                     {
                         replacementsDictionary.Add("$WinUICommunity.LandingPages$", Environment.NewLine + Constants.WinUICommunity_LandingPages_Xaml);
-                        replacementsDictionary.Add("$WinUICommunity.LandingPagesItemTemplate$", Environment.NewLine + Constants.WinUICommunity_LandingPagesItemTemplates_Xaml);
                     }
                     else
                     {
                         replacementsDictionary.Add("$WinUICommunity.LandingPages$", "");
-                        replacementsDictionary.Add("$WinUICommunity.LandingPagesItemTemplate$", "");
                     }
                 }
 
@@ -268,7 +266,7 @@ namespace WinUICommunity_VS_Templates
                 if (libs != null && libs.ContainsKey(Constants.WinUICommunity_ContextMenuExtensions))
                 {
                     WizardConfig.UseWindow11ContextMenu = true;
-                    replacementsDictionary.Add("$CLSID$", WizardConfig.CLSID.PickRandom());
+                    replacementsDictionary.Add("$CLSID$", Guid.NewGuid().ToString());
                     var windows11ContextMenu = PredefinedCodes.Windows11ContextMenuInitializer;
                     var windows11ContextMenuMVVM = PredefinedCodes.Windows11ContextMenuMVVMInitializer;
                     windows11ContextMenu = windows11ContextMenu.Replace("$projectname$", ProjectName);
