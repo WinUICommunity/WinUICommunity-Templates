@@ -99,7 +99,6 @@
 		
 	  <Folder Name="ViewModels\Settings" TargetFolderName="ViewModels\Settings">
 		<ProjectItem ReplaceParameters="true" TargetFileName="AboutUsSettingViewModel.cs">AboutUsSettingViewModel.cs</ProjectItem>
-		<ProjectItem ReplaceParameters="true" TargetFileName="ThemeSettingViewModel.cs">ThemeSettingViewModel.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="GeneralSettingViewModel.cs">GeneralSettingViewModel.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="AppUpdateSettingViewModel.cs">AppUpdateSettingViewModel.cs</ProjectItem>
 	  </Folder>

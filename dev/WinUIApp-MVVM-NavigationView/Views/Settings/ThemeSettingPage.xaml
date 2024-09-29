@@ -23,24 +23,17 @@
                 Description="Select the theme that suits your mood and preference. You can choose from dark, light, or system themes."
                 Header="App theme"
                 HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}">
-                <ComboBox x:Name="CmbTheme">
+                <ComboBox local:ThemeServiceAttach.ThemeService="{x:Bind local:App.Current.GetThemeService}">
                     <ComboBoxItem Content="Light" Tag="Light" />
                     <ComboBoxItem Content="Dark" Tag="Dark" />
                     <ComboBoxItem Content="Default" Tag="Default" />
-                    <i:Interaction.Behaviors>
-                        <ic:EventTriggerBehavior EventName="SelectionChanged">
-                            <ic:EventTriggerBehavior.Actions>
-                                <ic:InvokeCommandAction Command="{x:Bind ViewModel.ThemeChangedCommand}" CommandParameter="{Binding ElementName=CmbTheme}" />
-                            </ic:EventTriggerBehavior.Actions>
-                        </ic:EventTriggerBehavior>
-                    </i:Interaction.Behaviors>
                 </ComboBox>
             </wuc:SettingsCard>
             <wuc:SettingsCard
                 Description="Change the appearance of the backdrop material behind your app. You can choose from mica, acrylic, or transparent options."
                 Header="Material"
                 HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/backdrop.png}">
-                <ComboBox x:Name="CmbBackdrop">
+                <ComboBox local:ThemeServiceAttach.ThemeService="{x:Bind local:App.Current.GetThemeService}">
                     <ComboBoxItem Content="None" Tag="None" />
                     <ComboBoxItem Content="Mica" Tag="Mica" />
                     <ComboBoxItem Content="Mica Alt" Tag="MicaAlt" />
@@ -48,13 +41,6 @@
                     <ComboBoxItem Content="Acrylic Base" Tag="AcrylicBase" />
                     <ComboBoxItem Content="Acrylic Thin" Tag="AcrylicThin" />
                     <ComboBoxItem Content="Transparent" Tag="Transparent" />
-                    <i:Interaction.Behaviors>
-                        <ic:EventTriggerBehavior EventName="SelectionChanged">
-                            <ic:EventTriggerBehavior.Actions>
-                                <ic:InvokeCommandAction Command="{x:Bind ViewModel.BackdropChangedCommand}" CommandParameter="{Binding ElementName=CmbBackdrop}" />
-                            </ic:EventTriggerBehavior.Actions>
-                        </ic:EventTriggerBehavior>
-                    </i:Interaction.Behaviors>
                 </ComboBox>
             </wuc:SettingsCard>
             <wuc:SettingsCard

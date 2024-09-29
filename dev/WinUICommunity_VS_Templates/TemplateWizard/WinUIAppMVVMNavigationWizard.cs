@@ -53,7 +53,6 @@ namespace WinUICommunity_VS_Templates
                 filePath.Contains("AboutUsSettingPage") ||
                 filePath.Contains("ThemeSettingPage") ||
                 filePath.Contains("AboutUsSettingViewModel") ||
-                filePath.Contains("ThemeSettingViewModel") ||
                 filePath.Contains("GeneralSettingPage") ||
                 filePath.Contains("GeneralSettingViewModel") ||
                 filePath.Contains("AppUpdateSettingPage") ||
@@ -81,7 +80,6 @@ namespace WinUICommunity_VS_Templates
             else if (WizardConfig.UseSettingsPage &&
                 !WizardConfig.UseThemeSettingPage &&
                 (filePath.Contains("ThemeSettingPage") ||
-                filePath.Contains("ThemeSettingViewModel") ||
                 filePath.Contains("backdrop.png") ||
                 filePath.Contains("color.png") ||
                 filePath.Contains("tint.png") ||

@@ -143,9 +143,6 @@
     <Content Include="Views\Settings\AboutUsSettingPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ViewModels\Settings\ThemeSettingViewModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Settings\ThemeSettingPage.xaml">
       <SubType>Designer</SubType>
     </Content>

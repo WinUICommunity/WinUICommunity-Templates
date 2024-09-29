@@ -117,7 +117,6 @@ namespace WinUICommunity_VS_Templates
             if (UseThemeSettingPage)
             {
                 SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), PredefinedCodes.ThemeSettingMVVMCode);
-                ServiceDic.Add(nameof(UseThemeSettingPage), "services.AddTransient<ThemeSettingViewModel>();");
             }
 
             if (UseAppUpdatePage)

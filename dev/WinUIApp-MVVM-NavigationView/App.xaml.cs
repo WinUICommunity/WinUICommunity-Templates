@@ -6,6 +6,7 @@ public partial class App : Application
     public IServiceProvider Services { get; }
     public new static App Current => (App)Application.Current;
     public IJsonNavigationViewService GetJsonNavigationViewService => GetService<IJsonNavigationViewService>();
+    public IThemeService GetThemeService => GetService<IThemeService>();
 
     public static T GetService<T>() where T : class
     {
@@ -47,10 +48,9 @@ public partial class App : Application
             MainWindow.Content = rootFrame = new Frame();
         }
 
-        var themeService = GetService<IThemeService>() as ThemeService;
-        if (themeService != null)
+        if (GetThemeService != null)
         {
-            themeService.AutoInitialize(MainWindow);
+            GetThemeService.AutoInitialize(MainWindow);
         }$Windows11ContextMenuMVVMInitializer$
 
         rootFrame.Navigate(typeof(MainPage));

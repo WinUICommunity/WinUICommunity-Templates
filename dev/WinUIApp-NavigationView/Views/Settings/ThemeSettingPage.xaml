@@ -19,8 +19,7 @@
             <wuc:SettingsCard Description="Select the theme that suits your mood and preference. You can choose from dark, light, or system themes."
                               Header="App theme"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}">
-                <ComboBox x:Name="CmbTheme"
-                          SelectionChanged="CmbTheme_SelectionChanged">
+                <ComboBox local:ThemeServiceAttach.ThemeService="{x:Bind local:App.Current.GetThemeService}">
                     <ComboBoxItem Content="Light"
                                   Tag="Light" />
                     <ComboBoxItem Content="Dark"
@@ -32,8 +31,7 @@
             <wuc:SettingsCard Description="Change the appearance of the backdrop material behind your app. You can choose from mica, acrylic, or transparent options."
                               Header="Material"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/backdrop.png}">
-                <ComboBox x:Name="CmbBackdrop"
-                          SelectionChanged="CmbBackdrop_SelectionChanged">
+                <ComboBox local:ThemeServiceAttach.ThemeService="{x:Bind local:App.Current.GetThemeService}">
                     <ComboBoxItem Content="None"
                                   Tag="None" />
                     <ComboBoxItem Content="Mica"
