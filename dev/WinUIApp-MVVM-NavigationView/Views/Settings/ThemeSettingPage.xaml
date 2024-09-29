@@ -23,7 +23,7 @@
                 Description="Select the theme that suits your mood and preference. You can choose from dark, light, or system themes."
                 Header="App theme"
                 HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}">
-                <ComboBox local:ThemeServiceAttach.ThemeService="{x:Bind local:App.Current.GetThemeService}">
+                <ComboBox wuc:ThemeServiceAttach.ThemeService="{x:Bind local:App.Current.GetThemeService}">
                     <ComboBoxItem Content="Light" Tag="Light" />
                     <ComboBoxItem Content="Dark" Tag="Dark" />
                     <ComboBoxItem Content="Default" Tag="Default" />
@@ -33,7 +33,7 @@
                 Description="Change the appearance of the backdrop material behind your app. You can choose from mica, acrylic, or transparent options."
                 Header="Material"
                 HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/backdrop.png}">
-                <ComboBox local:ThemeServiceAttach.ThemeService="{x:Bind local:App.Current.GetThemeService}">
+                <ComboBox wuc:ThemeServiceAttach.ThemeService="{x:Bind local:App.Current.GetThemeService}">
                     <ComboBoxItem Content="None" Tag="None" />
                     <ComboBoxItem Content="Mica" Tag="Mica" />
                     <ComboBoxItem Content="Mica Alt" Tag="MicaAlt" />
