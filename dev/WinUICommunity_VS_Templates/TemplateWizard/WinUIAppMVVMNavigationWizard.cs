@@ -43,8 +43,7 @@ namespace WinUICommunity_VS_Templates
             }
 
             if (!WizardConfig.UseHomeLandingPage &&
-                (filePath.Contains("HomeLanding") || 
-                filePath.Contains("HomeLandingViewModel")))
+                (filePath.Contains("HomeLanding")))
             {
                 return false;
             }

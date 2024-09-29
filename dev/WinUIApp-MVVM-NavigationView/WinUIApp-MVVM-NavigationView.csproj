@@ -122,9 +122,6 @@
     <Content Include="ViewModels\SettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ViewModels\HomeLandingViewModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Assets\NavViewMenu\AppData.json" />
     <Content Include="Properties\launchSettings.json" />
     <Content Include="Properties\PublishProfiles\win-arm64.pubxml" />

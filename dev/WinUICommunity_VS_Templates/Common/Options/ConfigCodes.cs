@@ -138,7 +138,6 @@ namespace WinUICommunity_VS_Templates
             if (UseHomeLandingPage)
             {
                 ConfigJsonDic.Add(nameof(UseHomeLandingPage), "json.ConfigDefaultPage(typeof(HomeLandingPage));");
-                ServiceDic.Add(nameof(UseHomeLandingPage), "services.AddTransient<HomeLandingViewModel>();");
             }
 
             if (UseSettingsPage)

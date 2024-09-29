@@ -7,18 +7,11 @@
       xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
+      xmlns:local="using:$safeprojectname$"
       mc:Ignorable="d">
-    <wuc:AllLandingPage x:Name="allLandingPage"
-                        HeaderImage="{ThemeResource HeaderCover}"
+    <wuc:AllLandingPage HeaderImage="{ThemeResource HeaderCover}"
                         HeaderOverlayImage="{ThemeResource HeaderCover}"
-                        HeaderText="{x:Bind wuc:ProcessInfoHelper.ProductNameAndVersion}">
-        <i:Interaction.Behaviors>
-            <ic:EventTriggerBehavior EventName="OnItemClick">
-                <ic:EventTriggerBehavior.Actions>
-                    <ic:InvokeCommandAction Command="{x:Bind ViewModel.ItemClickCommand}" />
-                </ic:EventTriggerBehavior.Actions>
-            </ic:EventTriggerBehavior>
-        </i:Interaction.Behaviors>
-    </wuc:AllLandingPage>
+                        HeaderText="{x:Bind wuc:ProcessInfoHelper.ProductNameAndVersion}"
+                        JsonNavigationViewService="{x:Bind local:App.Current.GetJsonNavigationViewService}"/>
 </Page>
 

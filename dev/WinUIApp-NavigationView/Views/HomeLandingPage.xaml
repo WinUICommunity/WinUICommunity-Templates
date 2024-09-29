@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
+      xmlns:local="using:$safeprojectname$"
       mc:Ignorable="d">
-    <wuc:AllLandingPage x:Name="allLandingPage"
-                        HeaderImage="{ThemeResource HeaderCover}"
+    <wuc:AllLandingPage HeaderImage="{ThemeResource HeaderCover}"
                         HeaderOverlayImage="{ThemeResource HeaderCover}"
                         HeaderText="{x:Bind wuc:ProcessInfoHelper.ProductNameAndVersion}"
-                        OnItemClick="allLandingPage_OnItemClick" />
+                        JsonNavigationViewService="{x:Bind local:App.Current.GetJsonNavigationViewService}" />
 </Page>
 
