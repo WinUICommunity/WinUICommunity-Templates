@@ -94,7 +94,6 @@
 		
 	  <Folder Name="ViewModels" TargetFolderName="ViewModels">
 		<ProjectItem ReplaceParameters="true" TargetFileName="MainViewModel.cs">MainViewModel.cs</ProjectItem>
-		<ProjectItem ReplaceParameters="true" TargetFileName="SettingsViewModel.cs">SettingsViewModel.cs</ProjectItem>
 	  </Folder>
 		
 	  <Folder Name="ViewModels\Settings" TargetFolderName="ViewModels\Settings">

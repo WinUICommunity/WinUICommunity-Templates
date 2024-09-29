@@ -49,7 +49,6 @@ namespace WinUICommunity_VS_Templates
             }
             else if (!WizardConfig.UseSettingsPage &&
                 (filePath.Contains("SettingsPage.xaml") ||
-                filePath.Contains("SettingsViewModel") ||
                 filePath.Contains("AboutUsSettingPage") ||
                 filePath.Contains("ThemeSettingPage") ||
                 filePath.Contains("AboutUsSettingViewModel") ||

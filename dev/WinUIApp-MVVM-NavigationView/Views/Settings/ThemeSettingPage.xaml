@@ -49,7 +49,7 @@
                 Header="Accent color"
                 HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/color.png}"
                 IsClickEnabled="True"
-                LaunchUri="ms-settings:colors"/>
+                LaunchUri="ms-settings:colors" />
         </StackPanel>
     </ScrollView>
 </Page>

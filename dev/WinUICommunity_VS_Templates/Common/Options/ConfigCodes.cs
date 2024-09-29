@@ -109,19 +109,26 @@ namespace WinUICommunity_VS_Templates
 
             if (UseGeneralSettingPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), PredefinedCodes.GeneralSettingMVVMCode);
+                var generalCode = PredefinedCodes.GeneralSettingMVVMCode;
+                generalCode = FixWithRealNamespace(generalCode, safeProjectName);
+                SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), generalCode);
 
                 ServiceDic.Add(nameof(UseGeneralSettingPage), "services.AddTransient<GeneralSettingViewModel>();");
             }
 
             if (UseThemeSettingPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), PredefinedCodes.ThemeSettingMVVMCode);
+                var themeCode = PredefinedCodes.ThemeSettingMVVMCode;
+                themeCode = FixWithRealNamespace(themeCode, safeProjectName);
+                SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), themeCode);
             }
 
             if (UseAppUpdatePage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseAppUpdatePage), PredefinedCodes.AppUpdateSettingMVVMCode);
+                var appUpdateCode = PredefinedCodes.AppUpdateSettingMVVMCode;
+                appUpdateCode = FixWithRealNamespace(appUpdateCode, safeProjectName);
+
+                SettingsPageOptionsDic.Add(nameof(UseAppUpdatePage), appUpdateCode);
 
                 ServiceDic.Add(nameof(UseAppUpdatePage), "services.AddTransient<AppUpdateSettingViewModel>();");
             }
@@ -129,7 +136,7 @@ namespace WinUICommunity_VS_Templates
             if (UseAboutPage)
             {
                 var aboutCode = PredefinedCodes.AboutSettingMVVMCode;
-                aboutCode = aboutCode.Replace("$safeprojectname$", safeProjectName);
+                aboutCode = FixWithRealNamespace(aboutCode, safeProjectName);
                 SettingsPageOptionsDic.Add(nameof(UseAboutPage), aboutCode);
                 ServiceDic.Add(nameof(UseAboutPage), "services.AddTransient<AboutUsSettingViewModel>();");
             }
@@ -142,36 +149,48 @@ namespace WinUICommunity_VS_Templates
             if (UseSettingsPage)
             {
                 ConfigJsonDic.Add(nameof(UseSettingsPage), "json.ConfigSettingsPage(typeof(SettingsPage));");
-                ServiceDic.Add(nameof(UseSettingsPage), "services.AddTransient<SettingsViewModel>();");
             }
 
             if (SettingsPageOptionsDic.Count == 0)
             {
-                SettingsPageOptionsDic.Add("comment", PredefinedCodes.SettingsCardMVVMCommentCode);
+                var commentCode = PredefinedCodes.SettingsCardMVVMCommentCode;
+                commentCode = FixWithRealNamespace(commentCode, safeProjectName);
+                SettingsPageOptionsDic.Add("comment", commentCode);
             }
         }
 
+        private string FixWithRealNamespace(string content, string safeProjectName)
+        {
+            return content?.Replace("$safeprojectname$", safeProjectName);
+        }
         public void ConfigAll(string safeProjectName)
         {
             if (UseGeneralSettingPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), PredefinedCodes.GeneralSettingCode);
+                var generalCode = PredefinedCodes.GeneralSettingCode;
+                generalCode = FixWithRealNamespace(generalCode, safeProjectName);
+                SettingsPageOptionsDic.Add(nameof(UseGeneralSettingPage), generalCode);
             }
 
             if (UseThemeSettingPage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), PredefinedCodes.ThemeSettingCode);
+                var themeCode = PredefinedCodes.ThemeSettingCode;
+                themeCode = FixWithRealNamespace(themeCode, safeProjectName);
+                SettingsPageOptionsDic.Add(nameof(UseThemeSettingPage), themeCode);
             }
 
             if (UseAppUpdatePage)
             {
-                SettingsPageOptionsDic.Add(nameof(UseAppUpdatePage), PredefinedCodes.AppUpdateSettingCode);
+                var appUpdateCode = PredefinedCodes.AppUpdateSettingCode;
+                appUpdateCode = FixWithRealNamespace(appUpdateCode, safeProjectName);
+                SettingsPageOptionsDic.Add(nameof(UseAppUpdatePage), appUpdateCode);
             }
 
             if (UseAboutPage)
             {
                 var aboutCode = PredefinedCodes.AboutSettingCode;
-                aboutCode = aboutCode.Replace("$safeprojectname$", safeProjectName);
+                aboutCode = FixWithRealNamespace(aboutCode, safeProjectName);
+
                 SettingsPageOptionsDic.Add(nameof(UseAboutPage), aboutCode);
             }
 
@@ -187,7 +206,9 @@ namespace WinUICommunity_VS_Templates
 
             if (SettingsPageOptionsDic.Count == 0)
             {
-                SettingsPageOptionsDic.Add("comment", PredefinedCodes.SettingsCardCommentCode);
+                var commentCode = PredefinedCodes.SettingsCardCommentCode;
+                commentCode = FixWithRealNamespace(commentCode, safeProjectName);
+                SettingsPageOptionsDic.Add("comment", commentCode);
             }
         }
 
