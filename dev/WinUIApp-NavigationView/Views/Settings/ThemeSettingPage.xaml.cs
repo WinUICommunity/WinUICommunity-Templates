@@ -1,6 +1,4 @@
-﻿using Windows.System;
-
-namespace $safeprojectname$.Views;
+﻿namespace $safeprojectname$.Views;
 
 public sealed partial class ThemeSettingPage : Page
 {
@@ -24,11 +22,6 @@ public sealed partial class ThemeSettingPage : Page
     private void CmbBackdrop_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         App.Current.ThemeService.OnBackdropComboBoxSelectionChanged(sender);
-    }
-
-    private async void OpenWindowsColorSettings(object sender, RoutedEventArgs e)
-    {
-        _ = await Launcher.LaunchUriAsync(new Uri("ms-settings:colors"));
     }
 }
 

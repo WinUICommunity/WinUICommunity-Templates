@@ -1,6 +1,4 @@
-﻿using Windows.System;
-
-namespace $safeprojectname$.ViewModels;
+﻿namespace $safeprojectname$.ViewModels;
 public partial class ThemeSettingViewModel : ObservableObject
 {
     public IThemeService ThemeService;
@@ -19,11 +17,5 @@ public partial class ThemeSettingViewModel : ObservableObject
     private void OnThemeChanged(object sender)
     {
         ThemeService.OnThemeComboBoxSelectionChanged(sender);
-    }
-
-    [RelayCommand]
-    private async Task OpenWindowsColorSettings()
-    {
-        _ = await Launcher.LaunchUriAsync(new Uri("ms-settings:colors"));
     }
 }

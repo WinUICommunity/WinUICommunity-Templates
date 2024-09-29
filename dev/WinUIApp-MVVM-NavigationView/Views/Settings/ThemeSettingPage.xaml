@@ -59,11 +59,11 @@
             </wuc:SettingsCard>
             <wuc:SettingsCard
                 ActionIcon="{wuc:BitmapIcon Source=Assets/Fluent/external.png}"
-                Command="{x:Bind ViewModel.OpenWindowsColorSettingsCommand}"
                 Description="Sync your app’s color with your Windows accent color. You can open the Windows accent color setting by clicking this card."
                 Header="Accent color"
                 HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/color.png}"
-                IsClickEnabled="True" />
+                IsClickEnabled="True"
+                LaunchUri="ms-settings:colors"/>
         </StackPanel>
     </ScrollView>
 </Page>
