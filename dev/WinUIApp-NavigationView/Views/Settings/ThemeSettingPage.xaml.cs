@@ -4,18 +4,10 @@ namespace $safeprojectname$.Views;
 
 public sealed partial class ThemeSettingPage : Page
 {
-    public string BreadCrumbBarItemText { get; set; }
-
     public ThemeSettingPage()
     {
         this.InitializeComponent();
         Loaded += ThemeSettingPage_Loaded;
-    }
-
-    protected override void OnNavigatedTo(NavigationEventArgs e)
-    {
-        base.OnNavigatedTo(e);
-        BreadCrumbBarItemText = e.Parameter as string;
     }
 
     private void ThemeSettingPage_Loaded(object sender, RoutedEventArgs e)

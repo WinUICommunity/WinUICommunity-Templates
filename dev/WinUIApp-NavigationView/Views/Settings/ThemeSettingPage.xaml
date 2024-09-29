@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:views="using:$safeprojectname$.Views"
+      xmlns:local="using:$safeprojectname$"
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
     <ScrollView Margin="{ThemeResource ContentPageMargin}"
@@ -13,7 +14,7 @@
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="5">
 
-            <views:BreadcrumbBarUserControl SingleItem="{x:Bind BreadCrumbBarItemText, Mode=OneWay}" />
+            <wuc:BreadcrumbNavigator JsonNavigationViewService="{x:Bind local:App.GetJsonNavigationViewService()}" />
 
             <wuc:SettingsCard Description="Select the theme that suits your mood and preference. You can choose from dark, light, or system themes."
                               Header="App theme"

@@ -3,7 +3,6 @@
 public sealed partial class ThemeSettingPage : Page
 {
     public ThemeSettingViewModel ViewModel { get; }
-    public string BreadCrumbBarItemText { get; set; }
 
     public ThemeSettingPage()
     {
@@ -16,12 +15,6 @@ public sealed partial class ThemeSettingPage : Page
     {
         ViewModel.ThemeService.SetThemeComboBoxDefaultItem(CmbTheme);
         ViewModel.ThemeService.SetBackdropComboBoxDefaultItem(CmbBackdrop);
-    }
-
-    protected override void OnNavigatedTo(NavigationEventArgs e)
-    {
-        base.OnNavigatedTo(e);
-        BreadCrumbBarItemText = e.Parameter as string;
     }
 }
 

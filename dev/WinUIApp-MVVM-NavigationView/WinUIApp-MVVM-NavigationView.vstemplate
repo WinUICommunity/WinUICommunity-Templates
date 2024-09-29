@@ -92,16 +92,10 @@
 		<ProjectItem ReplaceParameters="true" TargetFileName="AppUpdateSettingPage.xaml.cs">AppUpdateSettingPage.xaml.cs</ProjectItem>
 	  </Folder>
 		
-	  <Folder Name="Views\UserControls" TargetFolderName="Views\UserControls">
-		<ProjectItem ReplaceParameters="true" TargetFileName="BreadcrumbBarUserControl.xaml">BreadcrumbBarUserControl.xaml</ProjectItem>
-		<ProjectItem ReplaceParameters="true" TargetFileName="BreadcrumbBarUserControl.xaml.cs">BreadcrumbBarUserControl.xaml.cs</ProjectItem>
-	  </Folder>
-		
 	  <Folder Name="ViewModels" TargetFolderName="ViewModels">
 		<ProjectItem ReplaceParameters="true" TargetFileName="MainViewModel.cs">MainViewModel.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="HomeLandingViewModel.cs">HomeLandingViewModel.cs</ProjectItem>
 		<ProjectItem ReplaceParameters="true" TargetFileName="SettingsViewModel.cs">SettingsViewModel.cs</ProjectItem>
-		<ProjectItem ReplaceParameters="true" TargetFileName="BreadCrumbBarViewModel.cs">BreadCrumbBarViewModel.cs</ProjectItem>
 	  </Folder>
 		
 	  <Folder Name="ViewModels\Settings" TargetFolderName="ViewModels\Settings">

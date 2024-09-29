@@ -2,17 +2,11 @@
 
 public sealed partial class GeneralSettingPage : Page
 {
-    public string BreadCrumbBarItemText { get; set; }
-
+    public GeneralSettingViewModel ViewModel { get; }
     public GeneralSettingPage()
     {
+        ViewModel = App.GetService<GeneralSettingViewModel>();
         this.InitializeComponent();
-    }
-
-    protected override void OnNavigatedTo(NavigationEventArgs e)
-    {
-        base.OnNavigatedTo(e);
-        BreadCrumbBarItemText = e.Parameter as string;
     }$GoToLogPathEvent$
 }
 

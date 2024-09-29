@@ -145,7 +145,6 @@ namespace WinUICommunity_VS_Templates
             {
                 ConfigJsonDic.Add(nameof(UseSettingsPage), "json.ConfigSettingsPage(typeof(SettingsPage));");
                 ServiceDic.Add(nameof(UseSettingsPage), "services.AddTransient<SettingsViewModel>();");
-                ServiceDic.Add(nameof(UseSettingsPage) + "Bread", "services.AddTransient<BreadCrumbBarViewModel>();");
             }
 
             if (SettingsPageOptionsDic.Count == 0)

@@ -5,6 +5,7 @@ public partial class App : Application
     public static Window MainWindow = Window.Current;
     public IServiceProvider Services { get; }
     public new static App Current => (App)Application.Current;
+    public IJsonNavigationViewService GetJsonNavigationViewService => GetService<IJsonNavigationViewService>();
 
     public static T GetService<T>() where T : class
     {

@@ -6,7 +6,6 @@ public sealed partial class AppUpdateSettingPage : Page
 {
     public string CurrentVersion { get; set; }
     public string ChangeLog { get; set; }
-    public string BreadCrumbBarItemText { get; set; }
 
     public AppUpdateSettingPage()
     {
@@ -15,12 +14,6 @@ public sealed partial class AppUpdateSettingPage : Page
 
         BtnReleaseNote.Visibility = Visibility.Collapsed;
         BtnDownloadUpdate.Visibility = Visibility.Collapsed;
-    }
-
-    protected override void OnNavigatedTo(NavigationEventArgs e)
-    {
-        base.OnNavigatedTo(e);
-        BreadCrumbBarItemText = e.Parameter as string;
     }
 
     private async void CheckForUpdateAsync()
