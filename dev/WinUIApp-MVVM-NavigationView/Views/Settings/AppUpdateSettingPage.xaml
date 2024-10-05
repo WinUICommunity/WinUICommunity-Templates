@@ -14,8 +14,6 @@
             Margin="10"
             wuc:PanelAttach.ChildrenTransitions="Default"
             Spacing="5">
-            <wuc:BreadcrumbNavigator JsonNavigationViewService="{x:Bind local:App.Current.GetJsonNavigationViewService}" />
-
             <wuc:SettingsCard Header="{x:Bind ViewModel.CurrentVersion}" HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/update.png}">
                 <wuc:SettingsCard.Description>
                     <StackPanel Orientation="Horizontal" Spacing="5">

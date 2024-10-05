@@ -15,6 +15,7 @@ public sealed partial class MainPage : Page
         {
             jsonNavigationViewService.Initialize(NavView, NavFrame);
             jsonNavigationViewService.ConfigJson("Assets/NavViewMenu/AppData.json");
+            jsonNavigationViewService.ConfigBreadcrumbBar(JsonBreadCrumbNavigator);
         }
     }
 

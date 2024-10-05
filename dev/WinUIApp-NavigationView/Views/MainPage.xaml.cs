@@ -9,6 +9,7 @@ public sealed partial class MainPage : Page
         App.MainWindow.SetTitleBar(AppTitleBar);
         App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame);
         App.Current.JsonNavigationViewService.ConfigJson("Assets/NavViewMenu/AppData.json");
+        App.Current.JsonNavigationViewService.ConfigBreadcrumbBar(JsonBreadCrumbNavigator);
     }
 
     private void AppTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)

@@ -16,9 +16,6 @@
             Margin="10"
             wuc:PanelAttach.ChildrenTransitions="Default"
             Spacing="5">
-
-            <wuc:BreadcrumbNavigator JsonNavigationViewService="{x:Bind local:App.Current.GetJsonNavigationViewService}" />
-
             <wuc:SettingsCard
                 Description="Select the theme that suits your mood and preference. You can choose from dark, light, or system themes."
                 Header="App theme"

@@ -15,8 +15,6 @@
             Margin="10"
             wuc:PanelAttach.ChildrenTransitions="Default"
             Spacing="5">
-
-            <wuc:BreadcrumbNavigator JsonNavigationViewService="{x:Bind local:App.Current.GetJsonNavigationViewService}" />
             $GeneralSettingsCards$
         </StackPanel>
     </ScrollView>
