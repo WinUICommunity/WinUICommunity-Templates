@@ -13,6 +13,7 @@ ContextMenuItem menu = new ContextMenuItem
     AcceptMultipleFilesFlag = (int)FilesMatchFlagEnum.Each,
     Index = 0,
     Enabled = true,
+    Icon = ProcessInfoHelper.GetFileVersionInfo().FileName,
     Exe = "$projectname$.exe"
 };
 
@@ -33,6 +34,7 @@ if (menuService != null)
         AcceptMultipleFilesFlag = (int)FilesMatchFlagEnum.Each,
         Index = 0,
         Enabled = true,
+        Icon = ProcessInfoHelper.GetFileVersionInfo().FileName,
         Exe = "$projectname$.exe"
     };
 
