@@ -7,9 +7,9 @@ public sealed partial class MainPage : Page
         this.InitializeComponent();
         App.MainWindow.ExtendsContentIntoTitleBar = true;
         App.MainWindow.SetTitleBar(AppTitleBar);
-        App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame);
+        App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame, NavigationPageMappings.PageDictionary);
         App.Current.JsonNavigationViewService.ConfigJson("Assets/NavViewMenu/AppData.json");
-        App.Current.JsonNavigationViewService.ConfigBreadcrumbBar(JsonBreadCrumbNavigator);
+        App.Current.JsonNavigationViewService.ConfigBreadcrumbBar(JsonBreadCrumbNavigator, BreadcrumbPageMappings.PageDictionary);
     }
 
     private void AppTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)

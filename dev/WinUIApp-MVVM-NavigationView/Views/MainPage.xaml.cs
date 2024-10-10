@@ -13,9 +13,9 @@ public sealed partial class MainPage : Page
         var jsonNavigationViewService = App.GetService<IJsonNavigationViewService>() as JsonNavigationViewService;
         if (jsonNavigationViewService != null)
         {
-            jsonNavigationViewService.Initialize(NavView, NavFrame);
+            jsonNavigationViewService.Initialize(NavView, NavFrame, NavigationPageMappings.PageDictionary);
             jsonNavigationViewService.ConfigJson("Assets/NavViewMenu/AppData.json");
-            jsonNavigationViewService.ConfigBreadcrumbBar(JsonBreadCrumbNavigator);
+            jsonNavigationViewService.ConfigBreadcrumbBar(JsonBreadCrumbNavigator, BreadcrumbPageMappings.PageDictionary);
         }
     }
 

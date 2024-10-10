@@ -71,6 +71,11 @@
 	  <Folder Name="Assets\NavViewMenu" TargetFolderName="Assets\NavViewMenu">
 		<ProjectItem ReplaceParameters="true" TargetFileName="AppData.json">AppData.json</ProjectItem>
 	  </Folder>
+
+	  <Folder Name="T4Templates" TargetFolderName="T4Templates">
+		<ProjectItem ReplaceParameters="true" TargetFileName="BreadcrumbPageMappings.tt">BreadcrumbPageMappings.tt</ProjectItem>
+		<ProjectItem ReplaceParameters="true" TargetFileName="NavigationPageMappings.tt">NavigationPageMappings.tt</ProjectItem>
+	  </Folder>
 		
 	  <Folder Name="Views" TargetFolderName="Views">
 		<ProjectItem ReplaceParameters="true" TargetFileName="MainPage.xaml">MainPage.xaml</ProjectItem>

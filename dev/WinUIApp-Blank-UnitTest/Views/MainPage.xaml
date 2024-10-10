@@ -12,7 +12,9 @@
                   Title="$safeprojectname$"
                   IconSource="{wuc:BitmapIconSource Source=ms-appx:///Assets/icon.png}"
                   Subtitle="1.0.0" />
-        <StackPanel Grid.Row="1" />
+        <StackPanel Grid.Row="1">
+            
+        </StackPanel>
     </Grid>
 </Page>
 

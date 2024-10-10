@@ -19,7 +19,9 @@
                                 TextChanged="AutoSuggestBox_TextChanged" />
             </TitleBar.Content>
         </TitleBar>
-        <StackPanel Grid.Row="1" />
+        <StackPanel Grid.Row="1">
+            
+        </StackPanel>
     </Grid>
 </Page>
 

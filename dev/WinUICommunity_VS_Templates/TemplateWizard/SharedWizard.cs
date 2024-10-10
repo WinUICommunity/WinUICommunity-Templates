@@ -157,6 +157,7 @@ namespace WinUICommunity_VS_Templates
                 replacementsDictionary.Add("$AddThemeSettingPage$", WizardConfig.UseThemeSettingPage.ToString());
                 replacementsDictionary.Add("$AddAppUpdatePage$", WizardConfig.UseAppUpdatePage.ToString());
                 replacementsDictionary.Add("$AddAboutPage$", WizardConfig.UseAboutPage.ToString());
+                replacementsDictionary.Add("$T4_NAMESPACE$", SafeProjectName);
 
                 var libs = WizardConfig.LibraryDic;
 
