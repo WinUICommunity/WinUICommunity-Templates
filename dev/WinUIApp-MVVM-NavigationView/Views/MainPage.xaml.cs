@@ -51,19 +51,29 @@ public sealed partial class MainPage : Page
         }
     }
 
-    private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+    private void OnTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
     {
         var viewModel = NavFrame.GetPageViewModel();
-        if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
+        var frameContentAOTSafe = NavFrame?.Content;
+        if (frameContentAOTSafe is Page page && page?.DataContext is ITitleBarAutoSuggestBoxAware viewModelAOTSafe)
+        {
+            viewModelAOTSafe.OnAutoSuggestBoxTextChanged(sender, args);
+        }
+        else if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
         {
             titleBarAutoSuggestBoxAware.OnAutoSuggestBoxTextChanged(sender, args);
         }
     }
 
-    private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+    private void OnQuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
     {
         var viewModel = NavFrame.GetPageViewModel();
-        if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
+        var frameContentAOTSafe = NavFrame?.Content;
+        if (frameContentAOTSafe is Page page && page?.DataContext is ITitleBarAutoSuggestBoxAware viewModelAOTSafe)
+        {
+            viewModelAOTSafe.OnAutoSuggestBoxQuerySubmitted(sender, args);
+        }
+        else if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
         {
             titleBarAutoSuggestBoxAware.OnAutoSuggestBoxQuerySubmitted(sender, args);
         }

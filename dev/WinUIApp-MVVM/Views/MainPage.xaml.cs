@@ -11,19 +11,29 @@ public sealed partial class MainPage : Page
         App.MainWindow.SetTitleBar(AppTitleBar);
     }
 
-    private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+    private void OnTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
     {
         var viewModel = Frame.GetPageViewModel();
-        if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
+        var frameContentAOTSafe = Frame?.Content;
+        if (frameContentAOTSafe is Page page && page?.DataContext is ITitleBarAutoSuggestBoxAware viewModelAOTSafe)
+        {
+            viewModelAOTSafe.OnAutoSuggestBoxTextChanged(sender, args);
+        }
+        else if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
         {
             titleBarAutoSuggestBoxAware.OnAutoSuggestBoxTextChanged(sender, args);
         }
     }
 
-    private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+    private void OnQuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
     {
         var viewModel = Frame.GetPageViewModel();
-        if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
+        var frameContentAOTSafe = Frame?.Content;
+        if (frameContentAOTSafe is Page page && page?.DataContext is ITitleBarAutoSuggestBoxAware viewModelAOTSafe)
+        {
+            viewModelAOTSafe.OnAutoSuggestBoxQuerySubmitted(sender, args);
+        }
+        else if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
         {
             titleBarAutoSuggestBoxAware.OnAutoSuggestBoxQuerySubmitted(sender, args);
         }

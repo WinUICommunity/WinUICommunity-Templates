@@ -19,8 +19,8 @@
             <TitleBar.Content>
                 <AutoSuggestBox PlaceholderText="Search"
                                 QueryIcon="Find"
-                                QuerySubmitted="AutoSuggestBox_QuerySubmitted"
-                                TextChanged="AutoSuggestBox_TextChanged" />
+                                QuerySubmitted="OnQuerySubmitted"
+                                TextChanged="OnTextChanged" />
             </TitleBar.Content>
             <TitleBar.Footer>
                 <Button x:Name="ThemeButton"
