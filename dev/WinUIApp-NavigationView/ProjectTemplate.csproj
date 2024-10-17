@@ -80,4 +80,13 @@
   <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
 	<HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
   </PropertyGroup>
+
+  <Target Name="TransformAllT4Templates" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+      <!-- This picks up all T4 templates in the project -->
+      <T4Template Include="**\*.tt" />
+    </ItemGroup>
+    <!-- Iterate over each .tt file and run TextTransform.exe -->
+    <Exec Command="&quot;$(DevEnvDir)TextTransform.exe&quot; &quot;%(T4Template.FullPath)&quot;" />
+  </Target>
 </Project>
