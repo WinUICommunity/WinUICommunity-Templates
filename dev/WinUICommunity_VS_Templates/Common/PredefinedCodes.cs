@@ -48,7 +48,7 @@ if (menuService != null)
                               Header="Your Header"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/icon.png}"
                               IsClickEnabled="True"
-                              wuc:NavigationHelperEx.NavigateToSetting="views.MySettingPage" /> -->
+                              wuc:NavigationHelperEx.NavigateToSetting="views:MySettingPage" /> -->
 """;
 
         public static readonly string SettingsCardMVVMCommentCode =
@@ -57,7 +57,7 @@ if (menuService != null)
                               Header="Your Header"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/icon.png}"
                               IsClickEnabled="True"
-                              wuc:NavigationHelperEx.NavigateToSetting="views.MySettingPage" /> -->
+                              wuc:NavigationHelperEx.NavigateToSetting="views:MySettingPage" /> -->
 """;
         public static readonly string AboutSettingCode =
 """
@@ -65,7 +65,7 @@ if (menuService != null)
                               Header="About us"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/info.png}"
                               IsClickEnabled="True"
-                              wuc:NavigationHelperEx.NavigateToSetting="views.AboutUsSettingPage" />
+                              wuc:NavigationHelperEx.NavigateToSetting="views:AboutUsSettingPage" />
 """;
         public static readonly string AboutSettingMVVMCode =
 """
@@ -73,7 +73,7 @@ if (menuService != null)
                               Header="About us"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/info.png}"
                               IsClickEnabled="True"
-                              wuc:NavigationHelperEx.NavigateToSetting="views.AboutUsSettingPage" />
+                              wuc:NavigationHelperEx.NavigateToSetting="views:AboutUsSettingPage" />
 """;
 
         public static readonly string AppUpdateSettingCode =
@@ -82,7 +82,7 @@ if (menuService != null)
                               Header="Update App"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/update.png}"
                               IsClickEnabled="True"
-                              wuc:NavigationHelperEx.NavigateToSetting="views.AppUpdateSettingPage" />
+                              wuc:NavigationHelperEx.NavigateToSetting="views:AppUpdateSettingPage" />
 """;
 
         public static readonly string AppUpdateSettingMVVMCode =
@@ -91,7 +91,7 @@ if (menuService != null)
                               Header="Update App"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/update.png}"
                               IsClickEnabled="True"
-                              wuc:NavigationHelperEx.NavigateToSetting="views.AppUpdateSettingPage" />
+                              wuc:NavigationHelperEx.NavigateToSetting="views:AppUpdateSettingPage" />
 """;
 
         public static readonly string GeneralSettingCode =
@@ -100,7 +100,7 @@ if (menuService != null)
                               Header="General"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/settings.png}"
                               IsClickEnabled="True"
-                              wuc:NavigationHelperEx.NavigateToSetting="views.GeneralSettingPage" />
+                              wuc:NavigationHelperEx.NavigateToSetting="views:GeneralSettingPage" />
 """;
 
         public static readonly string GeneralSettingMVVMCode =
@@ -109,7 +109,7 @@ if (menuService != null)
                               Header="General"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/settings.png}"
                               IsClickEnabled="True"
-                              wuc:NavigationHelperEx.NavigateToSetting="views.GeneralSettingPage" />
+                              wuc:NavigationHelperEx.NavigateToSetting="views:GeneralSettingPage" />
 """;
 
         public static readonly string ThemeSettingCode =
@@ -118,7 +118,7 @@ if (menuService != null)
                               Header="Appearance &amp; behavior"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
                               IsClickEnabled="True"
-                              wuc:NavigationHelperEx.NavigateToSetting="views.ThemeSettingPage" />
+                              wuc:NavigationHelperEx.NavigateToSetting="views:ThemeSettingPage" />
 """;
 
         public static readonly string ThemeSettingMVVMCode =
@@ -127,7 +127,7 @@ if (menuService != null)
                               Header="Appearance &amp; behavior"
                               HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/theme.png}"
                               IsClickEnabled="True"
-                              wuc:NavigationHelperEx.NavigateToSetting="views.ThemeSettingPage" />
+                              wuc:NavigationHelperEx.NavigateToSetting="views:ThemeSettingPage" />
 """;
 
         public static readonly string DeveloperModeSettingCode =
