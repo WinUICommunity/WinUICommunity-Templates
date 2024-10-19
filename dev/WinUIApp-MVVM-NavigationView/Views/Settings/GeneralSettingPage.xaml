@@ -8,6 +8,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:views="using:$safeprojectname$.Views"
       xmlns:wuc="using:WinUICommunity"
+      wuc:BreadcrumbNavigator.IsHeaderVisible="True"
       mc:Ignorable="d">
     <ScrollView Margin="{ThemeResource ContentPageMargin}"
                 VerticalScrollBarVisibility="Auto">
