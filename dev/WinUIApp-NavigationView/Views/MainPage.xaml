@@ -18,7 +18,8 @@
                   Subtitle="{x:Bind wuc:ProcessInfoHelper.VersionWithPrefix}">
             <wuc:TitleBar.Content>
                 <AutoSuggestBox PlaceholderText="Search"
-                                QueryIcon="Find" />
+                                QueryIcon="Find" MinWidth="320" 
+                                VerticalAlignment="Center" />
             </wuc:TitleBar.Content>
             <wuc:TitleBar.Footer>
                 <Button x:Name="ThemeButton"

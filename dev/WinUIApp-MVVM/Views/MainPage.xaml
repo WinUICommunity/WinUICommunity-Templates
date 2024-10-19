@@ -16,7 +16,9 @@
                 <AutoSuggestBox PlaceholderText="Search"
                                 QueryIcon="Find"
                                 QuerySubmitted="OnQuerySubmitted"
-                                TextChanged="OnTextChanged" />
+                                TextChanged="OnTextChanged" 
+                                MinWidth="320"
+                                VerticalAlignment="Center"/>
             </wuc:TitleBar.Content>
         </wuc:TitleBar>
         <StackPanel Grid.Row="1">
