@@ -8,17 +8,17 @@
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
     <Grid RowDefinitions="Auto, *">
-        <TitleBar x:Name="AppTitleBar"
+        <wuc:TitleBar x:Name="AppTitleBar"
                   Title="{x:Bind wuc:ProcessInfoHelper.ProductName}"
                   IconSource="{wuc:BitmapIconSource Source=ms-appx:///Assets/icon.png}"
                   Subtitle="{x:Bind wuc:ProcessInfoHelper.VersionWithPrefix}">
-            <TitleBar.Content>
+            <wuc:TitleBar.Content>
                 <AutoSuggestBox PlaceholderText="Search"
                                 QueryIcon="Find"
                                 QuerySubmitted="OnQuerySubmitted"
                                 TextChanged="OnTextChanged" />
-            </TitleBar.Content>
-        </TitleBar>
+            </wuc:TitleBar.Content>
+        </wuc:TitleBar>
         <StackPanel Grid.Row="1">
             
         </StackPanel>

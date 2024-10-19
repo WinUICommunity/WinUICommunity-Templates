@@ -19,7 +19,7 @@ public sealed partial class MainPage : Page
         }
     }
 
-    private void AppTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+    private void AppTitleBar_BackRequested(TitleBar sender, object args)
     {
         if (NavFrame.CanGoBack)
         {
@@ -27,7 +27,7 @@ public sealed partial class MainPage : Page
         }
     }
 
-    private void AppTitleBar_PaneToggleRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+    private void AppTitleBar_PaneToggleRequested(TitleBar sender, object args)
     {
         NavView.IsPaneOpen = !NavView.IsPaneOpen;
     }
@@ -39,44 +39,17 @@ public sealed partial class MainPage : Page
 
     private void ThemeButton_Click(object sender, RoutedEventArgs e)
     {
-        var element = App.MainWindow.Content as FrameworkElement;
-
-        if (element.ActualTheme == ElementTheme.Light)
-        {
-            element.RequestedTheme = ElementTheme.Dark;
-        }
-        else if (element.ActualTheme == ElementTheme.Dark)
-        {
-            element.RequestedTheme = ElementTheme.Light;
-        }
+        ThemeService.ChangeThemeWithoutSave(App.MainWindow);
     }
 
     private void OnTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
     {
-        var viewModel = NavFrame.GetPageViewModel();
-        var frameContentAOTSafe = NavFrame?.Content;
-        if (frameContentAOTSafe is Page page && page?.DataContext is ITitleBarAutoSuggestBoxAware viewModelAOTSafe)
-        {
-            viewModelAOTSafe.OnAutoSuggestBoxTextChanged(sender, args);
-        }
-        else if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
-        {
-            titleBarAutoSuggestBoxAware.OnAutoSuggestBoxTextChanged(sender, args);
-        }
+        AutoSuggestBoxHelper.OnITitleBarAutoSuggestBoxTextChangedEvent(sender, args, NavFrame);
     }
 
     private void OnQuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
     {
-        var viewModel = NavFrame.GetPageViewModel();
-        var frameContentAOTSafe = NavFrame?.Content;
-        if (frameContentAOTSafe is Page page && page?.DataContext is ITitleBarAutoSuggestBoxAware viewModelAOTSafe)
-        {
-            viewModelAOTSafe.OnAutoSuggestBoxQuerySubmitted(sender, args);
-        }
-        else if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
-        {
-            titleBarAutoSuggestBoxAware.OnAutoSuggestBoxQuerySubmitted(sender, args);
-        }
+        AutoSuggestBoxHelper.OnITitleBarAutoSuggestBoxQuerySubmittedEvent(sender, args, NavFrame);
     }
 }
 

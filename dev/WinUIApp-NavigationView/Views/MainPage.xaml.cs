@@ -12,7 +12,7 @@ public sealed partial class MainPage : Page
         App.Current.JsonNavigationViewService.ConfigBreadcrumbBar(JsonBreadCrumbNavigator, BreadcrumbPageMappings.PageDictionary);
     }
 
-    private void AppTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+    private void AppTitleBar_BackRequested(TitleBar sender, object args)
     {
         if (NavFrame.CanGoBack)
         {
@@ -20,7 +20,7 @@ public sealed partial class MainPage : Page
         }
     }
 
-    private void AppTitleBar_PaneToggleRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+    private void AppTitleBar_PaneToggleRequested(TitleBar sender, object args)
     {
         NavView.IsPaneOpen = !NavView.IsPaneOpen;
     }
@@ -32,16 +32,7 @@ public sealed partial class MainPage : Page
 
     private void ThemeButton_Click(object sender, RoutedEventArgs e)
     {
-        var element = App.MainWindow.Content as FrameworkElement;
-
-        if (element.ActualTheme == ElementTheme.Light)
-        {
-            element.RequestedTheme = ElementTheme.Dark;
-        }
-        else if (element.ActualTheme == ElementTheme.Dark)
-        {
-            element.RequestedTheme = ElementTheme.Light;
-        }
+        ThemeService.ChangeThemeWithoutSave(App.MainWindow);
     }
 }
 

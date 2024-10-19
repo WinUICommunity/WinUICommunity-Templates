@@ -8,7 +8,7 @@
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       mc:Ignorable="d">
     <Grid RowDefinitions="Auto, *">
-        <TitleBar x:Name="AppTitleBar"
+        <wuc:TitleBar x:Name="AppTitleBar"
                   Title="$safeprojectname$"
                   IconSource="{wuc:BitmapIconSource Source=ms-appx:///Assets/icon.png}"
                   Subtitle="1.0.0" />

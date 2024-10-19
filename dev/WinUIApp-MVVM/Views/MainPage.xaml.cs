@@ -13,30 +13,12 @@ public sealed partial class MainPage : Page
 
     private void OnTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
     {
-        var viewModel = Frame.GetPageViewModel();
-        var frameContentAOTSafe = Frame?.Content;
-        if (frameContentAOTSafe is Page page && page?.DataContext is ITitleBarAutoSuggestBoxAware viewModelAOTSafe)
-        {
-            viewModelAOTSafe.OnAutoSuggestBoxTextChanged(sender, args);
-        }
-        else if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
-        {
-            titleBarAutoSuggestBoxAware.OnAutoSuggestBoxTextChanged(sender, args);
-        }
+        AutoSuggestBoxHelper.OnITitleBarAutoSuggestBoxTextChangedEvent(sender, args, this.Frame);
     }
 
     private void OnQuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
     {
-        var viewModel = Frame.GetPageViewModel();
-        var frameContentAOTSafe = Frame?.Content;
-        if (frameContentAOTSafe is Page page && page?.DataContext is ITitleBarAutoSuggestBoxAware viewModelAOTSafe)
-        {
-            viewModelAOTSafe.OnAutoSuggestBoxQuerySubmitted(sender, args);
-        }
-        else if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
-        {
-            titleBarAutoSuggestBoxAware.OnAutoSuggestBoxQuerySubmitted(sender, args);
-        }
+        AutoSuggestBoxHelper.OnITitleBarAutoSuggestBoxQuerySubmittedEvent(sender, args, this.Frame);
     }
 }
 

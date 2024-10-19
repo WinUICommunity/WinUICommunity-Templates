@@ -8,7 +8,7 @@
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
     <Grid RowDefinitions="Auto, *">
-        <TitleBar x:Name="AppTitleBar"
+        <wuc:TitleBar x:Name="AppTitleBar"
                   Title="{x:Bind wuc:ProcessInfoHelper.ProductName}"
                   BackRequested="AppTitleBar_BackRequested"
                   IconSource="{wuc:BitmapIconSource Source=ms-appx:///Assets/icon.png}"
@@ -16,11 +16,11 @@
                   IsPaneToggleButtonVisible="True"
                   PaneToggleRequested="AppTitleBar_PaneToggleRequested"
                   Subtitle="{x:Bind wuc:ProcessInfoHelper.VersionWithPrefix}">
-            <TitleBar.Content>
+            <wuc:TitleBar.Content>
                 <AutoSuggestBox PlaceholderText="Search"
                                 QueryIcon="Find" />
-            </TitleBar.Content>
-            <TitleBar.Footer>
+            </wuc:TitleBar.Content>
+            <wuc:TitleBar.Footer>
                 <Button x:Name="ThemeButton"
                         Height="32"
                         Margin="0,0,4,0"
@@ -29,8 +29,8 @@
                                                FontSize=16}"
                         Style="{ThemeResource SubtleButtonStyle}"
                         ToolTipService.ToolTip="Toggle Theme" />
-            </TitleBar.Footer>
-        </TitleBar>
+            </wuc:TitleBar.Footer>
+        </wuc:TitleBar>
         <NavigationView x:Name="NavView"
                         Grid.Row="1"
                         IsBackButtonVisible="Collapsed"
