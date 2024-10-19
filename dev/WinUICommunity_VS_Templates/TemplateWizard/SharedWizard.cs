@@ -47,13 +47,13 @@ namespace WinUICommunity_VS_Templates
             _project = project;
         }
 
-        public async void RunFinished()
+        public async void RunFinished(bool useTTGenerator = false)
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
             var _solution = (Solution2)_dte.Solution;
 
-            AddGithubActionFile(_project);
+            AddGithubActionFile(_project, useTTGenerator);
             AddXamlStylerConfigFile();
 
             AddSolutionFolder(_solution);
@@ -475,7 +475,7 @@ namespace WinUICommunity_VS_Templates
                 CopyFileToDestination(inputFile, outputFile);
             }
         }
-        public async void AddGithubActionFile(Project project)
+        public async void AddGithubActionFile(Project project, bool useTTGenerator)
         {
             if (WizardConfig.UseGithubWorkflowFile)
             {
@@ -499,7 +499,13 @@ namespace WinUICommunity_VS_Templates
                     fileContent = fileContent.Replace("YOUR_APP_NAME", project.Name);
                     var platforms = WizardConfig.Platforms.Replace(";", ", ");
                     fileContent = fileContent.Replace("[x64, x86, arm64]", $"[{platforms}]");
-
+                    if (useTTGenerator)
+                    {
+                        var actionContent = File.ReadAllText(inputFile);
+                        actionContent = actionContent.Replace("TransformTTFiles: false", "TransformTTFiles: true");
+                        File.WriteAllText(inputFile, actionContent);
+                    }
+                    
                     File.WriteAllText(outputFile, fileContent);
                 }
             }

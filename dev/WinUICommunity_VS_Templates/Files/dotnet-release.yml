@@ -11,6 +11,9 @@ env:
   PROJECT_PATH: YOUR_FOLDER/YOUR_APP_NAME.csproj
   APP_NAME: YOUR_APP_NAME
 
+  # Should we transform T4 files?
+  TransformTTFiles: false
+  
   # Check Tag
   CHECK_TAG_EXISTENCE_BEFORE_CREATING_TAG: false
   
@@ -52,7 +55,9 @@ jobs:
         
     - uses: actions/setup-dotnet@v4
       with:
-       dotnet-version: '8.0.x'
+       dotnet-version: | 
+         8.x.x
+         9.x.x
 
     # Add CommunityToolkit Labs and Main nuget sources
     - run: |
@@ -77,6 +82,31 @@ jobs:
       with:
         proj-path: ${{ env.PROJECT_PATH }}
 
+    # Install vswhere (to locate TextTransform.exe)
+    - name: Install vswhere
+      if: ${{ env.TransformTTFiles == 'true' }}
+      run: |
+        choco install vswhere
+
+    # Locate TextTransform.exe
+    - name: Find TextTransform.exe
+      if: ${{ env.TransformTTFiles == 'true' }}
+      id: locate-texttransform
+      run: |
+        $vsInstallPath = vswhere -latest -requires Microsoft.Component.MSBuild -find **/TextTransform.exe
+        echo "::set-output name=path::$vsInstallPath"
+
+    # Transform all T4 templates
+    - name: Transform all T4 templates
+      if: ${{ env.TransformTTFiles == 'true' }}
+      run: |
+        $textTransformPath = '${{ steps.locate-texttransform.outputs.path }}'
+        Get-ChildItem -Recurse -Filter *.tt | ForEach-Object {
+          $ttFile = $_.FullName
+          $outputFile = [System.IO.Path]::ChangeExtension($ttFile, '.cs')
+          & $textTransformPath -out $outputFile $ttFile
+        }
+        
     # Building with configured commands
     - run: |
         $runtimeIdentifier = "${{ matrix.platform }}"
