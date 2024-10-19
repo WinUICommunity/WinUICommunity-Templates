@@ -9,7 +9,8 @@
       mc:Ignorable="d">
     <wuc:AllLandingPage HeaderImage="{ThemeResource HeaderCover}"
                         HeaderOverlayImage="{ThemeResource HeaderCover}"
-                        HeaderText="{x:Bind wuc:ProcessInfoHelper.ProductNameAndVersion}"
+                        HeaderSubtitleText="{x:Bind wuc:ProcessInfoHelper.Version}"
+                        HeaderText="{x:Bind wuc:ProcessInfoHelper.ProductName}"
                         JsonNavigationViewService="{x:Bind local:App.Current.GetJsonNavigationViewService}" />
 </Page>
 
