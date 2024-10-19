@@ -24,7 +24,7 @@ env:
   PUBLISH_SELF_CONTAINED: false
   PUBLISH_SINGLE_FILE: false
   PUBLISH_READY_TO_RUN: false
-  PUBLISH_AOT: false # currently only Console App Supported
+  PUBLISH_AOT: false
   PUBLISH_TRIMMED: false
   PUBLISH_TRIM_MODE: partial # or full
 
