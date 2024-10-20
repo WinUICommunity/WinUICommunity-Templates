@@ -1,10 +1,10 @@
 ﻿{
+  "$schema": "https://raw.githubusercontent.com/WinUICommunity/WinUICommunity/refs/heads/main/AppData.Schema.json",
   "Groups": [
     {
       "UniqueId": "$safeprojectname$",
       "Title": "$safeprojectname$",
       "ImagePath": "ms-appx:///Assets/icon.png",
-      "ImageIconPath": "ms-appx:///Assets/icon.png",
       "IsSpecialSection": false,
       "ShowItemsWithoutGroup": true,
       "IsExpanded": false,
@@ -14,7 +14,6 @@
           "Title": "$safeprojectname$",
           "Subtitle": "$safeprojectname$",
           "ImagePath": "ms-appx:///Assets/icon.png",
-          "ImageIconPath": "ms-appx:///Assets/icon.png",
           "HideItem": true
         }
       ]
